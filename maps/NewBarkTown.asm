@@ -102,7 +102,7 @@ NewBarkTownTeacherScript:
 	end
 
 NewBarkTownFisherScript:
-	jumptextfaceplayer Text_ElmDiscoveredNewMon
+	jumptextfaceplayer Text_LeagueResuming
 
 NewBarkTownSilverScript:
 	opentext
@@ -238,12 +238,15 @@ Text_CallMomOnGear:
 	line "you're doing."
 	done
 
-Text_ElmDiscoveredNewMon:
+Text_LeagueResuming:
 	text "Yo, <PLAYER>!"
 
-	para "I hear PROF.ELM"
-	line "discovered some"
-	cont "new #MON."
+	para "I hear the #MON"
+	line "LEAGUE is finally"
+	cont "starting back up"
+	cont "after what"
+	cont "happened at"
+	cont "DARK CAVE."
 	done
 
 NewBarkTownRivalText1:
