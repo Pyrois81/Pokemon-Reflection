@@ -1293,29 +1293,29 @@ JohtoGrassWildMons:
 	def_grass_wildmons ROUTE_31
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 4, LEDYBA
-	db 4, CATERPIE
-	db 5, BELLSPROUT
-	db 5, PIDGEY
-	db 4, WEEDLE
-	db 5, HOPPIP
-	db 5, HOPPIP
+	db 37, FURRET
+	db 41, NOCTOWL
+	db 38, VICTREEBEL
+	db 35, LARVITAR
+	db 40, EXEGGUTOR
+	db 39, ARCANINE
+	db 42, ARCANINE
 	; day
-	db 4, PIDGEY
-	db 4, CATERPIE
-	db 5, BELLSPROUT
-	db 5, PIDGEY
-	db 4, WEEDLE
-	db 5, HOPPIP
-	db 5, HOPPIP
+	db 37, FURRET
+	db 41, NOCTOWL
+	db 38, VICTREEBEL
+	db 35, LARVITAR
+	db 40, EXEGGUTOR
+	db 39, ARCANINE
+	db 42, ARCANINE
 	; nite
-	db 4, SPINARAK
-	db 4, POLIWAG
-	db 5, BELLSPROUT
-	db 5, HOOTHOOT
-	db 4, ZUBAT
-	db 5, GASTLY
-	db 5, GASTLY
+	db 37, FURRET
+	db 41, NOCTOWL
+	db 38, VICTREEBEL
+	db 35, LARVITAR
+	db 40, EXEGGUTOR
+	db 39, ARCANINE
+	db 42, ARCANINE
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_32

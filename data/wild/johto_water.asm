@@ -136,10 +136,10 @@ JohtoWaterWildMons:
 	end_water_wildmons
 
 	def_water_wildmons ROUTE_31
-	db 2 percent ; encounter rate
-	db 20, POLIWAG
-	db 15, POLIWAG
-	db 20, POLIWHIRL
+	db 4 percent ; encounter rate
+	db 42, REMORAID
+	db 38, QWILFISH
+	db 35, DRATINI
 	end_water_wildmons
 
 	def_water_wildmons ROUTE_32

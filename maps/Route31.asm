@@ -6,6 +6,7 @@
 	const ROUTE31_FRUIT_TREE
 	const ROUTE31_POKE_BALL1
 	const ROUTE31_POKE_BALL2
+	const ROUTE31_POKE_BALL3
 
 Route31_MapScripts:
 	def_scene_scripts
@@ -262,21 +263,29 @@ Route31FruitTree:
 Route31Potion:
 	itemball POTION
 
-Route31PokeBall:
-	itemball POKE_BALL
+Route31UltraBall:
+	itemball ULTRA_BALL
+	
+Route31StarPiece:
+	itemball STAR_PIECE
+	
+Route31HiddenTinyMushroom:
+	hiddenitem TINYMUSHROOM, EVENT_ROUTE_31_HIDDEN_TINYMUSHROOM
 
 Route31CooltrainerMText:
 	text "DARK CAVE…"
 
-	para "If #MON could"
-	line "light it up, I'd"
-	cont "explore it."
+	para "I heard that"
+	line "#MON caused the"
+	cont "whole thing to"
+	cont "fall in on itself."
 	done
 
 BugCatcherWade1SeenText:
-	text "I caught a bunch"
-	line "of #MON. Let me"
-	cont "battle with you!"
+	text "I've been training"
+	line "nonstop ever since"
+	cont "I got beaten ten"
+	cont "years ago!"
 	done
 
 BugCatcherWade1BeatenText:
@@ -284,15 +293,11 @@ BugCatcherWade1BeatenText:
 	done
 
 BugCatcherWade1AfterText:
-	text "You can catch"
-	line "#MON even if"
-
-	para "you have six with"
-	line "you."
-
-	para "If you catch one,"
-	line "it'll go to your"
-	cont "BOX automatically."
+	text "I think the"
+	line "cave-in caused"
+	cont "much stronger"
+	cont "#MON to appear"
+	cont "in this area."
 	done
 
 Text_Route31SleepyMan:
@@ -392,27 +397,41 @@ Text_Route31CantTakeLastMon:
 	done
 
 Route31YoungsterText:
-	text "I found a good"
-	line "#MON in DARK"
-	cont "CAVE."
-
-	para "I'm going to raise"
-	line "it to take on"
-	cont "FALKNER."
-
-	para "He's the leader of"
-	line "VIOLET CITY's GYM."
+	text "The cave-in really"
+	line "did a number on"
+	cont "this route."
+	
+	para "Luckily, you can"
+	line "still get from"
+	cont "here to"
+	cont "CHERRYGROVE."
+	
+	para "You can't come"
+	line "back the same"
+	cont "way, though."
 	done
 
 Route31SignText:
 	text "ROUTE 31"
 
-	para "VIOLET CITY -"
-	line "CHERRYGROVE CITY"
+	para "Caution! Collapsed"
+	line "cave ahead."
+	
+	para "Step carefully on"
+	line "your way to"
+	cont "CHERRYGROVE CITY."
 	done
 
 DarkCaveSignText:
 	text "DARK CAVE"
+	
+	para "WARNING!"
+	line "Cave has collapsed"
+	cont "and may be"
+	cont "dangerous."
+	
+	para "Continue at your"
+	line "own risk!"
 	done
 
 Route31_MapEvents:
@@ -428,12 +447,14 @@ Route31_MapEvents:
 	def_bg_events
 	bg_event  7,  5, BGEVENT_READ, Route31Sign
 	bg_event 36,  6, BGEVENT_READ, DarkCaveSign
+	bg_event 37,  5, BGEVENT_ITEM, Route31HiddenTinyMushroom
 
 	def_object_events
-	object_event 17,  7, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
 	object_event  9,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31YoungsterScript, -1
-	object_event 21, 13, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 5, TrainerBugCatcherWade1, -1
+	object_event 15, 11, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 5, TrainerBugCatcherWade1, -1
 	object_event 32, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31CooltrainerMScript, -1
-	object_event 16,  7, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31FruitTree, -1
+	object_event 12,  8, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31FruitTree, -1
 	object_event 32, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31Potion, EVENT_ROUTE_31_POTION
-	object_event 19, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31PokeBall, EVENT_ROUTE_31_POKE_BALL
+	object_event 10, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31UltraBall, EVENT_ROUTE_31_ULTRA_BALL
+	object_event 29,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31StarPiece, EVENT_ROUTE_31_STAR_PIECE
+
