@@ -53,7 +53,7 @@ AnthonyTriesDunsparceSwarm:
 	iftrue .Generic
 	setflag ENGINE_DUNSPARCE_SWARM
 	getmonname STRING_BUFFER_4, DUNSPARCE
-	swarm SWARM_DUNSPARCE, DARK_CAVE_VIOLET_ENTRANCE
+	swarm SWARM_DUNSPARCE, DARK_CAVE_1F
 	getlandmarkname STRING_BUFFER_5, LANDMARK_DARK_CAVE
 	farsjump AnthonySwarmScript
 

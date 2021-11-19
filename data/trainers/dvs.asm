@@ -2,7 +2,7 @@ TrainerClassDVs:
 ; entries correspond to trainer classes (see constants/trainer_constants.asm)
 	table_width 2, TrainerClassDVs
 	;  atk,def,spd,spc
-	dn  13, 13, 13, 13 ; FALKNER
+	dn  13, 10, 13, 10 ; FALKNER
 	dn  10, 10, 10, 10 ; WHITNEY
 	dn  11, 11, 11, 11 ; BUGSY
 	dn  9,  8,  8,  8 ; MORTY
@@ -10,24 +10,24 @@ TrainerClassDVs:
 	dn  9,  13, 9,  8 ; JASMINE
 	dn  13, 8,  8,  8 ; CHUCK
 	dn  7,  7,  7,  7 ; CLAIR
-	dn 13, 13, 13, 13 ; RIVAL1
+	dn 11, 11, 11, 11 ; RIVAL1
 	dn  9,  8,  8,  8 ; POKEMON_PROF
 	dn 13, 12, 13, 13 ; WILL
-	dn 13, 12, 13, 13 ; CAL
+	dn 11, 11, 11, 11 ; CAL
 	dn 13, 12, 13, 13 ; BRUNO
 	dn 13, 15, 13, 15 ; KAREN
 	dn 13, 12, 13, 13 ; KOGA
 	dn 15, 15, 15, 15 ; CHAMPION
-	dn 13, 13, 13, 13 ; BROCK
-	dn 13, 13, 13, 13 ; MISTY
-	dn 13, 13, 13, 13 ; LT_SURGE
+	dn 11, 13, 11, 11 ; BROCK
+	dn 11, 11, 11, 13 ; MISTY
+	dn 11, 11, 13, 11 ; LT_SURGE
 	dn  9,  8,  8,  8 ; SCIENTIST
-	dn 13, 13, 13, 13 ; ERIKA
+	dn 11, 11, 11, 13 ; ERIKA
 	dn  9,  8,  8,  8 ; YOUNGSTER
 	dn  9,  8,  8,  8 ; SCHOOLBOY
 	dn  9,  8,  8,  8 ; BIRD_KEEPER
 	dn  5,  8,  8,  8 ; LASS
-	dn 13, 13, 13, 13 ; JANINE
+	dn 13, 11, 11, 11 ; JANINE
 	dn 13,  8, 12,  8 ; COOLTRAINERM
 	dn  7, 12, 12,  8 ; COOLTRAINERF
 	dn  6,  9, 12,  8 ; BEAUTY
@@ -36,7 +36,7 @@ TrainerClassDVs:
 	dn  9,  8,  8,  8 ; GENTLEMAN
 	dn  9,  8,  8,  8 ; SKIER
 	dn  6,  8,  8,  8 ; TEACHER
-	dn 13, 13, 13, 13 ; SABRINA
+	dn 11, 11, 11, 13 ; SABRINA
 	dn  9,  8,  8,  8 ; BUG_CATCHER
 	dn  9,  8,  8,  8 ; FISHER
 	dn  9,  8,  8,  8 ; SWIMMERM
@@ -47,7 +47,7 @@ TrainerClassDVs:
 	dn  9,  8,  8,  8 ; GUITARIST
 	dn 10,  8,  8,  8 ; HIKER
 	dn  9,  8,  8,  8 ; BIKER
-	dn 13, 13, 13, 13 ; BLAINE
+	dn 13, 11, 11, 13 ; BLAINE
 	dn  9,  8,  8,  8 ; BURGLAR
 	dn  9,  8,  8,  8 ; FIREBREATHER
 	dn  9,  8,  8,  8 ; JUGGLER

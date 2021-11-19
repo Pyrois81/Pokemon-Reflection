@@ -791,11 +791,11 @@ SlowpokeWellB2F_Blocks:
 IlexForest_Blocks:
 	INCBIN "maps/IlexForest.blk"
 
-DarkCaveVioletEntrance_Blocks:
-	INCBIN "maps/DarkCaveVioletEntrance.blk"
+DarkCave1F_Blocks:
+	INCBIN "maps/DarkCave1F.blk"
 
-DarkCaveBlackthornEntrance_Blocks:
-	INCBIN "maps/DarkCaveBlackthornEntrance.blk"
+DarkCaveB1F_Blocks:
+	INCBIN "maps/DarkCaveB1F.blk"
 
 RuinsOfAlphResearchCenter_Blocks:
 	INCBIN "maps/RuinsOfAlphResearchCenter.blk"

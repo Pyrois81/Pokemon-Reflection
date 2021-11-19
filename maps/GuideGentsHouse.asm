@@ -7,10 +7,63 @@ GuideGentsHouse_MapScripts:
 	def_callbacks
 
 GuideGentsHouseGuideGent:
-	jumptextfaceplayer GuideGentsHouseGuideGentText
+	faceplayer
+	opentext
+	checkflag ENGINE_MAP_CARD
+	iftrue .HaveMap
+	writetext GuideGentIntroText
+	yesorno
+	iffalse .No
+	getstring STRING_BUFFER_4, .mapcardname
+	scall .JumpstdReceiveItem
+	setflag ENGINE_MAP_CARD
+	writetext GotMapCardText
+	promptbutton
+	writetext GuideGentPokegearText
+	waitbutton
+	closetext
+	end
+
+.HaveMap:
+	writetext GuideGentsHouseGuideGentText
+	waitbutton
+	closetext
+	end
+	
+.No:
+	writetext GuideGentNoText
+	waitbutton
+	closetext
+	end
+
+.JumpstdReceiveItem:
+	jumpstd ReceiveItemScript
+	end
+
+.mapcardname
+	db "MAP CARD@"
 
 GuideGentsHouseBookshelf:
 	jumpstd MagazineBookshelfScript
+
+GuideGentIntroText:
+	text "I used to give"
+	line "young trainers"
+	
+	para "like yourself"
+	line "tours of the town."
+	
+	para "These old bones"
+	line "are just too weak"
+	cont "now, though."
+	
+	para "That said, I'd be"
+	line "happy to attach a"
+	
+	para "MAP CARD to your"
+	line "#GEAR if you"
+	cont "like."
+	done
 
 GuideGentsHouseGuideGentText:
 	text "When I was a wee"
@@ -23,6 +76,27 @@ GuideGentsHouseGuideGentText:
 
 	para "Treat them all"
 	line "with kindness!"
+	done
+	
+GotMapCardText:
+	text "<PLAYER>'s #GEAR"
+	line "now has a MAP!"
+	done
+
+GuideGentPokegearText:
+	text "#GEAR becomes"
+	line "more useful as you"
+	cont "add CARDS."
+
+	para "I wish you luck on"
+	line "your journey!"
+	done
+	
+GuideGentNoText:
+	text "Suit yourself."
+	
+	para "A MAP might come"
+	line "in handy, though…"
 	done
 
 GuideGentsHouse_MapEvents:
@@ -39,4 +113,4 @@ GuideGentsHouse_MapEvents:
 	bg_event  1,  1, BGEVENT_READ, GuideGentsHouseBookshelf
 
 	def_object_events
-	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GuideGentsHouseGuideGent, EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
+	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GuideGentsHouseGuideGent, -1

@@ -6,7 +6,10 @@
 	const ROUTE29_FISHER
 	const ROUTE29_COOLTRAINER_M2
 	const ROUTE29_TUSCANY
-	const ROUTE29_POKE_BALL
+	const ROUTE29_POKE_BALL1
+	const ROUTE29_POKE_BALL2
+	const ROUTE29_GUARD_BLOCKING
+	const ROUTE29_GUARD_MOVED
 
 Route29_MapScripts:
 	def_scene_scripts
@@ -14,7 +17,7 @@ Route29_MapScripts:
 	scene_script .DummyScene1 ; SCENE_ROUTE29_CATCH_TUTORIAL
 
 	def_callbacks
-	callback MAPCALLBACK_OBJECTS, .Tuscany
+	callback MAPCALLBACK_OBJECTS, .TuscanyAndGuard
 
 .DummyScene0:
 	end
@@ -22,19 +25,27 @@ Route29_MapScripts:
 .DummyScene1:
 	end
 
-.Tuscany:
-	checkflag ENGINE_ZEPHYRBADGE
-	iftrue .DoesTuscanyAppear
-
-.TuscanyDisappears:
+.TuscanyAndGuard:
+	checkflag ENGINE_RISINGBADGE
+	iftrue .TuscanyAppears
 	disappear ROUTE29_TUSCANY
+	sjump .CheckGuard
+
+.TuscanyAppears:
+	appear ROUTE29_TUSCANY
+	sjump .CheckGuard
+	
+.CheckGuard:
+	checkevent EVENT_ROUTE_46_OPEN
+	iftrue .GuardMoved
+	disappear ROUTE29_GUARD_MOVED
+	appear ROUTE29_GUARD_BLOCKING
 	endcallback
 
-.DoesTuscanyAppear:
-	readvar VAR_WEEKDAY
-	ifnotequal TUESDAY, .TuscanyDisappears
-	appear ROUTE29_TUSCANY
-	endcallback
+.GuardMoved:
+	disappear ROUTE29_GUARD_BLOCKING
+	appear ROUTE29_GUARD_MOVED
+	endcallback	
 
 Route29Tutorial1:
 	turnobject ROUTE29_COOLTRAINER_M1, UP
@@ -146,31 +157,13 @@ Route29FisherScript:
 	jumptextfaceplayer Route29FisherText
 
 Route29CooltrainerMScript:
-	faceplayer
-	opentext
-	checktime DAY
-	iftrue .day_morn
-	checktime NITE
-	iftrue .nite
-.day_morn
-	writetext Route29CooltrainerMText_WaitingForNight
-	waitbutton
-	closetext
-	end
-
-.nite
-	writetext Route29CooltrainerMText_WaitingForMorning
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer Route29CooltrainerMText
 
 TuscanyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_PINK_BOW_FROM_TUSCANY
 	iftrue TuscanyTuesdayScript
-	readvar VAR_WEEKDAY
-	ifnotequal TUESDAY, TuscanyNotTuesdayScript
 	checkevent EVENT_MET_TUSCANY_OF_TUESDAY
 	iftrue .MetTuscany
 	writetext MeetTuscanyText
@@ -194,12 +187,6 @@ TuscanyDoneScript:
 	closetext
 	end
 
-TuscanyNotTuesdayScript:
-	writetext TuscanyNotTuesdayText
-	waitbutton
-	closetext
-	end
-
 Route29Sign1:
 	jumptext Route29Sign1Text
 
@@ -211,6 +198,9 @@ Route29FruitTree:
 
 Route29Potion:
 	itemball POTION
+	
+Route29Repel:
+	itemball REPEL
 
 DudeMovementData1a:
 	step UP
@@ -245,6 +235,27 @@ DudeMovementData2b:
 	step DOWN
 	step DOWN
 	step_end
+	
+Route29HiddenRageCandyBar:
+	conditional_event EVENT_ROUTE_29_HIDDEN_RAGECANDYBAR, .GiveCandyBar
+	
+.GiveCandyBar:
+	opentext
+	writetext CandyBarText
+	promptbutton
+	verbosegiveitem RAGECANDYBAR
+	iffalse .Done
+	setevent EVENT_ROUTE_29_HIDDEN_RAGECANDYBAR
+	closetext
+	
+.Done:
+	end
+	
+GuardBlockingScript:
+	jumptextfaceplayer GuardBlockingText
+	
+GuardMovedScript:
+	jumptextfaceplayer GuardMovedText
 
 CatchingTutorialBoxFullText:
 	text "#MON hide in"
@@ -297,7 +308,7 @@ Route29YoungsterText:
 
 	para "If they're weak"
 	line "and not ready for"
-
+	
 	para "battle, keep out"
 	line "of the grass."
 	done
@@ -305,45 +316,40 @@ Route29YoungsterText:
 Route29TeacherText:
 	text "See those ledges?"
 	line "It's scary to jump"
-	cont "off them."
-
-	para "But you can go to"
-	line "NEW BARK without"
-
-	para "walking through"
-	line "the grass."
+	
+	para "off them, but you"
+	line "can get to"
+	
+	para "NEW BARK without"
+	line "walking through"
+	cont "the grass."
 	done
 
 Route29FisherText:
-	text "I wanted to take a"
-	line "break, so I saved"
-
-	para "to record my"
-	line "progress."
+	text "Up that way is the"
+	line "new path they"
+	
+	para "cleared for"
+	line "trainers to take"
+	
+	para "the LEAGUE"
+	line "challenge."
 	done
 
-Route29CooltrainerMText_WaitingForDay: ; unreferenced
-	text "I'm waiting for"
-	line "#MON that"
-
-	para "appear only in the"
-	line "daytime."
-	done
-
-Route29CooltrainerMText_WaitingForNight:
-	text "I'm waiting for"
-	line "#MON that"
-
-	para "appear only at"
-	line "night."
-	done
-
-Route29CooltrainerMText_WaitingForMorning:
-	text "I'm waiting for"
-	line "#MON that"
-
-	para "appear only in the"
-	line "morning."
+Route29CooltrainerMText:
+	text "There used to be"
+	line "certain #MON"
+	
+	para "that would only"
+	line "appear during the"
+	cont "day or night."
+	
+	para "However, something"
+	line "changed their"
+	
+	para "behavior and now"
+	line "they'll come out"
+	cont "any time of day."
 	done
 
 MeetTuscanyText:
@@ -392,12 +398,6 @@ TuscanyTuesdayText:
 	line "seven children."
 	done
 
-TuscanyNotTuesdayText:
-	text "TUSCANY: Today is"
-	line "not Tuesday. That"
-	cont "is unfortunate…"
-	done
-
 Route29Sign1Text:
 	text "ROUTE 29"
 
@@ -410,6 +410,39 @@ Route29Sign2Text:
 
 	para "CHERRYGROVE CITY -"
 	line "NEW BARK TOWN"
+	done
+	
+CandyBarText:
+	text "Looks like someone"
+	line "was snacking under"
+	
+	para "this tree and left"
+	line "their trash."
+	
+	para "…Oh? What's this?"
+	done
+	
+GuardBlockingText:
+	text "The way may be"
+	line "clear, but we"
+	
+	para "can't just let any"
+	line "old kid onto"
+	cont "ROUTE 46."
+	
+	para "You're liable to"
+	line "get yourself hurt."
+	done
+	
+GuardMovedText:
+	text "If PROF.ELM sees"
+	line "promise in you,"
+	
+	para "then I guess you"
+	line "can pass."
+	
+	para "Good luck on your"
+	line "LEAGUE journey!"
 	done
 
 Route29_MapEvents:
@@ -425,13 +458,17 @@ Route29_MapEvents:
 	def_bg_events
 	bg_event 51,  7, BGEVENT_READ, Route29Sign1
 	bg_event  3,  5, BGEVENT_READ, Route29Sign2
+	bg_event 46,  2, BGEVENT_IFNOTSET, Route29HiddenRageCandyBar
 
 	def_object_events
 	object_event 50, 12, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CatchingTutorialDudeScript, -1
-	object_event 27, 16, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route29YoungsterScript, -1
-	object_event 15, 11, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route29TeacherScript, -1
+	object_event 27, 16, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route29YoungsterScript, -1
+	object_event 15, 12, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route29TeacherScript, -1
 	object_event 12,  2, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route29FruitTree, -1
-	object_event 25,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route29FisherScript, -1
+	object_event 26,  4, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route29FisherScript, -1
 	object_event 13,  4, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route29CooltrainerMScript, -1
 	object_event 29, 12, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TuscanyScript, EVENT_ROUTE_29_TUSCANY_OF_TUESDAY
-	object_event 48,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route29Potion, EVENT_ROUTE_29_POTION
+	object_event 38,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route29Potion, EVENT_ROUTE_29_POTION
+	object_event 14, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route29Repel, EVENT_ROUTE_29_REPEL
+	object_event 27,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, GuardBlockingScript, EVENT_ROUTE_29_GUARD_BLOCKING
+	object_event 28,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, GuardMovedScript, EVENT_ROUTE_29_GUARD_MOVED

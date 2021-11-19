@@ -154,7 +154,7 @@ FishGroups:
 	db  100 percent,    REMORAID,   30
 .Dratini_2_Super:
 	db  40 percent,     POLITOED,   40
-	db  70 percent + 1, DRATINI     35
+	db  70 percent + 1, DRATINI,    35
 	db  100 percent,    DRAGONAIR,  40
 
 .WhirlIslands_Old:

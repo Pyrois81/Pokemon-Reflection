@@ -35,8 +35,9 @@ CherrygroveEvolutionSpeechHouseYoungsterText:
 CherrygroveEvolutionSpeechHouseLassText:
 	text "#MON change?"
 
-	para "I would be shocked"
-	line "if one did that!"
+	para "I wonder if they"
+	line "get stronger when"
+	cont "that happens!"
 	done
 
 CherrygroveEvolutionSpeechHouse_MapEvents:

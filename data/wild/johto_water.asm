@@ -100,14 +100,14 @@ JohtoWaterWildMons:
 	db 35, GOLDEEN
 	end_water_wildmons
 
-	def_water_wildmons DARK_CAVE_VIOLET_ENTRANCE
+	def_water_wildmons DARK_CAVE_1F
 	db 2 percent ; encounter rate
 	db 15, MAGIKARP
 	db 10, MAGIKARP
 	db 5, MAGIKARP
 	end_water_wildmons
 
-	def_water_wildmons DARK_CAVE_BLACKTHORN_ENTRANCE
+	def_water_wildmons DARK_CAVE_B1F
 	db 2 percent ; encounter rate
 	db 15, MAGIKARP
 	db 10, MAGIKARP

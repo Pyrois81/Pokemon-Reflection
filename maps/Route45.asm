@@ -533,7 +533,7 @@ Route45_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  2,  5, DARK_CAVE_BLACKTHORN_ENTRANCE, 1
+	warp_event  2,  5, DARK_CAVE_1F, 3
 
 	def_coord_events
 

@@ -277,15 +277,17 @@ Route31CooltrainerMText:
 
 	para "I heard that"
 	line "#MON caused the"
-	cont "whole thing to"
-	cont "fall in on itself."
+	
+	para "whole thing to"
+	line "fall in on itself."
 	done
 
 BugCatcherWade1SeenText:
 	text "I've been training"
 	line "nonstop ever since"
-	cont "I got beaten ten"
-	cont "years ago!"
+	
+	para "I got beaten five"
+	line "years ago!"
 	done
 
 BugCatcherWade1BeatenText:
@@ -295,8 +297,9 @@ BugCatcherWade1BeatenText:
 BugCatcherWade1AfterText:
 	text "I think the"
 	line "cave-in caused"
-	cont "much stronger"
-	cont "#MON to appear"
+	
+	para "much stronger"
+	line "#MON to appear"
 	cont "in this area."
 	done
 
@@ -403,8 +406,9 @@ Route31YoungsterText:
 	
 	para "Luckily, you can"
 	line "still get from"
-	cont "here to"
-	cont "CHERRYGROVE."
+	
+	para "here to"
+	line "CHERRYGROVE."
 	
 	para "You can't come"
 	line "back the same"
@@ -427,8 +431,9 @@ DarkCaveSignText:
 	
 	para "WARNING!"
 	line "Cave has collapsed"
-	cont "and may be"
-	cont "dangerous."
+	
+	para "and may be"
+	line "dangerous."
 	
 	para "Continue at your"
 	line "own risk!"
@@ -440,7 +445,7 @@ Route31_MapEvents:
 	def_warp_events
 	warp_event  4,  6, ROUTE_31_VIOLET_GATE, 3
 	warp_event  4,  7, ROUTE_31_VIOLET_GATE, 4
-	warp_event 34,  5, DARK_CAVE_VIOLET_ENTRANCE, 1
+	warp_event 34,  5, DARK_CAVE_1F, 1
 
 	def_coord_events
 

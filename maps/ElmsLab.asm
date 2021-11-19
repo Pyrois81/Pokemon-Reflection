@@ -341,6 +341,7 @@ ElmAfterTheftScript:
 	setflag ENGINE_MAIN_MENU_MOBILE_CHOICES
 	setmapscene ROUTE_29, SCENE_ROUTE29_CATCH_TUTORIAL
 	clearevent EVENT_ROUTE_30_YOUNGSTER_JOEY
+	clearevent EVENT_ROUTE_30_YOUNGSTER_MIKEY
 	setevent EVENT_ROUTE_30_BATTLE
 	writetext ElmAfterTheftText6
 	waitbutton
@@ -1019,30 +1020,34 @@ ElmAfterTheftText5:
 
 	para "After DARK PATH"
 	line "caved in, the"
-	cont "#MON LEAGUE had"
-	cont "to cease"
+	
+	para "#MON LEAGUE had"
+	line "to cease"
 	cont "operations."
 	
 	para "However, I just"
 	line "recently got word"
-	cont "that the LEAGUE"
-	cont "has resumed!"
+	
+	para "that the LEAGUE"
+	line "has resumed!"
 	
 	para "As VIOLET CITY"
 	line "is inaccessible,"
-	cont "you'll have to"
-	cont "take ROUTE 46"
-	cont "north towards"
-	cont "BLACKTHORN CITY."
 	
-	para "Apparently the"
-	line "LEAGUE has"
+	para "you'll have to"
+	line "take ROUTE 46"
+	
+	para "north towards"
+	line "BLACKTHORN CITY."
+	
+	para "The LEAGUE has"
 	cont "undergone some"
-	cont "restructuring to"
-	cont "allow trainers to"
-	cont "take this new"
-	cont "path!"
 	
+	para "restructuring to"
+	line "allow trainers to"
+	
+	para "take this new"
+	line "path!"	
 	done
 
 ElmAfterTheftText6:

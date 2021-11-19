@@ -6,42 +6,15 @@ SHINY_SPD_VAL EQU 10
 SHINY_SPC_VAL EQU 10
 
 CheckShininess:
-; Check if a mon is shiny by DVs at bc.
-; Return carry if shiny.
-
-	ld l, c
-	ld h, b
-
-; Attack
-	ld a, [hl]
-	and 1 << SHINY_ATK_BIT
-	jr z, .not_shiny
-
-; Defense
-	ld a, [hli]
-	and $f
-	cp  SHINY_DEF_VAL
-	jr nz, .not_shiny
-
-; Speed
-	ld a, [hl]
-	and $f0
-	cp  SHINY_SPD_VAL << 4
-	jr nz, .not_shiny
-
-; Special
-	ld a, [hl]
-	and $f
-	cp  SHINY_SPC_VAL
-	jr nz, .not_shiny
-
-; shiny
-	scf
-	ret
-
-.not_shiny
-	and a
-	ret
+  ; in: bc = pointer to DVs
+  ; out: carry if shiny (shiny if all DVs >= 12)
+  ld l, c
+  ld h, b
+  ld a, [hli]
+  and [hl]
+  and $cc
+  add a, LOW(-$cc)
+  ret
 
 Unused_CheckShininess:
 ; Return carry if the DVs at hl are all 10 or higher.

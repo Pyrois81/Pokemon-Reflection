@@ -1178,8 +1178,8 @@ JohtoGrassWildMons:
 	db 52, PARASECT
 	end_grass_wildmons
 
-	def_grass_wildmons DARK_CAVE_VIOLET_ENTRANCE
-	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
+	def_grass_wildmons DARK_CAVE_1F
+	db 3 percent, 3 percent, 3 percent ; encounter rates: morn/day/nite
 	; morn
 	db 3, GEODUDE
 	db 2, ZUBAT
@@ -1206,7 +1206,7 @@ JohtoGrassWildMons:
 	db 4, DUNSPARCE
 	end_grass_wildmons
 
-	def_grass_wildmons DARK_CAVE_BLACKTHORN_ENTRANCE
+	def_grass_wildmons DARK_CAVE_B1F
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 23, GEODUDE
@@ -1237,57 +1237,57 @@ JohtoGrassWildMons:
 	def_grass_wildmons ROUTE_29
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 2, PIDGEY
+	db 2, HOOTHOOT
 	db 2, SENTRET
-	db 3, PIDGEY
-	db 3, SENTRET
-	db 2, RATTATA
-	db 3, HOPPIP
-	db 3, HOPPIP
+	db 3, SUNKERN
+	db 3, LEDYBA
+	db 2, SPINARAK
+	db 3, SPINARAK
+	db 4, SPINARAK
 	; day
-	db 2, PIDGEY
+	db 2, HOOTHOOT
 	db 2, SENTRET
-	db 3, PIDGEY
-	db 3, SENTRET
-	db 2, RATTATA
-	db 3, HOPPIP
-	db 3, HOPPIP
+	db 3, SUNKERN
+	db 3, LEDYBA
+	db 2, SPINARAK
+	db 3, SPINARAK
+	db 4, SPINARAK
 	; nite
 	db 2, HOOTHOOT
-	db 2, RATTATA
-	db 3, HOOTHOOT
-	db 3, RATTATA
-	db 2, RATTATA
-	db 3, HOOTHOOT
-	db 3, HOOTHOOT
+	db 2, SENTRET
+	db 3, SUNKERN
+	db 3, LEDYBA
+	db 2, SPINARAK
+	db 3, SPINARAK
+	db 4, SPINARAK
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_30
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
-	db 3, LEDYBA
-	db 3, CATERPIE
-	db 4, CATERPIE
-	db 4, PIDGEY
 	db 3, WEEDLE
-	db 4, HOPPIP
-	db 4, HOPPIP
+	db 3, CATERPIE
+	db 4, RATTATA
+	db 4, PIDGEY
+	db 2, PICHU
+	db 4, METAPOD
+	db 5, KAKUNA
 	; day
-	db 3, PIDGEY
-	db 3, CATERPIE
-	db 4, CATERPIE
-	db 4, PIDGEY
 	db 3, WEEDLE
-	db 4, HOPPIP
-	db 4, HOPPIP
+	db 3, CATERPIE
+	db 4, RATTATA
+	db 4, PIDGEY
+	db 2, PICHU
+	db 4, METAPOD
+	db 5, KAKUNA
 	; nite
-	db 3, SPINARAK
-	db 3, HOOTHOOT
-	db 4, POLIWAG
-	db 4, HOOTHOOT
-	db 3, ZUBAT
-	db 4, HOOTHOOT
-	db 4, HOOTHOOT
+	db 3, WEEDLE
+	db 3, CATERPIE
+	db 4, RATTATA
+	db 4, PIDGEY
+	db 2, PICHU
+	db 4, METAPOD
+	db 5, KAKUNA
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_31
