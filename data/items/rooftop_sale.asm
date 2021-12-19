@@ -13,5 +13,5 @@ RooftopSaleMart2:
 	dbw FULL_RESTORE, 2000
 	dbw FULL_HEAL,     500
 	dbw ULTRA_BALL,   1000
-	dbw PROTEIN,      7800
+	dbw PROTEIN,      4000
 	db -1

@@ -3,7 +3,7 @@ HappinessChanges:
 	table_width 3, HappinessChanges
 	; change if happiness < 100, change if happiness < 200, change otherwise
 	db  +10,  +6,  +4 ; Gained a level
-	db  +10,  +6,  +4 ; Vitamin
+	db  +25, +20, +10 ; Vitamin
 	db   +2,  +2,  +1 ; X Item
 	db   +6,  +4,  +2 ; Battled a Gym Leader
 	db   +2,  +2,  +1 ; Learned a move

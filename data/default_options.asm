@@ -1,10 +1,10 @@
 DefaultOptions:
 ; wOptions: med text speed
-	db TEXT_DELAY_MED
+	db TEXT_DELAY_FAST
 ; wSaveFileExists: no
 	db FALSE
 ; wTextboxFrame: frame 1
-	db FRAME_1
+	db FRAME_3
 ; wTextboxFlags: use text speed
 	db 1 << FAST_TEXT_DELAY_F
 ; wGBPrinterBrightness: normal

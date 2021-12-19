@@ -1,60 +1,69 @@
 	object_const_def
 	const BLACKTHORNGYM2F_COOLTRAINER_M
 	const BLACKTHORNGYM2F_COOLTRAINER_F
-	const BLACKTHORNGYM2F_BOULDER1
-	const BLACKTHORNGYM2F_BOULDER2
-	const BLACKTHORNGYM2F_BOULDER3
-	const BLACKTHORNGYM2F_BOULDER4
-	const BLACKTHORNGYM2F_BOULDER5
-	const BLACKTHORNGYM2F_BOULDER6
 
 BlackthornGym2F_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_CMDQUEUE, .SetUpStoneTable
 
-.SetUpStoneTable:
-	writecmdqueue .CommandQueue
-	endcallback
-
-.CommandQueue:
-	cmdqueue CMDQUEUE_STONETABLE, .StoneTable ; check if any stones are sitting on a warp
-
-.StoneTable:
-	stonetable 5, BLACKTHORNGYM2F_BOULDER1, .Boulder1
-	stonetable 3, BLACKTHORNGYM2F_BOULDER2, .Boulder2
-	stonetable 4, BLACKTHORNGYM2F_BOULDER3, .Boulder3
-	db -1 ; end
-
-.Boulder1:
-	disappear BLACKTHORNGYM2F_BOULDER1
-	sjump .Fall
-
-.Boulder2:
-	disappear BLACKTHORNGYM2F_BOULDER2
-	sjump .Fall
-
-.Boulder3:
-	disappear BLACKTHORNGYM2F_BOULDER3
-	sjump .Fall
-
-.Fall:
-	pause 30
-	scall .FX
+BlackthornGym2FButton1:
 	opentext
-	writetext BlackthornGym2FBoulderFellText
+	writetext BlackthornGymButtonText
+	checkevent EVENT_BLACKTHORN_GYM_BUTTON_2
+	iftrue .AlreadyPressed
+	yesorno
+	iffalse .End
+	setevent EVENT_BLACKTHORN_GYM_BUTTON_2
+	scall FX
+	writetext BlackthornGym2FButtonPressText
+	waitbutton
+	
+.End:
+	closetext
+	end
+	
+.AlreadyPressed:
+	yesorno
+	iffalse .End
+	clearevent EVENT_BLACKTHORN_GYM_BUTTON_2
+	scall FX
+	writetext BlackthornGym2FButtonPressText
+	waitbutton
+	closetext
+	end
+	
+BlackthornGym2FButton2:
+	opentext
+	writetext BlackthornGymButtonText
+	checkevent EVENT_BLACKTHORN_GYM_BUTTON_3
+	iftrue .AlreadyPressed
+	yesorno
+	iffalse .End
+	setevent EVENT_BLACKTHORN_GYM_BUTTON_3
+	scall FX
+	writetext BlackthornGym2FButtonPressText
+	waitbutton
+	
+.End:
+	closetext
+	end
+	
+.AlreadyPressed:
+	yesorno
+	iffalse .End
+	clearevent EVENT_BLACKTHORN_GYM_BUTTON_3
+	scall FX
+	writetext BlackthornGym2FButtonPressText
 	waitbutton
 	closetext
 	end
 
-.FX:
-	playsound SFX_STRENGTH
-	earthquake 80
-	end
-
-BlackthornGymBoulder:
-	jumpstd StrengthBoulderScript
+; already defined in BlackthornGym1F
+;FX:
+;	playsound SFX_PUSH_BUTTON
+;	earthquake 30
+;	end
 
 TrainerCooltrainermCody:
 	trainer COOLTRAINERM, CODY, EVENT_BEAT_COOLTRAINERM_CODY, CooltrainermCodySeenText, CooltrainermCodyBeatenText, 0, .Script
@@ -96,14 +105,14 @@ CooltrainermCodyAfterBattleText:
 	para "can use dragon"
 	line "#MON only after"
 
-	para "our MASTER allows"
-	line "it."
+	para "our MASTER deems"
+	line "them worthy."
 	done
 
 CooltrainerfFranSeenText:
-	text "I can't allow a"
-	line "nameless trainer"
-	cont "past me!"
+	text "I can't allow some"
+	line "no-name trainer"
+	cont "to get past me!"
 
 	para "CLAIR would be"
 	line "livid if I did!"
@@ -115,34 +124,51 @@ CooltrainerfFranBeatenText:
 
 CooltrainerfFranAfterBattleText:
 	text "Uh-oh… CLAIR is"
-	line "going to be mad…"
+	line "going to hate me…"
 	done
-
-BlackthornGym2FBoulderFellText:
-	text "The boulder fell"
-	line "through!"
+	
+; already defined in BlackthornGym1F
+;BlackthornGymButtonText:
+;	text "There's a button"
+;	line "hidden inside this"
+;	cont "dragon statue!"
+;	
+;	para "Press it?"
+;	done
+	
+BlackthornGym2FButtonPressText:
+	text "<PLAYER> pressed"
+	line "the button!"
+	
+	para "Sounded like there"
+	line "was a rumble"
+	cont "downstairs."
 	done
 
 BlackthornGym2F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  1,  7, BLACKTHORN_GYM_1F, 3
-	warp_event  7,  9, BLACKTHORN_GYM_1F, 4
-	warp_event  2,  5, BLACKTHORN_GYM_1F, 5 ; hole
-	warp_event  8,  7, BLACKTHORN_GYM_1F, 6 ; hole
-	warp_event  8,  3, BLACKTHORN_GYM_1F, 7 ; hole
+	warp_event  0,  1, BLACKTHORN_GYM_1F, 4
+	warp_event  5,  9, BLACKTHORN_GYM_1F, 3
+	warp_event  7,  1, BLACKTHORN_GYM_1F, 6
+	warp_event  2,  2, BLACKTHORN_GYM_1F, 6
+	warp_event  4,  3, BLACKTHORN_GYM_1F, 6
+	warp_event  6,  3, BLACKTHORN_GYM_1F, 6
+	warp_event  7,  3, BLACKTHORN_GYM_1F, 6
+	warp_event  3,  4, BLACKTHORN_GYM_1F, 5
+	warp_event  0,  6, BLACKTHORN_GYM_1F, 5
+	warp_event  3,  7, BLACKTHORN_GYM_1F, 5
+	warp_event  1,  8, BLACKTHORN_GYM_1F, 5
+	warp_event  2,  8, BLACKTHORN_GYM_1F, 5
+	warp_event  7,  9, BLACKTHORN_GYM_1F, 5											
 
 	def_coord_events
 
 	def_bg_events
+	bg_event  0,  4, BGEVENT_READ, BlackthornGym2FButton1
+	bg_event  7,  4, BGEVENT_READ, BlackthornGym2FButton2
 
 	def_object_events
-	object_event  4,  1, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerCooltrainermCody, -1
-	object_event  4, 11, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerCooltrainerfFran, -1
-	object_event  8,  2, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BlackthornGymBoulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_1
-	object_event  2,  3, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BlackthornGymBoulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_2
-	object_event  6, 16, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BlackthornGymBoulder, EVENT_BOULDER_IN_BLACKTHORN_GYM_3
-	object_event  3,  3, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BlackthornGymBoulder, -1
-	object_event  6,  1, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BlackthornGymBoulder, -1
-	object_event  8, 14, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BlackthornGymBoulder, -1
+	object_event  6,  4, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerCooltrainermCody, -1
+	object_event  3,  5, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainerfFran, -1

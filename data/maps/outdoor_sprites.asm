@@ -264,6 +264,8 @@ BlackthornGroupSprites:
 	; 8 of max 9 walking sprites
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
+	db SPRITE_MACHOP
+	db SPRITE_OFFICER
 	db 0 ; end
 
 SilverGroupSprites:

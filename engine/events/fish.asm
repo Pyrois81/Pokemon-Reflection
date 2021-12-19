@@ -25,9 +25,9 @@ endr
 ; Fish for monsters with rod b from encounter data in FishGroup at hl.
 ; Return monster d at level e.
 
-	call Random
-	cp [hl]
-	jr nc, .no_bite
+	;call Random ; Removed check to see if you caught anything. Should be guaranteed now
+	;cp [hl]
+	;jr nc, .no_bite
 
 	; Get encounter data by rod:
 	; 0: Old
@@ -101,8 +101,6 @@ GetFishGroupIndex:
 	ld a, d
 	cp FISHGROUP_QWILFISH
 	jr z, .qwilfish
-	cp FISHGROUP_REMORAID
-	jr z, .remoraid
 
 .done
 	dec d
@@ -115,13 +113,6 @@ GetFishGroupIndex:
 	cp FISHSWARM_QWILFISH
 	jr nz, .done
 	ld d, FISHGROUP_QWILFISH_SWARM
-	jr .done
-
-.remoraid
-	ld a, [wFishingSwarmFlag]
-	cp FISHSWARM_REMORAID
-	jr nz, .done
-	ld d, FISHGROUP_REMORAID_SWARM
 	jr .done
 
 INCLUDE "data/wild/fish.asm"

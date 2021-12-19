@@ -28,16 +28,6 @@ ElmPhonePokemonStolenText:
 	line "do that?"
 	done
 
-ElmPhoneCheckingTheEggText:
-	text "Hello, <PLAY_G>?"
-
-	para "We're checking the"
-	line "EGG now. It does"
-
-	para "appear to be a"
-	line "#MON EGG."
-	done
-
 ElmPhoneAssistantText:
 	text "Hello, <PLAY_G>?"
 

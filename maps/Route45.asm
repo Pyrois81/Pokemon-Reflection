@@ -4,6 +4,7 @@
 	const ROUTE45_POKEFAN_M3
 	const ROUTE45_POKEFAN_M4
 	const ROUTE45_BLACK_BELT
+	const ROUTE45_MACHOP
 	const ROUTE45_COOLTRAINER_M
 	const ROUTE45_COOLTRAINER_F
 	const ROUTE45_FRUIT_TREE
@@ -11,7 +12,6 @@
 	const ROUTE45_POKE_BALL2
 	const ROUTE45_POKE_BALL3
 	const ROUTE45_POKE_BALL4
-	const ROUTE45_YOUNGSTER
 
 Route45_MapScripts:
 	def_scene_scripts
@@ -19,7 +19,7 @@ Route45_MapScripts:
 	def_callbacks
 
 TrainerBlackbeltKenji:
-	trainer BLACKBELT_T, KENJI3, EVENT_BEAT_BLACKBELT_KENJI, BlackbeltKenji3SeenText, BlackbeltKenji3BeatenText, 0, .Script
+	trainer BLACKBELT_T, KENJI, EVENT_BEAT_BLACKBELT_KENJI, BlackbeltKenjiSeenText, BlackbeltKenjiBeatenText, 0, .Script
 
 .Script:
 	loadvar VAR_CALLERID, PHONE_BLACKBELT_KENJI
@@ -42,7 +42,7 @@ TrainerBlackbeltKenji:
 	askforphonenumber PHONE_BLACKBELT_KENJI
 	ifequal PHONE_CONTACTS_FULL, Route45PhoneFullM
 	ifequal PHONE_CONTACT_REFUSED, Route45NumberDeclinedM
-	gettrainername STRING_BUFFER_3, BLACKBELT_T, KENJI3
+	gettrainername STRING_BUFFER_3, BLACKBELT_T, KENJI
 	scall Route45RegisteredNumberM
 	sjump Route45NumberAcceptedM
 
@@ -263,32 +263,27 @@ TrainerCooltrainerfKelly:
 	closetext
 	end
 
-TrainerCamperQuentin:
-	faceplayer
+Route45MachopScript:
 	opentext
-	checkevent EVENT_BEAT_CAMPER_QUENTIN
-	iftrue .Defeated
-	writetext CamperQuentinSeenText
-	waitbutton
-	closetext
-	winlosstext CamperQuentinBeatenText, 0
-	loadtrainer CAMPER, QUENTIN
-	startbattle
-	reloadmapafterbattle
-	setevent EVENT_BEAT_CAMPER_QUENTIN
-	closetext
-	end
-
-.Defeated:
-	writetext CamperQuentinAfterBattleText
+	writetext MachopText
+	cry MACHOP
 	waitbutton
 	closetext
 	end
-
-Route45DummyScript: ; unreferenced
-	writetext Route45DummyText
-	waitbutton
+	
+Route45HiddenBerryJuice:
+	conditional_event EVENT_ROUTE_45_HIDDEN_BERRY_JUICE, .GiveBerryJuice
+	
+.GiveBerryJuice:
+	opentext
+	writetext BerryJuiceText
+	promptbutton
+	verbosegiveitem BERRY_JUICE
+	iffalse .Done
+	setevent EVENT_ROUTE_45_HIDDEN_BERRY_JUICE
 	closetext
+	
+.Done:
 	end
 
 Route45Sign:
@@ -297,20 +292,20 @@ Route45Sign:
 Route45FruitTree:
 	fruittree FRUITTREE_ROUTE_45
 
-Route45Nugget:
-	itemball NUGGET
+Route45SilverLeaf:
+	itemball SILVER_LEAF
 
-Route45Revive:
-	itemball REVIVE
+Route45PPUp:
+	itemball PP_UP
 
-Route45Elixer:
-	itemball ELIXER
+Route45ParlyzHeal:
+	itemball PARLYZ_HEAL
 
-Route45MaxPotion:
-	itemball MAX_POTION
+Route45XSpecial:
+	itemball X_SPECIAL
 
-Route45HiddenPpUp:
-	hiddenitem PP_UP, EVENT_ROUTE_45_HIDDEN_PP_UP
+Route45HiddenFriendBall:
+	hiddenitem FRIEND_BALL, EVENT_ROUTE_45_HIDDEN_FRIEND_BALL
 
 HikerErikSeenText:
 	text "Be prepared for"
@@ -322,57 +317,64 @@ HikerErikSeenText:
 	done
 
 HikerErikBeatenText:
-	text "Oh, I lost that!"
+	text "You've been"
+	line "raising them well!"
 	done
 
 HikerErikAfterBattleText:
-	text "I'll head back to"
-	line "BLACKTHORN's ICE"
-
-	para "PATH and train"
-	line "some more."
+	text "I think I'll head"
+	line "back to ICE PATH"
+	cont "and train more."
 	done
 
 HikerMichaelSeenText:
-	text "Yo! You're spunky!"
-	line "But you know what?"
-
-	para "When it comes to"
-	line "sheer spunkiness,"
-	cont "I'm the man!"
+	text "Yo, kid!"
+	
+	para "You think you got"
+	line "what it takes to"
+	
+	para "make it all the"
+	line "way to BLACKTHORN?"
 	done
 
 HikerMichaelBeatenText:
-	text "My #MON weren't"
-	line "spunky enough!"
+	text "You've got what"
+	line "it takes!"
 	done
 
 HikerMichaelAfterBattleText:
 	text "Boy, do I love"
 	line "HP UP! Mmmm, yum!"
 
-	para "I keep drinking my"
-	line "#MON's!"
-
-	para "I can't help it!"
+	para "What?"
+	
+	para "Should a person be"
+	line "taking #MON"
+	cont "vitamins?"
+	
+	para "Don't know,"
+	line "don't care!"
 	done
 
 HikerParry3SeenText:
-	text "My #MON are"
-	line "power packed!"
+	text "Do you feel that"
+	line "rumble?"
+	
+	para "My #MON will rock"
+	line "your world!"
 	done
 
 HikerParry3BeatenText:
-	text "Wahahah! I'm the"
-	line "big loser!"
+	text "Shattered!"
 	done
 
 HikerParryAfterBattleText:
-	text "I'm not much good"
-	line "at thinking, see?"
-
-	para "So, I just plow"
-	line "ahead with power!"
+	text "I love to feel"
+	line "connected with"
+	cont "the earth."
+	
+	para "That's why I use"
+	line "ground #MON!"
 	done
 
 HikerTimothySeenText:
@@ -395,11 +397,12 @@ HikerTimothyBeatenText:
 	done
 
 HikerTimothyAfterBattleText:
-	text "The best thing to"
-	line "ever happen to me"
-
-	para "was discovering"
-	line "#MON."
+	text "Maybe I should"
+	line "exercise a bit"
+	
+	para "more discretion"
+	line "when choosing"
+	cont "activities."
 	done
 
 HikerParryGivesIronText:
@@ -415,25 +418,33 @@ HikerParryGivesIronText:
 	line "when we last met."
 	done
 
-BlackbeltKenji3SeenText:
-	text "I was training"
-	line "here alone."
+BlackbeltKenjiSeenText:
+	text "I'm training my"
+	line "MACHOP to break"
 
-	para "Behold the fruits"
-	line "of my labor!"
+	para "through solid"
+	line "rock."
+	
+	para "Behold how much"
+	line "progress it's"
+	cont "made!"
 	done
 
-BlackbeltKenji3BeatenText:
-	text "Waaaargh!"
+BlackbeltKenjiBeatenText:
+	text "Aargh! You broke"
+	line "my defenses!"
 	done
 
 BlackbeltKenjiAfterBattleText:
-	text "This calls for"
-	line "extreme measures."
-
-	para "I must take to the"
-	line "hills and train in"
-	cont "solitude."
+	text "I shall continue"
+	line "to train alongside"
+	cont "my MACHOP."
+	
+	para "Someday it'll be"
+	line "able to punch"
+	
+	para "right through this"
+	line "whole mountain!"
 	done
 
 BlackbeltKenjiMorningText:
@@ -448,15 +459,12 @@ BlackbeltKenjiNightText:
 
 	para "now we're all"
 	line "ready to go again!"
-
-	para "We're going to"
-	line "train again!"
 	done
 
 CooltrainermRyanSeenText:
 	text "What are your"
-	line "thoughts on rais-"
-	cont "ing #MON?"
+	line "thoughts on"
+	cont "raising #MON?"
 	done
 
 CooltrainermRyanBeatenText:
@@ -492,36 +500,23 @@ CooltrainerfKellyAfterBattleText:
 	line "of overly power-"
 	cont "ful moves."
 
-	para "I want to win, but"
-	line "I also don't want"
-	cont "to harm #MON."
+	para "I prefer to go for"
+	line "a more strategic"
+	cont "approach."
 	done
 
-Route45DummyText:
-	text "I'm really, really"
-	line "tough!"
-
-	para "Is there anywhere"
-	line "I can prove how"
-	cont "tough I really am?"
+MachopText:
+	text "MACHOP: Chop!"
 	done
-
-CamperQuentinSeenText:
-	text "I'm really, really"
-	line "tough!"
-	done
-
-CamperQuentinBeatenText:
-	text "I was tough at the"
-	line "BATTLE TOWER…"
-	done
-
-CamperQuentinAfterBattleText:
-	text "Have you been to"
-	line "the BATTLE TOWER?"
-
-	para "I never, ever lose"
-	line "there, but…"
+	
+BerryJuiceText:
+	text "There's a bottle"
+	line "resting on a note"
+	cont "under this tree."
+	
+	para "\"Take a breather"
+	line "and relax by the"
+	cont "pond, friend!\""
 	done
 
 Route45SignText:
@@ -534,24 +529,27 @@ Route45_MapEvents:
 
 	def_warp_events
 	warp_event  2,  5, DARK_CAVE_1F, 3
+	warp_event 15, 37, ROUTE_45_HEAL_HOUSE, 1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 10,  4, BGEVENT_READ, Route45Sign
-	bg_event 13, 80, BGEVENT_ITEM, Route45HiddenPpUp
+	bg_event 11,  5, BGEVENT_READ, Route45Sign
+	bg_event  2, 78, BGEVENT_READ, Route45Sign
+	bg_event 17, 52, BGEVENT_ITEM, Route45HiddenFriendBall
+	bg_event  3, 69, BGEVENT_IFNOTSET, Route45HiddenBerryJuice
 
 	def_object_events
-	object_event 10, 16, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerHikerErik, -1
-	object_event 15, 65, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerMichael, -1
-	object_event  5, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerParry, -1
-	object_event  9, 65, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerHikerTimothy, -1
-	object_event 11, 50, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerBlackbeltKenji, -1
-	object_event 17, 18, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerCooltrainermRyan, -1
-	object_event  5, 36, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerCooltrainerfKelly, -1
-	object_event 16, 82, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route45FruitTree, -1
-	object_event  6, 51, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45Nugget, EVENT_ROUTE_45_NUGGET
-	object_event  5, 66, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45Revive, EVENT_ROUTE_45_REVIVE
-	object_event  6, 20, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45Elixer, EVENT_ROUTE_45_ELIXER
-	object_event  7, 33, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45MaxPotion, EVENT_ROUTE_45_MAX_POTION
-	object_event  4, 70, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, TrainerCamperQuentin, -1
+	object_event  2, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerHikerErik, -1
+	object_event 12, 60, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerHikerMichael, -1
+	object_event  4, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerParry, -1
+	object_event  3, 58, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerTimothy, -1
+	object_event  8, 33, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerBlackbeltKenji, -1
+	object_event  9, 33, SPRITE_MACHOP, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route45MachopScript, -1
+	object_event 16, 13, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainermRyan, -1
+	object_event  5, 40, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainerfKelly, -1
+	object_event 15, 68, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route45FruitTree, -1
+	object_event  7, 53, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45SilverLeaf, EVENT_ROUTE_45_SILVER_LEAF
+	object_event 17, 76, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45PPUp, EVENT_ROUTE_45_PP_UP
+	object_event  8, 20, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45ParlyzHeal, EVENT_ROUTE_45_PARLYZ_HEAL
+	object_event 17,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45XSpecial, EVENT_ROUTE_45_X_SPECIAL

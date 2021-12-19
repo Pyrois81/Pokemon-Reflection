@@ -30,7 +30,7 @@
 	const FIRE_STONE   ; 16
 	const THUNDERSTONE ; 17
 	const WATER_STONE  ; 18
-	const ITEM_19      ; 19
+	const MOLT_FEATHER ; 19
 	const HP_UP        ; 1a
 	const PROTEIN      ; 1b
 	const IRON         ; 1c
@@ -74,7 +74,7 @@
 	const RED_SCALE    ; 42
 	const SECRETPOTION ; 43
 	const S_S_TICKET   ; 44
-	const MYSTERY_EGG  ; 45
+	const TATTERED_HAT ; 45
 	const CLEAR_BELL   ; 46
 	const SILVER_WING  ; 47
 	const MOOMOO_MILK  ; 48
@@ -217,11 +217,12 @@ ENDM
 
 ; see data/moves/tmhm_moves.asm for moves
 TM01 EQU const_value
+	const ITEM_C3       ; c3
+	const ITEM_DC       ; dc
 	add_tm DYNAMICPUNCH ; bf
 	add_tm HEADBUTT     ; c0
 	add_tm CURSE        ; c1
 	add_tm ROLLOUT      ; c2
-	const ITEM_C3       ; c3
 	add_tm ROAR         ; c4
 	add_tm TOXIC        ; c5
 	add_tm ZAP_CANNON   ; c6
@@ -246,7 +247,6 @@ TM01 EQU const_value
 	add_tm EARTHQUAKE   ; d9
 	add_tm RETURN       ; da
 	add_tm DIG          ; db
-	const ITEM_DC       ; dc
 	add_tm PSYCHIC_M    ; dd
 	add_tm SHADOW_BALL  ; de
 	add_tm MUD_SLAP     ; df

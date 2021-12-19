@@ -60,31 +60,31 @@ BurnedTowerRivalBattleScript:
 	writetext BurnedTowerSilver_BeforeText
 	waitbutton
 	closetext
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .totodile
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .chikorita
+	checkevent EVENT_GOT_POLIWAG_FROM_ELM
+	iftrue .Poliwag
+	checkevent EVENT_GOT_ODDISH_FROM_ELM
+	iftrue .Oddish
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
 	setlasttalked BURNEDTOWER1F_SILVER
-	loadtrainer RIVAL1, RIVAL1_3_TOTODILE
+	loadtrainer RIVAL1, RIVAL1_3_POLIWAG
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	sjump .returnfrombattle
 
-.totodile
+.Poliwag
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
 	setlasttalked BURNEDTOWER1F_SILVER
-	loadtrainer RIVAL1, RIVAL1_3_CHIKORITA
+	loadtrainer RIVAL1, RIVAL1_3_ODDISH
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
 	sjump .returnfrombattle
 
-.chikorita
+.Oddish
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
 	setlasttalked BURNEDTOWER1F_SILVER
-	loadtrainer RIVAL1, RIVAL1_3_CYNDAQUIL
+	loadtrainer RIVAL1, RIVAL1_3_VULPIX
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle

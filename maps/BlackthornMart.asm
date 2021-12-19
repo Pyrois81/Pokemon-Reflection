@@ -24,24 +24,25 @@ BlackthornMartCooltrainerMText:
 	text "You can't buy MAX"
 	line "REVIVE, but it"
 
-	para "fully restores a"
-	line "fainted #MON."
+	para "restores a fainted"
+	line "#MON back to full"
+	cont "health."
 
-	para "Beware--it won't"
-	line "restore PP, the"
-
-	para "POWER POINTS"
-	line "needed for moves."
+	para "It doesn't restore"
+	line "that #MON's"
+	cont "PP, though."
 	done
 
 BlackthornMartBlackBeltText:
-	text "MAX REPEL keeps"
-	line "weak #MON away"
-	cont "from you."
-
-	para "It's the longest"
-	line "lasting of the"
-	cont "REPEL sprays."
+	text "ICE HEAL will thaw"
+	line "out your #MON"
+	
+	para "if they happen to"
+	line "get frozen."
+	
+	para "Brrrr… makes me"
+	line "shiver just"
+	cont "thinking about it."
 	done
 
 BlackthornMart_MapEvents:

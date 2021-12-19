@@ -120,7 +120,7 @@ CatchingTutorialDudeScript:
 	ifequal 0, .BoxFull
 	checkevent EVENT_LEARNED_TO_CATCH_POKEMON
 	iftrue .BoxFull
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	checkevent EVENT_GAVE_TATTERED_HAT_TO_ELM
 	iffalse .BoxFull
 	writetext CatchingTutorialRepeatText
 	yesorno
@@ -362,8 +362,7 @@ MeetTuscanyText:
 	para "Please allow me to"
 	line "introduce myself."
 
-	para "I am TUSCANY of"
-	line "Tuesday."
+	para "My name's TUSCANY!"
 	done
 
 TuscanyGivesGiftText:

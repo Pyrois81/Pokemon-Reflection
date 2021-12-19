@@ -28,12 +28,12 @@ MrPokemonsHouse_MapScripts:
 	writetext MrPokemonIntroText2
 	promptbutton
 	waitsfx
-	giveitem MYSTERY_EGG
-	writetext MrPokemonsHouse_GotEggText
+	giveitem TATTERED_HAT
+	writetext MrPokemonsHouse_GotHatText
 	playsound SFX_KEY_ITEM
 	waitsfx
 	itemnotify
-	setevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
+	setevent EVENT_GOT_TATTERED_HAT_FROM_MR_POKEMON
 	blackoutmod CHERRYGROVE_CITY
 	writetext MrPokemonIntroText3
 	promptbutton
@@ -52,7 +52,7 @@ MrPokemonsHouse_MrPokemonScript:
 	opentext
 	checkitem RED_SCALE
 	iftrue .RedScale
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	checkevent EVENT_GAVE_TATTERED_HAT_TO_ELM
 	iftrue .AlwaysNewDiscoveries
 	writetext MrPokemonText_ImDependingOnYou
 	waitbutton
@@ -128,32 +128,35 @@ MrPokemonsHouse_OakScript:
 	setmapscene ELMS_LAB, SCENE_ELMSLAB_MEET_OFFICER
 	specialphonecall SPECIALCALL_ROBBED
 	clearevent EVENT_COP_IN_ELMS_LAB
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .RivalTakesChikorita
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .RivalTakesCyndaquil
-	setevent EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
+	checkevent EVENT_GOT_POLIWAG_FROM_ELM
+	iftrue .RivalTakesOddish
+	checkevent EVENT_GOT_ODDISH_FROM_ELM
+	iftrue .RivalTakesVulpix
+	setevent EVENT_POLIWAG_POKEBALL_IN_ELMS_LAB
 	end
 
-.RivalTakesChikorita:
-	setevent EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
+.RivalTakesOddish:
+	setevent EVENT_ODDISH_POKEBALL_IN_ELMS_LAB
 	end
 
-.RivalTakesCyndaquil:
-	setevent EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
+.RivalTakesVulpix:
+	setevent EVENT_VULPIX_POKEBALL_IN_ELMS_LAB
 	end
 
 MrPokemonsHouse_ForeignMagazines:
 	jumptext MrPokemonsHouse_ForeignMagazinesText
+	
+MrPokemonsHouse_Copier:
+	jumptext MrPokemonsHouse_CopierText
 
-MrPokemonsHouse_BrokenComputer:
-	jumptext MrPokemonsHouse_BrokenComputerText
+MrPokemonsHouse_Computer:
+	jumptext MrPokemonsHouse_ComputerText
 
-MrPokemonsHouse_StrangeCoins:
-	jumptext MrPokemonsHouse_StrangeCoinsText
+MrPokemonsHouse_DeskParts:
+	jumptext MrPokemonsHouse_DeskPartsText
 
 MrPokemonsHouse_PlayerWalksToMrPokemon:
-	step RIGHT
+	step LEFT
 	step UP
 	step_end
 
@@ -165,8 +168,6 @@ MrPokemonsHouse_OakWalksToPlayer:
 
 MrPokemonsHouse_OakExits:
 	step DOWN
-	step LEFT
-	turn_head DOWN
 	step_sleep 2
 	step_end
 
@@ -184,42 +185,65 @@ MrPokemonIntroText2:
 	cont "examine."
 	done
 
-MrPokemonsHouse_GotEggText:
+MrPokemonsHouse_GotHatText:
 	text "<PLAYER> received"
-	line "MYSTERY EGG."
+	line "TATTERED HAT."
 	done
 
 MrPokemonIntroText3:
-	text "I know a couple"
-	line "who run a #MON"
-	cont "DAY-CARE service."
-
-	para "They gave me that"
-	line "EGG."
-
-	para "I was intrigued,"
-	line "so I sent mail to"
-	cont "PROF.ELM."
-
-	para "For #MON evolu-"
-	line "tion, PROF.ELM is"
-	cont "the authority."
+	text "I was doing some"
+	line "investigating in"
+	
+	para "DARK CAVE a few"
+	line "days back and"
+	
+	para "stumbled across a"
+	line "passage I hadn't"
+	cont "seen before."
+	
+	para "I wasn't able to"
+	line "squeeze through,"
+	
+	para "but I did find"
+	line "this old hat and"
+	
+	para "a bunch of crystal"
+	line "shards, which I"
+	
+	para "believe were"
+	line "fragments of"
+	cont "evolution stones."
 	done
 
 MrPokemonIntroText4:
-	text "Even PROF.OAK here"
-	line "recognizes that."
+	text "I'm sure PROF.OAK"
+	line "recognizes the"
+	
+	para "significance of"
+	line "this hat."
 	done
 
 MrPokemonIntroText5:
-	text "If my assumption"
-	line "is correct, PROF."
-	cont "ELM will know it."
+	text "A black cap with a"
+	line "large red 'R'"
+	cont "embroidered on it…"
+	
+	para "It leads me to"
+	line "believe that"
+	
+	para "TEAM ROCKET may"	
+	line "have had something"
+	
+	para "to do with the"
+	line "collapse."
 	done
 
 MrPokemonsHouse_MrPokemonHealText:
-	text "You are returning"
-	line "to PROF.ELM?"
+	text "You should return"
+	line "to the lab and"
+	
+	para "show PROF.ELM this"
+	line "evidence."
 
 	para "Here. Your #MON"
 	line "should have some"
@@ -249,15 +273,25 @@ MrPokemonsHouse_OakText1:
 	para "I was just visit-"
 	line "ing my old friend"
 	cont "MR.#MON."
+	
+	para "I never expected"
+	line "to land right in"
+	
+	para "the middle of a"
+	line "mystery!"
+	
+	para "And one concerning"
+	line "TEAM ROCKET,"
+	cont "no less…"
 
 	para "I heard you were"
-	line "running an errand"
+	line "aiding PROF.ELM in"
 
-	para "for PROF.ELM, so I"
+	para "his research, so I"
 	line "waited here."
 
 	para "Oh! What's this?"
-	line "A rare #MON!"
+	line "A #MON!"
 
 	para "Let's see…"
 
@@ -281,8 +315,6 @@ MrPokemonsHouse_OakText1:
 	para "#MON with love"
 	line "and care."
 
-	para "…Ah!"
-
 	para "You seem to be"
 	line "dependable."
 
@@ -291,7 +323,7 @@ MrPokemonsHouse_OakText1:
 
 	para "See? This is the"
 	line "latest version of"
-	cont "#DEX."
+	cont "my #DEX."
 
 	para "It automatically"
 	line "records data on"
@@ -315,15 +347,18 @@ MrPokemonsHouse_OakText2:
 	para "complete that"
 	line "#DEX!"
 
-	para "But I've stayed"
-	line "too long."
+	para "Anyhow, I've"
+	line "stayed too long."
 
 	para "I have to get to"
 	line "GOLDENROD for my"
 	cont "usual radio show."
 
 	para "<PLAY_G>, I'm"
-	line "counting on you!"
+	line "looking forward"
+	
+	para "to seeing what"
+	line "you're capable of!"
 	done
 
 MrPokemonText_GimmeTheScale:
@@ -356,35 +391,51 @@ MrPokemonsHouse_ForeignMagazinesText:
 	line "their titles…"
 	done
 
-MrPokemonsHouse_BrokenComputerText:
-	text "It's a big com-"
-	line "puter. Hmm. It's"
-	cont "broken."
+MrPokemonsHouse_CopierText:
+	text "It's a brand-new"
+	line "photocopier!"
+	
+	para "……Looks like it"
+	line "has a paper jam."
+	done
+	
+MrPokemonsHouse_ComputerText:
+	text "The computers are"
+	line "making a gentle"
+	cont "humming sound."
+
+	para "Maybe it's not a"
+	line "great idea to be"
+	cont "standing here…"
 	done
 
-MrPokemonsHouse_StrangeCoinsText:
-	text "A whole pile of"
-	line "strange coins!"
+MrPokemonsHouse_DeskPartsText:
+	text "There are various"
+	line "pieces of wires"
 
-	para "Maybe they're from"
-	line "another country…"
+	para "and disassembled"
+	line "# BALLS strewn"
+	cont "about the desk."
 	done
 
 MrPokemonsHouse_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  2,  7, ROUTE_30, 2
-	warp_event  3,  7, ROUTE_30, 2
+	warp_event  4,  7, ROUTE_30, 2
+	warp_event  5,  7, ROUTE_30, 2
 
 	def_coord_events
 
 	def_bg_events
 	bg_event  0,  1, BGEVENT_READ, MrPokemonsHouse_ForeignMagazines
 	bg_event  1,  1, BGEVENT_READ, MrPokemonsHouse_ForeignMagazines
-	bg_event  6,  1, BGEVENT_READ, MrPokemonsHouse_BrokenComputer
-	bg_event  7,  1, BGEVENT_READ, MrPokemonsHouse_BrokenComputer
-	bg_event  6,  4, BGEVENT_READ, MrPokemonsHouse_StrangeCoins
+	bg_event  7,  1, BGEVENT_READ, MrPokemonsHouse_Copier
+	bg_event  8,  1, BGEVENT_READ, MrPokemonsHouse_Computer
+	bg_event  9,  1, BGEVENT_READ, MrPokemonsHouse_Computer
+	bg_event  6,  4, BGEVENT_READ, MrPokemonsHouse_DeskParts
+	bg_event  7,  4, BGEVENT_READ, MrPokemonsHouse_DeskParts
+
 
 	def_object_events
 	object_event  3,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1

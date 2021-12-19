@@ -4,11 +4,10 @@
 	const OPT_BATTLE_SCENE ; 1
 	const OPT_BATTLE_STYLE ; 2
 	const OPT_SOUND        ; 3
-	const OPT_PRINT        ; 4
-	const OPT_MENU_ACCOUNT ; 5
-	const OPT_FRAME        ; 6
-	const OPT_CANCEL       ; 7
-NUM_OPTIONS EQU const_value    ; 8
+	const OPT_MENU_ACCOUNT ; 4
+	const OPT_FRAME        ; 5
+	const OPT_CANCEL       ; 6
+NUM_OPTIONS EQU const_value    ; 7
 
 _Option:
 	ld hl, hInMenu
@@ -76,19 +75,17 @@ _Option:
 StringOptions:
 	db "TEXT SPEED<LF>"
 	db "        :<LF>"
-	db "BATTLE SCENE<LF>"
+	db "BATTLE ANIMS<LF>"
 	db "        :<LF>"
 	db "BATTLE STYLE<LF>"
 	db "        :<LF>"
 	db "SOUND<LF>"
 	db "        :<LF>"
-	db "PRINT<LF>"
-	db "        :<LF>"
-	db "MENU ACCOUNT<LF>"
+	db "MENU HELP<LF>"
 	db "        :<LF>"
 	db "FRAME<LF>"
 	db "        :TYPE<LF>"
-	db "CANCEL@"
+	db "SAVE & RETURN@"
 
 GetOptionPointer:
 	jumptable .Pointers, wJumptableIndex
@@ -99,7 +96,6 @@ GetOptionPointer:
 	dw Options_BattleScene
 	dw Options_BattleStyle
 	dw Options_Sound
-	dw Options_Print
 	dw Options_MenuAccount
 	dw Options_Frame
 	dw Options_Cancel
@@ -319,101 +315,6 @@ Options_Sound:
 	const OPT_PRINT_DARKER   ; 3
 	const OPT_PRINT_DARKEST  ; 4
 
-Options_Print:
-	call GetPrinterSetting
-	ldh a, [hJoyPressed]
-	bit D_LEFT_F, a
-	jr nz, .LeftPressed
-	bit D_RIGHT_F, a
-	jr z, .NonePressed
-	ld a, c
-	cp OPT_PRINT_DARKEST
-	jr c, .Increase
-	ld c, OPT_PRINT_LIGHTEST - 1
-
-.Increase:
-	inc c
-	ld a, e
-	jr .Save
-
-.LeftPressed:
-	ld a, c
-	and a
-	jr nz, .Decrease
-	ld c, OPT_PRINT_DARKEST + 1
-
-.Decrease:
-	dec c
-	ld a, d
-
-.Save:
-	ld b, a
-	ld [wGBPrinterBrightness], a
-
-.NonePressed:
-	ld b, 0
-	ld hl, .Strings
-	add hl, bc
-	add hl, bc
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	hlcoord 11, 11
-	call PlaceString
-	and a
-	ret
-
-.Strings:
-; entries correspond to OPT_PRINT_* constants
-	dw .Lightest
-	dw .Lighter
-	dw .Normal
-	dw .Darker
-	dw .Darkest
-
-.Lightest: db "LIGHTEST@"
-.Lighter:  db "LIGHTER @"
-.Normal:   db "NORMAL  @"
-.Darker:   db "DARKER  @"
-.Darkest:  db "DARKEST @"
-
-GetPrinterSetting:
-; converts GBPRINTER_* value in a to OPT_PRINT_* value in c,
-; with previous/next GBPRINTER_* values in d/e
-	ld a, [wGBPrinterBrightness]
-	and a
-	jr z, .IsLightest
-	cp GBPRINTER_LIGHTER
-	jr z, .IsLight
-	cp GBPRINTER_DARKER
-	jr z, .IsDark
-	cp GBPRINTER_DARKEST
-	jr z, .IsDarkest
-	; none of the above
-	ld c, OPT_PRINT_NORMAL
-	lb de, GBPRINTER_LIGHTER, GBPRINTER_DARKER
-	ret
-
-.IsLightest:
-	ld c, OPT_PRINT_LIGHTEST
-	lb de, GBPRINTER_DARKEST, GBPRINTER_LIGHTER
-	ret
-
-.IsLight:
-	ld c, OPT_PRINT_LIGHTER
-	lb de, GBPRINTER_LIGHTEST, GBPRINTER_NORMAL
-	ret
-
-.IsDark:
-	ld c, OPT_PRINT_DARKER
-	lb de, GBPRINTER_NORMAL, GBPRINTER_DARKEST
-	ret
-
-.IsDarkest:
-	ld c, OPT_PRINT_DARKEST
-	lb de, GBPRINTER_DARKER, GBPRINTER_LIGHTEST
-	ret
-
 Options_MenuAccount:
 	ld hl, wOptions2
 	ldh a, [hJoyPressed]
@@ -444,7 +345,7 @@ Options_MenuAccount:
 	ld de, .On
 
 .Display:
-	hlcoord 11, 13
+	hlcoord 11, 11
 	call PlaceString
 	and a
 	ret
@@ -476,7 +377,7 @@ Options_Frame:
 	ld [hl], a
 UpdateFrame:
 	ld a, [wTextboxFrame]
-	hlcoord 16, 15 ; where on the screen the number is drawn
+	hlcoord 16, 13 ; where on the screen the number is drawn
 	add "1"
 	ld [hl], a
 	call LoadFontsExtra

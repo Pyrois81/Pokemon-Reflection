@@ -169,16 +169,17 @@ ENDM
 	endgroup
 
 	newgroup BLACKTHORN                                           ;  5
-	map_const BLACKTHORN_GYM_1F,                            5,  9 ;  1
-	map_const BLACKTHORN_GYM_2F,                            5,  9 ;  2
+	map_const BLACKTHORN_GYM_1F,                            7,  8 ;  1
+	map_const BLACKTHORN_GYM_2F,                            4,  5 ;  2
 	map_const BLACKTHORN_DRAGON_SPEECH_HOUSE,               4,  4 ;  3
 	map_const BLACKTHORN_EMYS_HOUSE,                        4,  4 ;  4
 	map_const BLACKTHORN_MART,                              6,  4 ;  5
 	map_const BLACKTHORN_POKECENTER_1F,                     5,  4 ;  6
 	map_const MOVE_DELETERS_HOUSE,                          4,  4 ;  7
-	map_const ROUTE_45,                                    10, 45 ;  8
-	map_const ROUTE_46,                                    10, 18 ;  9
-	map_const BLACKTHORN_CITY,                             20, 18 ; 10
+	map_const ROUTE_45_HEAL_HOUSE,							4,  4 ;  8
+	map_const ROUTE_45,                                    10, 45 ;  9
+	map_const ROUTE_46,                                    10, 18 ; 10
+	map_const BLACKTHORN_CITY,                             20, 18 ; 11
 	endgroup
 
 	newgroup CINNABAR                                             ;  6
@@ -497,7 +498,7 @@ ENDM
 	map_const GUIDE_GENTS_HOUSE,                            4,  4 ;  7
 	map_const CHERRYGROVE_EVOLUTION_SPEECH_HOUSE,           4,  4 ;  8
 	map_const ROUTE_30_BERRY_HOUSE,                         4,  4 ;  9
-	map_const MR_POKEMONS_HOUSE,                            4,  4 ; 10
+	map_const MR_POKEMONS_HOUSE,                            5,  4 ; 10
 	map_const ROUTE_31_VIOLET_GATE,                         5,  4 ; 11
 	endgroup
 

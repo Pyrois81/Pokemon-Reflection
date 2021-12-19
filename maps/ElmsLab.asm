@@ -59,7 +59,7 @@ ElmsLab_MapScripts:
 .ElmGetsEmail:
 	writetext ElmText_Accepted
 	promptbutton
-	writetext ElmText_ResearchAmbitions
+	writetext ElmText_WithYourAid
 	waitbutton
 	closetext
 	playsound SFX_GLASS_TING
@@ -96,7 +96,7 @@ ProfElmScript:
 ElmCheckMasterBall:
 	checkevent EVENT_GOT_MASTER_BALL_FROM_ELM
 	iftrue ElmCheckEverstone
-	checkflag ENGINE_RISINGBADGE
+	checkflag ENGINE_ZEPHYRBADGE
 	iftrue ElmGiveMasterBallScript
 ElmCheckEverstone:
 	checkevent EVENT_GOT_EVERSTONE_FROM_ELM
@@ -133,11 +133,9 @@ ElmCheckTogepiEgg:
 ElmCheckGotEggAgain:
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE ; why are we checking it again?
 	iftrue ElmWaitingEggHatchScript
-	checkflag ENGINE_ZEPHYRBADGE
+	checkflag ENGINE_RISINGBADGE
 	iftrue ElmAideHasEggScript
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue ElmStudyingEggScript
-	checkevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
+	checkevent EVENT_GOT_TATTERED_HAT_FROM_MR_POKEMON
 	iftrue ElmAfterTheftScript
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue ElmDescribesMrPokemonScript
@@ -169,7 +167,7 @@ VulpixPokeBallScript:
 	yesorno
 	iffalse DidntChooseStarterScript
 	disappear ELMSLAB_POKE_BALL1
-	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM
+	setevent EVENT_GOT_VULPIX_FROM_ELM
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
@@ -199,7 +197,7 @@ PoliwagPokeBallScript:
 	yesorno
 	iffalse DidntChooseStarterScript
 	disappear ELMSLAB_POKE_BALL2
-	setevent EVENT_GOT_TOTODILE_FROM_ELM
+	setevent EVENT_GOT_POLIWAG_FROM_ELM
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
@@ -227,7 +225,7 @@ OddishPokeBallScript:
 	yesorno
 	iffalse DidntChooseStarterScript
 	disappear ELMSLAB_POKE_BALL3
-	setevent EVENT_GOT_CHIKORITA_FROM_ELM
+	setevent EVENT_GOT_ODDISH_FROM_ELM
 	writetext ChoseStarterText
 	promptbutton
 	waitsfx
@@ -323,12 +321,12 @@ ElmAfterTheftDoneScript:
 
 ElmAfterTheftScript:
 	writetext ElmAfterTheftText1
-	checkitem MYSTERY_EGG
+	checkitem TATTERED_HAT
 	iffalse ElmAfterTheftDoneScript
 	promptbutton
 	writetext ElmAfterTheftText2
 	waitbutton
-	takeitem MYSTERY_EGG
+	takeitem TATTERED_HAT
 	scall ElmJumpBackScript1
 	writetext ElmAfterTheftText3
 	waitbutton
@@ -337,22 +335,17 @@ ElmAfterTheftScript:
 	promptbutton
 	writetext ElmAfterTheftText5
 	promptbutton
-	setevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	setevent EVENT_GAVE_TATTERED_HAT_TO_ELM
 	setflag ENGINE_MAIN_MENU_MOBILE_CHOICES
 	setmapscene ROUTE_29, SCENE_ROUTE29_CATCH_TUTORIAL
 	clearevent EVENT_ROUTE_30_YOUNGSTER_JOEY
 	clearevent EVENT_ROUTE_30_YOUNGSTER_MIKEY
 	setevent EVENT_ROUTE_30_BATTLE
+	setevent EVENT_ROUTE_46_OPEN
 	writetext ElmAfterTheftText6
 	waitbutton
 	closetext
 	setscene SCENE_ELMSLAB_AIDE_GIVES_POKE_BALLS
-	end
-
-ElmStudyingEggScript:
-	writetext ElmStudyingEggText
-	waitbutton
-	closetext
 	end
 
 ElmAideHasEggScript:
@@ -518,9 +511,9 @@ ElmsAideScript:
 	opentext
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
 	iftrue AideScript_AfterTheft
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	checkevent EVENT_GAVE_TATTERED_HAT_TO_ELM
 	iftrue AideScript_ExplainBalls
-	checkevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
+	checkevent EVENT_GOT_TATTERED_HAT_FROM_MR_POKEMON
 	iftrue AideScript_TheftTestimony
 	writetext AideText_AlwaysBusy
 	waitbutton
@@ -741,25 +734,43 @@ ElmText_Intro:
 
 	para "You see…"
 
-	para "I'm writing a"
-	line "paper that I want"
+	para "The collapse of"
+	line "DARK CAVE five"
+	
+	para "years ago seems to"
+	line "have caused many"
+	
+	para "wild #MON to"
+	line "exhibit strange"
 
-	para "to present at a"
-	line "conference."
-
-	para "But there are some"
-	line "things I don't"
-
-	para "quite understand"
-	line "yet."
-
-	para "So!"
-
+	para "behaviors in the"
+	line "time since."
+	
+	para "Our best theory so"
+	line "far is that the"
+	
+	para "cave was made"
+	line "unstable by a"
+	
+	para "large number of"
+	line "DUGTRIO digging"
+	cont "under it."
+	
+	para "However, we still"
+	line "haven't been able"
+	cont "to prove anything."
+	
 	para "I'd like you to"
-	line "raise a #MON"
+	line "take a #MON"
 
 	para "that I recently"
-	line "caught."
+	line "caught and go out"
+	
+	para "into the world to"
+	line "collect more data."
+	
+	para "What do you say,"
+	line "<PLAYER>?"
 	done
 
 ElmText_Accepted:
@@ -774,18 +785,15 @@ ElmText_Refused:
 	line "need your help!"
 	done
 
-ElmText_ResearchAmbitions:
-	text "When I announce my"
-	line "findings, I'm sure"
-
-	para "we'll delve a bit"
-	line "deeper into the"
-
-	para "many mysteries of"
-	line "#MON."
-
-	para "You can count on"
-	line "it!"
+ElmText_WithYourAid:
+	text "Hopefully with"
+	line "your aid, we can"
+	
+	para "figure out what's"
+	line "been causing our"
+	
+	para "native #MON to"
+	line "act so strangely."
 	done
 
 ElmText_GotAnEmail:
@@ -801,31 +809,40 @@ ElmText_GotAnEmail:
 ElmText_MissionFromMrPokemon:
 	text "Hey, listen."
 
-	para "I have an acquain-"
-	line "tance called MR."
-	cont "#MON."
+	para "I have a colleague"
+	line "named MR. #MON."
 
-	para "He keeps finding"
-	line "weird things and"
-
-	para "raving about his"
-	line "discoveries."
-
-	para "Anyway, I just got"
-	line "an e-mail from him"
-
-	para "saying that this"
-	line "time it's real."
-
-	para "It is intriguing,"
-	line "but we're busy"
-
-	para "with our #MON"
-	line "research…"
+	para "He's been a great"
+	line "resource in the"
+	
+	para "past, and he"
+	line "was essential in"
+	
+	para "working out the"
+	line "details of how"
+	
+	para "#MON reproduce"
+	line "a few years back."
+	
+	para "He says he's found"
+	line "something that"
+	
+	para "might point us"
+	line "in the right"
+	cont "direction."
+	
+	para "I'd go myself, but"
+	line "I've experiments"
+	
+	para "to run and there"
+	line "is research to be"
+	
+	para "done here, so I'm"
+	line "afraid I can't"
+	cont "leave the lab."
 
 	para "Wait!"
-
-	para "I know!"
+	line "I know!"
 
 	para "<PLAY_G>, can you"
 	line "go in our place?"
@@ -902,13 +919,20 @@ ElmDirectionsText1:
 	para "CHERRYGROVE, the"
 	line "next city over."
 
-	para "It's almost a"
-	line "direct route"
+	para "His house is just"
+	line "before you reach"
+	cont "DARK CAVE."
+	
+	para "It's so close, in"
+	line "fact, that he had"
+	
+	para "to rebuild it"
+	line "after the cave-in!"
+	
+	para "It shouldn't be"
+	line "too hard to find,"
 
-	para "there, so you"
-	line "can't miss it."
-
-	para "But just in case,"
+	para "but just in case,"
 	line "here's my phone"
 
 	para "number. Call me if"
@@ -937,24 +961,29 @@ GotElmsNumberText:
 	done
 
 ElmDescribesMrPokemonText:
-	text "MR.#MON goes"
-	line "everywhere and"
-	cont "finds rarities."
-
-	para "Too bad they're"
-	line "just rare and"
-	cont "not very useful…"
+	text "MR.#MON takes"
+	line "a much less…"
+	
+	para "scientific"
+	line "approach to"
+	cont "studying #MON."
+	
+	para "Nevertheless, I'm"
+	line "still grateful for"
+	cont "his assistance."
 	done
 
 ElmPokeBallText:
 	text "It contains a"
 	line "#MON caught by"
 	cont "PROF.ELM."
+	
+	para "Don't touch!"
 	done
 
 ElmsLabHealingMachineText1:
 	text "I wonder what this"
-	line "does?"
+	line "machine does?"
 	done
 
 ElmsLabHealingMachineText2:
@@ -973,7 +1002,7 @@ ElmAfterTheftText1:
 
 ElmAfterTheftText2:
 	text "<PLAYER> handed"
-	line "the MYSTERY EGG to"
+	line "the TATTERED HAT to"
 	cont "PROF.ELM."
 	done
 
@@ -982,27 +1011,36 @@ ElmAfterTheftText3:
 	done
 
 ElmAfterTheftText4:
-	text "But… Is it a"
-	line "#MON EGG?"
-
-	para "If it is, it is a"
-	line "great discovery!"
+	text "You say he found"
+	line "this inside"
+	cont "DARK CAVE?"
+	
+	para "This rabbit hole"
+	line "may go much deeper"
+	
+	para "than I initially"
+	line "thought, <PLAYER>."
 	done
 
 ElmAfterTheftText5:
 	text "ELM: What?!?"
 
-	para "PROF.OAK gave you"
-	line "a #DEX?"
+	para "PROF.OAK was"
+	line "visiting"
+	cont "MR.#MON?"
+	
+	para "…and he gave you"
+	line "a #DEX?!"
 
-	para "<PLAY_G>, is that"
-	line "true? Th-that's"
-	cont "incredible!"
+	para "<PLAY_G>, that's"
+	cont "simply incredible!"
 
 	para "He is superb at"
-	line "seeing the poten-"
-	cont "tial of people as"
-	cont "trainers."
+	line "seeing the"
+	
+	para "potential of"
+	line "people as"
+	cont "#MON trainers."
 
 	para "Wow, <PLAY_G>. You"
 	line "may have what it"
@@ -1012,36 +1050,37 @@ ElmAfterTheftText5:
 
 	para "You seem to be"
 	line "getting on great"
-	cont "with #MON too."
+	cont "with #MON too!"
 
 	para "You should take"
 	line "the #MON GYM"
 	cont "challenge."
 
-	para "After DARK PATH"
-	line "caved in, the"
+	para "After DARK CAVE"
+	line "collapsed, the"
 	
 	para "#MON LEAGUE had"
-	line "to cease"
-	cont "operations."
+	line "to shut down for"
+	cont "a while."
 	
-	para "However, I just"
-	line "recently got word"
+	para "However, they just"
+	line "recently announced"
 	
-	para "that the LEAGUE"
-	line "has resumed!"
+	para "that operations"
+	line "have resumed!"
 	
-	para "As VIOLET CITY"
-	line "is inaccessible,"
+	para "As the road to"
+	line "VIOLET CITY is"
 	
-	para "you'll have to"
-	line "take ROUTE 46"
+	para "still impassable,"	
+	line "you'll have to"
 	
-	para "north towards"
-	line "BLACKTHORN CITY."
+	para "take ROUTE 46"	
+	line "north towards"
+	cont "BLACKTHORN CITY."
 	
 	para "The LEAGUE has"
-	cont "undergone some"
+	line "undergone some"
 	
 	para "restructuring to"
 	line "allow trainers to"
@@ -1051,23 +1090,38 @@ ElmAfterTheftText5:
 	done
 
 ElmAfterTheftText6:
-	text "…<PLAY_G>. The"
+	text "…<PLAY_G>, the"
 	line "road to the"
 
 	para "championship will"
 	line "be a long one."
+	
+	para "Be careful,"
+	line "<PLAYER>."
+	
+	para "The road to the"
+	line "#MON LEAGUE is"
+	
+	para "tough enough"
+	line "without the threat"
+	
+	para "of TEAM ROCKET on"
+	line "the horizon."
+	
+	para "Keep training and"
+	line "forming bonds with"
+	
+	para "your #MON and"
+	line "they will protect"
+	
+	para "you with all their"
+	line "might."
 
-	para "Before you leave,"
-	line "make sure that you"
-	cont "talk to your mom."
-	done
+	para "Oh, and before you"
+	line "leave, make sure"
 
-ElmStudyingEggText:
-	text "ELM: Don't give"
-	line "up! I'll call if"
-
-	para "I learn anything"
-	line "about that EGG!"
+	para "that you pay your"
+	line "mother a visit!"
 	done
 
 ElmAideHasEggText:
@@ -1236,12 +1290,6 @@ ElmGiveTicketText2:
 	line "PROF.OAK in KANTO!"
 	done
 
-ElmsLabMonEggText: ; unreferenced
-	text "It's the #MON"
-	line "EGG being studied"
-	cont "by PROF.ELM."
-	done
-
 AideText_GiveYouPotion:
 	text "<PLAY_G>, I want"
 	line "you to have this"
@@ -1384,7 +1432,7 @@ ElmsLabTravelTip4Text:
 ElmsLabTrashcanText:
 	text "The wrapper from"
 	line "the snack PROF.ELM"
-	cont "ate is in there…"
+	cont "ate is in here…"
 	done
 
 ElmsLabPCText:
@@ -1433,7 +1481,7 @@ ElmsLab_MapEvents:
 	def_object_events
 	object_event  5,  2, SPRITE_ELM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfElmScript, -1
 	object_event  2,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ElmsAideScript, EVENT_ELMS_AIDE_IN_LAB
-	object_event  6,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VulpixPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
-	object_event  7,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PoliwagPokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
-	object_event  8,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OddishPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
+	object_event  6,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VulpixPokeBallScript, EVENT_VULPIX_POKEBALL_IN_ELMS_LAB
+	object_event  7,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PoliwagPokeBallScript, EVENT_POLIWAG_POKEBALL_IN_ELMS_LAB
+	object_event  8,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OddishPokeBallScript, EVENT_ODDISH_POKEBALL_IN_ELMS_LAB
 	object_event  5,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CopScript, EVENT_COP_IN_ELMS_LAB

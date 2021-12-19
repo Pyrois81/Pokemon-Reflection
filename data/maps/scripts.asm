@@ -402,6 +402,7 @@ INCLUDE "maps/Route35.asm"
 INCLUDE "maps/Route43.asm"
 INCLUDE "maps/Route44.asm"
 INCLUDE "maps/Route45.asm"
+INCLUDE "maps/Route45HealHouse.asm"
 INCLUDE "maps/Route19.asm"
 INCLUDE "maps/Route25.asm"
 

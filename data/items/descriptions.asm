@@ -25,7 +25,7 @@ ItemDescriptions:
 	dw FireStoneDesc
 	dw ThunderStoneDesc
 	dw WaterStoneDesc
-	dw TeruSama2Desc
+	dw MoltFeatherDesc
 	dw HPUpDesc
 	dw ProteinDesc
 	dw IronDesc
@@ -69,7 +69,7 @@ ItemDescriptions:
 	dw RedScaleDesc
 	dw SecretPotionDesc
 	dw SSTicketDesc
-	dw MysteryEggDesc
+	dw TatteredHatDesc
 	dw ClearBellDesc
 	dw SilverWingDesc
 	dw MoomooMilkDesc
@@ -354,8 +354,9 @@ WaterStoneDesc:
 	db   "Evolves certain"
 	next "kinds of #MON.@"
 
-TeruSama2Desc:
-	db   "?@"
+MoltFeatherDesc:
+	db	 "A tail feather of"
+	next "MOLTRES. Warm.@"
 
 HPUpDesc:
 	db   "Raises the HP of"
@@ -526,9 +527,9 @@ SSTicketDesc:
 	db   "A ticket for the"
 	next "S.S.AQUA.@"
 
-MysteryEggDesc:
-	db   "An EGG obtained"
-	next "from MR.#MON.@"
+TatteredHatDesc:
+	db   "An old black hat"
+	next "with a red 'R'.@"
 
 ClearBellDesc:
 	db   "Makes a gentle"

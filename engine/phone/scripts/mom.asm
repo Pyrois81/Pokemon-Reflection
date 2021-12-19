@@ -1,9 +1,9 @@
 MomPhoneCalleeScript:
-	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
+	checkevent EVENT_TALKED_TO_MOM_AFTER_TATTERED_HAT_QUEST
 	iftrue .started_quest
 	checkevent EVENT_DUDE_TALKED_TO_YOU
 	iftrue MomPhoneLectureScript
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
+	checkevent EVENT_GAVE_TATTERED_HAT_TO_ELM
 	iftrue MomPhoneNoGymQuestScript
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue MomPhoneNoPokedexScript
@@ -133,7 +133,7 @@ MomPhoneNoGymQuestScript:
 	end
 
 MomPhoneLectureScript:
-	setevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
+	setevent EVENT_TALKED_TO_MOM_AFTER_TATTERED_HAT_QUEST
 	setflag ENGINE_MOM_ACTIVE
 	specialphonecall SPECIALCALL_NONE
 	farwritetext MomPhoneLectureText

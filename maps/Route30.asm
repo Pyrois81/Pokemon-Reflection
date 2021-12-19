@@ -231,14 +231,14 @@ TrainerBugCatcherDon:
 Route30YoungsterScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue .CompletedEggQuest
+	checkevent EVENT_GAVE_TATTERED_HAT_TO_ELM
+	iftrue .CompletedHatQuest
 	writetext Route30YoungsterText_DirectionsToMrPokemonsHouse
 	waitbutton
 	closetext
 	end
 
-.CompletedEggQuest:
+.CompletedHatQuest:
 	writetext Route30YoungsterText_EveryoneIsBattling
 	waitbutton
 	closetext

@@ -37,6 +37,19 @@ BlackthornDragonSpeechHouseGrannyText:
 
 	para "about dragons in"
 	line "this town."
+	
+	para "In fact, there's a"
+	line "rumor going around"
+	
+	para "town that the"
+	line "incident at DARK"
+	
+	para "CAVE was caused by"
+	line "a rampaging"
+	cont "DRAGONITE."
+	
+	para "Impossible to know"
+	line "for sure, though…"
 	done
 
 BlackthornDragonSpeechHouseDratiniText:

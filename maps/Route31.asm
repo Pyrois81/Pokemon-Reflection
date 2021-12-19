@@ -15,7 +15,7 @@ Route31_MapScripts:
 	callback MAPCALLBACK_NEWMAP, .CheckMomCall
 
 .CheckMomCall:
-	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
+	checkevent EVENT_TALKED_TO_MOM_AFTER_TATTERED_HAT_QUEST
 	iffalse .DoMomCall
 	endcallback
 

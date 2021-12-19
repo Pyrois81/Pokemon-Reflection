@@ -53,21 +53,21 @@ KRIS EQU __trainer_class__
 	const CLAIR1
 
 	trainerclass RIVAL1 ; 9
-	const RIVAL1_1_CHIKORITA
-	const RIVAL1_1_CYNDAQUIL
-	const RIVAL1_1_TOTODILE
-	const RIVAL1_2_CHIKORITA
-	const RIVAL1_2_CYNDAQUIL
-	const RIVAL1_2_TOTODILE
-	const RIVAL1_3_CHIKORITA
-	const RIVAL1_3_CYNDAQUIL
-	const RIVAL1_3_TOTODILE
-	const RIVAL1_4_CHIKORITA
-	const RIVAL1_4_CYNDAQUIL
-	const RIVAL1_4_TOTODILE
-	const RIVAL1_5_CHIKORITA
-	const RIVAL1_5_CYNDAQUIL
-	const RIVAL1_5_TOTODILE
+	const RIVAL1_1_ODDISH
+	const RIVAL1_1_VULPIX
+	const RIVAL1_1_POLIWAG
+	const RIVAL1_2_ODDISH
+	const RIVAL1_2_VULPIX
+	const RIVAL1_2_POLIWAG
+	const RIVAL1_3_ODDISH
+	const RIVAL1_3_VULPIX
+	const RIVAL1_3_POLIWAG
+	const RIVAL1_4_ODDISH
+	const RIVAL1_4_VULPIX
+	const RIVAL1_4_POLIWAG
+	const RIVAL1_5_ODDISH
+	const RIVAL1_5_VULPIX
+	const RIVAL1_5_POLIWAG
 
 	trainerclass POKEMON_PROF ; a
 
@@ -200,7 +200,6 @@ KRIS EQU __trainer_class__
 	const AARON
 	const PAUL
 	const CODY
-	const MIKE
 	const GAVEN1
 	const GAVEN2
 	const RYAN
@@ -452,12 +451,12 @@ KRIS EQU __trainer_class__
 	const MARKUS
 
 	trainerclass RIVAL2 ; 2a
-	const RIVAL2_1_CHIKORITA
-	const RIVAL2_1_CYNDAQUIL
-	const RIVAL2_1_TOTODILE
-	const RIVAL2_2_CHIKORITA
-	const RIVAL2_2_CYNDAQUIL
-	const RIVAL2_2_TOTODILE
+	const RIVAL2_1_ODDISH
+	const RIVAL2_1_VULPIX
+	const RIVAL2_1_POLIWAG
+	const RIVAL2_2_ODDISH
+	const RIVAL2_2_VULPIX
+	const RIVAL2_2_POLIWAG
 
 	trainerclass GUITARIST ; 2b
 	const CLYDE
@@ -525,14 +524,12 @@ KRIS EQU __trainer_class__
 	const IRWIN4
 
 	trainerclass BLACKBELT_T ; 32
-	const KENJI1
+	const KENJI
 	const YOSHI
-	const KENJI2
 	const LAO
 	const NOB
 	const KIYO
 	const LUNG
-	const KENJI3
 	const WAI
 
 	trainerclass EXECUTIVEM ; 33
@@ -605,7 +602,6 @@ KRIS EQU __trainer_class__
 	const SPENCER
 	const TODD4
 	const TODD5
-	const QUENTIN
 
 	trainerclass EXECUTIVEF ; 37
 	const EXECUTIVEF_1
