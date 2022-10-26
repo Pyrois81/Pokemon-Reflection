@@ -1459,6 +1459,12 @@ SkierGroup:
 	db "CLARISSA@", TRAINERTYPE_NORMAL
 	db 28, DEWGONG
 	db -1 ; end
+	
+	; SKIER (3)
+	db "NATALIE@", TRAINERTYPE_NORMAL
+	db 12, SEEL
+	db 11, SMOOCHUM
+	db -1 ; end
 
 TeacherGroup:
 	; TEACHER (1)
@@ -2543,6 +2549,13 @@ FirebreatherGroup:
 	db 31, FLAREON
 	db 28, KOFFING
 	db -1 ; end
+	
+	; FIREBREATHER (9)
+	db "FRANK@", TRAINERTYPE_NORMAL
+	db 10, CHARMANDER
+	db 10, SLUGMA
+	db 12, HOUNDOUR
+	db -1 ; end
 
 JugglerGroup:
 	; JUGGLER (1)
@@ -3025,6 +3038,12 @@ CamperGroup:
 	db 33, GRAVELER,   SELFDESTRUCT, ROCK_THROW, HARDEN, MAGNITUDE
 	db 36, MAGCARGO,   ROCK_THROW, HARDEN, AMNESIA, FLAMETHROWER
 	db 34, GOLDUCK,    DISABLE, PSYCHIC_M, SURF, PSYCH_UP
+	db -1 ; end
+	
+	; CAMPER (22)
+	db "NEIL@", TRAINERTYPE_NORMAL
+	db 12, DIGLETT
+	db 13, NIDORAN_M
 	db -1 ; end
 
 ExecutiveFGroup:

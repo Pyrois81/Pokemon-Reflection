@@ -158,26 +158,26 @@ CherrygroveRivalText_Seen:
 	text "<……> <……> <……>"
 
 	para "You got a #MON"
-	line "at the LAB."
-
-	para "What a waste."
-	line "A wimp like you."
-
-	para "<……> <……> <……>"
-
-	para "Don't you get what"
-	line "I'm saying?"
-
-	para "Well, I too, have"
-	line "a good #MON."
-
-	para "I'll show you"
-	line "what I mean!"
+	line "from PROF.ELM."
+	
+	para "Unbelievable."
+	
+	para "I guess that old"
+	line "moron is just"
+	
+	para "giving them away"
+	line "like candy."
+	
+	para "Whatever. He gave"
+	line "me one too. You're"
+	cont "not special, kid."
+	
+	para "I'll prove it!"
 	done
 
 SilverCherrygroveWinText:
-	text "Humph. Are you"
-	line "happy you won?"
+	text "Yeah, yeah,"
+	line "whatever."
 	done
 
 CherrygroveRivalText_YouLost:
@@ -194,8 +194,8 @@ CherrygroveRivalText_YouLost:
 	done
 
 SilverCherrygroveLossText:
-	text "Humph. That was a"
-	line "waste of time."
+	text "What a waste of"
+	line "time."
 	done
 
 CherrygroveRivalText_YouWon:

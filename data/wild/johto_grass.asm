@@ -711,7 +711,7 @@ JohtoGrassWildMons:
 	db  2, SMOOCHUM
 	db  8, DELIBIRD
 	db  8, SNEASEL
-	db  8, SNEASEL
+	db  9, SNEASEL
 	; day
 	db  7, SWINUB
 	db  6, TEDDIURSA
@@ -719,7 +719,7 @@ JohtoGrassWildMons:
 	db  2, SMOOCHUM
 	db  8, DELIBIRD
 	db  8, SNEASEL
-	db  8, SNEASEL
+	db  9, SNEASEL
 	; nite
 	db  7, SWINUB
 	db  6, TEDDIURSA
@@ -727,119 +727,35 @@ JohtoGrassWildMons:
 	db  2, SMOOCHUM
 	db  8, DELIBIRD
 	db  8, SNEASEL
-	db  8, SNEASEL
+	db  9, SNEASEL
 	end_grass_wildmons
 
 	def_grass_wildmons ICE_PATH_B1F
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
 	; morn
-	db 22, SWINUB ;add furret
-	db 23, ZUBAT
-	db 23, GOLBAT
-	db 24, SWINUB
-	db 25, GOLBAT
-	db 23, GOLBAT
-	db 22, JYNX
+	db  8, SWINUB
+	db  9, SEEL
+	db  9, SMOOCHUM
+	db 10, DELIBIRD
+	db 15, FURRET
+	db 12, SNEASEL
+	db 14, SNEASEL
 	; day
-	db 22, SWINUB
-	db 23, ZUBAT
-	db 23, GOLBAT
-	db 24, SWINUB
-	db 25, GOLBAT
-	db 23, GOLBAT
-	db 22, JYNX
+	db  8, SWINUB
+	db  9, SEEL
+	db  9, SMOOCHUM
+	db 10, DELIBIRD
+	db 15, FURRET
+	db 12, SNEASEL
+	db 14, SNEASEL
 	; nite
-	db 22, DELIBIRD
-	db 23, ZUBAT
-	db 23, GOLBAT
-	db 24, DELIBIRD
-	db 25, GOLBAT
-	db 23, GOLBAT
-	db 22, SNEASEL
-	end_grass_wildmons
-
-	def_grass_wildmons ICE_PATH_B2F_MAHOGANY_SIDE
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
-	; morn
-	db 23, SWINUB
-	db 24, ZUBAT
-	db 24, GOLBAT
-	db 25, SWINUB
-	db 26, GOLBAT
-	db 22, JYNX
-	db 24, JYNX
-	; day
-	db 23, SWINUB
-	db 24, ZUBAT
-	db 24, GOLBAT
-	db 25, SWINUB
-	db 26, GOLBAT
-	db 22, JYNX
-	db 24, JYNX
-	; nite
-	db 23, DELIBIRD
-	db 24, ZUBAT
-	db 24, GOLBAT
-	db 25, DELIBIRD
-	db 26, GOLBAT
-	db 22, SNEASEL
-	db 24, SNEASEL
-	end_grass_wildmons
-
-	def_grass_wildmons ICE_PATH_B2F_BLACKTHORN_SIDE
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
-	; morn
-	db 23, SWINUB
-	db 24, ZUBAT
-	db 24, GOLBAT
-	db 25, SWINUB
-	db 26, GOLBAT
-	db 22, JYNX
-	db 24, JYNX
-	; day
-	db 23, SWINUB
-	db 24, ZUBAT
-	db 24, GOLBAT
-	db 25, SWINUB
-	db 26, GOLBAT
-	db 22, JYNX
-	db 24, JYNX
-	; nite
-	db 23, DELIBIRD
-	db 24, ZUBAT
-	db 24, GOLBAT
-	db 25, DELIBIRD
-	db 26, GOLBAT
-	db 22, SNEASEL
-	db 24, SNEASEL
-	end_grass_wildmons
-
-	def_grass_wildmons ICE_PATH_B3F
-	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
-	; morn
-	db 24, SWINUB
-	db 25, ZUBAT
-	db 25, GOLBAT
-	db 26, SWINUB
-	db 22, JYNX
-	db 24, JYNX
-	db 26, JYNX
-	; day
-	db 24, SWINUB
-	db 25, ZUBAT
-	db 25, GOLBAT
-	db 26, SWINUB
-	db 22, JYNX
-	db 24, JYNX
-	db 26, JYNX
-	; nite
-	db 24, DELIBIRD
-	db 25, ZUBAT
-	db 25, GOLBAT
-	db 26, DELIBIRD
-	db 22, SNEASEL
-	db 24, SNEASEL
-	db 26, SNEASEL
+	db  8, SWINUB
+	db  9, SEEL
+	db  9, SMOOCHUM
+	db 10, DELIBIRD
+	db 15, FURRET
+	db 12, SNEASEL
+	db 14, SNEASEL
 	end_grass_wildmons
 
 	def_grass_wildmons WHIRL_ISLAND_NW

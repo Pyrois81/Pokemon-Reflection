@@ -318,6 +318,7 @@ KRIS EQU __trainer_class__
 	trainerclass SKIER ; 21
 	const ROXANNE
 	const CLARISSA
+	const NATALIE
 
 	trainerclass TEACHER ; 22
 	const COLETTE
@@ -514,6 +515,7 @@ KRIS EQU __trainer_class__
 	const WALT
 	const RAY
 	const LYLE
+	const FRANK
 
 	trainerclass JUGGLER ; 31
 	const IRWIN1
@@ -602,6 +604,7 @@ KRIS EQU __trainer_class__
 	const SPENCER
 	const TODD4
 	const TODD5
+	const NEIL
 
 	trainerclass EXECUTIVEF ; 37
 	const EXECUTIVEF_1

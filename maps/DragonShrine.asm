@@ -143,7 +143,7 @@ DragonShrineElder3Text:
 	line "but it seems to be"
 	
 	para "stable at the"
-	line "present."
+	line "present time."
 	done
 	
 DragonShrineClairText:

@@ -1,99 +1,93 @@
 	object_const_def
-	const ICEPATHB1F_BOULDER1
-	const ICEPATHB1F_BOULDER2
-	const ICEPATHB1F_BOULDER3
-	const ICEPATHB1F_BOULDER4
-	const ICEPATHB1F_POKE_BALL
+	const ICEPATHB1F_BLACK_BELT
+	const ICEPATHB1F_HIKER
+	const ICEPATHB1F_POKE_BALL1
+	const ICEPATHB1F_POKE_BALL2
 
 IcePathB1F_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_CMDQUEUE, .SetUpStoneTable
 
-.SetUpStoneTable:
-	writecmdqueue .CommandQueue
-	endcallback
-
-.CommandQueue:
-	cmdqueue CMDQUEUE_STONETABLE, .StoneTable ; check if any stones are sitting on a warp
-
-.StoneTable:
-	stonetable 3, ICEPATHB1F_BOULDER1, .Boulder1
-	stonetable 4, ICEPATHB1F_BOULDER2, .Boulder2
-	stonetable 5, ICEPATHB1F_BOULDER3, .Boulder3
-	stonetable 6, ICEPATHB1F_BOULDER4, .Boulder4
-	db -1 ; end
-
-.Boulder1:
-	disappear ICEPATHB1F_BOULDER1
-	clearevent EVENT_BOULDER_IN_ICE_PATH_1A
-	sjump .FinishBoulder
-
-.Boulder2:
-	disappear ICEPATHB1F_BOULDER2
-	clearevent EVENT_BOULDER_IN_ICE_PATH_2A
-	sjump .FinishBoulder
-
-.Boulder3:
-	disappear ICEPATHB1F_BOULDER3
-	clearevent EVENT_BOULDER_IN_ICE_PATH_3A
-	sjump .FinishBoulder
-
-.Boulder4:
-	disappear ICEPATHB1F_BOULDER4
-	clearevent EVENT_BOULDER_IN_ICE_PATH_4A
-	sjump .FinishBoulder
-
-.FinishBoulder:
-	pause 30
-	scall .BoulderFallsThrough
+IcePathB1FBlackBeltScript:
 	opentext
-	writetext IcePathBoulderFellThroughText
+	writetext IcePathB1FBlackBeltText
+	waitbutton
+	closetext
+	end
+	
+TrainerFirebreatherFrank:
+	trainer FIREBREATHER, FRANK, EVENT_BEAT_FIREBREATHER_FRANK, FirebreatherFrankSeenText, FirebreatherFrankBeatenText, 0, .Script
+
+.Script:
+	endifjustbattled
+	opentext
+	writetext FirebreatherFrankAfterBattleText
 	waitbutton
 	closetext
 	end
 
-.BoulderFallsThrough:
-	playsound SFX_STRENGTH
-	earthquake 80
-	end
+IcePathB1FIceHeal:
+	itemball ICE_HEAL
+	
+IcePathB1FEther:
+	itemball ETHER
+	
+IcePathB1FHiddenRareCandy:
+	hiddenitem RARE_CANDY, EVENT_ICE_PATH_B1F_HIDDEN_RARE_CANDY
 
-IcePathB1FBoulder:
-	jumpstd StrengthBoulderScript
-
-IcePathB1FIron:
-	itemball IRON
-
-IcePathB1FHiddenMaxPotion:
-	hiddenitem MAX_POTION, EVENT_ICE_PATH_B1F_HIDDEN_MAX_POTION
-
-IcePathBoulderFellThroughText:
-	text "The boulder fell"
-	line "through."
+IcePathB1FBlackBeltText:
+	text "I'm here doing"
+	line "some endurance"
+	cont "training."
+	
+	para "My sensei says I"
+	line "have to stay down"
+	
+	para "here for 3 days"
+	line "straight before"
+	
+	para "I'll be tough"
+	line "enough!"
 	done
 
+FirebreatherFrankSeenText:
+	text "Are ya cold?"
+	
+	para "A battle'll warm"
+	line "ya right up!"
+	done
+
+FirebreatherFrankBeatenText:
+	text "You're brimming"
+	line "with heat now!"
+	done
+
+FirebreatherFrankAfterBattleText:
+	text "I love hangin' out"
+	line "down here with my"
+	cont "#MON."
+	
+	para "We tend to get too"
+	line "hot outdoors."
+	done
+	
 IcePathB1F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  3, 15, ICE_PATH_1F, 3
-	warp_event 17,  3, ICE_PATH_B2F_MAHOGANY_SIDE, 1
-	warp_event 11,  2, ICE_PATH_B2F_MAHOGANY_SIDE, 3 ; hole
-	warp_event  4,  7, ICE_PATH_B2F_MAHOGANY_SIDE, 4 ; hole
-	warp_event  5, 12, ICE_PATH_B2F_MAHOGANY_SIDE, 5 ; hole
-	warp_event 12, 13, ICE_PATH_B2F_MAHOGANY_SIDE, 6 ; hole
-	warp_event  5, 25, ICE_PATH_1F, 4
-	warp_event 11, 27, ICE_PATH_B2F_BLACKTHORN_SIDE, 1
+	warp_event  5,  5, ICE_PATH_1F, 4
+	warp_event  3, 15, ICE_PATH_1F, 5
+	warp_event 32, 17, ICE_PATH_1F, 3
+	warp_event 33,  3, ICE_PATH_B2F, 1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 17, 30, BGEVENT_ITEM, IcePathB1FHiddenMaxPotion
+	bg_event 27, 12, BGEVENT_ITEM, IcePathB1FHiddenRareCandy
 
 	def_object_events
-	object_event 11,  7, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_1
-	object_event  7,  8, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_2
-	object_event  8,  9, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_3
-	object_event 17,  7, SPRITE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, IcePathB1FBoulder, EVENT_BOULDER_IN_ICE_PATH_4
-	object_event  5, 35, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, IcePathB1FIron, EVENT_ICE_PATH_B1F_IRON
+	object_event 26,  4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, IcePathB1FBlackBeltScript, -1
+	object_event  8, 14, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerFirebreatherFrank, -1 
+	object_event 12,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, IcePathB1FIceHeal, EVENT_ICE_PATH_B1F_ICE_HEAL
+	object_event 28, 17, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, IcePathB1FEther, EVENT_ICE_PATH_B1F_ETHER
