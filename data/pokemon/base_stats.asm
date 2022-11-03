@@ -1,7 +1,7 @@
 ; used in data/pokemon/base_stats/*.asm
 tmhm: MACRO
 ; initialize bytes to 0
-for n, (NUM_TM_HM_TUTOR + 7) / 8
+for n, (NUM_TMS + NUM_HMS + 7) / 8
 _tm{d:n} = 0
 endr
 ; set bits of bytes
@@ -16,7 +16,7 @@ _tm{d:n} = _tm{d:n} | (1 << i)
 	shift
 endr
 ; output bytes
-for n, (NUM_TM_HM_TUTOR + 7) / 8
+for n, (NUM_TMS + NUM_HMS + 7) / 8
 	db _tm{d:n}
 endr
 ENDM

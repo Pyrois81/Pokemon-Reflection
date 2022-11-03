@@ -13,7 +13,7 @@ MalePlayerNameArray:
 	db "CHRIS@"
 	db "JIMMY@"
 	db "ALLEN@"
-	db "JAKE@"
+	db "FLORIAN@"
 	db 2 ; title indent
 	db " NAME @" ; title
 

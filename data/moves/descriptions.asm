@@ -39,7 +39,6 @@ MoveDescriptions::
 	dw TakeDownDescription
 	dw ThrashDescription
 	dw DoubleEdgeDescription
-	dw TailWhipDescription
 	dw PoisonStingDescription
 	dw TwineedleDescription
 	dw PinMissileDescription
@@ -106,11 +105,9 @@ MoveDescriptions::
 	dw ScreechDescription
 	dw DoubleTeamDescription
 	dw RecoverDescription
-	dw HardenDescription
 	dw MinimizeDescription
 	dw SmokescreenDescription
 	dw ConfuseRayDescription
-	dw WithdrawDescription
 	dw DefenseCurlDescription
 	dw BarrierDescription
 	dw LightScreenDescription
@@ -159,7 +156,6 @@ MoveDescriptions::
 	dw RestDescription
 	dw RockSlideDescription
 	dw HyperFangDescription
-	dw SharpenDescription
 	dw ConversionDescription
 	dw TriAttackDescription
 	dw SuperFangDescription
@@ -169,8 +165,6 @@ MoveDescriptions::
 	dw SketchDescription
 	dw TripleKickDescription
 	dw ThiefDescription
-	dw SpiderWebDescription
-	dw MindReaderDescription
 	dw NightmareDescription
 	dw FlameWheelDescription
 	dw SnoreDescription
@@ -208,7 +202,6 @@ MoveDescriptions::
 	dw RolloutDescription
 	dw FalseSwipeDescription
 	dw SwaggerDescription
-	dw MilkDrinkDescription
 	dw SparkDescription
 	dw FuryCutterDescription
 	dw SteelWingDescription
@@ -252,17 +245,23 @@ MoveDescriptions::
 	dw RockSmashDescription
 	dw WhirlpoolDescription
 	dw BeatUpDescription
+	dw SignalBeamDescription
+	dw XScissorDescription
+	dw ShadowClawDescription
+	dw PoisonJabDescription
+	dw AirSlashDescription
+	dw EarthPowerDescription
+	dw FlashCannonDescription
+	dw SeedBombDescription
+	dw ZenHeadbuttDescription
+	dw DarkPulseDescription
+	
 	assert_table_length NUM_ATTACKS
-	dw MoveFCDescription
-	dw MoveFDDescription
-	dw MoveFEDescription
+	
 	dw MoveFFDescription
 	dw Move00Description
 	assert_table_length $100
 
-MoveFCDescription:
-MoveFDDescription:
-MoveFEDescription:
 MoveFFDescription:
 Move00Description:
 	db "?@"
@@ -418,10 +417,6 @@ ThrashDescription:
 DoubleEdgeDescription:
 	db   "A tackle that also"
 	next "hurts the user.@"
-
-TailWhipDescription:
-	db   "Lowers the foe's"
-	next "DEFENSE.@"
 
 PoisonStingDescription:
 	db   "An attack that may"
@@ -687,10 +682,6 @@ RecoverDescription:
 	db   "Restores HP by 1/2"
 	next "the max HP.@"
 
-HardenDescription:
-	db   "Raises the user's"
-	next "DEFENSE.@"
-
 MinimizeDescription:
 	db   "Heightens evasive-"
 	next "ness.@"
@@ -702,10 +693,6 @@ SmokescreenDescription:
 ConfuseRayDescription:
 	db   "A move that causes"
 	next "confusion.@"
-
-WithdrawDescription:
-	db   "Heightens the"
-	next "user's DEFENSE.@"
 
 DefenseCurlDescription:
 	db   "Heightens the"
@@ -899,10 +886,6 @@ HyperFangDescription:
 	db   "An attack that may"
 	next "cause flinching.@"
 
-SharpenDescription:
-	db   "A move that raises"
-	next "the user's ATTACK.@"
-
 ConversionDescription:
 	db   "Change user's type"
 	next "to a move's type.@"
@@ -938,14 +921,6 @@ TripleKickDescription:
 ThiefDescription:
 	db   "An attack that may"
 	next "steal a held item.@"
-
-SpiderWebDescription:
-	db   "Prevents fleeing"
-	next "or switching.@"
-
-MindReaderDescription:
-	db   "Ensures the next"
-	next "attack will hit.@"
 
 NightmareDescription:
 	db   "A sleeper loses"
@@ -1094,10 +1069,6 @@ FalseSwipeDescription:
 SwaggerDescription:
 	db   "Causes confusion"
 	next "and raises ATTACK.@"
-
-MilkDrinkDescription:
-	db   "Restores HP by 1/2"
-	next "the max HP.@"
 
 SparkDescription:
 	db   "An attack that may"
@@ -1270,3 +1241,43 @@ WhirlpoolDescription:
 BeatUpDescription:
 	db   "Party #MON join"
 	next "in the attack.@"
+	
+SignalBeamDescription:
+	db	 "A strange beam"
+	next "that may confuse.@"
+	
+XScissorDescription:
+	db	 "Slashes the foe as"
+	next "if with scissors.@"
+	
+ShadowClawDescription:
+	db   "Has a high criti-"
+	next "cal hit ratio.@"
+	
+PoisonJabDescription:
+	db	 "Stabs the foe."
+	next "Chance to poison.@"
+	
+AirSlashDescription:
+	db	 "Hits with an air"
+	next "blade. May flinch.@"
+	
+EarthPowerDescription:
+	db	 "Chance to lower"
+	next "target's SPCL.DEF.@"
+	
+FlashCannonDescription:
+	db	 "Chance to lower"
+	next "target's SPCL.DEF.@"
+	
+SeedBombDescription:
+	db	 "Rains down seeds"
+	next "from above.@"
+	
+ZenHeadbuttDescription:
+	db	 "Focuses and rams"
+	next "foe. May flinch.@"
+
+DarkPulseDescription:
+	db	 "Releases a dark"
+	next "aura. May flinch.@"

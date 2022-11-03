@@ -144,7 +144,6 @@ SpecialsPointers::
 	add_special Function101220
 	add_special Function101225
 	add_special Function101231
-	add_special MoveTutor
 	add_special OmanyteChamber
 	add_special Function11c1ab
 	add_special BattleTowerAction

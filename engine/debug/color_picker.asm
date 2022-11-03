@@ -735,7 +735,7 @@ DebugColor_TMHMJoypad:
 
 .up
 	ld a, [wDebugColorCurTMHM]
-	cp NUM_TM_HM_TUTOR - 1
+	cp (NUM_TMS + NUM_HMS) - 1
 	jr z, .wrap_down
 	inc a
 	jr .done
@@ -752,7 +752,7 @@ DebugColor_TMHMJoypad:
 	jr .done
 
 .wrap_up
-	ld a, NUM_TM_HM_TUTOR - 1
+	ld a, (NUM_TMS + NUM_HMS) - 1
 
 .done
 	ld [wDebugColorCurTMHM], a

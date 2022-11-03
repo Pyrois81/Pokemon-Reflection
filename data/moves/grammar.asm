@@ -7,10 +7,8 @@ MoveGrammar:
 	db SWORDS_DANCE
 	db GROWTH
 	db STRENGTH
-	db HARDEN
 	db MINIMIZE
 	db SMOKESCREEN
-	db WITHDRAW
 	db DEFENSE_CURL
 	db EGG_BOMB
 	db SMOG
@@ -20,9 +18,7 @@ MoveGrammar:
 	db ACID_ARMOR
 	db BONEMERANG
 	db REST
-	db SHARPEN
 	db SUBSTITUTE
-	db MIND_READER
 	db SNORE
 	db PROTECT
 	db SPIKES
@@ -66,7 +62,6 @@ MoveGrammar:
 	db HORN_ATTACK
 	db WRAP
 	db THRASH
-	db TAIL_WHIP
 	db LEER
 	db BITE
 	db GROWL
@@ -87,7 +82,6 @@ MoveGrammar:
 	db POISON_GAS
 	db BUBBLE
 	db SLASH
-	db SPIDER_WEB
 	db NIGHTMARE
 	db CURSE
 	db FORESIGHT

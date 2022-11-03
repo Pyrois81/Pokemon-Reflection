@@ -3,7 +3,6 @@
 
 StallMoves:
 	db SWORDS_DANCE
-	db TAIL_WHIP
 	db LEER
 	db GROWL
 	db DISABLE
@@ -17,8 +16,6 @@ StallMoves:
 	db RAGE
 	db MIMIC
 	db SCREECH
-	db HARDEN
-	db WITHDRAW
 	db DEFENSE_CURL
 	db BARRIER
 	db LIGHT_SCREEN
@@ -30,7 +27,6 @@ StallMoves:
 	db TRANSFORM
 	db SPLASH
 	db ACID_ARMOR
-	db SHARPEN
 	db CONVERSION
 	db SUBSTITUTE
 	db FLAME_WHEEL

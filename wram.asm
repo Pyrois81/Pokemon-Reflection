@@ -2385,7 +2385,7 @@ wUsedSprites:: ds SPRITE_GFX_LIST_CAPACITY * 2
 wUsedSpritesEnd::
 
 NEXTU
-	ds 31
+	ds 13
 wd173:: db ; related to command queue type 3
 ENDU
 
@@ -2656,17 +2656,15 @@ wBaseItems::
 wBaseItem1:: db
 wBaseItem2:: db
 wBaseGender:: db
-wBaseUnknown1:: db
 wBaseEggSteps:: db
-wBaseUnknown2:: db
 wBasePicSize:: db
-wBaseUnusedFrontpic:: dw
-wBaseUnusedBackpic:: dw
 wBaseGrowthRate:: db
 wBaseEggGroups:: db
-wBaseTMHM:: flag_array NUM_TM_HM_TUTOR
+wBaseTMHM:: flag_array (NUM_TMS + NUM_HMS)
 wCurBaseDataEnd::
 	assert wCurBaseDataEnd - wCurBaseData == BASE_DATA_SIZE
+	
+	ds 6
 
 wCurDamage:: dw
 
@@ -3297,7 +3295,7 @@ wPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
 endr
 wPartyMonNicknamesEnd::
 
-	ds 22
+	ds 4
 
 wPokedexCaught:: flag_array NUM_POKEMON
 wEndPokedexCaught::

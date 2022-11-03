@@ -146,56 +146,42 @@
 	const CHARCOAL     ; 8a
 	const BERRY_JUICE  ; 8b
 	const SCOPE_LENS   ; 8c
-	const ITEM_8D      ; 8d
-	const ITEM_8E      ; 8e
-	const METAL_COAT   ; 8f
-	const DRAGON_FANG  ; 90
-	const ITEM_91      ; 91
-	const LEFTOVERS    ; 92
-	const ITEM_93      ; 93
-	const ITEM_94      ; 94
-	const ITEM_95      ; 95
-	const MYSTERYBERRY ; 96
-	const DRAGON_SCALE ; 97
-	const BERSERK_GENE ; 98
-	const ITEM_99      ; 99
-	const ITEM_9A      ; 9a
-	const ITEM_9B      ; 9b
-	const SACRED_ASH   ; 9c
-	const HEAVY_BALL   ; 9d
-	const FLOWER_MAIL  ; 9e
-	const LEVEL_BALL   ; 9f
-	const LURE_BALL    ; a0
-	const FAST_BALL    ; a1
-	const ITEM_A2      ; a2
-	const LIGHT_BALL   ; a3
-	const FRIEND_BALL  ; a4
-	const MOON_BALL    ; a5
-	const LOVE_BALL    ; a6
-	const NORMAL_BOX   ; a7
-	const GORGEOUS_BOX ; a8
-	const SUN_STONE    ; a9
-	const POLKADOT_BOW ; aa
-	const ITEM_AB      ; ab
-	const UP_GRADE     ; ac
-	const BERRY        ; ad
-	const GOLD_BERRY   ; ae
-	const SQUIRTBOTTLE ; af
-	const ITEM_B0      ; b0
-	const PARK_BALL    ; b1
-	const RAINBOW_WING ; b2
-	const ITEM_B3      ; b3
-	const BRICK_PIECE  ; b4
-	const SURF_MAIL    ; b5
-	const LITEBLUEMAIL ; b6
-	const PORTRAITMAIL ; b7
-	const LOVELY_MAIL  ; b8
-	const EON_MAIL     ; b9
-	const MORPH_MAIL   ; ba
-	const BLUESKY_MAIL ; bb
-	const MUSIC_MAIL   ; bc
-	const MIRAGE_MAIL  ; bd
-	const ITEM_BE      ; be
+	const METAL_COAT   ; 8d
+	const DRAGON_FANG  ; 8e
+	const LEFTOVERS    ; 8f
+	const MYSTERYBERRY ; 90
+	const DRAGON_SCALE ; 91
+	const BERSERK_GENE ; 92
+	const SACRED_ASH   ; 93
+	const HEAVY_BALL   ; 94
+	const FLOWER_MAIL  ; 95
+	const LEVEL_BALL   ; 96
+	const LURE_BALL    ; 97
+	const FAST_BALL    ; 98
+	const LIGHT_BALL   ; 99
+	const FRIEND_BALL  ; 9a
+	const MOON_BALL    ; 9b
+	const LOVE_BALL    ; 9c
+	const NORMAL_BOX   ; 9d
+	const GORGEOUS_BOX ; 9e
+	const SUN_STONE    ; 9f
+	const POLKADOT_BOW ; a0
+	const UP_GRADE     ; a1
+	const BERRY        ; a2
+	const GOLD_BERRY   ; a3
+	const SQUIRTBOTTLE ; a4
+	const PARK_BALL    ; a5
+	const RAINBOW_WING ; a6
+	const BRICK_PIECE  ; a7
+	const SURF_MAIL    ; a8
+	const LITEBLUEMAIL ; a9
+	const PORTRAITMAIL ; aa
+	const LOVELY_MAIL  ; ab
+	const EON_MAIL     ; ac
+	const MORPH_MAIL   ; ad
+	const BLUESKY_MAIL ; ae
+	const MUSIC_MAIL   ; af
+	const MIRAGE_MAIL  ; b0
 NUM_ITEMS EQU const_value - 1
 
 __tmhm_value__ = 1
@@ -207,7 +193,7 @@ ENDM
 
 add_tm: MACRO
 ; Defines three constants:
-; - TM_\1: the item id, starting at $bf
+; - TM_\1: the item id, starting at $b1
 ; - \1_TMNUM: the learnable TM/HM flag, starting at 1
 ; - TM##_MOVE: alias for the move id, equal to the value of \1
 	const TM_\1
@@ -217,64 +203,88 @@ ENDM
 
 ; see data/moves/tmhm_moves.asm for moves
 TM01 EQU const_value
-	const ITEM_C3       ; c3
-	const ITEM_DC       ; dc
-	add_tm DYNAMICPUNCH ; bf
-	add_tm HEADBUTT     ; c0
-	add_tm CURSE        ; c1
-	add_tm ROLLOUT      ; c2
-	add_tm ROAR         ; c4
-	add_tm TOXIC        ; c5
-	add_tm ZAP_CANNON   ; c6
-	add_tm ROCK_SMASH   ; c7
-	add_tm PSYCH_UP     ; c8
-	add_tm HIDDEN_POWER ; c9
-	add_tm SUNNY_DAY    ; ca
-	add_tm SWEET_SCENT  ; cb
-	add_tm SNORE        ; cc
-	add_tm BLIZZARD     ; cd
-	add_tm HYPER_BEAM   ; ce
-	add_tm ICY_WIND     ; cf
-	add_tm PROTECT      ; d0
-	add_tm RAIN_DANCE   ; d1
-	add_tm GIGA_DRAIN   ; d2
-	add_tm ENDURE       ; d3
-	add_tm FRUSTRATION  ; d4
-	add_tm SOLARBEAM    ; d5
-	add_tm IRON_TAIL    ; d6
-	add_tm DRAGONBREATH ; d7
-	add_tm THUNDER      ; d8
-	add_tm EARTHQUAKE   ; d9
-	add_tm RETURN       ; da
-	add_tm DIG          ; db
-	add_tm PSYCHIC_M    ; dd
-	add_tm SHADOW_BALL  ; de
-	add_tm MUD_SLAP     ; df
-	add_tm DOUBLE_TEAM  ; e0
-	add_tm ICE_PUNCH    ; e1
-	add_tm SWAGGER      ; e2
-	add_tm SLEEP_TALK   ; e3
-	add_tm SLUDGE_BOMB  ; e4
-	add_tm SANDSTORM    ; e5
-	add_tm FIRE_BLAST   ; e6
-	add_tm SWIFT        ; e7
-	add_tm DEFENSE_CURL ; e8
-	add_tm THUNDERPUNCH ; e9
-	add_tm DREAM_EATER  ; ea
-	add_tm DETECT       ; eb
-	add_tm REST         ; ec
-	add_tm ATTRACT      ; ed
-	add_tm THIEF        ; ee
-	add_tm STEEL_WING   ; ef
-	add_tm FIRE_PUNCH   ; f0
-	add_tm FURY_CUTTER  ; f1
-	add_tm NIGHTMARE    ; f2
+	add_tm DYNAMICPUNCH ; b1
+	add_tm HEADBUTT     ; b2
+	add_tm CURSE        ; b3
+	add_tm ROLLOUT      ; b4
+	add_tm ROAR         ; b5
+	add_tm TOXIC        ; b6
+	add_tm ZAP_CANNON   ; b7
+	add_tm ROCK_SMASH   ; b8
+	add_tm PSYCH_UP     ; b9
+	add_tm HIDDEN_POWER ; ba
+	add_tm SUNNY_DAY    ; bb
+	add_tm SWEET_SCENT  ; bc
+	add_tm SNORE        ; bd
+	add_tm BLIZZARD     ; be
+	add_tm HYPER_BEAM   ; bf
+	add_tm ICY_WIND     ; c0
+	add_tm PROTECT      ; c1
+	add_tm RAIN_DANCE   ; c2
+	add_tm GIGA_DRAIN   ; c3
+	add_tm ENDURE       ; c4
+	add_tm FRUSTRATION  ; c5
+	add_tm SOLARBEAM    ; c6
+	add_tm IRON_TAIL    ; c7
+	add_tm DRAGONBREATH ; c8
+	add_tm THUNDER      ; c9
+	add_tm EARTHQUAKE   ; ca
+	add_tm RETURN       ; cb
+	add_tm DIG          ; cc
+	add_tm PSYCHIC_M    ; cd
+	add_tm SHADOW_BALL  ; ce
+	add_tm MUD_SLAP     ; cf
+	add_tm DOUBLE_TEAM  ; d0
+	add_tm ICE_PUNCH    ; d1
+	add_tm SWAGGER      ; d2
+	add_tm SLEEP_TALK   ; d3
+	add_tm SLUDGE_BOMB  ; d4
+	add_tm SANDSTORM    ; d5
+	add_tm FIRE_BLAST   ; d6
+	add_tm SWIFT        ; d7
+	add_tm DEFENSE_CURL ; d8
+	add_tm THUNDERPUNCH ; d9
+	add_tm DREAM_EATER  ; da
+	add_tm DETECT       ; db
+	add_tm REST         ; dc
+	add_tm ATTRACT      ; dd
+	add_tm THIEF        ; de
+	add_tm STEEL_WING   ; df
+	add_tm FIRE_PUNCH   ; e0
+	add_tm FURY_CUTTER  ; e1
+	add_tm NIGHTMARE    ; e2
+	add_tm CUT			; e3
+	add_tm FLASH		; e4
+	add_tm WHIRLPOOL	; e5
+	add_tm WATERFALL	; e6
+	add_tm ANCIENTPOWER	; e7
+	add_tm THUNDER_WAVE	; e8
+	add_tm FLAMETHROWER	; e9
+	add_tm THUNDERBOLT	; ea
+	add_tm ICE_BEAM		; eb
+	add_tm RAZOR_LEAF	; ec
+	add_tm CRUNCH		; ed
+	add_tm FLAME_WHEEL	; ee
+	add_tm MEGAHORN		; ef
+	add_tm MOONLIGHT	; f0
+	add_tm VITAL_THROW	; f1
+	add_tm TWISTER		; f2
+	add_tm DRILL_PECK	; f3
+	add_tm HAZE			; f4
+	add_tm ROCK_SLIDE	; f5
+	add_tm HYPNOSIS		; f6
+	add_tm WHIRLWIND	; f7
+	add_tm SPARK		; f8
+	add_tm REFLECT		; f9
+	add_tm LIGHT_SCREEN	; fa
+	add_tm FALSE_SWIPE	; fb
+	
 NUM_TMS EQU __tmhm_value__ - 1
 
 add_hm: MACRO
 ; Defines three constants:
-; - HM_\1: the item id, starting at $f3
-; - \1_TMNUM: the learnable TM/HM flag, starting at 51
+; - HM_\1: the item id, starting at $fc
+; - \1_TMNUM: the learnable TM/HM flag, starting at 76
 ; - HM##_MOVE: alias for the move id, equal to the value of \1
 	const HM_\1
 HM_VALUE = __tmhm_value__ - NUM_TMS
@@ -283,33 +293,10 @@ HM{02d:HM_VALUE}_MOVE = \1
 ENDM
 
 HM01 EQU const_value
-	add_hm CUT          ; f3
-	add_hm FLY          ; f4
-	add_hm SURF         ; f5
-	add_hm STRENGTH     ; f6
-	add_hm FLASH        ; f7
-	add_hm WHIRLPOOL    ; f8
-	add_hm WATERFALL    ; f9
+	add_hm FLY          ; fc
+	add_hm SURF         ; fd
+	add_hm STRENGTH     ; fe
 NUM_HMS EQU __tmhm_value__ - NUM_TMS - 1
-
-add_mt: MACRO
-; Defines two constants:
-; - \1_TMNUM: the learnable TM/HM flag, starting at 58
-; - MT##_MOVE: alias for the move id, equal to the value of \1
-MT_VALUE = __tmhm_value__ - NUM_TMS - NUM_HMS
-MT{02d:MT_VALUE}_MOVE = \1
-	add_tmnum \1
-ENDM
-
-MT01 EQU const_value
-	add_mt FLAMETHROWER
-	add_mt THUNDERBOLT
-	add_mt ICE_BEAM
-NUM_TUTORS = __tmhm_value__ - NUM_TMS - NUM_HMS - 1
-
-NUM_TM_HM_TUTOR EQU NUM_TMS + NUM_HMS + NUM_TUTORS
-
-	const ITEM_FA       ; fa
 
 USE_SCRIPT_VAR EQU $00
 ITEM_FROM_MEM  EQU $ff

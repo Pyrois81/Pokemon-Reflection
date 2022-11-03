@@ -17,11 +17,4 @@ for n, 1, NUM_HMS + 1
 endr
 	assert_table_length NUM_TMS + NUM_HMS
 
-; Move tutors
-n = 1
-for n, 1, NUM_TUTORS + 1
-	db MT{02d:n}_MOVE
-endr
-	assert_table_length NUM_TM_HM_TUTOR
-
 	db 0 ; end

@@ -265,8 +265,6 @@ InitBattleAnimBuffer:
 	cp KINESIS
 	jr z, .do_sub
 	cp SOFTBOILED
-	jr z, .do_sub
-	cp MILK_DRINK
 	jr nz, .no_sub
 .do_sub
 	pop af
