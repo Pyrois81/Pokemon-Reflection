@@ -1,11 +1,11 @@
-Music_BattleTowerTheme:
+Music_RocketTowerTheme:
 	channel_count 4
-	channel 1, Music_BattleTowerTheme_Ch1
-	channel 2, Music_BattleTowerTheme_Ch2
-	channel 3, Music_BattleTowerTheme_Ch3
-	channel 4, Music_BattleTowerTheme_Ch4
+	channel 1, Music_RocketTowerTheme_Ch1
+	channel 2, Music_RocketTowerTheme_Ch2
+	channel 3, Music_RocketTowerTheme_Ch3
+	channel 4, Music_RocketTowerTheme_Ch4
 
-Music_BattleTowerTheme_Ch1:
+Music_RocketTowerTheme_Ch1:
 	tempo 141
 	volume 7, 7
 	pitch_offset 1
@@ -202,7 +202,7 @@ Music_BattleTowerTheme_Ch1:
 	note A_, 4
 	sound_ret
 
-Music_BattleTowerTheme_Ch2:
+Music_RocketTowerTheme_Ch2:
 	vibrato 18, 3, 4
 .mainloop:
 	duty_cycle 3
@@ -357,7 +357,7 @@ Music_BattleTowerTheme_Ch2:
 	note A_, 4
 	sound_ret
 
-Music_BattleTowerTheme_Ch3:
+Music_RocketTowerTheme_Ch3:
 	vibrato 18, 3, 4
 	note_type 6, 1, 6
 .mainloop:
@@ -583,7 +583,7 @@ Music_BattleTowerTheme_Ch3:
 	rest 2
 	sound_ret
 
-Music_BattleTowerTheme_Ch4:
+Music_RocketTowerTheme_Ch4:
 	toggle_noise 3
 	drum_speed 12
 .mainloop:

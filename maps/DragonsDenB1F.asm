@@ -113,8 +113,8 @@ DragonsDenB1FHiddenRevive:
 DragonsDenB1FHiddenMaxPotion:
 	hiddenitem MAX_POTION, EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_POTION
 
-DragonsDenB1FHiddenMaxElixer:
-	hiddenitem MAX_ELIXER, EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_ELIXER
+DragonsDenB1FHiddenMaxElixir:
+	hiddenitem MAX_ELIXIR, EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_ELIXIR
 
 DragonShrineSignpostText:
 	text "DRAGON SHRINE"
@@ -201,7 +201,7 @@ CooltrainerfCaraAfterBattleText:
 	line "trainer and gain"
 
 	para "our MASTER's"
-	line "approval."
+	line "respect."
 	done
 
 TwinsLeaandpia1SeenText:
@@ -246,7 +246,7 @@ DragonsDenB1F_MapEvents:
 	bg_event 17, 29, BGEVENT_READ, DragonShrineSignpost
 	bg_event 19,  9, BGEVENT_ITEM, DragonsDenB1FHiddenRevive
 	bg_event 11, 17, BGEVENT_ITEM, DragonsDenB1FHiddenMaxPotion
-	bg_event 26, 16, BGEVENT_ITEM, DragonsDenB1FHiddenMaxElixer
+	bg_event 26, 16, BGEVENT_ITEM, DragonsDenB1FHiddenMaxElixir
 
 	def_object_events
 	object_event 34, 21, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, DragonsDenB1FDragonFang, EVENT_DRAGONS_DEN_B1F_DRAGON_FANG

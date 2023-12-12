@@ -22,8 +22,6 @@ StdScripts::
 	add_stdscript SmashRockScript
 	add_stdscript PokecenterSignScript
 	add_stdscript MartSignScript
-	add_stdscript GoldenrodRocketsScript
-	add_stdscript RadioTowerRocketsScript
 	add_stdscript ElevatorButtonScript
 	add_stdscript DayToTextScript
 	add_stdscript BugContestResultsWarpScript
@@ -290,21 +288,6 @@ DayToTextScript:
 .SaturdayText:
 	db "SATURDAY@"
 
-GoldenrodRocketsScript:
-	clearevent EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
-	end
-
-RadioTowerRocketsScript:
-	setflag ENGINE_ROCKETS_IN_RADIO_TOWER
-	setevent EVENT_GOLDENROD_CITY_CIVILIANS
-	setevent EVENT_RADIO_TOWER_BLACKBELT_BLOCKS_STAIRS
-	clearevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	clearevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
-	setevent EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
-	specialphonecall SPECIALCALL_WEIRDBROADCAST
-	setmapscene MAHOGANY_TOWN, SCENE_FINISHED
-	end
-
 BugContestResultsWarpScript:
 	special ClearBGPalettes
 	scall BugContestResults_CopyContestantsToResults
@@ -479,18 +462,15 @@ BugContestResults_CopyContestantsToResults:
 
 InitializeEventsScript:
 	setevent EVENT_EARLS_ACADEMY_EARL
-	setevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	setevent EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
-	setevent EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	setevent EVENT_ILEX_FOREST_APPRENTICE
 	setevent EVENT_ILEX_FOREST_FARFETCHD
 	setevent EVENT_ILEX_FOREST_CHARCOAL_MASTER
-	setevent EVENT_MAHOGANY_MART_LANCE_AND_DRAGONITE
-	setevent EVENT_TEAM_ROCKET_BASE_B2F_GRUNT_WITH_EXECUTIVE
-	setevent EVENT_TEAM_ROCKET_BASE_B2F_EXECUTIVE
-	setevent EVENT_TEAM_ROCKET_BASE_B2F_DRAGONITE
 	setevent EVENT_RIVAL_TEAM_ROCKET_BASE
 	setevent EVENT_BLACKTHORN_CITY_SUPER_NERD_BLOCKS_GYM
+	setevent EVENT_LAKE_OF_RAGE_THUNDERSTONE
+	setevent EVENT_DANCE_THEATRE_GOT_STONE
+	setevent EVENT_ECRUTEAK_CITY_SUDOWOODO1
+	setevent EVENT_ECRUTEAK_CITY_SUDOWOODO2
 	setevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	setevent EVENT_RIVAL_AZALEA_TOWN
@@ -526,7 +506,6 @@ InitializeEventsScript:
 	setevent EVENT_FAST_SHIP_1F_GENTLEMAN
 	setevent EVENT_FAST_SHIP_B1F_SAILOR_RIGHT
 	setevent EVENT_FAST_SHIP_CABINS_NNW_NNE_NE_SAILOR
-	setevent EVENT_LAKE_OF_RAGE_CIVILIANS
 	setevent EVENT_MAHOGANY_MART_OWNERS
 	setevent EVENT_TIN_TOWER_ROOF_HO_OH
 	setevent EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
@@ -541,7 +520,6 @@ InitializeEventsScript:
 	setevent EVENT_MET_BILL
 	setevent EVENT_ECRUTEAK_POKE_CENTER_BILL
 	setevent EVENT_MYSTERY_GIFT_DELIVERY_GUY
-	setevent EVENT_LAKE_OF_RAGE_LANCE
 	setevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_1
 	setevent EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_BLOCKED_OFF
 	setevent EVENT_RIVAL_OLIVINE_CITY
@@ -549,7 +527,6 @@ InitializeEventsScript:
 	setevent EVENT_RIVAL_DRAGONS_DEN
 	setevent EVENT_LANCES_ROOM_OAK_AND_MARY
 	setevent EVENT_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TWIN_1
-	setevent EVENT_BURNED_TOWER_B1F_BEASTS_1
 	setevent EVENT_RED_IN_MT_SILVER
 	setevent EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
 	setevent EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
@@ -557,13 +534,12 @@ InitializeEventsScript:
 	setevent EVENT_OLIVINE_PORT_PASSAGE_POKEFAN_M
 	setevent EVENT_KURTS_HOUSE_KURT_2
 	setevent EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
-	setevent EVENT_RANG_CLEAR_BELL_1
 	setevent EVENT_FLORIA_AT_FLOWER_SHOP
 	setevent EVENT_FLORIA_AT_SUDOWOODO
 	setevent EVENT_GOLDENROD_CITY_MOVE_TUTOR
 	setevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
 	setevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
-	setevent EVENT_BATTLE_TOWER_BATTLE_ROOM_YOUNGSTER
+	setevent EVENT_ROCKET_TOWER_BATTLE_ROOM_YOUNGSTER
 	setevent EVENT_PLAYERS_NEIGHBORS_HOUSE_NEIGHBOR
 	setevent EVENT_AZALEA_TOWN_KURT
 	setevent EVENT_AZALEA_TOWN_KURT
@@ -571,21 +547,12 @@ InitializeEventsScript:
 	setevent EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_IN_WALKWAY
 	setevent EVENT_ILEX_FOREST_LASS
 	setevent EVENT_GOLDENROD_SALE_OFF
-	setevent EVENT_ECRUTEAK_CITY_GRAMPS
-	setevent EVENT_EUSINE_IN_BURNED_TOWER
 	setevent EVENT_PLAYERS_HOUSE_MOM_2
-	setevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
 	setevent EVENT_CIANWOOD_CITY_EUSINE
-	setevent EVENT_TIN_TOWER_1F_EUSINE
-	setevent EVENT_TIN_TOWER_1F_WISE_TRIO_1
-	setevent EVENT_TIN_TOWER_1F_WISE_TRIO_2
 	setevent EVENT_SET_WHEN_FOUGHT_HO_OH
 	setevent EVENT_SAW_SUICUNE_ON_ROUTE_36
-	setevent EVENT_SAW_SUICUNE_ON_ROUTE_42
 	setevent EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
-	setevent EVENT_BATTLE_TOWER_OUTSIDE_SAILOR
-	setflag ENGINE_ROCKET_SIGNAL_ON_CH20
-	setflag ENGINE_ROCKETS_IN_MAHOGANY
+	setevent EVENT_ROCKET_TOWER_OUTSIDE_SAILOR
 	variablesprite SPRITE_FUCHSIA_GYM_1, SPRITE_JANINE
 	variablesprite SPRITE_FUCHSIA_GYM_2, SPRITE_JANINE
 	variablesprite SPRITE_FUCHSIA_GYM_3, SPRITE_JANINE
@@ -626,7 +593,6 @@ AskNumber1MScript:
 	ifequal PHONE_FISHER_TULLY, .Tully
 	ifequal PHONE_POKEMANIAC_BRENT, .Brent
 	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
-	ifequal PHONE_FISHER_WILTON, .Wilton
 	ifequal PHONE_BLACKBELT_KENJI, .Kenji
 	ifequal PHONE_HIKER_PARRY, .Parry
 
@@ -681,9 +647,6 @@ AskNumber1MScript:
 .Vance:
 	farwritetext VanceAskNumber1Text
 	end
-.Wilton:
-	farwritetext WiltonAskNumber1Text
-	end
 .Kenji:
 	farwritetext KenjiAskNumber1Text
 	end
@@ -711,7 +674,6 @@ AskNumber2MScript:
 	ifequal PHONE_FISHER_TULLY, .Tully
 	ifequal PHONE_POKEMANIAC_BRENT, .Brent
 	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
-	ifequal PHONE_FISHER_WILTON, .Wilton
 	ifequal PHONE_BLACKBELT_KENJI, .Kenji
 	ifequal PHONE_HIKER_PARRY, .Parry
 
@@ -766,9 +728,6 @@ AskNumber2MScript:
 .Vance:
 	farwritetext VanceAskNumber2Text
 	end
-.Wilton:
-	farwritetext WiltonAskNumber2Text
-	end
 .Kenji:
 	farwritetext KenjiAskNumber2Text
 	end
@@ -802,7 +761,6 @@ NumberAcceptedMScript:
 	ifequal PHONE_FISHER_TULLY, .Tully
 	ifequal PHONE_POKEMANIAC_BRENT, .Brent
 	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
-	ifequal PHONE_FISHER_WILTON, .Wilton
 	ifequal PHONE_BLACKBELT_KENJI, .Kenji
 	ifequal PHONE_HIKER_PARRY, .Parry
 
@@ -891,11 +849,6 @@ NumberAcceptedMScript:
 	waitbutton
 	closetext
 	end
-.Wilton:
-	farwritetext WiltonNumberAcceptedText
-	waitbutton
-	closetext
-	end
 .Kenji:
 	farwritetext KenjiNumberAcceptedText
 	waitbutton
@@ -926,7 +879,6 @@ NumberDeclinedMScript:
 	ifequal PHONE_FISHER_TULLY, .Tully
 	ifequal PHONE_POKEMANIAC_BRENT, .Brent
 	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
-	ifequal PHONE_FISHER_WILTON, .Wilton
 	ifequal PHONE_BLACKBELT_KENJI, .Kenji
 	ifequal PHONE_HIKER_PARRY, .Parry
 
@@ -1015,11 +967,6 @@ NumberDeclinedMScript:
 	waitbutton
 	closetext
 	end
-.Wilton:
-	farwritetext WiltonNumberDeclinedText
-	waitbutton
-	closetext
-	end
 .Kenji:
 	farwritetext KenjiNumberDeclinedText
 	waitbutton
@@ -1050,7 +997,6 @@ PhoneFullMScript:
 	ifequal PHONE_FISHER_TULLY, .Tully
 	ifequal PHONE_POKEMANIAC_BRENT, .Brent
 	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
-	ifequal PHONE_FISHER_WILTON, .Wilton
 	ifequal PHONE_BLACKBELT_KENJI, .Kenji
 	ifequal PHONE_HIKER_PARRY, .Parry
 
@@ -1139,11 +1085,6 @@ PhoneFullMScript:
 	waitbutton
 	closetext
 	end
-.Wilton:
-	farwritetext WiltonPhoneFullText
-	waitbutton
-	closetext
-	end
 .Kenji:
 	farwritetext KenjiPhoneFullText
 	waitbutton
@@ -1172,7 +1113,6 @@ RematchMScript:
 	ifequal PHONE_FISHER_TULLY, .Tully
 	ifequal PHONE_POKEMANIAC_BRENT, .Brent
 	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
-	ifequal PHONE_FISHER_WILTON, .Wilton
 	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
@@ -1250,11 +1190,6 @@ RematchMScript:
 	waitbutton
 	closetext
 	end
-.Wilton:
-	farwritetext WiltonRematchText
-	waitbutton
-	closetext
-	end
 .Parry:
 	farwritetext ParryRematchText
 	waitbutton
@@ -1268,7 +1203,6 @@ GiftMScript:
 	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
 	ifequal PHONE_POKEFANM_DEREK, .Derek
 	ifequal PHONE_FISHER_TULLY, .Tully
-	ifequal PHONE_FISHER_WILTON, .Wilton
 	ifequal PHONE_BLACKBELT_KENJI, .Kenji
 
 .Jose:
@@ -1291,10 +1225,6 @@ GiftMScript:
 	farwritetext TullyGiftText
 	promptbutton
 	end
-.Wilton:
-	farwritetext WiltonGiftText
-	promptbutton
-	end
 .Kenji:
 	farwritetext KenjiGiftText
 	promptbutton
@@ -1310,7 +1240,6 @@ PackFullMScript:
 	ifequal PHONE_POKEFANM_DEREK, .Derek
 	ifequal PHONE_FISHER_TULLY, .Tully
 	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
-	ifequal PHONE_FISHER_WILTON, .Wilton
 	ifequal PHONE_BLACKBELT_KENJI, .Kenji
 	ifequal PHONE_HIKER_PARRY, .Parry
 
@@ -1351,11 +1280,6 @@ PackFullMScript:
 	end
 .Vance:
 	farwritetext VancePackFullText
-	waitbutton
-	closetext
-	end
-.Wilton:
-	farwritetext WiltonPackFullText
 	waitbutton
 	closetext
 	end

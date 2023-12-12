@@ -43,6 +43,31 @@ PlayersNeighborsHouseRadioScript:
 	pause 45
 	closetext
 	end
+	
+PlayersNeighborsHousePonytaScript:
+	conditional_event EVENT_GOT_SECRET_PONYTA, .GivePonyta
+	
+.GivePonyta:	
+	readvar VAR_PARTYCOUNT
+	ifequal PARTY_LENGTH, .Nothing
+	opentext
+	givepoke PONYTA, 3
+	closetext
+	setevent EVENT_GOT_SECRET_PONYTA
+	callasm .SecretPonytaDVScript
+
+.Nothing:
+	end
+	
+.SecretPonytaDVScript:
+	ld a, [wPartyMon1Species]
+	cp PONYTA
+	ret nz
+	ld hl, wPartyMon1DVs
+	ld a, $FF
+	ld [hli], a
+	ld [hl], a
+	ret
 
 PlayersNeighborsDaughterText:
 	text "PIKACHU is an"
@@ -109,6 +134,7 @@ PlayersNeighborsHouse_MapEvents:
 	bg_event  0,  1, BGEVENT_READ, PlayersNeighborsHouseBookshelfScript
 	bg_event  1,  1, BGEVENT_READ, PlayersNeighborsHouseBookshelfScript
 	bg_event  7,  1, BGEVENT_READ, PlayersNeighborsHouseRadioScript
+	bg_event  6,  0, BGEVENT_IFNOTSET, PlayersNeighborsHousePonytaScript
 
 	def_object_events
 	object_event  2,  3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, PlayersNeighborsDaughterScript, -1

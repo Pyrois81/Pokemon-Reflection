@@ -51,14 +51,14 @@ JohtoWaterWildMons:
 	db 15, GOLDUCK
 	end_water_wildmons
 
-	def_water_wildmons MOUNT_MORTAR_1F_OUTSIDE
+	def_water_wildmons MOUNT_MORTAR_1F
 	db 4 percent ; encounter rate
 	db 15, GOLDEEN
 	db 20, MARILL
 	db 20, SEAKING
 	end_water_wildmons
 
-	def_water_wildmons MOUNT_MORTAR_2F_INSIDE
+	def_water_wildmons MOUNT_MORTAR_2F
 	db 2 percent ; encounter rate
 	db 20, GOLDEEN
 	db 25, MARILL

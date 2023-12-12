@@ -45,17 +45,8 @@ Route34IlexForestGateTeacherScript:
 	opentext
 	checkevent EVENT_FOREST_IS_RESTLESS
 	iftrue .ForestIsRestless
-	checkevent EVENT_GOT_TM12_SWEET_SCENT
-	iftrue .GotSweetScent
 	writetext Route34IlexForestGateTeacherText
-	promptbutton
-	verbosegiveitem TM_SWEET_SCENT
-	iffalse .NoRoom
-	setevent EVENT_GOT_TM12_SWEET_SCENT
-.GotSweetScent:
-	writetext Route34IlexForestGateTeacher_GotSweetScent
 	waitbutton
-.NoRoom:
 	closetext
 	end
 
@@ -95,16 +86,6 @@ Route34IlexForestGateTeacherText:
 
 	para "appear. Try using"
 	line "this TM."
-	done
-
-Route34IlexForestGateTeacher_GotSweetScent:
-	text "It's SWEET SCENT."
-
-	para "Use it wherever"
-	line "#MON appear."
-
-	para "#MON will be"
-	line "enticed by it."
 	done
 
 Route34IlexForestGateTeacher_ForestIsRestless:

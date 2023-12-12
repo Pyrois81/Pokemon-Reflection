@@ -7,7 +7,7 @@ BATTLETOWER_NUM_UNIQUE_TRAINERS EQU 70
 BATTLETOWER_TRAINERDATALENGTH EQU 18 * 2 ; $24
 BATTLE_TOWER_STRUCT_LENGTH EQU NAME_LENGTH + BATTLETOWER_PARTY_LENGTH * NICKNAMED_MON_STRUCT_LENGTH + BATTLETOWER_TRAINERDATALENGTH ; $e0
 
-; BattleTowerAction setval arguments (see engine/events/battle_tower/battle_tower.asm)
+; RocketTowerAction setval arguments (see engine/events/battle_tower/battle_tower.asm)
 	const_def
 	const BATTLETOWERACTION_CHECK_EXPLANATION_READ
 	const BATTLETOWERACTION_SET_EXPLANATION_READ
@@ -29,8 +29,8 @@ BATTLE_TOWER_STRUCT_LENGTH EQU NAME_LENGTH + BATTLETOWER_PARTY_LENGTH * NICKNAME
 	const BATTLETOWERACTION_11 ; store 0 in s5_aa8d
 	const BATTLETOWERACTION_12 ; store 1 in s5_aa8d
 	const BATTLETOWERACTION_13 ; check s5_aa8d
-	const BATTLETOWERACTION_14 ; if save file is yours: bit 0, [sBattleTowerSaveFileFlags]
-	const BATTLETOWERACTION_15 ; set 0, [sBattleTowerSaveFileFlags]
+	const BATTLETOWERACTION_14 ; if save file is yours: bit 0, [sRocketTowerSaveFileFlags]
+	const BATTLETOWERACTION_15 ; set 0, [sRocketTowerSaveFileFlags]
 	const BATTLETOWERACTION_16 ; update time in SRAM bank 5
 	const BATTLETOWERACTION_17 ; check time in SRAM bank 5
 	const BATTLETOWERACTION_LEVEL_CHECK
@@ -42,17 +42,17 @@ BATTLE_TOWER_STRUCT_LENGTH EQU NAME_LENGTH + BATTLETOWER_PARTY_LENGTH * NICKNAME
 	const BATTLETOWERACTION_CHOOSEREWARD ; save options
 	const BATTLETOWERACTION_SAVEOPTIONS
 
-; BattleTowerAction return values
+; RocketTowerAction return values
 ; - from BATTLETOWERACTION_CHECKMOBILEEVENT
 MOBILE_EVENT_OBJECT_GS_BALL EQU $b
 
-; BattleTowerText arguments (see engine/events/battle_tower/trainer_text.asm)
+; RocketTowerText arguments (see engine/events/battle_tower/trainer_text.asm)
 	const_def 1
 	const BATTLETOWERTEXT_INTRO
 	const BATTLETOWERTEXT_WIN_TEXT
 	const BATTLETOWERTEXT_LOSS_TEXT
 
-; sBattleTowerChallengeState values
+; sRocketTowerChallengeState values
 	const_def
 	const BATTLETOWER_NO_CHALLENGE
 	const BATTLETOWER_SAVED_AND_LEFT

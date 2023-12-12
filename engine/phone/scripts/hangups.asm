@@ -113,11 +113,6 @@ VanceLookingForwardScript:
 	promptbutton
 	sjump PhoneScript_HangUpText_Male
 
-WiltonHaventFoundAnythingScript:
-	farwritetext WiltonHaventFoundAnythingText
-	promptbutton
-	sjump PhoneScript_HangUpText_Male
-
 ParryBattleWithMeScript:
 	farwritetext ParryBattleWithMeText
 	promptbutton

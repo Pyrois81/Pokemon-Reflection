@@ -419,7 +419,7 @@ Function17d1f1:
 ;    Show japanese menu options
 ;    - News - News - ??? - Cancel
 ; if [wScriptVar] == TRUE
-;    Show BattleTower-Menu with 3 options in english language
+;    Show RocketTower-Menu with 3 options in english language
 ;    - Challenge - Explanation - Cancel
 Menu_ChallengeExplanationCancel:
 	ld a, [wScriptVar]
@@ -4422,7 +4422,7 @@ Function17f524:
 	scf
 	jr .asm_17f536
 
-BattleTowerMobileError:
+RocketTowerMobileError:
 	call FadeToMenu
 	xor a
 	ld [wc303], a

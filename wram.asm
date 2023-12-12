@@ -1348,7 +1348,7 @@ wcd38:: db ; secs
 wcd39:: ds 1
 wcd3a:: ds 1
 wcd3b:: ds 1
-wBattleTowerRoomMenu2JumptableIndex:: ds 1
+wRocketTowerRoomMenu2JumptableIndex:: ds 1
 wcd3d:: ds 1
 wcd3e:: ds 1
 wcd3f:: ds 1
@@ -1497,7 +1497,7 @@ wNamedObjectType:: db
 	ds 1
 
 wJumptableIndex::
-wBattleTowerBattleEnded::
+wRocketTowerBattleEnded::
 	db
 
 UNION
@@ -1601,9 +1601,9 @@ wStatsScreenFlags:: db
 
 NEXTU
 ; battle tower
-wNrOfBeatenBattleTowerTrainers:: db
+wNrOfBeatenRocketTowerTrainers:: db
 	ds 1
-wBattleTowerRoomMenuJumptableIndex:: db
+wRocketTowerRoomMenuJumptableIndex:: db
 
 NEXTU
 ; miscellaneous
@@ -1744,9 +1744,9 @@ wJoypadDisable::
 
 	ds 1
 
-wInBattleTowerBattle::
-; 0 not in BattleTower-Battle
-; 1 BattleTower-Battle
+wInRocketTowerBattle::
+; 0 not in RocketTower-Battle
+; 1 RocketTower-Battle
 	db
 
 	ds 1
@@ -3047,17 +3047,14 @@ wOlivineCitySceneID::                             db
 wRoute34SceneID::                                 db
 wRoute34IlexForestGateSceneID::                   db
 wEcruteakTinTowerEntranceSceneID::                db
-wWiseTriosRoomSceneID::                           db
 wEcruteakPokecenter1FSceneID::                    db
+wEcruteakCitySceneID::							  db
 wEcruteakGymSceneID::                             db
 wMahoganyTownSceneID::                            db
 wRoute42SceneID::                                 db
 wCianwoodCitySceneID::                            db
-wBattleTower1FSceneID::                           db
-wBattleTowerBattleRoomSceneID::                   db
-wBattleTowerElevatorSceneID::                     db
-wBattleTowerHallwaySceneID::                      db
-wBattleTowerOutsideSceneID::                      db
+wRocketTower1FSceneID::                           db
+wRocketTowerOutsideSceneID::                      db
 wRoute43GateSceneID::                             db
 wMountMoonSceneID::                               db
 wSproutTower3FSceneID::                           db
@@ -3344,15 +3341,6 @@ wContestMon:: party_struct wContestMon
 wDunsparceMapGroup:: db
 wDunsparceMapNumber:: db
 wFishingSwarmFlag:: db
-
-wRoamMon1:: roam_struct wRoamMon1
-wRoamMon2:: roam_struct wRoamMon2
-wRoamMon3:: roam_struct wRoamMon3
-
-wRoamMons_CurMapNumber:: db
-wRoamMons_CurMapGroup:: db
-wRoamMons_LastMapNumber:: db
-wRoamMons_LastMapGroup:: db
 
 wBestMagikarpLengthFeet:: db
 wBestMagikarpLengthInches:: db

@@ -22,7 +22,7 @@ AI_SwitchOrTryItem:
 
 	; always load the first trainer class in wTrainerClass for Battle Tower trainers
 	ld hl, TrainerClassAttributes + TRNATTR_AI_ITEM_SWITCH
-	ld a, [wInBattleTowerBattle]
+	ld a, [wInRocketTowerBattle]
 	and a
 	jr nz, .ok
 
@@ -154,7 +154,7 @@ CheckSubstatusCantRun: ; unreferenced
 
 AI_TryItem:
 	; items are not allowed in the Battle Tower
-	ld a, [wInBattleTowerBattle]
+	ld a, [wInRocketTowerBattle]
 	and a
 	ret nz
 

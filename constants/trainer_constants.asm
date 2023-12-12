@@ -53,7 +53,7 @@ KRIS EQU __trainer_class__
 	const CLAIR1
 
 	trainerclass RIVAL1 ; 9
-	const RIVAL1_1_ODDISH
+	const RIVAL1_1_ODDISH ; Cherrygrove City
 	const RIVAL1_1_VULPIX
 	const RIVAL1_1_POLIWAG
 	const RIVAL1_2_ODDISH
@@ -111,8 +111,8 @@ KRIS EQU __trainer_class__
 	const ERIKA1
 
 	trainerclass YOUNGSTER ; 16
-	const JOEY1
-	const MIKEY
+	const JOEY1 ; Route 30
+	const MIKEY ; Route 30
 	const ALBERT
 	const GORDON
 	const SAMUEL
@@ -159,7 +159,7 @@ KRIS EQU __trainer_class__
 	const THEO
 	const TOBY
 	const DENIS
-	const VANCE1
+	const VANCE ; Route 44
 	const HANK
 	const ROY
 	const BORIS
@@ -170,8 +170,6 @@ KRIS EQU __trainer_class__
 	const PERRY
 	const BRET
 	const JOSE3
-	const VANCE2
-	const VANCE3
 
 	trainerclass LASS ; 19
 	const CARRIE
@@ -197,12 +195,12 @@ KRIS EQU __trainer_class__
 
 	trainerclass COOLTRAINERM ; 1b
 	const NICK
-	const AARON
-	const PAUL
-	const CODY
+	const AARON ; Lake of Rage
+	const PAUL ; Blackthorn Gym 1F
+	const CODY ; Blackthorn Gym 2F
 	const GAVEN1
 	const GAVEN2
-	const RYAN
+	const RYAN ; Route 45
 	const JAKE
 	const GAVEN3
 	const BLAKE
@@ -213,17 +211,17 @@ KRIS EQU __trainer_class__
 	const SEAN
 	const KEVIN
 	const STEVE
-	const ALLEN
-	const DARIN
+	const ALLEN ; Route 44
+	const DARIN ; Dragon's Den
 
 	trainerclass COOLTRAINERF ; 1c
 	const GWEN
-	const LOIS
-	const FRAN
-	const LOLA
+	const LOIS ; Lake of Rage
+	const FRAN ; Blackthorn Gym 2F
+	const LOLA ; Blackthorn Gym 1F
 	const KATE
 	const IRENE
-	const KELLY
+	const KELLY ; Route 45
 	const JOYCE
 	const BETH1
 	const REENA1
@@ -232,12 +230,12 @@ KRIS EQU __trainer_class__
 	const CAROL
 	const QUINN
 	const EMMA
-	const CYBIL
+	const CYBIL ; Route 44
 	const JENN
 	const BETH3
 	const REENA2
 	const REENA3
-	const CARA
+	const CARA ; Dragon's Den
 
 	trainerclass BEAUTY ; 1d
 	const VICTORIA
@@ -262,23 +260,23 @@ KRIS EQU __trainer_class__
 	const LARRY
 	const ANDREW
 	const CALVIN
-	const SHANE
-	const BEN
-	const BRENT1
-	const RON
+	const SHANE ; Route 42
+	const BEN ; Route 43
+	const BRENT1 ; Route 43
+	const RON ; Route 43
 	const ETHAN
 	const BRENT2
 	const BRENT3
-	const ISSAC
+	const ISAAC
 	const DONALD
-	const ZACH
+	const ZACH ; Route 44
 	const BRENT4
 	const MILLER
 
 	trainerclass GRUNTM ; 1f
-	const GRUNTM_1
-	const GRUNTM_2
-	const GRUNTM_3
+	const GRUNTM_1 ; Lake of Rage Hidden Power House
+	const GRUNTM_2 ; Lake of Rage
+	const GRUNTM_3 ; Lake of Rage
 	const GRUNTM_4
 	const GRUNTM_5
 	const GRUNTM_6
@@ -316,9 +314,9 @@ KRIS EQU __trainer_class__
 	const ALFRED
 
 	trainerclass SKIER ; 21
-	const ROXANNE
-	const CLARISSA
-	const NATALIE
+	const ROXANNE ; Mahogany Gym
+	const CLARISSA ; Mahogany Gym
+	const NATALIE ; Ice Path 1F
 
 	trainerclass TEACHER ; 22
 	const COLETTE
@@ -329,7 +327,7 @@ KRIS EQU __trainer_class__
 	const SABRINA1
 
 	trainerclass BUG_CATCHER ; 24
-	const DON
+	const DON ; Route 30
 	const ROB
 	const ED
 	const WADE1
@@ -355,12 +353,12 @@ KRIS EQU __trainer_class__
 	const ARNOLD
 	const KYLE
 	const HENRY
-	const MARVIN
-	const TULLY1
-	const ANDRE
-	const RAYMOND
-	const WILTON1
-	const EDGAR
+	const MARVIN ; Route 43
+	const TULLY1 ; Route 42
+	const ANDRE ; Lake of Rage
+	const RAYMOND ; Lake of Rage
+	const WILTON ; Route 44
+	const EDGAR ; Route 44
 	const JONAH
 	const MARTIN
 	const STEPHEN
@@ -369,9 +367,7 @@ KRIS EQU __trainer_class__
 	const RALPH3
 	const TULLY2
 	const TULLY3
-	const WILTON2
 	const SCOTT
-	const WILTON3
 	const RALPH4
 	const RALPH5
 	const TULLY4
@@ -469,12 +465,12 @@ KRIS EQU __trainer_class__
 	const PHILLIP
 	const LEONARD
 	const ANTHONY2
-	const BENJAMIN
-	const ERIK
-	const MICHAEL
-	const PARRY1
-	const TIMOTHY
-	const BAILEY
+	const BENJAMIN ; Route 42
+	const ERIK ; Route 45
+	const MICHAEL ; Route 45
+	const PARRY1 ; Route 45
+	const TIMOTHY ; Route 45
+	const BAILEY ; Route 46
 	const ANTHONY3
 	const TIM
 	const NOLAND
@@ -515,7 +511,7 @@ KRIS EQU __trainer_class__
 	const WALT
 	const RAY
 	const LYLE
-	const FRANK
+	const FRANK ; Ice Path B1F
 
 	trainerclass JUGGLER ; 31
 	const IRWIN1
@@ -526,7 +522,7 @@ KRIS EQU __trainer_class__
 	const IRWIN4
 
 	trainerclass BLACKBELT_T ; 32
-	const KENJI
+	const KENJI ; Route 45
 	const YOSHI
 	const LAO
 	const NOB
@@ -548,7 +544,7 @@ KRIS EQU __trainer_class__
 	const GREG
 	const NORMAN
 	const MARK
-	const PHIL
+	const PHIL ; Route 44
 	const RICHARD
 	const GILBERT
 	const JARED
@@ -564,13 +560,13 @@ KRIS EQU __trainer_class__
 	const SHARON
 	const DEBRA
 	const GINA2
-	const ERIN1
+	const ERIN1 ; Route 46
 	const LIZ2
 	const LIZ3
 	const HEIDI
 	const EDNA
 	const GINA3
-	const TIFFANY1
+	const TIFFANY1 ; Route 43
 	const TIFFANY2
 	const ERIN2
 	const TANYA
@@ -593,7 +589,7 @@ KRIS EQU __trainer_class__
 	const SID
 	const HARVEY
 	const DALE
-	const TED
+	const TED ; Route 46
 	const TODD2
 	const TODD3
 	const THOMAS
@@ -601,10 +597,10 @@ KRIS EQU __trainer_class__
 	const DAVID
 	const JOHN
 	const JERRY
-	const SPENCER
+	const SPENCER ; Route 43
 	const TODD4
 	const TODD5
-	const NEIL
+	const NEIL ; Ice Path 1F
 
 	trainerclass EXECUTIVEF ; 37
 	const EXECUTIVEF_1
@@ -615,8 +611,8 @@ KRIS EQU __trainer_class__
 	const NICO
 	const JIN
 	const TROY
-	const JEFFREY
-	const PING
+	const JEFFREY ; Ecruteak Gym
+	const PING ; Ecruteak Gym
 	const EDMOND
 	const NEAL
 	const LI
@@ -625,8 +621,8 @@ KRIS EQU __trainer_class__
 	const KOJI
 
 	trainerclass MEDIUM ; 39
-	const MARTHA
-	const GRACE
+	const MARTHA ; Ecruteak Gym
+	const GRACE ; Ecruteak Gym
 	const BETHANY
 	const MARGRET
 	const ETHEL
@@ -634,9 +630,9 @@ KRIS EQU __trainer_class__
 	const DORIS
 
 	trainerclass BOARDER ; 3a
-	const RONALD
-	const BRAD
-	const DOUGLAS
+	const RONALD ; Mahogany Gym
+	const BRAD ; Mahogany Gym
+	const DOUGLAS ; Mahogany Gym
 
 	trainerclass POKEFANM ; 3b
 	const WILLIAM
@@ -655,12 +651,11 @@ KRIS EQU __trainer_class__
 	const ALLAN
 
 	trainerclass KIMONO_GIRL ; 3c
-	const NAOKO_UNUSED
-	const NAOKO
-	const SAYO
-	const ZUKI
-	const KUNI
-	const MIKI
+	const HONOKO ; Dance Theatre
+	const REIKO ; Dance Theatre
+	const ANJU ; Dance Theatre
+	const MINATO ; Dance Theatre
+	const AZUMA ; Dance Theatre
 
 	trainerclass TWINS ; 3d
 	const AMYANDMAY1
@@ -671,8 +666,8 @@ KRIS EQU __trainer_class__
 	const JOANDZOE2
 	const MEGANDPEG1
 	const MEGANDPEG2
-	const LEAANDPIA1
-	const LEAANDPIA2
+	const LEAANDPIA1 ; Dragon's Den
+	const LEAANDPIA2 ; Dragon's Den
 
 	trainerclass POKEFANF ; 3e
 	const BEVERLY1
@@ -693,7 +688,7 @@ KRIS EQU __trainer_class__
 	const DIRK
 
 	trainerclass GRUNTF ; 42
-	const GRUNTF_1
+	const GRUNTF_1 ; Lake of Rage Hidden Power House
 	const GRUNTF_2
 	const GRUNTF_3
 	const GRUNTF_4

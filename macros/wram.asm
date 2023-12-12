@@ -201,15 +201,6 @@ mailmsg: MACRO
 \1End::
 ENDM
 
-roam_struct: MACRO
-\1Species::   db
-\1Level::     db
-\1MapGroup::  db
-\1MapNumber:: db
-\1HP::        db
-\1DVs::       dw
-ENDM
-
 bugcontestwinner: MACRO
 \1WinnerID:: db
 \1Mon::      db

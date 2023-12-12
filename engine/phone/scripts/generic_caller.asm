@@ -71,7 +71,6 @@ Phone_WhosBragging_Male:
 	ifequal PHONE_FISHER_TULLY, .Tully
 	ifequal PHONE_POKEMANIAC_BRENT, .Brent
 	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
-	ifequal PHONE_FISHER_WILTON, .Wilton
 	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
@@ -149,11 +148,6 @@ Phone_WhosBragging_Male:
 	promptbutton
 	end
 
-.Wilton:
-	farwritetext WiltonMonHasGrownText
-	promptbutton
-	end
-
 .Parry:
 	farwritetext ParryNothingCanMatchText
 	promptbutton
@@ -227,7 +221,6 @@ Phone_WhoDefeatedMon_Male:
 	ifequal PHONE_FISHER_TULLY, .Tully
 	ifequal PHONE_POKEMANIAC_BRENT, .Brent
 	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
-	ifequal PHONE_FISHER_WILTON, .Wilton
 	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
@@ -305,11 +298,6 @@ Phone_WhoDefeatedMon_Male:
 	promptbutton
 	end
 
-.Wilton:
-	farwritetext WiltonDefeatedMonText
-	promptbutton
-	end
-
 .Parry:
 	farwritetext ParryDefeatedMonText
 	promptbutton
@@ -383,7 +371,6 @@ Phone_WhoLostAMon_Male:
 	ifequal PHONE_FISHER_TULLY, .Tully
 	ifequal PHONE_POKEMANIAC_BRENT, .Brent
 	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
-	ifequal PHONE_FISHER_WILTON, .Wilton
 	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
@@ -458,11 +445,6 @@ Phone_WhoLostAMon_Male:
 
 .Vance:
 	farwritetext VanceLostAMonText
-	promptbutton
-	end
-
-.Wilton:
-	farwritetext WiltonLostAMonText
 	promptbutton
 	end
 
@@ -547,7 +529,6 @@ PhoneScript_RematchText_Male:
 	ifequal PHONE_FISHER_TULLY, .Tully
 	ifequal PHONE_POKEMANIAC_BRENT, .Brent
 	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
-	ifequal PHONE_FISHER_WILTON, .Wilton
 	ifequal PHONE_HIKER_PARRY, .Parry
 
 .Jack:
@@ -622,11 +603,6 @@ PhoneScript_RematchText_Male:
 
 .Vance:
 	farwritetext VanceBattleRematchText
-	promptbutton
-	end
-
-.Wilton:
-	farwritetext WiltonBattleRematchText
 	promptbutton
 	end
 
@@ -707,7 +683,6 @@ PhoneScript_HangUpText_Male:
 	ifequal PHONE_FISHER_TULLY, .Tully
 	ifequal PHONE_POKEMANIAC_BRENT, .Brent
 	ifequal PHONE_BIRDKEEPER_VANCE, .Vance
-	ifequal PHONE_FISHER_WILTON, .Wilton
 	ifequal PHONE_BLACKBELT_KENJI, .Kenji
 	ifequal PHONE_HIKER_PARRY, .Parry
 
@@ -777,10 +752,6 @@ PhoneScript_HangUpText_Male:
 
 .Vance:
 	farwritetext VanceHangUpText
-	end
-
-.Wilton:
-	farwritetext WiltonHangUpText
 	end
 
 .Kenji:
@@ -901,7 +872,6 @@ PhoneScript_FoundItem_Male:
 	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
 	ifequal PHONE_POKEFANM_DEREK, .Derek
 	ifequal PHONE_FISHER_TULLY, .Tully
-	ifequal PHONE_FISHER_WILTON, .Wilton
 
 .Jose:
 	farwritetext JoseFoundItemText
@@ -921,10 +891,6 @@ PhoneScript_FoundItem_Male:
 
 .Tully:
 	farwritetext TullyFoundItemText
-	end
-
-.Wilton:
-	farwritetext WiltonFoundItemText
 	end
 
 PhoneScript_FoundItem_Female:

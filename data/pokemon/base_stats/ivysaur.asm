@@ -4,7 +4,7 @@
 	;   hp  atk  def  spd  sat  sdf
 
 	db GRASS, POISON ; type
-	db 45 ; catch rate
+	db 75 ; catch rate
 	db 141 ; base exp
 	db NO_ITEM, NO_ITEM ; items
 	db GENDER_F12_5 ; gender ratio

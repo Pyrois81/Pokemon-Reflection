@@ -103,13 +103,11 @@ Route32CooltrainerMStopsYouScene:
 Route32RoarTMGuyScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM05_ROAR
 	iftrue .AlreadyHaveRoar
 	writetext Text_RoarIntro
 	promptbutton
 	verbosegiveitem TM_ROAR
 	iffalse .Finish
-	setevent EVENT_GOT_TM05_ROAR
 .AlreadyHaveRoar:
 	writetext Text_RoarOutro
 	waitbutton

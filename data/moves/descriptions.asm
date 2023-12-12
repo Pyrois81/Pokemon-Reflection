@@ -535,8 +535,8 @@ CounterDescription:
 	next "blow double.@"
 
 SeismicTossDescription:
-	db   "The user's level"
-	next "equals damage HP.@"
+	db	 "Does damage equal"
+	next "to user's level."
 
 StrengthDescription:
 	db   "A powerful physi-"
@@ -663,8 +663,8 @@ TeleportDescription:
 	next "from battle.@"
 
 NightShadeDescription:
-	db   "The user's level"
-	next "equals damage HP.@"
+	db	 "Does damage equal"
+	next "to user's level."
 
 MimicDescription:
 	db   "Copies a move used"

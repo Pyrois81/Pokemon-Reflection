@@ -33,8 +33,6 @@ TinTower1F_MapScripts:
 	iffalse .FaceBeasts
 	special BeastsCheck
 	iffalse .FaceBeasts
-	clearevent EVENT_TIN_TOWER_1F_WISE_TRIO_2
-	setevent EVENT_TIN_TOWER_1F_WISE_TRIO_1
 .GotRainbowWing:
 	checkevent EVENT_FOUGHT_HO_OH
 	iffalse .Done
@@ -70,8 +68,6 @@ TinTower1F_MapScripts:
 	disappear TINTOWER1F_SUICUNE
 	disappear TINTOWER1F_RAIKOU
 	disappear TINTOWER1F_ENTEI
-	clearevent EVENT_TIN_TOWER_1F_WISE_TRIO_1
-	setevent EVENT_TIN_TOWER_1F_WISE_TRIO_2
 	endcallback
 
 .StairsCallback:
@@ -122,8 +118,6 @@ TinTower1F_MapScripts:
 	dontrestartmapmusic
 	disappear TINTOWER1F_SUICUNE
 	setevent EVENT_FOUGHT_SUICUNE
-	setevent EVENT_SAW_SUICUNE_ON_ROUTE_42
-	setmapscene ROUTE_42, SCENE_ROUTE42_NOTHING
 	setevent EVENT_SAW_SUICUNE_ON_ROUTE_36
 	setmapscene ROUTE_36, SCENE_ROUTE36_NOTHING
 	setevent EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY

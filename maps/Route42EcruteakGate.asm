@@ -10,11 +10,11 @@ Route42EcruteakGateOfficerScript:
 	jumptextfaceplayer Route42EcruteakGateOfficerText
 
 Route42EcruteakGateOfficerText:
-	text "MT.MORTAR is like"
-	line "a maze inside."
-
-	para "Be careful. Don't"
-	line "get lost in there."
+	text "ECRUTEAK's a city"
+	line "with a lot of"
+	cont "history."
+	
+	para "Enjoy yourself!"
 	done
 
 Route42EcruteakGate_MapEvents:

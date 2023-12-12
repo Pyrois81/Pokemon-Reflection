@@ -127,7 +127,7 @@ FadeOutPalettes::
 	call ConvertTimePalsIncHL
 	ret
 
-BattleTowerFade:
+RocketTowerFade:
 	call FillWhiteBGColor
 	ld c, $9
 	call GetTimePalFade

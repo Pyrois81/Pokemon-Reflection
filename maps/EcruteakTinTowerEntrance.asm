@@ -10,7 +10,7 @@ EcruteakTinTowerEntrance_MapScripts:
 	scene_script .DummyScene1 ; SCENE_FINISHED
 
 	def_callbacks
-	callback MAPCALLBACK_OBJECTS, .InitializeSages
+	callback MAPCALLBACK_OBJECTS, .CheckBeasts
 
 .DummyScene0:
 	end
@@ -18,116 +18,90 @@ EcruteakTinTowerEntrance_MapScripts:
 .DummyScene1:
 	end
 
-.InitializeSages:
+.CheckBeasts:
+	checkevent EVENT_FOUGHT_DOGS
+	iffalse .Block
+	moveobject ECRUTEAKTINTOWERENTRANCE_SAGE1, 18, 7
+	turnobject ECRUTEAKTINTOWERENTRANCE_SAGE1, DOWN
+	
+.Block:
+	endcallback
+
+EcruteakTinTowerEntranceSage1Script:
+	faceplayer
+	opentext
+	checkevent EVENT_FOUGHT_HO_OH
+	iftrue .FoughtHoOh
+	checkitem RAINBOW_WING
+	iftrue .GoToTop
+	checkevent EVENT_FOUGHT_DOGS
+	iftrue .FoughtDogsMovedAlready
 	checkevent EVENT_FOUGHT_SUICUNE
-	iftrue .DontBlockTower
-	checkevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
-	iftrue .DontBlockTower
-	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .BlockTower
-	endcallback
+	iffalse .Default
+	checkevent EVENT_FOUGHT_ENTEI
+	iffalse .Default
+	checkevent EVENT_FOUGHT_RAIKOU
+	iffalse .Default
+	setevent EVENT_FOUGHT_DOGS
+	writetext EcruteakTinTowerEntranceSage1FoughtDogsText
+	waitbutton
+	closetext
+	applymovement ECRUTEAKTINTOWERENTRANCE_SAGE1, EcruteakTinTowerEntranceSage1Movement
+	end
+	
+.Default:
+	writetext EcruteakTinTowerEntranceSage1LegendaryBeastsText
+	sjump .WaitEnd
 
-.BlockTower:
-	clearevent EVENT_RANG_CLEAR_BELL_1
-	setevent EVENT_RANG_CLEAR_BELL_2
-	setevent EVENT_ECRUTEAK_TIN_TOWER_ENTRANCE_WANDERING_SAGE
-	checkitem CLEAR_BELL
-	iftrue .NoClearBell
-	setscene SCENE_DEFAULT
-.NoClearBell:
-	endcallback
+.FoughtDogsMovedAlready:
+	writetext EcruteakTinTowerEntranceSage1FoughtDogsMovedAlreadyText
+	sjump .WaitEnd
 
-.DontBlockTower:
-	clearevent EVENT_ECRUTEAK_TIN_TOWER_ENTRANCE_WANDERING_SAGE
-	endcallback
+.GoToTop:
+	writetext EcruteakTinTowerEntranceSage1GoToTopText
+	sjump .WaitEnd
+	
+.FoughtHoOh:
+	writetext EcruteakTinTowerEntranceSage1FoughtHoOhText
 
-EcruteakTinTowerEntranceSageBlocksLeft:
-	checkevent EVENT_RANG_CLEAR_BELL_2
-	iftrue EcruteakTinTowerEntranceAlreadyBlocked
-	applymovement ECRUTEAKTINTOWERENTRANCE_SAGE2, EcruteakTinTowerEntranceSageBlocksLeftMovement
-	moveobject ECRUTEAKTINTOWERENTRANCE_SAGE1, 4, 6
-	appear ECRUTEAKTINTOWERENTRANCE_SAGE1
-	pause 5
-	disappear ECRUTEAKTINTOWERENTRANCE_SAGE2
+.WaitEnd:
+	waitbutton
+	closetext
 	end
 
-EcruteakTinTowerEntranceSageBlocksRight:
-	checkevent EVENT_RANG_CLEAR_BELL_1
-	iftrue EcruteakTinTowerEntranceAlreadyBlocked
-	applymovement ECRUTEAKTINTOWERENTRANCE_SAGE1, EcruteakTinTowerEntranceSageBlocksRightMovement
-	moveobject ECRUTEAKTINTOWERENTRANCE_SAGE2, 5, 6
-	appear ECRUTEAKTINTOWERENTRANCE_SAGE2
-	pause 5
-	disappear ECRUTEAKTINTOWERENTRANCE_SAGE1
-	end
+EcruteakTinTowerEntranceSage1Movement:
+	step UP
+	turn_head DOWN
+	step_end
 
-EcruteakTinTowerEntranceAlreadyBlocked:
-	end
-
-EcruteakTinTowerEntranceSageScript:
+EcruteakTinTowerEntranceSage2Script:
 	faceplayer
 	opentext
-	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue .CheckForClearBell
-	checkflag ENGINE_FOGBADGE
-	iftrue .BlockPassage_GotFogBadge
-	writetext EcruteakTinTowerEntranceSageText
+	checkevent EVENT_FOUGHT_HO_OH
+	iftrue .FoughtHoOh
+	writetext EcruteakTinTowerEntranceSage2Text
 	waitbutton
 	closetext
 	end
 
-.BlockPassage_GotFogBadge:
-	writetext EcruteakTinTowerEntranceSageText_GotFogBadge
+.FoughtHoOh:
+	writetext EcruteakTinTowerEntranceSage2FoughtHoOhText
 	waitbutton
 	closetext
 	end
 
-.CheckForClearBell:
-	checkevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
-	iftrue .AllowedThrough
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue .RangClearBell
-	checkitem CLEAR_BELL
-	iftrue .GotClearBell
-	writetext EcruteakTinTowerEntranceSageText_NoClearBell
-	waitbutton
-	closetext
-	end
-
-.GotClearBell:
-	writetext EcruteakTinTowerEntranceSageText_HearsClearBell
-	waitbutton
-	closetext
-	setscene SCENE_FINISHED
-	setevent EVENT_RANG_CLEAR_BELL_2
-	clearevent EVENT_RANG_CLEAR_BELL_1
-	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	end
-
-.AllowedThrough:
-	writetext EcruteakTinTowerEntranceSageText_PleaseDoGoOn
-	waitbutton
-	closetext
-	end
-
-.RangClearBell:
-	writetext EcruteakTinTowerEntranceSageText_HeardClearBell
-	waitbutton
-	closetext
-	end
-
-EcruteakTinTowerEntranceWanderingSageScript:
+EcruteakTinTowerEntranceSage3Script:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_CLEAR_BELL
-	iftrue .GotClearBell
-	writetext EcruteakTinTowerEntranceWanderingSageText
+	checkevent EVENT_FOUGHT_HO_OH
+	iftrue .FoughtHoOh
+	writetext EcruteakTinTowerEntranceSage3Text
 	waitbutton
 	closetext
 	end
 
-.GotClearBell:
-	writetext EcruteakTinTowerEntranceWanderingSageText_GotClearBell
+.FoughtHoOh:
+	writetext EcruteakTinTowerEntranceSage3FoughtHoOhText
 	waitbutton
 	closetext
 	end
@@ -135,133 +109,160 @@ EcruteakTinTowerEntranceWanderingSageScript:
 EcruteakTinTowerEntranceGrampsScript:
 	jumptextfaceplayer EcruteakTinTowerEntranceGrampsText
 
-EcruteakTinTowerEntranceSageBlocksLeftMovement:
-	fix_facing
-	big_step LEFT
-	remove_fixed_facing
-	turn_head DOWN
-	step_end
+EcruteakTinTowerEntranceSage1LegendaryBeastsText:
+	text "I cannot allow you"
+	line "to pass, young"
+	cont "one."
+	
+	para "Not only is the"
+	line "tower a most holy"
 
-EcruteakTinTowerEntranceSageBlocksRightMovement:
-	fix_facing
-	big_step RIGHT
-	remove_fixed_facing
-	turn_head DOWN
-	step_end
-
-EcruteakTinTowerEntranceSageText:
-	text "TIN TOWER is off"
-	line "limits to anyone"
-
-	para "without ECRUTEAK"
-	line "GYM's BADGE."
-
-	para "Sorry, but you'll"
-	line "have to leave."
+	para "place, but its"
+	line "constant swaying"
+	
+	para "makes it quite"
+	line "dangerous."
+	
+	para "Traditionally, any"
+	line "outsider who"
+	
+	para "wished to visit"
+	line "the tower proper"
+	
+	para "was required to"
+	line "receive the bless-"
+	
+	para "ings of the three"
+	line "legendary beasts."
 	done
 
-EcruteakTinTowerEntranceSageText_GotFogBadge:
-	text "TIN TOWER is off"
-	line "limits to anyone"
-
-	para "without ECRUTEAK"
-	line "GYM's BADGE."
-
-	para "Ah!"
-
-	para "ECRUTEAK's GYM"
-	line "BADGE! Please, go"
-	cont "right through."
+EcruteakTinTowerEntranceSage1FoughtDogsText:
+	text "You actually did"
+	line "it, didn't you?"
+	
+	para "I can tell just"
+	line "from the confi-"
+	
+	para "dence in your"
+	line "stride."
+	
+	para "Nary a soul has"
+	line "seen those dogs in"
+	
+	para "five years, but"
+	line "you were able to"
+	cont "seek them out."
+	
+	para "You may climb the"
+	line "tower if you"
+	
+	para "desire, but know"
+	line "that the great"
+	
+	para "HO-OH has not"
+	line "roosted atop it"
+	cont "in many moons."
+	
+	para "Perhaps if you"
+	line "were able to find"
+	
+	para "a remnant of it,"
+	line "however…"
 	done
 
-EcruteakTinTowerEntranceSageText_NoClearBell:
-	text "A momentous event"
-	line "has occurred."
-
-	para "I beg your pardon,"
-	line "but I must ask you"
-	cont "to leave."
-
-	para "…What soothes the"
-	line "soul…"
-
-	para "The WISE TRIO say"
-	line "things that are so"
-
-	para "very difficult to"
-	line "understand…"
+EcruteakTinTowerEntranceSage1FoughtDogsMovedAlreadyText:
+	text "You may climb the"
+	line "tower if you"
+	
+	para "desire, but know"
+	line "that the great"
+	
+	para "HO-OH has not"
+	line "roosted atop it"
+	cont "in many moons."
+	
+	para "Perhaps if you"
+	line "were able to find"
+	
+	para "a remnant of it,"
+	line "however…"
 	done
 
-EcruteakTinTowerEntranceSageText_HearsClearBell:
-	text "A momentous event"
-	line "has occurred."
-
-	para "I beg your pardon,"
-	line "but I must ask you"
-	cont "to leave."
-
-	para "<……><……><……>"
-
-	para "Ah!"
-
-	para "The sound of that"
-	line "CLEAR BELL!"
-
-	para "It… It's sublime!"
-
-	para "I've never heard"
-	line "so beautiful a"
-	cont "sound before!"
-
-	para "That bell's chime"
-	line "is indicative of"
-	cont "the bearer's soul."
-
-	para "You…"
-
-	para "You may be able to"
-	line "make it through"
-	cont "TIN TOWER."
-
-	para "Please, do go on."
+EcruteakTinTowerEntranceSage1GoToTopText:
+	text "That… do you hold"
+	line "the RAINBOW WING?"
+	
+	para "Behold how it"
+	line "scatters the light"
+	
+	para "into hundreds of"
+	line "colors!"
+	
+	para "This is a feather"
+	line "fallen from HO-OH,"
+	cont "no doubt!"
+	
+	para "Quickly, make your"
+	line "way to the top of"
+	cont "the tower!"
 	done
 
-EcruteakTinTowerEntranceSageText_PleaseDoGoOn:
-	text "Please, do go on."
+EcruteakTinTowerEntranceSage1FoughtHoOhText:
+	text "I saw your battle"
+	line "from here."
+	
+	para "Simply marvelous!"
+	
+	para "I had not laid"
+	line "eyes on that won-"
+	
+	para "drous creature in"
+	line "quite some time."
+	
+	para "Thank you for"
+	line "allowing the"
+	
+	para "people of ECRUTEAK"
+	line "to witness such"
+	cont "splendor again."
 	done
 
-EcruteakTinTowerEntranceSageText_HeardClearBell:
-	text "That bell's chime"
-	line "is indicative of"
-	cont "the bearer's soul."
-
-	para "You…"
-
-	para "You may be able to"
-	line "make it through"
-	cont "TIN TOWER."
-
-	para "Please, do go on."
+EcruteakTinTowerEntranceSage2Text:
+	text "This place has"
+	line "much history that"
+	
+	para "must be safe-"
+	line "guarded."
+	
+	para "This is our duty"
+	line "as the WISE TRIO."
+	done
+	
+EcruteakTinTowerEntranceSage2FoughtHoOhText:
+	text "The long history"
+	line "of this tower"
+	cont "continues to grow!"
 	done
 
-EcruteakTinTowerEntranceWanderingSageText:
-	text "The TIN TOWER"
-	line "ahead is a nine-"
-
-	para "tier tower of"
-	line "divine beauty."
-
-	para "It soothes the"
-	line "soul of all who"
-	cont "see it."
+EcruteakTinTowerEntranceSage3Text:
+	text "One as young as"
+	line "yourself should"
+	
+	para "not climb the"
+	line "tower."
+	
+	para "You are likely to"
+	line "be hurt…"
+	cont "…or killed!"
 	done
-
-EcruteakTinTowerEntranceWanderingSageText_GotClearBell:
-	text "The TIN TOWER"
-	line "shook! A #MON"
-
-	para "must have returned"
-	line "to the top!"
+	
+EcruteakTinTowerEntranceSage3FoughtHoOhText:
+	text "You have"
+	line "prevailed!"
+	
+	para "I apologize for"
+	line "ever doubting your"
+	cont "skill."
 	done
 
 EcruteakTinTowerEntranceGrampsText:
@@ -281,18 +282,14 @@ EcruteakTinTowerEntrance_MapEvents:
 	def_warp_events
 	warp_event  4, 17, ECRUTEAK_CITY, 3
 	warp_event  5, 17, ECRUTEAK_CITY, 3
-	warp_event  5,  3, ECRUTEAK_TIN_TOWER_ENTRANCE, 4
-	warp_event 17, 15, ECRUTEAK_TIN_TOWER_ENTRANCE, 3
-	warp_event 17,  3, WISE_TRIOS_ROOM, 3
+	warp_event 19,  8, ECRUTEAK_CITY, 4
 
 	def_coord_events
-	coord_event  4,  7, SCENE_DEFAULT, EcruteakTinTowerEntranceSageBlocksLeft
-	coord_event  5,  7, SCENE_DEFAULT, EcruteakTinTowerEntranceSageBlocksRight
 
 	def_bg_events
 
 	def_object_events
-	object_event  4,  6, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceSageScript, EVENT_RANG_CLEAR_BELL_1
-	object_event  5,  6, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceSageScript, EVENT_RANG_CLEAR_BELL_2
-	object_event  6,  9, SPRITE_SAGE, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceWanderingSageScript, EVENT_ECRUTEAK_TIN_TOWER_ENTRANCE_WANDERING_SAGE
-	object_event  3, 11, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceGrampsScript, EVENT_ECRUTEAK_TIN_TOWER_ENTRANCE_WANDERING_SAGE
+	object_event 18,  8, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceSage1Script, -1
+	object_event 17,  9, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceSage2Script, -1
+	object_event 16,  8, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceSage3Script, -1
+	object_event  4,  4, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakTinTowerEntranceGrampsScript, EVENT_ECRUTEAK_TIN_TOWER_ENTRANCE_WANDERING_SAGE

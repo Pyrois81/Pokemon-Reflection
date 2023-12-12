@@ -33,8 +33,8 @@ IcePathB1FIceHeal:
 IcePathB1FEther:
 	itemball ETHER
 	
-IcePathB1FHiddenRareCandy:
-	hiddenitem RARE_CANDY, EVENT_ICE_PATH_B1F_HIDDEN_RARE_CANDY
+IcePathB1FHiddenExpCandyS:
+	hiddenitem EXP_CANDY_S, EVENT_ICE_PATH_B1F_HIDDEN_EXP_CANDY_S
 
 IcePathB1FBlackBeltText:
 	text "I'm here doing"
@@ -84,7 +84,7 @@ IcePathB1F_MapEvents:
 	def_coord_events
 
 	def_bg_events
-	bg_event 27, 12, BGEVENT_ITEM, IcePathB1FHiddenRareCandy
+	bg_event 27, 12, BGEVENT_ITEM, IcePathB1FHiddenExpCandyS
 
 	def_object_events
 	object_event 26,  4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, IcePathB1FBlackBeltScript, -1

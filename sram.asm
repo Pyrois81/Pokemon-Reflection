@@ -147,17 +147,17 @@ sMobileEventIndexBackup:: db
 SECTION "SRAM Battle Tower", SRAM
 
 ; Battle Tower data must be in SRAM because you can save and leave between battles
-sBattleTowerChallengeState::
+sRocketTowerChallengeState::
 ; 0: normal
 ; 2: battle tower
 	db
 
-sNrOfBeatenBattleTowerTrainers:: db
+sNrOfBeatenRocketTowerTrainers:: db
 sBTChoiceOfLevelGroup:: db
 ; Battle Tower trainers are saved here, so nobody appears more than once
 sBTTrainers:: ds BATTLETOWER_STREAK_LENGTH ; sbe48
-sBattleTowerSaveFileFlags:: db
-sBattleTowerReward:: db
+sRocketTowerSaveFileFlags:: db
+sRocketTowerReward:: db
 
 sBTMonOfTrainers::
 ; team of previous trainer
@@ -238,7 +238,7 @@ sTrainerRankingStepCountHOF:: ds 4
 sTrainerRankingHealingsHOF:: ds 4
 sTrainerRankingBattlesHOF:: ds 3
 sTrainerRankingStepCount:: ds 4
-sTrainerRankingBattleTowerWins:: ds 4
+sTrainerRankingRocketTowerWins:: ds 4
 sTrainerRankingTMsHMsTaught:: ds 3
 sTrainerRankingBattles:: ds 3
 sTrainerRankingWildBattles:: ds 3

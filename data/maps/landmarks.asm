@@ -9,26 +9,22 @@ Landmarks:
 	table_width 4, Landmarks
 	landmark  -8, -16, SpecialMapName
 	landmark 140, 100, NewBarkTownName
-	landmark 128, 100, Route29Name
+	landmark 120, 100, Route29Name
 	landmark 100, 100, CherrygroveCityName
 	landmark 100,  80, Route30Name
 	landmark  96,  60, Route31Name
-	landmark  84,  60, VioletCityName
-	landmark  85,  58, SproutTowerName
-	landmark  84,  92, Route32Name
-	landmark  76,  76, RuinsOfAlphName
-	landmark  84, 124, UnionCaveName
-	landmark  82, 124, Route33Name
-	landmark  68, 124, AzaleaTownName
-	landmark  70, 122, SlowpokeWellName
-	landmark  52, 120, IlexForestName
-	landmark  52, 112, Route34Name
-	landmark  52,  92, GoldenrodCityName
-	landmark  50,  92, RadioTowerName
-	landmark  52,  76, Route35Name
-	landmark  52,  60, NationalParkName
-	landmark  64,  60, Route36Name
-	landmark  68,  52, Route37Name
+	landmark 116,  60, DarkCaveName
+	landmark 124,  84, Route46Name
+	landmark 132,  68, Route45Name
+	landmark 132,  52, BlackthornCityName
+	landmark 130,  50, DragonsDenName
+	landmark 132,  44, IcePathName
+	landmark 120,  44, Route44Name
+	landmark 108,  44, MahoganyTownName
+	landmark 108,  36, Route43Name
+	landmark 108,  28, LakeOfRageName
+	landmark  88,  44, Route42Name
+	landmark  84,  28, MtMortarName
 	landmark  68,  44, EcruteakCityName
 	landmark  70,  42, TinTowerName
 	landmark  66,  42, BurnedTowerName
@@ -36,23 +32,27 @@ Landmarks:
 	landmark  36,  48, Route39Name
 	landmark  36,  60, OlivineCityName
 	landmark  38,  62, LighthouseName
-	landmark  28,  56, BattleTowerName
-	landmark  28,  64, Route40Name
+	landmark  28,  56, RocketTowerName
+	landmark  28,  76, Route40Name
+	landmark  20,  92, Route41Name
 	landmark  28,  92, WhirlIslandsName
-	landmark  28, 100, Route41Name
-	landmark  20, 100, CianwoodCityName
-	landmark  92,  44, Route42Name
-	landmark  84,  44, MtMortarName
-	landmark 108,  44, MahoganyTownName
-	landmark 108,  36, Route43Name
-	landmark 108,  28, LakeOfRageName
-	landmark 120,  44, Route44Name
-	landmark 130,  38, IcePathName
-	landmark 132,  44, BlackthornCityName
-	landmark 132,  36, DragonsDenName
-	landmark 132,  64, Route45Name
-	landmark 112,  72, DarkCaveName
-	landmark 124,  88, Route46Name
+	landmark  12,  92, CianwoodCityName
+	landmark  68,  52, Route37Name
+	landmark  68,  60, Route36Name
+	landmark  52,  60, NationalParkName
+	landmark  52,  76, Route35Name
+	landmark  52,  92, GoldenrodCityName
+	landmark  50,  92, RadioTowerName
+	landmark  52, 108, Route34Name
+	landmark  52, 124, IlexForestName
+	landmark  68, 124, AzaleaTownName
+	landmark  70, 122, SlowpokeWellName
+	landmark  80, 124, Route33Name
+	landmark  84, 116, UnionCaveName
+	landmark  84,  88, Route32Name
+	landmark  76,  76, RuinsOfAlphName
+	landmark  84,  60, VioletCityName
+	landmark  85,  58, SproutTowerName
 	landmark 148,  68, SilverCaveName
 	assert_table_length KANTO_LANDMARK
 	landmark  52, 108, PalletTownName
@@ -206,5 +206,5 @@ ViridianForestName:  db "VIRIDIAN¯FOREST@" ; unreferenced
 DiglettsCaveName:    db "DIGLETT'S¯CAVE@"
 TohjoFallsName:      db "TOHJO FALLS@"
 UndergroundName:     db "UNDERGROUND@"
-BattleTowerName:     db "BATTLE¯TOWER@"
+RocketTowerName:     db "ROCKET¯TOWER@"
 SpecialMapName:      db "SPECIAL@"

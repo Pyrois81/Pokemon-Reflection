@@ -272,13 +272,13 @@ _SaveGameData:
 	farcall BackupPartyMonMail
 	farcall BackupMobileEventIndex
 	farcall SaveRTC
-	ld a, BANK(sBattleTowerChallengeState)
+	ld a, BANK(sRocketTowerChallengeState)
 	call OpenSRAM
-	ld a, [sBattleTowerChallengeState]
+	ld a, [sRocketTowerChallengeState]
 	cp BATTLETOWER_RECEIVED_REWARD
 	jr nz, .ok
 	xor a
-	ld [sBattleTowerChallengeState], a
+	ld [sRocketTowerChallengeState], a
 .ok
 	call CloseSRAM
 	ret
@@ -352,7 +352,7 @@ ErasePreviousSave:
 	call EraseLinkBattleStats
 	call EraseMysteryGift
 	call SaveData
-	call EraseBattleTowerStatus
+	call EraseRocketTowerStatus
 	ld a, BANK(sStackTop)
 	call OpenSRAM
 	xor a
@@ -405,11 +405,11 @@ Function14d18: ; unreferenced
 	db $39, $07, $07, $04, $00, $05, $04, $07, $01, $05, $00, $00
 	db $0f, $05, $14, $07, $05, $05, $11, $0c, $0c, $06, $06, $04
 
-EraseBattleTowerStatus:
-	ld a, BANK(sBattleTowerChallengeState)
+EraseRocketTowerStatus:
+	ld a, BANK(sRocketTowerChallengeState)
 	call OpenSRAM
 	xor a
-	ld [sBattleTowerChallengeState], a
+	ld [sRocketTowerChallengeState], a
 	jp CloseSRAM
 
 SaveData:
@@ -723,13 +723,13 @@ LoadPlayerData:
 	ld bc, wCurMapDataEnd - wCurMapData
 	call CopyBytes
 	call CloseSRAM
-	ld a, BANK(sBattleTowerChallengeState)
+	ld a, BANK(sRocketTowerChallengeState)
 	call OpenSRAM
-	ld a, [sBattleTowerChallengeState]
+	ld a, [sRocketTowerChallengeState]
 	cp BATTLETOWER_RECEIVED_REWARD
 	jr nz, .not_4
 	ld a, BATTLETOWER_WON_CHALLENGE
-	ld [sBattleTowerChallengeState], a
+	ld [sRocketTowerChallengeState], a
 .not_4
 	call CloseSRAM
 	ret

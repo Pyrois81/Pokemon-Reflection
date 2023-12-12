@@ -108,7 +108,7 @@ BattleCommand_BeatUp:
 	and a
 	jr nz, .link_or_tower
 
-	ld a, [wInBattleTowerBattle]
+	ld a, [wInRocketTowerBattle]
 	and a
 	jr nz, .link_or_tower
 

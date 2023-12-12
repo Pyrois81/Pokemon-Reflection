@@ -104,6 +104,15 @@ _CameToItsSensesText::
 	text " came"
 	line "to its senses."
 	done
+	
+_GainedEXPText::
+	text_ram wStringBuffer1
+	text " gained"
+	line "@"
+	text_decimal wStringBuffer2, 2, 5
+	text " EXP. Points!@"
+	text_promptbutton
+	text_end
 
 _EnterNewPasscodeText::
 	text "Please enter any"

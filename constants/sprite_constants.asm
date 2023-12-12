@@ -103,6 +103,8 @@
 	const SPRITE_ENTEI ; 64
 	const SPRITE_RAIKOU ; 65
 	const SPRITE_LORELEI ; 66
+	const SPRITE_CHRIS_RUN ; 67
+	const SPRITE_KRIS_RUN ; 68
 NUM_OVERWORLD_SPRITES EQU const_value - 1
 
 ; SpriteMons indexes (see data/sprites/sprite_mons.asm)
@@ -143,6 +145,7 @@ SPRITE_POKEMON EQU const_value
 	const SPRITE_GYARADOS ; a0
 	const SPRITE_LUGIA ; a1
 	const SPRITE_HO_OH ; a2
+	const SPRITE_PORYGON ; a3
 NUM_POKEMON_SPRITES EQU const_value - SPRITE_POKEMON
 
 ; special GetMonSprite values (see engine/overworld/overworld.asm)

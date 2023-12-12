@@ -20,7 +20,7 @@ MahoganyGymPryceScript:
 	writetext PryceText_Intro
 	waitbutton
 	closetext
-	winlosstext PryceText_Impressed, 0
+	winlosstext PryceText_Win, 0
 	loadtrainer PRYCE, PRYCE1
 	startbattle
 	reloadmapafterbattle
@@ -30,10 +30,9 @@ MahoganyGymPryceScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_GLACIERBADGE
-	readvar VAR_BADGES
-	scall MahoganyGymActivateRockets
+
 .FightDone:
-	checkevent EVENT_GOT_TM16_ICY_WIND
+	checkevent EVENT_MAHOGANY_GYM_TM16_ICY_WIND
 	iftrue PryceScript_Defeat
 	setevent EVENT_BEAT_SKIER_ROXANNE
 	setevent EVENT_BEAT_SKIER_CLARISSA
@@ -44,7 +43,7 @@ MahoganyGymPryceScript:
 	promptbutton
 	verbosegiveitem TM_ICY_WIND
 	iffalse MahoganyGym_NoRoomForIcyWind
-	setevent EVENT_GOT_TM16_ICY_WIND
+	setevent EVENT_MAHOGANY_GYM_TM16_ICY_WIND
 	writetext PryceText_IcyWindSpeech
 	waitbutton
 	closetext
@@ -53,20 +52,10 @@ MahoganyGymPryceScript:
 PryceScript_Defeat:
 	writetext PryceText_CherishYourPokemon
 	waitbutton
+	
 MahoganyGym_NoRoomForIcyWind:
 	closetext
 	end
-
-MahoganyGymActivateRockets:
-	ifequal 7, .RadioTowerRockets
-	ifequal 6, .GoldenrodRockets
-	end
-
-.GoldenrodRockets:
-	jumpstd GoldenrodRocketsScript
-
-.RadioTowerRockets:
-	jumpstd RadioTowerRocketsScript
 
 TrainerSkierRoxanne:
 	trainer SKIER, ROXANNE, EVENT_BEAT_SKIER_ROXANNE, SkierRoxanneSeenText, SkierRoxanneBeatenText, 0, .Script
@@ -158,38 +147,41 @@ PryceText_Intro:
 	line "and suffered much"
 	cont "in my life."
 
-	para "Since I am your"
-	line "elder, let me show"
-	cont "you what I mean."
-
-	para "I have been with"
-	line "#MON since"
-
-	para "before you were"
-	line "born."
-
-	para "I do not lose"
-	line "easily."
-
-	para "I, PRYCE--the"
-	line "winter trainer--"
-
-	para "shall demonstrate"
-	line "my power!"
+	para "I have battled"
+	line "alongside my"
+	
+	para "#MON since well"
+	line "before you were"
+	cont "born!"
+	
+	para "We share a bond"
+	line "that is not easily"
+	cont "overcome."
+	
+	para "So try your luck,"
+	line "child, and I will"
+	
+	para "show you just how"
+	line "unmerciful the"
+	cont "winter truly is!"
 	done
 
-PryceText_Impressed:
-	text "Ah, I am impressed"
-	line "by your prowess."
+PryceText_Win:
+	text "O-ho! You may be"
+	line "young, but your"
+	
+	para "resolve burns"
+	line "bright!"
+	
+	para "You have displayed"
+	line "an unwillingness"
+	
+	para "to be overcome by"
+	line "the biting cold,"
 
-	para "With your strong"
-	line "will, I know you"
-
-	para "will overcome all"
-	line "life's obstacles."
-
-	para "You are worthy of"
-	line "this BADGE!"
+	para "and so I deem you"
+	line "worthy of this"
+	cont "BADGE!"
 	done
 
 Text_ReceivedGlacierBadge:
@@ -198,14 +190,15 @@ Text_ReceivedGlacierBadge:
 	done
 
 PryceText_GlacierBadgeSpeech:
-	text "That BADGE will"
-	line "raise the SPECIAL"
-	cont "stats of #MON."
-
-	para "It also lets your"
-	line "#MON use WHIRL-"
-	cont "POOL to get across"
-	cont "real whirlpools."
+	text "That BADGE is a"
+	line "symbol of winter's"
+	cont "harshness."
+	
+	para "May you wear it"
+	line "and be reminded"
+	
+	para "of what you have"
+	line "overcome."
 
 	para "And this… This is"
 	line "a gift from me!"
@@ -219,8 +212,8 @@ PryceText_IcyWindSpeech:
 	line "and lowers speed."
 
 	para "It demonstrates"
-	line "the harshness of"
-	cont "winter."
+	line "the uncaring"
+	cont "nature of winter."
 	done
 
 PryceText_CherishYourPokemon:
@@ -228,11 +221,11 @@ PryceText_CherishYourPokemon:
 	line "snow melt, spring"
 	cont "arrives."
 
-	para "You and your #-"
-	line "MON will be to-"
-
-	para "gether for many"
-	line "years to come."
+	para "You are sure to"
+	line "spend many seasons"
+	
+	para "with your #MON"
+	line "by your side."
 
 	para "Cherish your time"
 	line "together!"
@@ -245,33 +238,27 @@ BoarderRonaldSeenText:
 	done
 
 BoarderRonaldBeatenText:
-	text "Darn. I couldn't"
-	line "do a thing."
+	text "Brr… A chill went"
+	line "down my spine!"
 	done
 
 BoarderRonaldAfterBattleText:
-	text "I think there's a"
-	line "move a #MON"
+	text "I've heard there's"
+	line "a move a #MON"
 
 	para "can use while it's"
 	line "frozen."
 	done
 
 BoarderBradSeenText:
-	text "This GYM has a"
-	line "slippery floor."
-
-	para "It's fun, isn't"
-	line "it?"
-
-	para "But hey--we're"
-	line "not playing games"
-	cont "here!"
+	text "Whoa, champ!"
+	line "Watch where"
+	cont "you're goin'!"
 	done
 
 BoarderBradBeatenText:
-	text "Do you see how"
-	line "serious we are?"
+	text "Looks like I'm the"
+	line "one who slid out…"
 	done
 
 BoarderBradAfterBattleText:
@@ -281,8 +268,8 @@ BoarderBradAfterBattleText:
 	done
 
 BoarderDouglasSeenText:
-	text "I know PRYCE's"
-	line "secret."
+	text "I know why PRYCE"
+	line "is so unshakable."
 	done
 
 BoarderDouglasBeatenText:
@@ -291,14 +278,18 @@ BoarderDouglasBeatenText:
 	done
 
 BoarderDouglasAfterBattleText:
-	text "The secret behind"
-	line "PRYCE's power…"
-
-	para "He meditates under"
-	line "a waterfall daily"
-
-	para "to strengthen his"
-	line "mind and body."
+	text "When it snows,"
+	line "and everyone is"
+	
+	para "all bundled up,"
+	line "PRYCE will sit in"
+	
+	para "the mountains with"
+	line "his #MON for"
+	
+	para "hours and hours,"
+	line "training his"
+	cont "discipline."
 	done
 
 SkierRoxanneSeenText:
@@ -323,8 +314,11 @@ SkierRoxanneAfterBattleText:
 	done
 
 SkierClarissaSeenText:
-	text "Check out my"
-	line "parallel turn!"
+	text "Sliding around on"
+	line "the ice is really"
+	
+	para "quite fun once you"
+	line "get used to it."
 	done
 
 SkierClarissaBeatenText:
@@ -333,49 +327,51 @@ SkierClarissaBeatenText:
 	done
 
 SkierClarissaAfterBattleText:
-	text "I shouldn't have"
-	line "been bragging"
-	cont "about my skiing…"
+	text "You fall down, you"
+	line "get back up again."
 	done
 
 MahoganyGymGuideText:
 	text "PRYCE is a veteran"
 	line "who has trained"
 
-	para "#MON for some"
-	line "50 years."
+	para "#MON for nearly"
+	line "60 years."
 
-	para "He's said to be"
-	line "good at freezing"
-
-	para "opponents with"
-	line "ice-type moves."
-
-	para "That means you"
-	line "should melt him"
-
-	para "with your burning"
-	line "ambition!"
+	para "He's a master of"
+	line "the ice type, and"
+	
+	para "weathers his"
+	line "opponents down"
+	
+	para "in wars of"
+	line "attrition."
+	
+	para "Fire, fighting,"
+	line "and rock-type"
+	
+	para "moves will be your"
+	line "best bets if you"
+	
+	para "want to come out"
+	line "victorious!"
 	done
 
 MahoganyGymGuideWinText:
-	text "PRYCE is some-"
-	line "thing, but you're"
-	cont "something else!"
-
-	para "That was a hot"
-	line "battle that"
-
-	para "bridged the gen-"
-	line "eration gap!"
+	text "That was amazing,"
+	line "<PLAYER>!"
+	
+	para "Watching that"
+	line "battle chilled me"
+	cont "to my very core!"
 	done
 
 MahoganyGym_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  4, 17, MAHOGANY_TOWN, 3
-	warp_event  5, 17, MAHOGANY_TOWN, 3
+	warp_event  4, 17, MAHOGANY_TOWN, 2
+	warp_event  5, 17, MAHOGANY_TOWN, 2
 
 	def_coord_events
 
@@ -384,10 +380,10 @@ MahoganyGym_MapEvents:
 	bg_event  6, 15, BGEVENT_READ, MahoganyGymStatue
 
 	def_object_events
-	object_event  5,  3, SPRITE_PRYCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, MahoganyGymPryceScript, -1
-	object_event  4,  6, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerSkierRoxanne, -1
-	object_event  0, 17, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBoarderRonald, -1
-	object_event  9, 17, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerSkierClarissa, -1
-	object_event  5,  9, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBoarderBrad, -1
-	object_event  2,  4, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBoarderDouglas, -1
+	object_event  5,  5, SPRITE_PRYCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, MahoganyGymPryceScript, -1
+	object_event  0, 10, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerSkierRoxanne, -1
+	object_event  4,  9, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBoarderRonald, -1
+	object_event  3,  3, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 1, TrainerSkierClarissa, -1
+	object_event  9,  2, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBoarderBrad, -1
+	object_event  6, 13, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerBoarderDouglas, -1
 	object_event  7, 15, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MahoganyGymGuideScript, -1

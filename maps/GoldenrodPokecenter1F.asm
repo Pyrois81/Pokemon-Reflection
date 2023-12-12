@@ -13,70 +13,6 @@ GoldenrodPokecenter1F_MapScripts:
 GoldenrodPokecenter1FNurseScript:
 	jumpstd PokecenterNurseScript
 
-GoldenrodPokecenter1F_GSBallSceneLeft:
-	setval BATTLETOWERACTION_CHECKMOBILEEVENT
-	special BattleTowerAction
-	ifequal MOBILE_EVENT_OBJECT_GS_BALL, .gsball
-	end
-
-.gsball
-	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftrue .cancel
-	playsound SFX_EXIT_BUILDING
-	moveobject GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST, 0, 7
-	disappear GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST
-	appear GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST
-	playmusic MUSIC_SHOW_ME_AROUND
-	applymovement GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST, GoldenrodPokeCenter1FLinkReceptionistApproachPlayerAtLeftDoorwayTileMovement
-	turnobject PLAYER, UP
-	opentext
-	writetext GoldenrodPokeCenter1FLinkReceptionistPleaseAcceptGSBallText
-	waitbutton
-	verbosegiveitem GS_BALL
-	setevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	setevent EVENT_CAN_GIVE_GS_BALL_TO_KURT
-	writetext GoldenrodPokeCenter1FLinkReceptionistPleaseDoComeAgainText
-	waitbutton
-	closetext
-	applymovement GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST, GoldenrodPokeCenter1FLinkReceptionistWalkToStairsFromLeftDoorwayTileMovement
-	special RestartMapMusic
-	disappear GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST
-	playsound SFX_EXIT_BUILDING
-.cancel
-	end
-
-GoldenrodPokecenter1F_GSBallSceneRight:
-	setval BATTLETOWERACTION_CHECKMOBILEEVENT
-	special BattleTowerAction
-	ifequal MOBILE_EVENT_OBJECT_GS_BALL, .gsball
-	end
-
-.gsball
-	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	iftrue .cancel
-	playsound SFX_EXIT_BUILDING
-	moveobject GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST, 0, 7
-	disappear GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST
-	appear GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST
-	playmusic MUSIC_SHOW_ME_AROUND
-	applymovement GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST, GoldenrodPokeCenter1FLinkReceptionistApproachPlayerAtRightDoorwayTileMovement
-	turnobject PLAYER, UP
-	opentext
-	writetext GoldenrodPokeCenter1FLinkReceptionistPleaseAcceptGSBallText
-	waitbutton
-	verbosegiveitem GS_BALL
-	setevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	setevent EVENT_CAN_GIVE_GS_BALL_TO_KURT
-	writetext GoldenrodPokeCenter1FLinkReceptionistPleaseDoComeAgainText
-	waitbutton
-	closetext
-	applymovement GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST, GoldenrodPokeCenter1FLinkReceptionistWalkToStairsFromRightDoorwayTileMovement
-	special RestartMapMusic
-	disappear GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST
-	playsound SFX_EXIT_BUILDING
-.cancel
-	end
-
 GoldenrodPokecenter1FGameboyKidScript:
 	jumptextfaceplayer GoldenrodPokecenter1FGameboyKidText
 
@@ -811,8 +747,6 @@ GoldenrodPokecenter1F_MapEvents:
 	warp_event  0,  7, POKECENTER_2F, 1
 
 	def_coord_events
-	coord_event  3,  7, SCENE_DEFAULT, GoldenrodPokecenter1F_GSBallSceneLeft
-	coord_event  4,  7, SCENE_DEFAULT, GoldenrodPokecenter1F_GSBallSceneRight
 
 	def_bg_events
 

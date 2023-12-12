@@ -1,5 +1,6 @@
 	object_const_def
 	const BLACKTHORNGYM1F_CLAIR
+	const BLACKTHORNGYM1F_DRAGONAIR
 	const BLACKTHORNGYM1F_COOLTRAINER_M
 	const BLACKTHORNGYM1F_COOLTRAINER_F
 	const BLACKTHORNGYM1F_GYM_GUIDE
@@ -51,6 +52,10 @@ BlackthornGymClairScript:
 	setevent EVENT_BLACKTHORN_GYM_BUTTON_1
 	setevent EVENT_BLACKTHORN_GYM_BUTTON_2
 	setevent EVENT_BLACKTHORN_GYM_BUTTON_3
+	setevent EVENT_BEAT_COOLTRAINERF_LOLA
+	setevent EVENT_BEAT_COOLTRAINERM_PAUL
+	setevent EVENT_BEAT_COOLTRAINERM_CODY
+	setevent EVENT_BEAT_COOLTRAINERF_FRAN
 	opentext
 	writetext ClairAfterBattleText
 	waitbutton
@@ -61,37 +66,42 @@ BlackthornGymClairScript:
 	promptbutton
 	writetext RisingBadgeExplanationText
 	waitbutton
-	scall FX
+	closetext
+	scall BlackthornGymButtonFX
 	changeblock  2,  4, $2d
 	reloadmappart
+	opentext
 	
-.GiveTM24:
-	writetext GiveTM24Text
+.GiveTM:
+	writetext GiveTMText
 	promptbutton
-	giveitem TM_DRAGONBREATH
+	verbosegiveitem TM_TWISTER
 	iffalse .BagFull
-	getitemname STRING_BUFFER_3, TM_DRAGONBREATH
-	writetext BlackthornGymText_ReceivedTM24
-	playsound SFX_ITEM
-	waitsfx
-	itemnotify
-	setevent EVENT_GOT_TM24_DRAGONBREATH
-	writetext BlackthornGymClairText_DescribeTM24
+	setevent EVENT_BLACKTHORN_GYM_1F_TM66_TWISTER
+	writetext BlackthornGymClairText_DescribeTM
 	promptbutton
 
-.GotTM24:
+.GotTM:
 	writetext BlackthornGymClairFinalText
 	waitbutton
 	closetext
 	end
 	
 .AlreadyGotBadge:
-	checkevent EVENT_GOT_TM24_DRAGONBREATH
-	iffalse .GiveTM24
-	sjump .GotTM24
+	checkevent EVENT_BLACKTHORN_GYM_1F_TM66_TWISTER
+	iffalse .GiveTM
+	sjump .GotTM
 	
 .BagFull:
 	writetext BlackthornGymClairText_BagFull
+	waitbutton
+	closetext
+	end
+	
+BlackthornGymDragonairScript:
+	opentext
+	writetext BlackthornGymDragonairText
+	cry DRAGONAIR
 	waitbutton
 	closetext
 	end
@@ -150,7 +160,7 @@ BlackthornGym1FButton:
 	yesorno
 	iffalse .End
 	setevent EVENT_BLACKTHORN_GYM_BUTTON_1
-	scall FX
+	scall BlackthornGymButtonFX
 	changeblock  2,  6, $2d
 	reloadmappart
 	writetext BlackthornGym1FButtonPressText
@@ -164,7 +174,7 @@ BlackthornGym1FButton:
 	yesorno
 	iffalse .End
 	clearevent EVENT_BLACKTHORN_GYM_BUTTON_1
-	scall FX
+	scall BlackthornGymButtonFX
 	changeblock  2,  6, $18
 	reloadmappart
 	writetext BlackthornGym1FButtonPressText
@@ -172,7 +182,7 @@ BlackthornGym1FButton:
 	closetext
 	end
 	
-FX:
+BlackthornGymButtonFX:
 	playsound SFX_PUSH_BUTTON
 	earthquake 30
 	end
@@ -252,7 +262,7 @@ RisingBadgeExplanationText:
 	cont "were traded."
 	done
 	
-GiveTM24Text:
+GiveTMText:
 	text "Oh, also, you've"
 	line "earned this."
 	done
@@ -264,22 +274,16 @@ BlackthornGymClairText_YouKeptMeWaiting:
 	para "Here! Take this!"
 	done
 
-BlackthornGymText_ReceivedTM24:
-	text "<PLAYER> received"
-	line "TM24 DRAGONBREATH."
-	done
-
-BlackthornGymClairText_DescribeTM24:
+BlackthornGymClairText_DescribeTM:
 	text "That contains"
-	line "DRAGONBREATH."
+	line "TWISTER."
 
-	para "No, it doesn't"
-	line "have anything to"
-	cont "do with my breath."
-
-	para "If you don't want"
-	line "it, you don't have"
-	cont "to take it."
+	para "It's a tornado"
+	line "attack that may"
+	
+	para "also cause your"
+	line "opponent to"
+	cont "falter."
 	done
 
 BlackthornGymClairText_BagFull:
@@ -305,6 +309,10 @@ BlackthornGymClairFinalText:
 	line "<PLAYER>."
 	done
 
+BlackthornGymDragonairText:
+	text "DRAGONAIR: Nair!"
+	done
+	
 CooltrainermPaulSeenText:
 	text "Let me show you"
 	line "the true power of"
@@ -371,7 +379,7 @@ BlackthornGymGuideText:
 	line "water, grass, and"
 	cont "electric."
 
-	para "But you know,"
+	para "But, you know,"
 	line "they're supposed"
 
 	para "to be weak against"
@@ -427,6 +435,7 @@ BlackthornGym1F_MapEvents:
 
 	def_object_events
 	object_event  4,  2, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, BlackthornGymClairScript, -1
+	object_event  3,  2, SPRITE_EKANS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, BlackthornGymDragonairScript, -1
 	object_event  7,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainermPaul, -1
 	object_event 11,  2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainerfLola, -1
 	object_event  9, 13, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, BlackthornGymGuideScript, -1

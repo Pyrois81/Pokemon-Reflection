@@ -245,7 +245,7 @@ StubbedTrainerRankings_StepCount:
 	ld hl, sTrainerRankingStepCount
 	jp StubbedTrainerRankings_Increment4Byte
 
-StubbedTrainerRankings_BattleTowerWins: ; unreferenced
+StubbedTrainerRankings_RocketTowerWins: ; unreferenced
 	ret
 	ld a, BANK(s5_aa8d)
 	call OpenSRAM
@@ -253,7 +253,7 @@ StubbedTrainerRankings_BattleTowerWins: ; unreferenced
 	and a
 	call CloseSRAM
 	ret nz
-	ld hl, sTrainerRankingBattleTowerWins
+	ld hl, sTrainerRankingRocketTowerWins
 	jp StubbedTrainerRankings_Increment2Byte
 
 StubbedTrainerRankings_TMsHMsTaught:

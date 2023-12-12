@@ -5,21 +5,11 @@
 	const ECRUTEAKGYM_GRANNY1
 	const ECRUTEAKGYM_GRANNY2
 	const ECRUTEAKGYM_GYM_GUIDE
-	const ECRUTEAKGYM_GRAMPS
 
 EcruteakGym_MapScripts:
 	def_scene_scripts
-	scene_script .ForcedToLeave ; SCENE_DEFAULT
-	scene_script .DummyScene ; SCENE_FINISHED
 
 	def_callbacks
-
-.ForcedToLeave:
-	sdefer EcruteakGymClosed
-	end
-
-.DummyScene:
-	end
 
 EcruteakGymMortyScript:
 	faceplayer
@@ -39,60 +29,30 @@ EcruteakGymMortyScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_FOGBADGE
-	readvar VAR_BADGES
-	scall EcruteakGymActivateRockets
-	setmapscene ECRUTEAK_TIN_TOWER_ENTRANCE, SCENE_FINISHED
-	setevent EVENT_RANG_CLEAR_BELL_1
-	setevent EVENT_RANG_CLEAR_BELL_2
+	setmapscene ECRUTEAK_CITY, SCENE_ECRUTEAKCITY_OLD_MAN_CUTS_TREE
+
 .FightDone:
-	checkevent EVENT_GOT_TM30_SHADOW_BALL
-	iftrue .GotShadowBall
+	checkevent EVENT_ECRUTEAK_GYM_TM50_NIGHTMARE
+	iftrue .GotNightmare
 	setevent EVENT_BEAT_SAGE_JEFFREY
 	setevent EVENT_BEAT_SAGE_PING
 	setevent EVENT_BEAT_MEDIUM_MARTHA
 	setevent EVENT_BEAT_MEDIUM_GRACE
 	writetext MortyText_FogBadgeSpeech
 	promptbutton
-	verbosegiveitem TM_SHADOW_BALL
-	iffalse .NoRoomForShadowBall
-	setevent EVENT_GOT_TM30_SHADOW_BALL
-	writetext MortyText_ShadowBallSpeech
+	verbosegiveitem TM_NIGHTMARE
+	iffalse .NoRoomForTM
+	setevent EVENT_ECRUTEAK_GYM_TM50_NIGHTMARE
+	writetext MortyText_NightmareSpeech
 	waitbutton
 	closetext
 	end
 
-.GotShadowBall:
+.GotNightmare:
 	writetext MortyFightDoneText
 	waitbutton
-.NoRoomForShadowBall:
+.NoRoomForTM:
 	closetext
-	end
-
-EcruteakGymActivateRockets:
-	ifequal 7, .RadioTowerRockets
-	ifequal 6, .GoldenrodRockets
-	end
-
-.GoldenrodRockets:
-	jumpstd GoldenrodRocketsScript
-
-.RadioTowerRockets:
-	jumpstd RadioTowerRocketsScript
-
-EcruteakGymClosed:
-	applymovement PLAYER, EcruteakGymPlayerStepUpMovement
-	applymovement ECRUTEAKGYM_GRAMPS, EcruteakGymGrampsSlowStepDownMovement
-	opentext
-	writetext EcruteakGymClosedText
-	waitbutton
-	closetext
-	follow PLAYER, ECRUTEAKGYM_GRAMPS
-	applymovement PLAYER, EcruteakGymPlayerSlowStepDownMovement
-	stopfollow
-	special FadeOutPalettes
-	playsound SFX_ENTER_DOOR
-	waitsfx
-	warp ECRUTEAK_CITY, 6, 27
 	end
 
 TrainerSageJeffrey:
@@ -163,67 +123,57 @@ EcruteakGymStatue:
 	gettrainername STRING_BUFFER_4, MORTY, MORTY1
 	jumpstd GymStatue2Script
 
-EcruteakGymPlayerStepUpMovement:
-	step UP
-	step_end
-
-EcruteakGymPlayerSlowStepDownMovement:
-	fix_facing
-	slow_step DOWN
-	remove_fixed_facing
-	step_end
-
-EcruteakGymGrampsSlowStepDownMovement:
-	slow_step DOWN
-	step_end
-
 MortyIntroText:
-	text "Good of you to"
-	line "have come."
-
-	para "Here in ECRUTEAK,"
-	line "#MON have been"
-	cont "revered."
-
-	para "It's said that a"
-	line "rainbow-colored"
-
-	para "#MON will come"
-	line "down to appear"
-
-	para "before a truly"
-	line "powerful trainer."
-
-	para "I believed that"
-	line "tale, so I have"
-
-	para "secretly trained"
-	line "here all my life."
-
-	para "As a result, I can"
-	line "now see what"
-	cont "others cannot."
-
-	para "Just a bit more…"
-
-	para "With a little"
-	line "more, I could see"
-
-	para "a future in which"
-	line "I meet the #MON"
-	cont "of rainbow colors."
-
-	para "You're going to"
-	line "help me reach that"
-	cont "level!"
+	text "Life…"
+	
+	para "…and death."
+	
+	para "We are here for so"
+	line "precious little"
+	
+	para "time, and then we"
+	line "pass, leaving our"
+	cont "souls behind."
+	
+	para "Some wander; some"
+	line "stay. Some reach"
+	
+	para "greener pastures,"
+	line "while others"
+	
+	para "fester and become"
+	line "malevolent."
+	
+	para "Can you feel them?"
+	line "Perhaps even see"
+	cont "them?"
+	
+	para "These souls re-"
+	line "quire a shepherd"
+	
+	para "to guide them…"
+	line "To soothe them."
+	
+	para "I am that"
+	line "shepherd."
+	
+	para "Can you stand"
+	line "before their"
+	cont "wrath?"
+	
+	para "Show me!"
 	done
 
 MortyWinLossText:
-	text "I'm not good"
-	line "enough yet…"
+	text "Astounding! You"
+	line "faced the spirits"
+	
+	para "and came out"
+	line "stronger than"
+	cont "ever."
 
-	para "All right. This"
-	line "BADGE is yours."
+	para "This BADGE is"
+	line "yours."
 	done
 
 Text_ReceivedFogBadge:
@@ -232,156 +182,192 @@ Text_ReceivedFogBadge:
 	done
 
 MortyText_FogBadgeSpeech:
-	text "By having FOG-"
+	text "By having the FOG-"
 	line "BADGE, #MON up"
 
 	para "to L50 will obey"
-	line "you."
+	line "you without"
+	cont "question."
 
-	para "Also, #MON that"
-	line "know SURF will be"
-
-	para "able to use that"
-	line "move anytime."
-
-	para "I want you to have"
-	line "this too."
+	para "You should also"
+	line "take this."
 	done
 
-MortyText_ShadowBallSpeech:
-	text "It's SHADOW BALL."
-	line "It causes damage"
-
-	para "and may reduce"
-	line "SPCL.DEF."
-
-	para "Use it if it"
-	line "appeals to you."
+MortyText_NightmareSpeech:
+	text "It's NIGHTMARE."
+	line "It can only be"
+	
+	para "used against a"
+	line "sleeping #MON,"
+	
+	para "but it will cause"
+	line "them recurring"
+	
+	para "damage until they"
+	line "wake up."
 	done
 
 MortyFightDoneText:
-	text "I see…"
-
-	para "Your journey has"
-	line "taken you to far-"
-	cont "away places."
-
-	para "And you have wit-"
-	line "nessed much more"
-	cont "than I."
-
-	para "I envy you for"
-	line "that…"
+	text "The way you"
+	line "battled…"
+	
+	para "You may have what"
+	line "it takes to beckon"
+	cont "forth HO-OH."
+	
+	para "There was a time"
+	line "when that was my"
+	
+	para "obsession, but"
+	line "I've come to"
+	
+	para "realize that it's"
+	line "not something one"
+	
+	para "can achieve simply"
+	line "by working hard."
+	
+	para "HO-OH responds to"
+	line "a trainer with a"
+	
+	para "brilliant, burning"
+	line "spirit, and I"
+	
+	para "believe I see that"
+	line "spark in you,"
+	cont "<PLAYER>."
 	done
 
 SageJeffreySeenText:
-	text "I spent the spring"
-	line "with my #MON."
-
-	para "Then summer, fall"
-	line "and winter…"
-
-	para "Then spring came"
-	line "again. We have"
-
-	para "lived together"
-	line "for a long time."
+	text "Getting disori-"
+	line "ented yet?"
+	
+	para "Be sure to keep"
+	line "an eye on where"
+	cont "you're going!"
 	done
 
 SageJeffreyBeatenText:
-	text "Wins and losses, I"
-	line "experienced both."
+	text "I feel dizzy…"
 	done
 
 SageJeffreyAfterBattleText:
-	text "Where did #MON"
-	line "come from?"
+	text "To be honest, even"
+	line "I forget how to"
+	
+	para "get around in here"
+	line "sometimes."
 	done
 
 SagePingSeenText:
-	text "Can you inflict"
-	line "any damage on our"
-	cont "#MON?"
+	text "Can you steel your"
+	line "nerves against my"
+	
+	para "ghosts, or will"
+	line "they make you"
+	cont "faint as well?"
 	done
 
 SagePingBeatenText:
-	text "Ah! Well done!"
+	text "You were cool"
+	line "and collected."
 	done
 
 SagePingAfterBattleText:
-	text "We use only ghost-"
-	line "type #MON."
-
-	para "No normal-type"
-	line "attack can harm"
-	cont "them!"
+	text "Most people run"
+	line "away at the mere"
+	
+	para "sight of a ghost"
+	line "#MON."
 	done
 
 MediumMarthaSeenText:
-	text "I shall win!"
+	text "Almost there…"
+	line "or are you?"
 	done
 
 MediumMarthaBeatenText:
-	text "I, I, I lost!"
+	text "Impressive!"
 	done
 
 MediumMarthaAfterBattleText:
-	text "The one who wants"
-	line "to win most--will!"
+	text "Hmm, you may"
+	line "have a chance"
+	cont "after all."
 	done
 
 MediumGraceSeenText:
-	text "Stumped by our in-"
-	line "visible floor?"
-
-	para "Defeat me if you"
-	line "want a hint!"
+	text "There are many"
+	line "tricks in this"
+	
+	para "place, but I'll"
+	line "tell give you a"
+	cont "hint if you win."
 	done
 
 MediumGraceBeatenText:
-	text "Wha-what?"
+	text "Losing, winning…"
+	line "They're both part"
+	cont "of life."
 	done
 
 MediumGraceAfterBattleText:
-	text "Fine. I shall tell"
-	line "you the secret of"
+	text "As long as you"
+	line "stay within line"
+	
+	para "of sight, you"
+	line "can't go wrong."
+	done
 
-	para "the invisible"
-	line "floor."
-
-	para "The path is right"
-	line "before our eyes!"
+EcruteakGymGuideMortyNotInText:
+	text "Welcome to the"
+	line "ECRUTEAK GYM!"
+	
+	para "Unfortunately --"
+	line "or maybe fortu-"
+	cont "nately for you,"
+	
+	para "the gym leader,"
+	line "MORTY, isn't in."
+	
+	para "Feel free to take"
+	line "a look around,"
+	
+	para "but be sure to"
+	line "watch your step…"
 	done
 
 EcruteakGymGuideText:
-	text "The trainers here"
-	line "have secret mo-"
-	cont "tives."
-
-	para "If you win, they"
-	line "may tell you some"
-
-	para "deep secrets about"
-	line "ECRUTEAK."
+	text "The ECRUTEAK GYM"
+	line "is a den of the"
+	cont "paranormal."
+	
+	para "You'll find pri-"
+	line "marily ghost-type"
+	
+	para "#MON here, so"
+	line "you might want to"
+	
+	para "bring some dark-"
+	line "types or even some"
+	
+	para "ghosts of your"
+	line "own."
+	
+	para "Just keep in mind,"
+	line "normal- and"
+	
+	para "fighting-type"
+	line "moves won't get"
+	cont "you very far."
 	done
 
 EcruteakGymGuideWinText:
-	text "Whew, <PLAYER>."
-	line "You did great!"
+	text "Whew, <PLAYER>,"
+	line "that was scary!"
 
-	para "I was cowering in"
-	line "the corner out of"
-	cont "pure terror!"
-	done
-
-EcruteakGymClosedText:
-	text "MORTY, the GYM"
-	line "LEADER, is absent."
-
-	para "Sorry, but you'll"
-	line "have to leave."
-
-	para "Hohohoho."
+	para "I was shaking in"
+	line "my boots!"
 	done
 
 EcruteakGym_MapEvents:
@@ -390,49 +376,56 @@ EcruteakGym_MapEvents:
 	def_warp_events
 	warp_event  4, 17, ECRUTEAK_CITY, 10
 	warp_event  5, 17, ECRUTEAK_CITY, 10
-	warp_event  4, 14, ECRUTEAK_GYM, 4
-	warp_event  2,  4, ECRUTEAK_GYM, 3
-	warp_event  3,  4, ECRUTEAK_GYM, 3
-	warp_event  4,  4, ECRUTEAK_GYM, 3
-	warp_event  4,  5, ECRUTEAK_GYM, 3
-	warp_event  6,  7, ECRUTEAK_GYM, 3
-	warp_event  7,  4, ECRUTEAK_GYM, 3
-	warp_event  2,  6, ECRUTEAK_GYM, 3
-	warp_event  3,  6, ECRUTEAK_GYM, 3
-	warp_event  4,  6, ECRUTEAK_GYM, 3
-	warp_event  5,  6, ECRUTEAK_GYM, 3
-	warp_event  7,  6, ECRUTEAK_GYM, 3
-	warp_event  7,  7, ECRUTEAK_GYM, 3
-	warp_event  4,  8, ECRUTEAK_GYM, 3
-	warp_event  5,  8, ECRUTEAK_GYM, 3
-	warp_event  6,  8, ECRUTEAK_GYM, 3
-	warp_event  7,  8, ECRUTEAK_GYM, 3
-	warp_event  2,  8, ECRUTEAK_GYM, 3
-	warp_event  2,  9, ECRUTEAK_GYM, 3
-	warp_event  2, 10, ECRUTEAK_GYM, 3
-	warp_event  2, 11, ECRUTEAK_GYM, 3
-	warp_event  4, 10, ECRUTEAK_GYM, 3
-	warp_event  5, 10, ECRUTEAK_GYM, 3
-	warp_event  2, 12, ECRUTEAK_GYM, 3
-	warp_event  3, 12, ECRUTEAK_GYM, 3
-	warp_event  4, 12, ECRUTEAK_GYM, 3
-	warp_event  5, 12, ECRUTEAK_GYM, 3
+	warp_event  4, 13, ECRUTEAK_GYM,   6 ; Checkpoint 1
+	warp_event  0,  1, ECRUTEAK_GYM,  15 ; Checkpoint 2
+	warp_event  8,  8, ECRUTEAK_GYM,  23 ; Checkpoint 3
+	
+	; Lead to CP1
+	warp_event  0, 12, ECRUTEAK_GYM, 3 ; 6
+	warp_event  0, 13, ECRUTEAK_GYM, 3
+	warp_event  3, 10, ECRUTEAK_GYM, 3
+	warp_event  3, 11, ECRUTEAK_GYM, 3
+	warp_event  6, 10, ECRUTEAK_GYM, 3
 	warp_event  7, 10, ECRUTEAK_GYM, 3
-	warp_event  7, 11, ECRUTEAK_GYM, 3
-	warp_event  7, 12, ECRUTEAK_GYM, 3
-	warp_event  7, 13, ECRUTEAK_GYM, 3
-
+	warp_event  8, 10, ECRUTEAK_GYM, 3
+	warp_event  9, 12, ECRUTEAK_GYM, 3
+	warp_event  9, 13, ECRUTEAK_GYM, 3
+	
+	; Lead to CP2
+	warp_event  0,  6, ECRUTEAK_GYM, 4 ; 15
+	warp_event  0,  7, ECRUTEAK_GYM, 4
+	warp_event  4,  0, ECRUTEAK_GYM, 4
+	warp_event  4,  3, ECRUTEAK_GYM, 4
+	warp_event  4,  8, ECRUTEAK_GYM, 4
+	warp_event  4,  9, ECRUTEAK_GYM, 4
+	warp_event  7,  6, ECRUTEAK_GYM, 4
+	warp_event  7,  7, ECRUTEAK_GYM, 4
+	
+	; Lead to CP3
+	warp_event  4,  1, ECRUTEAK_GYM, 5 ; 23
+	warp_event  4,  2, ECRUTEAK_GYM, 5
+	warp_event  8,  6, ECRUTEAK_GYM, 5
+	warp_event  8,  7, ECRUTEAK_GYM, 5
+	warp_event  9,  2, ECRUTEAK_GYM, 5
+	warp_event  9,  3, ECRUTEAK_GYM, 5
+	warp_event  9, 10, ECRUTEAK_GYM, 5
+	
+	; Stairs
+	warp_event  0, 10, ECRUTEAK_GYM, 31 ; 30
+	warp_event  0,  0, ECRUTEAK_GYM, 30
+	warp_event  5,  7, ECRUTEAK_GYM, 33
+	warp_event  9,  9, ECRUTEAK_GYM, 32
+	
 	def_coord_events
 
 	def_bg_events
-	bg_event  3, 15, BGEVENT_READ, EcruteakGymStatue
-	bg_event  6, 15, BGEVENT_READ, EcruteakGymStatue
+	bg_event  1, 15, BGEVENT_READ, EcruteakGymStatue
+	bg_event  8, 15, BGEVENT_READ, EcruteakGymStatue
 
 	def_object_events
-	object_event  5,  1, SPRITE_MORTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, EcruteakGymMortyScript, -1
-	object_event  2,  7, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerSageJeffrey, -1
-	object_event  3, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerSagePing, -1
-	object_event  7,  5, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerMediumMartha, -1
-	object_event  7,  9, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerMediumGrace, -1
+	object_event  5,  0, SPRITE_MORTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, EcruteakGymMortyScript, EVENT_MORTY_IN_MT_MORTAR
+	object_event  1,  7, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerSageJeffrey, -1
+	object_event  1, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerSagePing, -1
+	object_event  9,  4, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerMediumMartha, -1
+	object_event  9, 11, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerMediumGrace, -1
 	object_event  7, 15, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, EcruteakGymGuideScript, -1
-	object_event  4, 14, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ECRUTEAK_GYM_GRAMPS

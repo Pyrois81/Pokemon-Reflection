@@ -2,12 +2,13 @@
 	const ROUTE42_FISHER
 	const ROUTE42_POKEFAN_M
 	const ROUTE42_SUPER_NERD
+	const ROUTE42_ROCKET1
+	const ROUTE42_ROCKET2
 	const ROUTE42_FRUIT_TREE1
 	const ROUTE42_FRUIT_TREE2
 	const ROUTE42_FRUIT_TREE3
 	const ROUTE42_POKE_BALL1
 	const ROUTE42_POKE_BALL2
-	const ROUTE42_SUICUNE
 
 Route42_MapScripts:
 	def_scene_scripts
@@ -15,6 +16,7 @@ Route42_MapScripts:
 	scene_script .DummyScene1 ; SCENE_ROUTE42_SUICUNE
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, .CheckRockets
 
 .DummyScene0:
 	end
@@ -22,18 +24,17 @@ Route42_MapScripts:
 .DummyScene1:
 	end
 
-Route42SuicuneScript:
-	showemote EMOTE_SHOCK, PLAYER, 15
-	pause 15
-	playsound SFX_WARP_FROM
-	applymovement ROUTE42_SUICUNE, Route42SuicuneMovement
-	disappear ROUTE42_SUICUNE
-	pause 10
-	setscene SCENE_ROUTE42_NOTHING
-	clearevent EVENT_SAW_SUICUNE_ON_ROUTE_36
-	setmapscene ROUTE_36, SCENE_ROUTE36_SUICUNE
-	end
+.CheckRockets:
+	checkevent EVENT_CLEARED_LAKE_OF_RAGE
+	iffalse .RocketsStay
+	checkflag ENGINE_GLACIERBADGE
+	iffalse .RocketsStay
+	disappear ROUTE42_ROCKET1
+	disappear ROUTE42_ROCKET2
 
+.RocketsStay:
+	endcallback
+	
 TrainerFisherTully:
 	trainer FISHER, TULLY1, EVENT_BEAT_FISHER_TULLY, FisherTullySeenText, FisherTullyBeatenText, 0, .Script
 
@@ -182,17 +183,30 @@ TrainerHikerBenjamin:
 	closetext
 	end
 
+Route42Rocket1Script:
+	faceplayer
+	opentext
+	writetext Route42Rocket1Text
+	waitbutton
+	closetext
+	end
+
+Route42Rocket2Script:
+	faceplayer
+	opentext
+	writetext Route42Rocket2Text
+	waitbutton
+	closetext
+	end
+
 Route42Sign1:
 	jumptext Route42Sign1Text
 
-MtMortarSign1:
-	jumptext MtMortarSign1Text
-
-MtMortarSign2:
-	jumptext MtMortarSign2Text
-
 Route42Sign2:
 	jumptext Route42Sign2Text
+	
+MtMortarSign:
+	jumptext MtMortarSignText
 
 Route42UltraBall:
 	itemball ULTRA_BALL
@@ -209,111 +223,143 @@ Route42FruitTree2:
 Route42FruitTree3:
 	fruittree FRUITTREE_ROUTE_42_3
 
-Route42HiddenMaxPotion:
-	hiddenitem MAX_POTION, EVENT_ROUTE_42_HIDDEN_MAX_POTION
-
-Route42SuicuneMovement:
-	set_sliding
-	fast_jump_step UP
-	fast_jump_step UP
-	fast_jump_step UP
-	fast_jump_step RIGHT
-	fast_jump_step RIGHT
-	fast_jump_step RIGHT
-	remove_sliding
-	step_end
+Route42HiddenNugget:
+	hiddenitem NUGGET, EVENT_ROUTE_42_HIDDEN_NUGGET
 
 FisherTullySeenText:
-	text "Let me demonstrate"
-	line "the power of the"
-	cont "#MON I caught!"
+	text "I swear I saw a"
+	line "blue blur whiz"
+	
+	para "right by here a"
+	line "few days ago."
+	
+	para "Maybe I need to"
+	line "get my eyes"
+	cont "checked."
 	done
 
 FisherTullyBeatenText:
-	text "What? That's not"
-	line "right."
+	text "Could it be?"
 	done
 
 FisherTullyAfterBattleText:
-	text "I want to become"
-	line "the trainer CHAMP"
-
-	para "using the #MON"
-	line "I caught."
-
-	para "That's the best"
-	line "part of fishing!"
+	text "Come to think of"
+	line "it, I have heard"
+	
+	para "legends of a"
+	line "blue hedgehog that"
+	cont "can run on water…"
+	
+	para "Maybe that's what"
+	line "I saw!"
 	done
 
 HikerBenjaminSeenText:
-	text "Ah, it's good to"
-	line "be outside!"
-	cont "I feel so free!"
+	text "I'm just a rollin'"
+	line "stone, seein' the"
+	
+	para "sights, smellin'"
+	line "the smells, and"
+	
+	para "battlin' whoever"
+	line "I come across!"
 	done
 
 HikerBenjaminBeatenText:
-	text "Gahahah!"
+	text "Sometimes you"
+	line "crash out."
 	done
 
 HikerBenjaminAfterBattleText:
-	text "Losing feels in-"
-	line "significant if you"
-
-	para "look up at the big"
-	line "sky!"
+	text "A rollin' stone"
+	line "gathers no moss,"
+	
+	para "but ya do pick up"
+	line "a few bruises"
+	cont "along the way."
 	done
 
 PokemaniacShaneSeenText:
-	text "HEY!"
-
-	para "This is my secret"
-	line "place! Get lost,"
-	cont "you outsider!"
+	text "Maaan, I just KNOW"
+	line "there are all"
+	
+	para "kinds of rare"
+	line "#MON in MT."
+	cont "MORTAR over there."
+	
+	para "I dunno how I'm"
+	line "supposed to get"
+	
+	para "over there,"
+	line "though!"
 	done
 
 PokemaniacShaneBeatenText:
-	text "I should have used"
-	line "my MOON STONE…"
+	text "Never lucky…"
 	done
 
 PokemaniacShaneAfterBattleText:
-	text "You're working on"
-	line "a #DEX?"
-
-	para "Wow, you must know"
-	line "some pretty rare"
-	cont "#MON!"
-
-	para "May I please see"
-	line "it. Please?"
+	text "I heard there's an"
+	line "HM that lets you"
+	
+	para "ride on your #-"
+	line "MON's back over"
+	cont "the water."
+	
+	para "How'm I supposed"
+	line "to find that??"
+	done
+	
+Route42Rocket1Text:
+	text "Yeah, I'm a ROCK…"
+	line "o. Uh, yeah… my"
+	cont "name is ROCKO."
+	
+	para "Sorry we're in the"
+	line "way, but we've got"
+	
+	para "some very impor-"
+	line "tant business to"
+	cont "take care of."
+	
+	para "We'll be out of"
+	line "here in no time."
+	
+	para "I'm sure you can"
+	line "find something to"
+	
+	para "occupy yourself"
+	line "with in the"
+	cont "meantime."
 	done
 
+Route42Rocket2Text:
+	text "Don't go sticking"
+	line "your nose where"
+	
+	para "it doesn't belong,"
+	line "kid."
+	done
+	
 Route42Sign1Text:
 	text "ROUTE 42"
 
 	para "ECRUTEAK CITY -"
 	line "MAHOGANY TOWN"
 	done
-
-MtMortarSign1Text:
-	text "MT.MORTAR"
-
-	para "WATERFALL CAVE"
-	line "INSIDE"
-	done
-
-MtMortarSign2Text:
-	text "MT.MORTAR"
-
-	para "WATERFALL CAVE"
-	line "INSIDE"
-	done
-
+	
 Route42Sign2Text:
 	text "ROUTE 42"
 
-	para "ECRUTEAK CITY -"
-	line "MAHOGANY TOWN"
+	para "MAHOGANY TOWN -"
+	line "ECRUTEAK CITY"
+	done
+	
+MtMortarSignText:
+	text "MT.MORTAR"
+
+	para "WATERFALL CAVE"
+	line "INSIDE"
 	done
 
 Route42_MapEvents:
@@ -322,27 +368,24 @@ Route42_MapEvents:
 	def_warp_events
 	warp_event  0,  8, ROUTE_42_ECRUTEAK_GATE, 3
 	warp_event  0,  9, ROUTE_42_ECRUTEAK_GATE, 4
-	warp_event 10,  5, MOUNT_MORTAR_1F_OUTSIDE, 1
-	warp_event 28,  9, MOUNT_MORTAR_1F_OUTSIDE, 2
-	warp_event 46,  7, MOUNT_MORTAR_1F_OUTSIDE, 3
+	warp_event 28,  3, MOUNT_MORTAR_1F, 1
 
 	def_coord_events
-	coord_event 24, 14, SCENE_ROUTE42_SUICUNE, Route42SuicuneScript
 
 	def_bg_events
-	bg_event  4, 10, BGEVENT_READ, Route42Sign1
-	bg_event  7,  5, BGEVENT_READ, MtMortarSign1
-	bg_event 45,  9, BGEVENT_READ, MtMortarSign2
-	bg_event 54,  8, BGEVENT_READ, Route42Sign2
-	bg_event 16, 11, BGEVENT_ITEM, Route42HiddenMaxPotion
+	bg_event  7,  7, BGEVENT_READ, Route42Sign1
+	bg_event 29,  5, BGEVENT_READ, MtMortarSign
+	bg_event 52,  8, BGEVENT_READ, Route42Sign2
+	bg_event 29,  4, BGEVENT_ITEM, Route42HiddenNugget
 
 	def_object_events
-	object_event 40, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherTully, -1
-	object_event 51,  9, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerHikerBenjamin, -1
-	object_event 47,  8, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacShane, -1
-	object_event 27, 16, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route42FruitTree1, -1
-	object_event 28, 16, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route42FruitTree2, -1
-	object_event 29, 16, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route42FruitTree3, -1
-	object_event  6,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route42UltraBall, EVENT_ROUTE_42_ULTRA_BALL
-	object_event 33,  8, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route42SuperPotion, EVENT_ROUTE_42_SUPER_POTION
-	object_event 26, 16, SPRITE_SUICUNE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
+	object_event 26, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherTully, -1
+	object_event 49,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerHikerBenjamin, -1
+	object_event 11,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacShane, -1
+	object_event 53,  7, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route42Rocket1Script, EVENT_ROUTE_42_ROCKETS_GONE
+	object_event 52,  6, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route42Rocket2Script, EVENT_ROUTE_42_ROCKETS_GONE
+	object_event 25, 11, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route42FruitTree1, -1
+	object_event 26, 11, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route42FruitTree2, -1
+	object_event 27, 11, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route42FruitTree3, -1
+	object_event 50, 11, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route42UltraBall, EVENT_ROUTE_42_ULTRA_BALL
+	object_event 20, 11, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route42SuperPotion, EVENT_ROUTE_42_SUPER_POTION

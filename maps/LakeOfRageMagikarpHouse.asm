@@ -1,5 +1,6 @@
 	object_const_def
 	const LAKEOFRAGEMAGIKARPHOUSE_FISHING_GURU
+	const LAKEOFRAGEMAGIKARPHOUSE_MAGIKARP
 
 LakeOfRageMagikarpHouse_MapScripts:
 	def_scene_scripts
@@ -9,203 +10,115 @@ LakeOfRageMagikarpHouse_MapScripts:
 MagikarpLengthRaterScript:
 	faceplayer
 	opentext
-	checkevent EVENT_LAKE_OF_RAGE_ELIXIR_ON_STANDBY
-	iftrue .GetReward
-	checkevent EVENT_LAKE_OF_RAGE_ASKED_FOR_MAGIKARP
-	iftrue .AskedForMagikarp
-	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftrue .ClearedRocketHideout
-	checkevent EVENT_LAKE_OF_RAGE_EXPLAINED_WEIRD_MAGIKARP
-	iftrue .ExplainedHistory
-	writetext MagikarpLengthRaterText_LakeOfRageHistory
+	writetext MagikarpLengthRaterText_BiggestMagikarp
 	waitbutton
-	closetext
-	setevent EVENT_LAKE_OF_RAGE_EXPLAINED_WEIRD_MAGIKARP
-	end
+	checkevent EVENT_GOT_OLD_ROD
+	iffalse .GiveOldRod	
+	sjump .End
 
-.ExplainedHistory:
-	writetext MagikarpLengthRaterText_MenInBlack
-	waitbutton
-	closetext
-	end
-
-.ClearedRocketHideout:
-	writetext MagikarpLengthRaterText_WorldsLargestMagikarp
-	waitbutton
-	closetext
-	setevent EVENT_LAKE_OF_RAGE_ASKED_FOR_MAGIKARP
-	end
-
-.AskedForMagikarp:
-	setval MAGIKARP
-	special FindPartyMonThatSpecies
-	iffalse .ClearedRocketHideout
-	writetext MagikarpLengthRaterText_YouHaveAMagikarp
-	waitbutton
-	special CheckMagikarpLength
-	ifequal MAGIKARPLENGTH_NOT_MAGIKARP, .NotMagikarp
-	ifequal MAGIKARPLENGTH_REFUSED, .Refused
-	ifequal MAGIKARPLENGTH_TOO_SHORT, .TooShort
-	; MAGIKARPLENGTH_BEAT_RECORD
-	sjump .GetReward
-
-.GetReward:
-	writetext MagikarpLengthRaterText_Memento
+.GiveOldRod:
+	writetext MagikarpLengthRaterText_GiveOldRod
 	promptbutton
-	verbosegiveitem ELIXER
+	verbosegiveitem OLD_ROD
 	iffalse .NoRoom
-	writetext MagikarpLengthRaterText_Bonus
-	waitbutton
-	closetext
-	clearevent EVENT_LAKE_OF_RAGE_ELIXIR_ON_STANDBY
-	end
-
+	setevent EVENT_GOT_OLD_ROD
+	sjump .End
+	
 .NoRoom:
+	writetext MagikarpLengthRaterText_NoRoom
+	waitbutton
+	
+.End:
 	closetext
-	setevent EVENT_LAKE_OF_RAGE_ELIXIR_ON_STANDBY
 	end
-
-.TooShort:
-	writetext MagikarpLengthRaterText_TooShort
+	
+MagikarpStatueScript:
+	opentext
+	writetext MagikarpStatueText
 	waitbutton
 	closetext
 	end
-
-.NotMagikarp:
-	writetext MagikarpLengthRaterText_NotMagikarp
-	waitbutton
-	closetext
-	end
-
-.Refused:
-	writetext MagikarpLengthRaterText_Refused
-	waitbutton
-	closetext
-	end
-
-LakeOfRageMagikarpHouseUnusedRecordSign: ; unreferenced
-	jumptext LakeOfRageMagikarpHouseUnusedRecordText
 
 MagikarpHouseBookshelf:
 	jumpstd DifficultBookshelfScript
 
-MagikarpLengthRaterText_LakeOfRageHistory:
-	text "LAKE OF RAGE is"
-	line "actually a crater"
-
-	para "made by rampaging"
-	line "GYARADOS."
-
-	para "The crater filled"
-	line "up with rainwater"
-
-	para "and the LAKE was"
-	line "formed."
-
-	para "That's the story"
-	line "passed on from my"
-
-	para "Grandpa's great-"
-	line "great-grandpa."
-
-	para "It used to be that"
-	line "you could catch"
-
-	para "lively MAGIKARP"
-	line "there, but…"
-
-	para "I don't understand"
-	line "what's happening."
+MagikarpLengthRaterText_BiggestMagikarp:
+	text "My life's goal was"
+	line "to see the biggest"
+	
+	para "MAGIKARP in the"
+	line "entire world."
+	
+	para "Then, one day a"
+	line "number of years"
+	
+	para "ago, a fishing"
+	line "prodigy around"
+	
+	para "your age made that"
+	line "goal a reality."
+	
+	para "I was so amazed by"
+	line "the fish that I"
+	
+	para "had it taxidermied"
+	line "so I could look at"
+	
+	para "it whenever I"
+	line "wished."
+	
+	para "That's it on the"
+	line "table there!"
 	done
 
-MagikarpLengthRaterText_MenInBlack:
-	text "The LAKE hasn't"
-	line "been normal since"
-
-	para "those men wearing"
-	line "black arrived."
+MagikarpLengthRaterText_GiveOldRod:
+	text "Say, have you ever"
+	line "given fishing a"
+	cont "try?"
+	
+	para "I doubt there's"
+	line "any chance you"
+	
+	para "or anybody else"
+	line "could catch one"
+	
+	para "that big, but"
+	line "there's nothing"
+	
+	para "more relaxing on a"
+	line "day like today"
+	
+	para "than throwing out"
+	line "a line and seeing"
+	cont "what bites."
+	
+	para "You should take"
+	line "this ROD!"
 	done
 
-MagikarpLengthRaterText_WorldsLargestMagikarp:
-	text "LAKE OF RAGE is"
-	line "back to normal."
-
-	para "The MAGIKARP have"
-	line "returned."
-
-	para "I may yet realize"
-	line "my dream of see-"
-	cont "ing the world's"
-	cont "largest MAGIKARP."
-
-	para "Do you have a ROD?"
-	line "Please help me if"
-	cont "you do."
+MagikarpLengthRaterText_NoRoom:
+	text "Oh, it looks like"
+	line "you don't have any"
+	cont "room for it."
+	
+	para "Come back anytime."
+	line "I'll be here!"
 	done
 
-MagikarpLengthRaterText_YouHaveAMagikarp:
-	text "Ah, you have a"
-	line "MAGIKARP! Let's"
-
-	para "see how big that"
-	line "baby is."
+MagikarpStatueText:
+	text "ETHAN'S MAGIKARP:"
+	line "7 ft. 9 in."
+	
+	para "It's the biggest"
+	line "MAGIKARP that you"
+	cont "have ever seen."
+	
+	para "It might be the"
+	line "biggest MAGIKARP"
+	
+	para "that has ever"
+	line "existed."
 	done
-
-MagikarpLengthRaterText_Memento:
-	text "Wow! This one is"
-	line "outstanding!"
-
-	para "I tip my hat to"
-	line "you!"
-
-	para "Take this as a"
-	line "memento!"
-	done
-
-MagikarpLengthRaterText_Bonus:
-	text "The record is the"
-	line "important thing."
-
-	para "Think of that as"
-	line "a bonus!"
-	done
-
-MagikarpLengthRaterText_TooShort:
-	text "Wow! This one is"
-	line "outstanding!"
-
-	para "…I wish I could"
-	line "say that, but I've"
-
-	para "seen a bigger one"
-	line "before."
-	done
-
-MagikarpLengthRaterText_NotMagikarp:
-	text "What? That's not a"
-	line "MAGIKARP!"
-	done
-
-MagikarpLengthRaterText_Refused:
-	text "Oh… So you didn't"
-	line "get one good"
-
-	para "enough to show me?"
-	line "Maybe next time."
-	done
-
-LakeOfRageMagikarpHouseUnusedRecordText:
-	text "CURRENT RECORD"
-
-	para "@"
-	text_ram wStringBuffer3
-	text " caught by"
-	line "@"
-	text_ram wStringBuffer4
-	text_end
-
-LakeOfRageMagikarpHouseUnusedDummyText: ; unreferenced
-	text_end
 
 LakeOfRageMagikarpHouse_MapEvents:
 	db 0, 0 ; filler
@@ -222,3 +135,4 @@ LakeOfRageMagikarpHouse_MapEvents:
 
 	def_object_events
 	object_event  2,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MagikarpLengthRaterScript, -1
+	object_event  4,  3, SPRITE_MAGIKARP, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, MagikarpStatueScript, -1

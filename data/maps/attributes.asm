@@ -139,7 +139,6 @@ ENDM
 
 	map_attributes BlackthornCity, BLACKTHORN_CITY, $71, SOUTH | WEST
 	connection south, Route45, ROUTE_45, 0
-	connection west, Route44, ROUTE_44, 9
 
 	map_attributes SilverCaveOutside, SILVER_CAVE_OUTSIDE, $2c, EAST
 	connection east, Route28, ROUTE_28, 9
@@ -208,7 +207,7 @@ ENDM
 	connection north, Route40, ROUTE_40, 15
 	connection west, CianwoodCity, CIANWOOD_CITY, 0
 
-	map_attributes Route42, ROUTE_42, $05, WEST | EAST
+	map_attributes Route42, ROUTE_42, $71, WEST | EAST
 	connection west, EcruteakCity, ECRUTEAK_CITY, -9
 	connection east, MahoganyTown, MAHOGANY_TOWN, 0
 
@@ -218,7 +217,6 @@ ENDM
 
 	map_attributes Route44, ROUTE_44, $71, WEST | EAST
 	connection west, MahoganyTown, MAHOGANY_TOWN, 0
-	connection east, BlackthornCity, BLACKTHORN_CITY, -9
 
 	map_attributes Route45, ROUTE_45, $71, NORTH | WEST
 	connection north, BlackthornCity, BLACKTHORN_CITY, 0
@@ -424,17 +422,15 @@ ENDM
 	map_attributes OlivineLighthouse6F, OLIVINE_LIGHTHOUSE_6F, $00, 0
 	map_attributes MahoganyMart1F, MAHOGANY_MART_1F, $00, 0
 	map_attributes TeamRocketBaseB1F, TEAM_ROCKET_BASE_B1F, $00, 0
-	map_attributes TeamRocketBaseB2F, TEAM_ROCKET_BASE_B2F, $00, 0
-	map_attributes TeamRocketBaseB3F, TEAM_ROCKET_BASE_B3F, $00, 0
 	map_attributes IlexForest, ILEX_FOREST, $05, 0
 	map_attributes GoldenrodUnderground, GOLDENROD_UNDERGROUND, $00, 0
 	map_attributes GoldenrodUndergroundSwitchRoomEntrances, GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES, $00, 0
 	map_attributes GoldenrodDeptStoreB1F, GOLDENROD_DEPT_STORE_B1F, $00, 0
 	map_attributes GoldenrodUndergroundWarehouse, GOLDENROD_UNDERGROUND_WAREHOUSE, $00, 0
-	map_attributes MountMortar1FOutside, MOUNT_MORTAR_1F_OUTSIDE, $09, 0
-	map_attributes MountMortar1FInside, MOUNT_MORTAR_1F_INSIDE, $09, 0
-	map_attributes MountMortar2FInside, MOUNT_MORTAR_2F_INSIDE, $09, 0
+	map_attributes MountMortar1F, MOUNT_MORTAR_1F, $09, 0
+	map_attributes MountMortar2F, MOUNT_MORTAR_2F, $09, 0
 	map_attributes MountMortarB1F, MOUNT_MORTAR_B1F, $09, 0
+	map_attributes MountMortarB2F, MOUNT_MORTAR_B2F, $09, 0
 	map_attributes IcePath1F, ICE_PATH_1F, $09, 0
 	map_attributes IcePathB1F, ICE_PATH_B1F, $19, 0
 	map_attributes IcePathB2F, ICE_PATH_B2F, $19, 0
@@ -467,7 +463,6 @@ ENDM
 	map_attributes Route38EcruteakGate, ROUTE_38_ECRUTEAK_GATE, $00, 0
 	map_attributes Route39Barn, ROUTE_39_BARN, $00, 0
 	map_attributes Route39Farmhouse, ROUTE_39_FARMHOUSE, $00, 0
-	map_attributes MahoganyRedGyaradosSpeechHouse, MAHOGANY_RED_GYARADOS_SPEECH_HOUSE, $00, 0
 	map_attributes MahoganyGym, MAHOGANY_GYM, $00, 0
 	map_attributes MahoganyPokecenter1F, MAHOGANY_POKECENTER_1F, $00, 0
 	map_attributes Route42EcruteakGate, ROUTE_42_ECRUTEAK_GATE, $00, 0
@@ -480,7 +475,6 @@ ENDM
 	map_attributes SafariZoneBeta, SAFARI_ZONE_BETA, $13, 0
 	map_attributes VictoryRoad, VICTORY_ROAD, $1d, 0
 	map_attributes EcruteakTinTowerEntrance, ECRUTEAK_TIN_TOWER_ENTRANCE, $00, 0
-	map_attributes WiseTriosRoom, WISE_TRIOS_ROOM, $00, 0
 	map_attributes EcruteakPokecenter1F, ECRUTEAK_POKECENTER_1F, $00, 0
 	map_attributes EcruteakLugiaSpeechHouse, ECRUTEAK_LUGIA_SPEECH_HOUSE, $00, 0
 	map_attributes DanceTheatre, DANCE_THEATRE, $00, 0
@@ -647,12 +641,9 @@ ENDM
 	map_attributes CianwoodPhotoStudio, CIANWOOD_PHOTO_STUDIO, $00, 0
 	map_attributes CianwoodLugiaSpeechHouse, CIANWOOD_LUGIA_SPEECH_HOUSE, $00, 0
 	map_attributes PokeSeersHouse, POKE_SEERS_HOUSE, $00, 0
-	map_attributes BattleTower1F, BATTLE_TOWER_1F, $00, 0
-	map_attributes BattleTowerBattleRoom, BATTLE_TOWER_BATTLE_ROOM, $00, 0
-	map_attributes BattleTowerElevator, BATTLE_TOWER_ELEVATOR, $00, 0
-	map_attributes BattleTowerHallway, BATTLE_TOWER_HALLWAY, $00, 0
-	map_attributes Route40BattleTowerGate, ROUTE_40_BATTLE_TOWER_GATE, $00, 0
-	map_attributes BattleTowerOutside, BATTLE_TOWER_OUTSIDE, $05, 0
+	map_attributes RocketTower1F, ROCKET_TOWER_1F, $00, 0
+	map_attributes Route40RocketTowerGate, ROUTE_40_ROCKET_TOWER_GATE, $00, 0
+	map_attributes RocketTowerOutside, ROCKET_TOWER_OUTSIDE, $05, 0
 	map_attributes ViridianGym, VIRIDIAN_GYM, $00, 0
 	map_attributes ViridianNicknameSpeechHouse, VIRIDIAN_NICKNAME_SPEECH_HOUSE, $00, 0
 	map_attributes TrainerHouse1F, TRAINER_HOUSE_1F, $00, 0

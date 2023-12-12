@@ -15,7 +15,7 @@ BlackthornGym2FButton1:
 	yesorno
 	iffalse .End
 	setevent EVENT_BLACKTHORN_GYM_BUTTON_2
-	scall FX
+	scall BlackthornGymButtonFX
 	writetext BlackthornGym2FButtonPressText
 	waitbutton
 	
@@ -27,7 +27,7 @@ BlackthornGym2FButton1:
 	yesorno
 	iffalse .End
 	clearevent EVENT_BLACKTHORN_GYM_BUTTON_2
-	scall FX
+	scall BlackthornGymButtonFX
 	writetext BlackthornGym2FButtonPressText
 	waitbutton
 	closetext
@@ -41,7 +41,7 @@ BlackthornGym2FButton2:
 	yesorno
 	iffalse .End
 	setevent EVENT_BLACKTHORN_GYM_BUTTON_3
-	scall FX
+	scall BlackthornGymButtonFX
 	writetext BlackthornGym2FButtonPressText
 	waitbutton
 	
@@ -53,14 +53,14 @@ BlackthornGym2FButton2:
 	yesorno
 	iffalse .End
 	clearevent EVENT_BLACKTHORN_GYM_BUTTON_3
-	scall FX
+	scall BlackthornGymButtonFX
 	writetext BlackthornGym2FButtonPressText
 	waitbutton
 	closetext
 	end
 
 ; already defined in BlackthornGym1F
-;FX:
+;BlackthornGymButtonFX:
 ;	playsound SFX_PUSH_BUTTON
 ;	earthquake 30
 ;	end

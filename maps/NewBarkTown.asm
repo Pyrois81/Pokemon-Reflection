@@ -2,6 +2,8 @@
 	const NEWBARKTOWN_TEACHER
 	const NEWBARKTOWN_FISHER
 	const NEWBARKTOWN_SILVER
+;	const NEWBARKTOWN_POKEBALL1
+;	const NEWBARKTOWN_POKEBALL2
 
 NewBarkTown_MapScripts:
 	def_scene_scripts
@@ -114,14 +116,12 @@ NewBarkTownSilverScript:
 	writetext NewBarkTownRivalText2
 	waitbutton
 	closetext
-	follow PLAYER, NEWBARKTOWN_SILVER
-	applymovement PLAYER, NewBarkTown_SilverPushesYouAwayMovement
-	stopfollow
-	pause 5
-	turnobject NEWBARKTOWN_SILVER, DOWN
-	pause 5
+	applymovement PLAYER, NewBarkTown_YouGetPushedAwayMovement
+	applymovement NEWBARKTOWN_SILVER, NewBarkTown_SilverPushesYouAwayMovement
+	pause 10
 	playsound SFX_TACKLE
 	applymovement PLAYER, NewBarkTown_SilverShovesYouOutMovement
+	pause 10
 	applymovement NEWBARKTOWN_SILVER, NewBarkTown_SilverReturnsToTheShadowsMovement
 	end
 
@@ -136,6 +136,19 @@ NewBarkTownElmsLabSign:
 
 NewBarkTownElmsHouseSign:
 	jumptext NewBarkTownElmsHouseSignText
+	
+TestGiveMons:
+	opentext
+	givepoke IGGLYBUFF, 1, NO_ITEM
+	givepoke DRAGONITE, 99, NO_ITEM
+	closetext
+	end
+	
+TestGiveItems:
+	giveitem EXP_CANDY_S, 99
+	giveitem EXP_CANDY_M, 99
+	giveitem EXP_CANDY_L, 99
+	end
 
 NewBarkTown_TeacherRunsToYouMovement1:
 	step LEFT
@@ -170,11 +183,18 @@ NewBarkTown_TeacherBringsYouBackMovement2:
 	turn_head LEFT
 	step_end
 
-NewBarkTown_SilverPushesYouAwayMovement:
+NewBarkTown_YouGetPushedAwayMovement:
 	turn_head UP
+	fix_facing
 	step DOWN
+	remove_fixed_facing
 	step_end
 
+NewBarkTown_SilverPushesYouAwayMovement:
+	step LEFT
+	turn_head DOWN
+	step_end
+	
 NewBarkTown_SilverShovesYouOutMovement:
 	turn_head UP
 	fix_facing
@@ -307,4 +327,5 @@ NewBarkTown_MapEvents:
 	object_event  6,  8, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
 	object_event 12,  9, SPRITE_FISHER, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, NewBarkTownFisherScript, -1
 	object_event  3,  2, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
-
+;	object_event 10,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TestGiveMons, -1
+;	object_event 11,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TestGiveItems, -1

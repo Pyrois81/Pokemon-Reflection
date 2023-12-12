@@ -117,7 +117,6 @@ OlivineHouseBeta_Blocks:
 OlivinePunishmentSpeechHouse_Blocks:
 OlivineGoodRodHouse_Blocks:
 Route39Farmhouse_Blocks:
-MahoganyRedGyaradosSpeechHouse_Blocks:
 BlackthornDragonSpeechHouse_Blocks:
 BlackthornEmysHouse_Blocks:
 MoveDeletersHouse_Blocks:
@@ -172,7 +171,7 @@ Route35GoldenrodGate_Blocks:
 Route36RuinsOfAlphGate_Blocks:
 Route34IlexForestGate_Blocks:
 Route6SaffronGate_Blocks:
-Route40BattleTowerGate_Blocks:
+Route40RocketTowerGate_Blocks:
 Route2Gate_Blocks:
 Route29Route46Gate_Blocks:
 Route5SaffronGate_Blocks:
@@ -515,18 +514,18 @@ BurnedTower1F_Blocks:
 BurnedTowerB1F_Blocks:
 	INCBIN "maps/BurnedTowerB1F.blk"
 
-MountMortar1FOutside_Blocks:
-	INCBIN "maps/MountMortar1FOutside.blk"
+MountMortar1F_Blocks:
+	INCBIN "maps/MountMortar1F.blk"
 
-MountMortar1FInside_Blocks:
-	INCBIN "maps/MountMortar1FInside.blk"
-
-MountMortar2FInside_Blocks:
-	INCBIN "maps/MountMortar2FInside.blk"
+MountMortar2F_Blocks:
+	INCBIN "maps/MountMortar2F.blk"
 
 MountMortarB1F_Blocks:
 	INCBIN "maps/MountMortarB1F.blk"
 
+MountMortarB2F_Blocks:
+	INCBIN "maps/MountMortarB2F.blk"
+	
 IcePath1F_Blocks:
 	INCBIN "maps/IcePath1F.blk"
 
@@ -575,12 +574,6 @@ MountMoonGiftShop_Blocks:
 
 TeamRocketBaseB1F_Blocks:
 	INCBIN "maps/TeamRocketBaseB1F.blk"
-
-TeamRocketBaseB2F_Blocks:
-	INCBIN "maps/TeamRocketBaseB2F.blk"
-
-TeamRocketBaseB3F_Blocks:
-	INCBIN "maps/TeamRocketBaseB3F.blk"
 
 IndigoPlateauPokecenter1F_Blocks:
 	INCBIN "maps/IndigoPlateauPokecenter1F.blk"
@@ -837,9 +830,6 @@ GoldenrodFlowerShop_Blocks:
 MountMoonSquare_Blocks:
 	INCBIN "maps/MountMoonSquare.blk"
 
-WiseTriosRoom_Blocks:
-	INCBIN "maps/WiseTriosRoom.blk"
-
 DragonsDen1F_Blocks:
 	INCBIN "maps/DragonsDen1F.blk"
 
@@ -870,11 +860,8 @@ RuinsOfAlphAerodactylWordRoom_Blocks:
 DragonShrine_Blocks:
 	INCBIN "maps/DragonShrine.blk"
 
-BattleTower1F_Blocks:
-	INCBIN "maps/BattleTower1F.blk"
-
-BattleTowerBattleRoom_Blocks:
-	INCBIN "maps/BattleTowerBattleRoom.blk"
+RocketTower1F_Blocks:
+	INCBIN "maps/RocketTower1F.blk"
 
 PokecomCenterAdminOfficeMobile_Blocks:
 	INCBIN "maps/PokecomCenterAdminOfficeMobile.blk"
@@ -885,14 +872,8 @@ MobileTradeRoom_Blocks:
 MobileBattleRoom_Blocks:
 	INCBIN "maps/MobileBattleRoom.blk"
 
-BattleTowerHallway_Blocks:
-	INCBIN "maps/BattleTowerHallway.blk"
-
-BattleTowerElevator_Blocks:
-	INCBIN "maps/BattleTowerElevator.blk"
-
-BattleTowerOutside_Blocks:
-	INCBIN "maps/BattleTowerOutside.blk"
+RocketTowerOutside_Blocks:
+	INCBIN "maps/RocketTowerOutside.blk"
 
 GoldenrodDeptStoreRoof_Blocks:
 	INCBIN "maps/GoldenrodDeptStoreRoof.blk"

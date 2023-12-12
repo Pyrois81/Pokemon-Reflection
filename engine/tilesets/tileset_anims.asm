@@ -250,7 +250,7 @@ UnusedTilesetAnim5: ; unreferenced
 	dw NULL,  WaitTileAnimation
 	dw NULL,  DoneTileAnimation
 
-TilesetBattleTowerOutsideAnim:
+TilesetRocketTowerOutsideAnim:
 TilesetHouseAnim:
 TilesetPlayersHouseAnim:
 TilesetPokecenterAnim:
@@ -266,7 +266,7 @@ TilesetChampionsRoomAnim:
 TilesetLighthouseAnim:
 TilesetPlayersRoomAnim:
 TilesetPokeComCenterAnim:
-TilesetBattleTowerInsideAnim:
+TilesetRocketTowerInsideAnim:
 TilesetRuinsOfAlphAnim:
 TilesetRadioTowerAnim:
 TilesetUndergroundAnim:

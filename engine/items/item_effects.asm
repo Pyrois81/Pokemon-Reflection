@@ -34,7 +34,7 @@ ItemEffects:
 	dw RestoreHPEffect     ; POTION
 	dw EscapeRopeEffect    ; ESCAPE_ROPE
 	dw RepelEffect         ; REPEL
-	dw RestorePPEffect     ; MAX_ELIXER
+	dw RestorePPEffect     ; MAX_ELIXIR
 	dw EvoStoneEffect      ; FIRE_STONE
 	dw EvoStoneEffect      ; THUNDERSTONE
 	dw EvoStoneEffect      ; WATER_STONE
@@ -78,7 +78,7 @@ ItemEffects:
 	dw RestorePPEffect     ; PP_UP
 	dw RestorePPEffect     ; ETHER
 	dw RestorePPEffect     ; MAX_ETHER
-	dw RestorePPEffect     ; ELIXER
+	dw RestorePPEffect     ; ELIXIR
 	dw NoEffect            ; RED_SCALE
 	dw NoEffect            ; SECRETPOTION
 	dw NoEffect            ; S_S_TICKET
@@ -95,7 +95,7 @@ ItemEffects:
 	dw StatusHealingEffect ; BURNT_BERRY
 	dw StatusHealingEffect ; ICE_BERRY
 	dw NoEffect            ; POISON_BARB
-	dw NoEffect            ; KINGS_ROCK
+	dw EvoStoneEffect      ; KINGS_ROCK
 	dw BitterBerryEffect   ; BITTER_BERRY
 	dw StatusHealingEffect ; MINT_BERRY
 	dw NoEffect            ; RED_APRICORN
@@ -148,17 +148,17 @@ ItemEffects:
 	dw NoEffect            ; STAR_PIECE
 	dw BasementKeyEffect   ; BASEMENT_KEY
 	dw NoEffect            ; PASS
-	dw NoEffect            ; ITEM_87
-	dw NoEffect            ; ITEM_88
-	dw NoEffect            ; ITEM_89
+	dw ExpCandyEffect      ; EXP_CANDY_S
+	dw ExpCandyEffect      ; EXP_CANDY_M
+	dw ExpCandyEffect      ; EXP_CANDY_L
 	dw NoEffect            ; CHARCOAL
 	dw RestoreHPEffect     ; BERRY_JUICE
 	dw NoEffect            ; SCOPE_LENS
-	dw NoEffect            ; METAL_COAT
+	dw EvoStoneEffect      ; METAL_COAT
 	dw NoEffect            ; DRAGON_FANG
 	dw NoEffect            ; LEFTOVERS
 	dw RestorePPEffect     ; MYSTERYBERRY
-	dw NoEffect            ; DRAGON_SCALE
+	dw EvoStoneEffect      ; DRAGON_SCALE
 	dw NoEffect            ; BERSERK_GENE
 	dw SacredAshEffect     ; SACRED_ASH
 	dw PokeBallEffect      ; HEAVY_BALL
@@ -1135,8 +1135,9 @@ EvoStoneEffect:
 	ld b, PARTYMENUACTION_EVO_STONE
 	call UseItem_SelectMon
 
-	jp c, .DecidedNotToUse
+	jp c, DecidedNotToUse
 
+DoEvoStone:
 	ld a, MON_ITEM
 	call GetPartyParamLocation
 
@@ -1157,17 +1158,50 @@ EvoStoneEffect:
 .NoEffect:
 	call WontHaveAnyEffectMessage
 
-.DecidedNotToUse:
+DecidedNotToUse:
 	xor a
 	ld [wItemEffectSucceeded], a
 	ret
-
+	
 VitaminEffect:
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 
 	jp c, RareCandy_StatBooster_ExitMenu
+	
+	ld a, [wCurItem]
+	cp PROTEIN
+	jr z, .protein
+	cp IRON
+	jr z, .iron
+	cp CARBOS
+	jr z, .carbos
+	jr .calcium
 
+.protein:
+	ld a, [wCurPartySpecies]
+	cp MACHOKE
+	jp z, DoEvoStone
+	jr DoVitamin
+	
+.iron:
+	ld a, [wCurPartySpecies]
+	cp GRAVELER
+	jp z, DoEvoStone
+	jr DoVitamin
+	
+.carbos:
+	ld a, [wCurPartySpecies]
+	cp HAUNTER
+	jp z, DoEvoStone
+	jr DoVitamin
+	
+.calcium:
+	ld a, [wCurPartySpecies]
+	cp KADABRA
+	jp z, DoEvoStone
+	
+DoVitamin:
 	call RareCandy_StatBooster_GetParameters
 
 	call GetStatExpRelativePointer
@@ -1204,7 +1238,7 @@ VitaminEffect:
 	farcall ChangeHappiness
 
 	jp UseDisposableItem
-
+	
 NoEffectMessage:
 	ld hl, ItemWontHaveEffectText
 	call PrintText
@@ -1287,32 +1321,33 @@ RareCandyEffect:
 
 	call RareCandy_StatBooster_GetParameters
 
-	ld a, MON_LEVEL
+	ld a, MON_LEVEL ; if L100, nothing happens
 	call GetPartyParamLocation
-
-	ld a, [hl]
+	ld a, [hl] 
 	cp MAX_LEVEL
 	jp nc, NoEffectMessage
 
-	inc a
+	inc a ; increment level
 	ld [hl], a
 	ld [wCurPartyLevel], a
-	push de
+	
+	push de ; set EXP to what it should be at the new level
 	ld d, a
 	farcall CalcExpAtLevel
-
 	pop de
 	ld a, MON_EXP
 	call GetPartyParamLocation
-
 	ldh a, [hMultiplicand + 0]
 	ld [hli], a
 	ldh a, [hMultiplicand + 1]
 	ld [hli], a
 	ldh a, [hMultiplicand + 2]
 	ld [hl], a
+	
+	farcall LevelUpHappinessMod
 
-	ld a, MON_MAXHP
+RareCandyLevelUp:
+	ld a, MON_MAXHP ; calculate & update stats
 	call GetPartyParamLocation
 	ld a, [hli]
 	ld b, a
@@ -1320,9 +1355,8 @@ RareCandyEffect:
 	push bc
 	call UpdateStatsAfterItem
 
-	ld a, MON_MAXHP + 1
+	ld a, MON_MAXHP + 1 ; add the amount of gained HP to current HP
 	call GetPartyParamLocation
-
 	pop bc
 	ld a, [hld]
 	sub c
@@ -1337,7 +1371,6 @@ RareCandyEffect:
 	ld a, [hl]
 	adc b
 	ld [hl], a
-	farcall LevelUpHappinessMod
 
 	ld a, PARTYMENUTEXT_LEVEL_UP
 	call ItemActionText
@@ -1356,6 +1389,10 @@ RareCandyEffect:
 	predef PrintTempMonStats
 
 	call WaitPressAorB_BlinkCursor
+	
+	ld a, [wCurItem]
+	cp RARE_CANDY
+	jr nz, .return ; escape point since we're double dipping with ExpCandyEffect
 
 	xor a ; PARTYMON
 	ld [wMonType], a
@@ -1368,6 +1405,147 @@ RareCandyEffect:
 	farcall EvolvePokemon
 
 	jp UseDisposableItem
+	
+.return
+	ret
+
+ExpCandyEffect:
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+	
+	jp c, RareCandy_StatBooster_ExitMenu
+	
+	call RareCandy_StatBooster_GetParameters
+	
+	ld a, MON_LEVEL
+	call GetPartyParamLocation
+	ld a, [hl] 
+	cp MAX_LEVEL
+	jp nc, NoEffectMessage ; if L100, no effect
+	ld b, a
+	ld c, 0
+	push bc ; save pre-item level in b for later
+	
+	call GetExpCandyAmount ; retrieve wCurItem's EXP value in de
+	ld a, d
+	ld [wStringBuffer2], a ; put candy value in string buffer 2 for Text_MonGainedExpPoint
+	ld a, e
+	ld [wStringBuffer2 + 1], a
+	call AddEXP
+	
+	xor a
+	ld [wMonType], a ; 0 = PARTYMON
+	predef CopyMonToTempMon
+	
+	ld de, SFX_TWINKLE
+	call WaitPlaySFX
+	ld a, PARTYMENUTEXT_GAIN_EXP ; "(MON) gained ___ EXP.!"
+	ld [wPartyMenuActionText], a
+	call ItemActionText
+	
+	farcall CalcLevel ; calc level with current EXP, returned in d
+	ld a, d
+	ld [wCurPartyLevel], a ; update wCurPartyLevel
+	pop bc
+	ld c, a ; store post-item level in c for later
+	push bc
+	
+	ld a, [wCurItem] ; change happiness depending on which item was used
+	cp EXP_CANDY_S
+	jr z, .small
+	cp EXP_CANDY_M
+	jr z, .medium
+	ld c, HAPPINESS_EXPCANDYL
+	jr .ChangeHappiness
+	
+.small
+	ld c, HAPPINESS_EXPCANDYS
+	jr .ChangeHappiness
+	
+.medium
+	ld c, HAPPINESS_EXPCANDYM
+	
+.ChangeHappiness
+	farcall ChangeHappiness
+	
+	pop bc
+	ld a, b ; check if we leveled up
+	cp c
+	jr nc, .no_levelup
+	push bc
+	ld a, MON_LEVEL
+	call GetPartyParamLocation
+	ld [hl], c ; store new level value
+	
+	call RareCandyLevelUp ; update stats, add HP gained on levelup, print levelup text, and print new stats
+	
+	pop bc ; retrieve pre- and post-item levels
+
+.level_loop
+	inc b
+	ld a, b
+	ld [wCurPartyLevel], a
+	push bc
+	predef LearnLevelMoves
+	ld c, HAPPINESS_GAINLEVEL
+	farcall ChangeHappiness
+	pop bc
+	ld a, b
+	cp c
+	jr nz, .level_loop
+	
+	ld a, c
+	ld [wCurPartyLevel], a
+
+	xor a
+	ld [wForceEvolution], a
+	farcall EvolvePokemon
+	
+.no_levelup
+	call UseDisposableItem
+	ret
+
+AddEXP: ; adds EXP of item (in de) to mon's current EXP
+	ld a, MON_EXP + 2
+	call GetPartyParamLocation ; get location of mon's EXP low byte in hl
+	
+	ld a, [hl]
+	add e ; add low byte to low byte
+	ld [hld], a ; and store it in the party structure
+	ld a, [hl]
+	adc d ; add high byte to middle byte
+	ld [hld], a
+	ld a, [hl]
+	adc 0 ; add carry to high byte if it was set
+	ld [hl], a
+	ret
+
+GetExpCandyAmount: ; retrieve wCurItem's EXP value in de
+	push hl
+	ld a, [wCurItem]
+	ld hl, ExpCandyAmounts
+	ld d, a
+.next
+	ld a, [hli]
+	cp -1
+	jr z, .NotFound
+	cp d
+	jr z, .done
+	inc hl
+	inc hl
+	jr .next
+	
+.NotFound:
+	scf
+.done
+	ld a, [hli]
+	ld e, a
+	ld a, [hl]
+	ld d, a
+	pop hl
+	ret
+	
+INCLUDE "data/items/exp_candy.asm"
 
 HealPowderEffect:
 	ld b, PARTYMENUACTION_HEALING_ITEM
@@ -1820,28 +1998,30 @@ ContinueRevive:
 	jp LoadCurHPIntoBuffer3
 
 RestoreHealth:
-	ld a, MON_HP + 1
+	ld a, MON_HP + 1 ; get location of mon's HP low byte
 	call GetPartyParamLocation
-	ld a, [hl]
+	
+	ld a, [hl] ; add item's HP value (in de)
 	add e
 	ld [hld], a
 	ld a, [hl]
 	adc d
 	ld [hl], a
 	jr c, .full_hp
+	
 	call LoadCurHPIntoBuffer3
 	ld a, MON_HP + 1
 	call GetPartyParamLocation
 	ld d, h
-	ld e, l
+	ld e, l ; HP post-item put into de
 	ld a, MON_MAXHP + 1
-	call GetPartyParamLocation
-	ld a, [de]
+	call GetPartyParamLocation ; max HP in hl
+	ld a, [de] 
 	sub [hl]
 	dec de
 	dec hl
 	ld a, [de]
-	sbc [hl]
+	sbc [hl] ; subtract max from current and fall through to ReviveFullHP if no carry
 	jr c, .finish
 .full_hp
 	call ReviveFullHP
@@ -2301,10 +2481,10 @@ RestorePPEffect:
 
 .loop2
 	ld a, [wTempRestorePPItem]
-	cp MAX_ELIXER
-	jp z, Elixer_RestorePPofAllMoves
-	cp ELIXER
-	jp z, Elixer_RestorePPofAllMoves
+	cp MAX_ELIXIR
+	jp z, Elixir_RestorePPofAllMoves
+	cp ELIXIR
+	jp z, Elixir_RestorePPofAllMoves
 
 	ld hl, RaiseThePPOfWhichMoveText
 	ld a, [wTempRestorePPItem]
@@ -2434,7 +2614,7 @@ Not_PP_Up:
 	jr nz, BattleRestorePP
 	jp PPRestoreItem_NoEffect
 
-Elixer_RestorePPofAllMoves:
+Elixir_RestorePPofAllMoves:
 	xor a
 	ld hl, wMenuCursorY
 	ld [hli], a
@@ -2488,7 +2668,7 @@ RestorePP:
 	jr nc, .dont_restore
 
 	ld a, [wTempRestorePPItem]
-	cp MAX_ELIXER
+	cp MAX_ELIXIR
 	jr z, .restore_all
 	cp MAX_ETHER
 	jr z, .restore_all

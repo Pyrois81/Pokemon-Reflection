@@ -170,7 +170,8 @@ CherrygroveRivalText_Seen:
 	
 	para "Whatever. He gave"
 	line "me one too. You're"
-	cont "not special, kid."
+	
+	para "not special, kid."
 	
 	para "I'll prove it!"
 	done
@@ -221,19 +222,26 @@ CherrygroveYoungsterText:
 	done
 
 MysticWaterGuyTextBefore:
-	text "A #MON I caught"
-	line "had an item."
-
-	para "I think it's"
-	line "MYSTIC WATER."
-
-	para "I don't need it,"
-	line "so do you want it?"
+	text "I been comin' to"
+	line "this spot to fish"
+	
+	para "for years. You're"
+	line "the first person"
+	
+	para "to come join me in"
+	line "quite a while!"
+	
+	para "Here, have this."
+	
+	para "I find 'em all the"
+	line "time."
 	done
 
 MysticWaterGuyTextAfter:
-	text "Back to fishing"
-	line "for me, then."
+	text "If ya love doin'"
+	line "somethin',"
+	
+	para "why stop?"
 	done
 
 CherrygroveCitySignText:

@@ -21,7 +21,7 @@ ItemDescriptions:
 	dw PotionDesc
 	dw EscapeRopeDesc
 	dw RepelDesc
-	dw MaxElixerDesc
+	dw MaxElixirDesc
 	dw FireStoneDesc
 	dw ThunderStoneDesc
 	dw WaterStoneDesc
@@ -65,7 +65,7 @@ ItemDescriptions:
 	dw PPUpDesc
 	dw EtherDesc
 	dw MaxEtherDesc
-	dw ElixerDesc
+	dw ElixirDesc
 	dw RedScaleDesc
 	dw SecretPotionDesc
 	dw SSTicketDesc
@@ -135,9 +135,9 @@ ItemDescriptions:
 	dw StarPieceDesc
 	dw BasementKeyDesc
 	dw PassDesc
-	dw TeruSama9Desc
-	dw TeruSama10Desc
-	dw TeruSama11Desc
+	dw ExpCandySDesc
+	dw ExpCandyMDesc
+	dw ExpCandyLDesc
 	dw CharcoalDesc
 	dw BerryJuiceDesc
 	dw ScopeLensDesc
@@ -341,7 +341,7 @@ RepelDesc:
 	db   "Repels weak #-"
 	next "MON for 100 steps.@"
 
-MaxElixerDesc:
+MaxElixirDesc:
 	db   "Fully restores the"
 	next "PP of one #MON.@"
 
@@ -514,7 +514,7 @@ MaxEtherDesc:
 	db   "Fully restores PP"
 	next "of one move.@"
 
-ElixerDesc:
+ElixirDesc:
 	db   "Restores PP of all"
 	next "moves by 10.@"
 
@@ -785,14 +785,17 @@ PassDesc:
 	db   "A ticket for the"
 	next "MAGNET TRAIN.@"
 
-TeruSama9Desc:
-	db   "?@"
+ExpCandySDesc:
+	db   "Grants a #MON"
+	next "1000 EXP.@"
 
-TeruSama10Desc:
-	db   "?@"
+ExpCandyMDesc:
+	db   "Grants a #MON"
+	next "5000 EXP.@"
 
-TeruSama11Desc:
-	db   "?@"
+ExpCandyLDesc:
+	db   "Grants a #MON"
+	next "25000 EXP.@"
 
 CharcoalDesc:
 	db   "Powers up fire-"

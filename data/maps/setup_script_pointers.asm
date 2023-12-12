@@ -42,11 +42,9 @@ MapSetupCommands:
 	add_mapsetup RefreshPlayerCoords ; 23
 	add_mapsetup ResetPlayerObjectAction ; 24
 	add_mapsetup SkipUpdateMapSprites ; 25
-	add_mapsetup UpdateRoamMons ; 26
-	add_mapsetup JumpRoamMons ; 27
-	add_mapsetup FadeOutMapMusic ; 28
-	add_mapsetup ActivateMapAnims ; 29
-	add_mapsetup SuspendMapAnims ; 2a
-	add_mapsetup ApplyMapPalettes ; 2b
-	add_mapsetup EnableTextAcceleration ; 2c
-	add_mapsetup InitMapNameSign ; 2d
+	add_mapsetup FadeOutMapMusic ; 26
+	add_mapsetup ActivateMapAnims ; 27
+	add_mapsetup SuspendMapAnims ; 28
+	add_mapsetup ApplyMapPalettes ; 29
+	add_mapsetup EnableTextAcceleration ; 2a
+	add_mapsetup InitMapNameSign ; 2b

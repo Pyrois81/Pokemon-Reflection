@@ -545,8 +545,9 @@ ClefableEvosAttacks:
 VulpixEvosAttacks:
 	db EVOLVE_ITEM, FIRE_STONE, NINETALES
 	db 0 ; no more evolutions
-	db 1, EMBER
-	db 1, LEER
+	db 1, TACKLE
+	db 4, EMBER
+	db 5, LEER
 	db 7, QUICK_ATTACK
 	db 13, ROAR
 	db 19, CONFUSE_RAY
@@ -623,8 +624,8 @@ GolbatEvosAttacks:
 OddishEvosAttacks:
 	db EVOLVE_LEVEL, 21, GLOOM
 	db 0 ; no more evolutions
-	db 1, ABSORB
-	db 3, TACKLE
+	db 1, TACKLE
+	db 4, ABSORB
 	db 7, SWEET_SCENT
 	db 14, POISONPOWDER
 	db 16, STUN_SPORE
@@ -888,8 +889,8 @@ ArcanineEvosAttacks:
 PoliwagEvosAttacks:
 	db EVOLVE_LEVEL, 25, POLIWHIRL
 	db 0 ; no more evolutions
-	db 1, BUBBLE
-	db 3, POUND
+	db 1, POUND
+	db 4, BUBBLE
 	db 7, HYPNOSIS
 	db 13, WATER_GUN
 	db 19, DOUBLESLAP
@@ -3014,6 +3015,7 @@ PinecoEvosAttacks:
 	db 1, TACKLE
 	db 1, PROTECT
 	db 8, SELFDESTRUCT
+	db 12, PIN_MISSILE
 	db 15, TAKE_DOWN
 	db 22, RAPID_SPIN
 	db 29, BIDE
@@ -3028,6 +3030,7 @@ ForretressEvosAttacks:
 	db 1, PROTECT
 	db 1, SELFDESTRUCT
 	db 8, SELFDESTRUCT
+	db 12, PIN_MISSILE
 	db 15, TAKE_DOWN
 	db 22, RAPID_SPIN
 	db 29, BIDE
@@ -3477,6 +3480,7 @@ TyrogueEvosAttacks:
 	db EVOLVE_STAT, 20, ATK_EQ_DEF, HITMONTOP
 	db 0 ; no more evolutions
 	db 1, TACKLE
+	db 10, MACH_PUNCH
 	db 0 ; no more level-up moves
 
 HitmontopEvosAttacks:

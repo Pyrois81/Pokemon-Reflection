@@ -1,8 +1,8 @@
 CheckForMobileBattleRules:
 	ld de, .PointerTables
-	call BattleTower_ExecuteJumptable
+	call RocketTower_ExecuteJumptable
 	ret z
-	call BattleTower_PleaseReturnWhenReady
+	call RocketTower_PleaseReturnWhenReady
 	scf
 	ret
 
@@ -12,8 +12,8 @@ CheckForMobileBattleRules:
 	dw .TextPointers
 
 .Functions:
-	dw BattleTower_CheckPartyLengthIs3
-	dw BattleTower_CheckPartyHasThreeMonsThatAreNotEggs
+	dw RocketTower_CheckPartyLengthIs3
+	dw RocketTower_CheckPartyHasThreeMonsThatAreNotEggs
 
 .TextPointers:
 	dw .BTExcuseMeText
@@ -24,15 +24,15 @@ CheckForMobileBattleRules:
 	text_far _BTExcuseMeText
 	text_end
 
-_CheckForBattleTowerRules:
+_CheckForRocketTowerRules:
 	ld hl, wStringBuffer2
 	ld [hl], "3"
 	inc hl
 	ld [hl], "@"
 	ld de, .PointerTables
-	call BattleTower_ExecuteJumptable
+	call RocketTower_ExecuteJumptable
 	ret z
-	call BattleTower_PleaseReturnWhenReady
+	call RocketTower_PleaseReturnWhenReady
 	scf
 	ret
 
@@ -58,13 +58,13 @@ ExcuseMeYoureNotReadyText:
 	text_far _ExcuseMeYoureNotReadyText
 	text_end
 
-BattleTower_PleaseReturnWhenReady:
-	ld hl, .BattleTowerReturnWhenReadyText
+RocketTower_PleaseReturnWhenReady:
+	ld hl, .RocketTowerReturnWhenReadyText
 	call PrintText
 	ret
 
-.BattleTowerReturnWhenReadyText:
-	text_far _BattleTowerReturnWhenReadyText
+.RocketTowerReturnWhenReadyText:
+	text_far _RocketTowerReturnWhenReadyText
 	text_end
 
 NeedAtLeastThreeMonText:
@@ -91,7 +91,7 @@ YouCantTakeAnEggText:
 	text_far _YouCantTakeAnEggText
 	text_end
 
-BattleTower_ExecuteJumptable:
+RocketTower_ExecuteJumptable:
 	ld bc, 0
 .loop
 	call .DoJumptableFunction
@@ -177,12 +177,12 @@ BattleTower_ExecuteJumptable:
 	pop bc
 	ret
 
-BattleTower_CheckPartyLengthIs3:
+RocketTower_CheckPartyLengthIs3:
 	ld a, [wPartyCount]
 	cp BATTLETOWER_PARTY_LENGTH
 	ret
 
-BattleTower_CheckPartyHasThreeMonsThatAreNotEggs:
+RocketTower_CheckPartyHasThreeMonsThatAreNotEggs:
 	ld hl, wPartyCount
 	ld a, [hli]
 	ld b, 0

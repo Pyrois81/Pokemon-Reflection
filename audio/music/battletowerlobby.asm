@@ -1,11 +1,11 @@
-Music_BattleTowerLobby:
+Music_RocketTowerLobby:
 	channel_count 4
-	channel 1, Music_BattleTowerLobby_Ch1
-	channel 2, Music_BattleTowerLobby_Ch2
-	channel 3, Music_BattleTowerLobby_Ch3
-	channel 4, Music_BattleTowerLobby_Ch4
+	channel 1, Music_RocketTowerLobby_Ch1
+	channel 2, Music_RocketTowerLobby_Ch2
+	channel 3, Music_RocketTowerLobby_Ch3
+	channel 4, Music_RocketTowerLobby_Ch4
 
-Music_BattleTowerLobby_Ch1:
+Music_RocketTowerLobby_Ch1:
 	tempo 152
 	volume 7, 7
 	duty_cycle 3
@@ -117,7 +117,7 @@ Music_BattleTowerLobby_Ch1:
 	note B_, 4
 	sound_loop 0, .mainloop
 
-Music_BattleTowerLobby_Ch2:
+Music_RocketTowerLobby_Ch2:
 	duty_cycle 2
 	vibrato 16, 3, 4
 	stereo_panning FALSE, TRUE
@@ -201,7 +201,7 @@ Music_BattleTowerLobby_Ch2:
 	note D#, 1
 	sound_loop 0, .mainloop
 
-Music_BattleTowerLobby_Ch3:
+Music_RocketTowerLobby_Ch3:
 	note_type 12, 1, 1
 .mainloop:
 	octave 2
@@ -297,7 +297,7 @@ Music_BattleTowerLobby_Ch3:
 	note F#, 2
 	sound_loop 0, .mainloop
 
-Music_BattleTowerLobby_Ch4:
+Music_RocketTowerLobby_Ch4:
 	toggle_noise 0
 .mainloop:
 	drum_speed 12

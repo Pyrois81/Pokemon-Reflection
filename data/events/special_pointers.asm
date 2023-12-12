@@ -58,7 +58,7 @@ SpecialsPointers::
 	add_special UnusedMemoryGame ; unused
 	add_special ClearBGPalettesBufferScreen ; unused
 	add_special FadeOutPalettes
-	add_special BattleTowerFade
+	add_special RocketTowerFade
 	add_special FadeBlackQuickly
 	add_special FadeInPalettes
 	add_special FadeInQuickly
@@ -116,7 +116,6 @@ SpecialsPointers::
 	add_special GameboyCheck
 	add_special TrainerHouse
 	add_special PhotoStudio
-	add_special InitRoamMons
 	add_special FadeOutMusic
 	add_special Diploma
 	add_special PrintDiploma
@@ -129,15 +128,15 @@ SpecialsPointers::
 	add_special Function11b879
 	add_special Function11b920
 	add_special Function11b93b
-	add_special BattleTowerRoomMenu
+	add_special RocketTowerRoomMenu
 	add_special Function1700ba
 	add_special Function170114
-	add_special BattleTowerBattle
+	add_special RocketTowerBattle
 	add_special Function1704e1
-	add_special UnusedBattleTowerDummySpecial1
+	add_special UnusedRocketTowerDummySpecial1
 	add_special LoadOpponentTrainerAndPokemonWithOTSprite
 	add_special Function11ba38
-	add_special CheckForBattleTowerRules
+	add_special CheckForRocketTowerRules
 	add_special GiveOddEgg
 	add_special Reset ; bank 0
 	add_special Function1011f1
@@ -146,12 +145,12 @@ SpecialsPointers::
 	add_special Function101231
 	add_special OmanyteChamber
 	add_special Function11c1ab
-	add_special BattleTowerAction
+	add_special RocketTowerAction
 	add_special DisplayUnownWords
 	add_special Menu_ChallengeExplanationCancel
 	add_special Function17d2b6
 	add_special Function17d2ce
-	add_special BattleTowerMobileError
+	add_special RocketTowerMobileError
 	add_special AskMobileOrCable
 	add_special HoOhChamber
 	add_special Function102142
@@ -165,7 +164,7 @@ SpecialsPointers::
 	add_special BeastsCheck
 	add_special MonCheck
 	add_special SetPlayerPalette
-	add_special UnusedBattleTowerDummySpecial2
+	add_special UnusedRocketTowerDummySpecial2
 	add_special Mobile_SelectThreeMons
 	add_special Function1037eb
 	add_special Function10383c

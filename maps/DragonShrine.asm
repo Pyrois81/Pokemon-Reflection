@@ -56,14 +56,20 @@ DragonShrineClairScript:
 	writetext DragonShrineClairText
 	waitbutton
 	closetext
-	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairWalkOutMovement
+	readvar VAR_FACING
+	ifnotequal UP, .ClairLeaves
+	scall DragonShrineMoveBGetOutTheWay
+	
+.ClairLeaves:
+	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairDragonairWalkOutMovement
 	disappear DRAGONSHRINE_CLAIR
 	turnobject DRAGONSHRINE_DRAGONAIR, LEFT
 	showemote EMOTE_QUESTION, DRAGONSHRINE_DRAGONAIR, 30
 	showemote EMOTE_SHOCK, DRAGONSHRINE_DRAGONAIR, 15
-	applymovement DRAGONSHRINE_DRAGONAIR, DragonShrineDragonairWalkOutMovement
+	applymovement DRAGONSHRINE_DRAGONAIR, DragonShrineClairDragonairWalkOutMovement
 	disappear DRAGONSHRINE_DRAGONAIR
 	setevent EVENT_BLACKTHORN_CITY_SUPER_NERD_DOES_NOT_BLOCK_GYM
+	clearevent EVENT_BLACKTHORN_CITY_SUPER_NERD_BLOCKS_GYM
 	setevent EVENT_TALKED_TO_CLAIR_IN_DRAGON_SHRINE
 	end
 	
@@ -74,18 +80,19 @@ DragonShrineDragonairScript:
 	waitbutton
 	closetext
 	end
-
-DragonShrineClairWalkOutMovement:
-	step DOWN
-	step DOWN
-	step DOWN
-	step DOWN
-	step DOWN
-	step DOWN
-	step_end
 	
-DragonShrineDragonairWalkOutMovement:
-	step LEFT
+DragonShrineMoveBGetOutTheWay:
+	applymovement PLAYER, DragonShrineStepLeftMovement
+	end
+	
+DragonShrineStepLeftMovement:
+	turn_head RIGHT
+	fix_facing
+	big_step LEFT
+	remove_fixed_facing
+	step_end
+
+DragonShrineClairDragonairWalkOutMovement:
 	step DOWN
 	step DOWN
 	step DOWN
@@ -182,7 +189,7 @@ DragonShrineClairText:
 	done
 	
 DragonShrineDragonairText:
-	para "DRAGONAIR: Nair!"
+	text "DRAGONAIR: Nair!"
 	done
 
 DragonShrine_MapEvents:
@@ -201,4 +208,4 @@ DragonShrine_MapEvents:
 	object_event  2,  5, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DragonShrineElder2Script, -1
 	object_event  7,  5, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DragonShrineElder3Script, -1
 	object_event  4,  3, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, DragonShrineClairScript, EVENT_BLACKTHORN_CITY_SUPER_NERD_DOES_NOT_BLOCK_GYM
-	object_event  5,  3, SPRITE_EKANS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, DragonShrineDragonairScript, EVENT_BLACKTHORN_CITY_SUPER_NERD_DOES_NOT_BLOCK_GYM
+	object_event  5,  3, SPRITE_EKANS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, DragonShrineDragonairScript, EVENT_BLACKTHORN_CITY_SUPER_NERD_DOES_NOT_BLOCK_GYM

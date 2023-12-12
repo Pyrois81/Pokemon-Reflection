@@ -25,8 +25,8 @@ BlackthornMartCooltrainerMText:
 	line "REVIVE, but it"
 
 	para "restores a fainted"
-	line "#MON back to full"
-	cont "health."
+	line "#MON back to"
+	cont "full health."
 
 	para "It doesn't restore"
 	line "that #MON's"

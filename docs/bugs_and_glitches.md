@@ -1665,7 +1665,7 @@ Finally, edit [engine/battle/read_trainer_party.asm](https://github.com/pret/pok
 +	ld a, 255
 +	ld [wCurPartyLevel], a
 +
-+	ld a, [wInBattleTowerBattle]
++	ld a, [wInRocketTowerBattle]
 +	bit 0, a
 +	ret nz
 +

@@ -31,7 +31,7 @@ if DEF(_CRYSTAL11)
 	cp BATTLETOWER_NUM_UNIQUE_TRAINERS
 else
 ; Crystal 1.0 used the wrong constant here, so only the first 21
-; trainers in BattleTowerTrainers can be sampled.
+; trainers in RocketTowerTrainers can be sampled.
 	maskbits BATTLETOWER_NUM_UNIQUE_MON
 	cp BATTLETOWER_NUM_UNIQUE_MON
 endc
@@ -51,7 +51,7 @@ endc
 	jr nz, .next_trainer ; c <= 7  initialise all 7 trainers?
 
 	ld hl, sBTTrainers
-	ld a, [sNrOfBeatenBattleTowerTrainers]
+	ld a, [sNrOfBeatenRocketTowerTrainers]
 	ld c, a
 	ld a, b
 	ld b, 0
@@ -62,21 +62,21 @@ endc
 
 	push af
 ; Copy name (10 bytes) and class (1 byte) of trainer
-	ld hl, BattleTowerTrainers
+	ld hl, RocketTowerTrainers
 	ld bc, NAME_LENGTH
 	call AddNTimes
 	ld bc, NAME_LENGTH
 	call CopyBytes
 
-	call LoadRandomBattleTowerMon
+	call LoadRandomRocketTowerMon
 	pop af
 
-	ld hl, BattleTowerTrainerData
+	ld hl, RocketTowerTrainerData
 	ld bc, BATTLETOWER_TRAINERDATALENGTH
 	call AddNTimes
 	ld bc, BATTLETOWER_TRAINERDATALENGTH
 .copy_bt_trainer_data_loop
-	ld a, BANK(BattleTowerTrainerData)
+	ld a, BANK(RocketTowerTrainerData)
 	call GetFarByte
 	ld [de], a
 	inc hl
@@ -91,19 +91,19 @@ endc
 
 	ret
 
-LoadRandomBattleTowerMon:
+LoadRandomRocketTowerMon:
 	ld c, BATTLETOWER_PARTY_LENGTH
 .loop
 	push bc
 	ld a, BANK(sBTMonOfTrainers)
 	call OpenSRAM
 
-.FindARandomBattleTowerMon:
+.FindARandomRocketTowerMon:
 	; From Which LevelGroup are the mon loaded
 	; a = 1..10
 	ld a, [wBTChoiceOfLvlGroup]
 	dec a
-	ld hl, BattleTowerMons
+	ld hl, RocketTowerMons
 	ld bc, BATTLETOWER_NUM_UNIQUE_MON * NICKNAMED_MON_STRUCT_LENGTH
 	call AddNTimes
 
@@ -130,40 +130,40 @@ LoadRandomBattleTowerMon:
 	ld c, a
 	ld a, [wBT_OTMon1]
 	cp b
-	jr z, .FindARandomBattleTowerMon
+	jr z, .FindARandomRocketTowerMon
 	ld a, [wBT_OTMon1Item]
 	cp c
-	jr z, .FindARandomBattleTowerMon
+	jr z, .FindARandomRocketTowerMon
 	ld a, [wBT_OTMon2]
 	cp b
-	jr z, .FindARandomBattleTowerMon
+	jr z, .FindARandomRocketTowerMon
 	ld a, [wBT_OTMon2Item]
 	cp c
-	jr z, .FindARandomBattleTowerMon
+	jr z, .FindARandomRocketTowerMon
 	ld a, [wBT_OTMon3]
 	cp b
-	jr z, .FindARandomBattleTowerMon
+	jr z, .FindARandomRocketTowerMon
 	ld a, [wBT_OTMon3Item]
 	cp c
-	jr z, .FindARandomBattleTowerMon
+	jr z, .FindARandomRocketTowerMon
 	ld a, [sBTMonPrevTrainer1]
 	cp b
-	jr z, .FindARandomBattleTowerMon
+	jr z, .FindARandomRocketTowerMon
 	ld a, [sBTMonPrevTrainer2]
 	cp b
-	jr z, .FindARandomBattleTowerMon
+	jr z, .FindARandomRocketTowerMon
 	ld a, [sBTMonPrevTrainer3]
 	cp b
-	jr z, .FindARandomBattleTowerMon
+	jr z, .FindARandomRocketTowerMon
 	ld a, [sBTMonPrevPrevTrainer1]
 	cp b
-	jr z, .FindARandomBattleTowerMon
+	jr z, .FindARandomRocketTowerMon
 	ld a, [sBTMonPrevPrevTrainer2]
 	cp b
-	jr z, .FindARandomBattleTowerMon
+	jr z, .FindARandomRocketTowerMon
 	ld a, [sBTMonPrevPrevTrainer3]
 	cp b
-	jr z, .FindARandomBattleTowerMon
+	jr z, .FindARandomRocketTowerMon
 
 	ld bc, NICKNAMED_MON_STRUCT_LENGTH
 	call CopyBytes

@@ -17,29 +17,29 @@ LugiaSpeechHouseRadio:
 	jumpstd Radio2Script
 
 EcruteakLugiaSpeechHouseGrampsText:
-	text "This happened when"
-	line "I was young."
-
-	para "The sky suddenly"
-	line "turned black. A"
-
-	para "giant flying #-"
-	line "MON was blocking"
-	cont "out the sun."
-
-	para "I wonder what that"
-	line "#MON was? "
-
-	para "It was like a bird"
-	line "and a dragon."
+	text "There is a mon-"
+	line "strous #MON"
+	
+	para "that roosts in the"
+	line "WHIRL ISLANDS."
+	
+	para "I've seen it fly"
+	line "over our town a"
+	
+	para "handful of times"
+	line "during my life."
+	
+	para "It's got to be"
+	line "well over 4 meters"
+	cont "long…"
+	
+	para "A truly intimi-"
+	line "dating creature."
 	done
 
 EcruteakLugiaSpeechHouseYoungsterText:
-	text "Is there really a"
-	line "#MON that big?"
-
-	para "If it exists, it"
-	line "must be powerful."
+	text "…What the heck"
+	line "is a 'meter'?"
 	done
 
 EcruteakLugiaSpeechHouse_MapEvents:

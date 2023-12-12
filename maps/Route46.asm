@@ -10,7 +10,17 @@ Route46_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_NEWMAP, .CheckMomCall
 
+.CheckMomCall:
+	checkevent EVENT_TALKED_TO_MOM_AFTER_TATTERED_HAT_QUEST
+	iffalse .DoMomCall
+	endcallback
+
+.DoMomCall:
+	specialphonecall SPECIALCALL_WORRIED
+	endcallback
+	
 TrainerCamperTed:
 	trainer CAMPER, TED, EVENT_BEAT_CAMPER_TED, CamperTedSeenText, CamperTedBeatenText, 0, .Script
 

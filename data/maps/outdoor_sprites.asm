@@ -159,12 +159,13 @@ EcruteakGroupSprites:
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_BUG_CATCHER
 	db SPRITE_SUPER_NERD
-	; 8 of max 9 walking sprites
 	db SPRITE_SUDOWOODO
+	; 9 of max 9 walking sprites
 	db SPRITE_TWIN
 	db SPRITE_POKE_BALL
 	db SPRITE_FRUIT_TREE
 	db SPRITE_SUICUNE
+	db SPRITE_MAGIKARP
 	db 0 ; end
 
 AzaleaGroupSprites:
@@ -201,7 +202,7 @@ GoldenrodGroupSprites:
 OlivineGroupSprites:
 ; Route38, Route39, OlivineCity
 CianwoodGroupSprites:
-; Route40, Route41, CianwoodCity, BattleTowerOutside
+; Route40, Route41, CianwoodCity, RocketTowerOutside
 	db SPRITE_SILVER
 	db SPRITE_SWIMMER_GUY
 	db SPRITE_POKEFAN_M
@@ -245,10 +246,12 @@ LakeOfRageGroupSprites:
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_LASS
 	db SPRITE_YOUNGSTER
-	; 8 of max 9 walking sprites
+	db SPRITE_ROCKET
+	; 9 of max 9 walking sprites
 	db SPRITE_GYARADOS
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
+	db SPRITE_PORYGON
 	db 0 ; end
 
 BlackthornGroupSprites:

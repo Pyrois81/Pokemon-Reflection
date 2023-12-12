@@ -8,7 +8,7 @@ Function118007:
 	ld [wcd38], a
 
 asm_11800b:
-	call BattleTowerRoomMenu_InitRAM
+	call RocketTowerRoomMenu_InitRAM
 	ld a, $18
 	ld [wcd33], a
 	ld a, $19
@@ -22,33 +22,33 @@ asm_11800b:
 .loop
 	call JoyTextDelay
 	call Function118473
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	cp $1b
 	jr c, .skip
 	ld a, [wcd34]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 
 .skip
 	call Function1184a5
-	call BattleTowerRoomMenu_WriteMessage
+	call RocketTowerRoomMenu_WriteMessage
 	farcall Function115dd3
 	farcall Function11619d
 	call DelayFrame
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	ld hl, wcd33
 	cp [hl]
 	jr nz, .loop
 	pop af
 	ldh [rSVBK], a
-	call BattleTowerRoomMenu_Cleanup
+	call RocketTowerRoomMenu_Cleanup
 	call ReturnToMapFromSubmenu
-BattleTowerRoomMenu_DoNothing:
+RocketTowerRoomMenu_DoNothing:
 	ret
 
 Function11805f:
 	ld a, $1
 	ld [wcd38], a
-	call BattleTowerRoomMenu_InitRAM
+	call RocketTowerRoomMenu_InitRAM
 	ld a, $18
 	ld [wcd33], a
 	ld a, $19
@@ -62,30 +62,30 @@ Function11805f:
 .asm_11807d
 	call JoyTextDelay
 	call Function118473
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	cp $1b
 	jr c, .asm_118090
 	ld a, [wcd34]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 
 .asm_118090
 	call Function11857c
-	call BattleTowerRoomMenu_WriteMessage
+	call RocketTowerRoomMenu_WriteMessage
 	farcall Function115dd3
 	farcall Function11619d
 	call DelayFrame
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	ld hl, wcd33
 	cp [hl]
 	jr nz, .asm_11807d
 	pop af
 	ldh [rSVBK], a
-	call BattleTowerRoomMenu_Cleanup
+	call RocketTowerRoomMenu_Cleanup
 	call ReturnToMapFromSubmenu
 	ret
 
 Function1180b8:
-	call BattleTowerRoomMenu_InitRAM
+	call RocketTowerRoomMenu_InitRAM
 	ld a, $22
 	ld [wcd33], a
 	ld a, $23
@@ -99,14 +99,14 @@ Function1180b8:
 .asm_1180d1
 	call JoyTextDelay
 	call Function118473
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	cp $28
 	jr c, .asm_1180e4
 	ld a, [wcd34]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 
 .asm_1180e4
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	cp $10
 	jr c, .asm_1180f2
 	cp $16
@@ -115,17 +115,17 @@ Function1180b8:
 
 .asm_1180f2
 	call Function1184ec
-	call BattleTowerRoomMenu_WriteMessage
+	call RocketTowerRoomMenu_WriteMessage
 	farcall Function115dd3
 	farcall Function11619d
 	call DelayFrame
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	ld hl, wcd33
 	cp [hl]
 	jr nz, .asm_1180d1
 	pop af
 	ldh [rSVBK], a
-	call BattleTowerRoomMenu_Cleanup
+	call RocketTowerRoomMenu_Cleanup
 	call ReturnToMapFromSubmenu
 	ret
 
@@ -134,11 +134,11 @@ Function11811a:
 	ld [wcd38], a
 	jr Function118125
 
-_BattleTowerRoomMenu:
+_RocketTowerRoomMenu:
 	xor a
 	ld [wcd38], a
 Function118125:
-	call BattleTowerRoomMenu_InitRAM
+	call RocketTowerRoomMenu_InitRAM
 	ld a, $3
 	ld [wcd33], a
 	ld a, $d
@@ -152,18 +152,18 @@ Function118125:
 .loop
 	call JoyTextDelay
 	call Function118473
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	cp $f
 	jr c, .skip
 	ld a, [wcd34]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 .skip
-	call BattleTowerRoomMenu_Jumptable
-	call BattleTowerRoomMenu_WriteMessage
+	call RocketTowerRoomMenu_Jumptable
+	call RocketTowerRoomMenu_WriteMessage
 	farcall Function115dd3
 	farcall Function11619d
 	call DelayFrame
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	ld hl, wcd33
 	cp [hl]
 	jr nz, .loop
@@ -171,7 +171,7 @@ Function118125:
 	ld [w3_d000], a
 	pop af
 	ldh [rSVBK], a
-	call BattleTowerRoomMenu_Cleanup
+	call RocketTowerRoomMenu_Cleanup
 	call Function118180
 	call ReturnToMapFromSubmenu
 	ret
@@ -222,7 +222,7 @@ Function118180:
 	jr .reset_banks
 
 Function1181da:
-	call BattleTowerRoomMenu_InitRAM
+	call RocketTowerRoomMenu_InitRAM
 	ld a, $2
 	ld [wcd38], a
 	ld a, $21
@@ -238,30 +238,30 @@ Function1181da:
 .asm_1181f8
 	call JoyTextDelay
 	call Function118473
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	cp $28
 	jr c, .asm_11820b
 	ld a, [wcd34]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 
 .asm_11820b
 	call Function1185c3
-	call BattleTowerRoomMenu_WriteMessage
+	call RocketTowerRoomMenu_WriteMessage
 	farcall Function115dd3
 	farcall Function11619d
 	call DelayFrame
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	ld hl, wcd33
 	cp [hl]
 	jr nz, .asm_1181f8
 	pop af
 	ldh [rSVBK], a
-	call BattleTowerRoomMenu_Cleanup
+	call RocketTowerRoomMenu_Cleanup
 	call ReturnToMapFromSubmenu
 	ret
 
 Function118233:
-	call BattleTowerRoomMenu_InitRAM
+	call RocketTowerRoomMenu_InitRAM
 	ld a, $1b
 	ld [wcd33], a
 	ld a, $1c
@@ -275,29 +275,29 @@ Function118233:
 .asm_11824c
 	call JoyTextDelay
 	call Function118473
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	cp $1e
 	jr c, .asm_11825f
 	ld a, [wcd34]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 
 .asm_11825f
 	call Function118624
-	call BattleTowerRoomMenu_WriteMessage
+	call RocketTowerRoomMenu_WriteMessage
 	farcall Function115dd3
 	farcall Function11619d
 	call DelayFrame
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	ld hl, wcd33
 	cp [hl]
 	jr nz, .asm_11824c
 	pop af
 	ldh [rSVBK], a
-	call BattleTowerRoomMenu_Cleanup
+	call RocketTowerRoomMenu_Cleanup
 	ret
 
 Function118284:
-	call BattleTowerRoomMenu_InitRAM
+	call RocketTowerRoomMenu_InitRAM
 	ld a, $19
 	ld [wcd33], a
 	ld a, $1e
@@ -311,28 +311,28 @@ Function118284:
 .asm_11829d
 	call JoyTextDelay
 	call Function118473
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	cp $20
 	jr c, .asm_1182b0
 	ld a, [wcd34]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 .asm_1182b0
 	call Function1186f5
-	call BattleTowerRoomMenu_WriteMessage
+	call RocketTowerRoomMenu_WriteMessage
 	farcall Function115dd3
 	farcall Function11619d
 	call DelayFrame
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	ld hl, wcd33
 	cp [hl]
 	jr nz, .asm_11829d
 	pop af
 	ldh [rSVBK], a
-	call BattleTowerRoomMenu_Cleanup
+	call RocketTowerRoomMenu_Cleanup
 	ret
 
 Function1182d5: ; unreferenced
-	call BattleTowerRoomMenu_InitRAM
+	call RocketTowerRoomMenu_InitRAM
 	ld a, $18
 	ld [wcd33], a
 	ld a, $19
@@ -346,30 +346,30 @@ Function1182d5: ; unreferenced
 .asm_1182ee
 	call JoyTextDelay
 	call Function118473
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	cp $1b
 	jr c, .asm_118301
 	ld a, [wcd34]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 
 .asm_118301
 	call Function118746
-	call BattleTowerRoomMenu_WriteMessage
+	call RocketTowerRoomMenu_WriteMessage
 	farcall Function115dd3
 	farcall Function11619d
 	call DelayFrame
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	ld hl, wcd33
 	cp [hl]
 	jr nz, .asm_1182ee
 	pop af
 	ldh [rSVBK], a
-	call BattleTowerRoomMenu_Cleanup
+	call RocketTowerRoomMenu_Cleanup
 	call ReturnToMapFromSubmenu
 	ret
 
 Function118329:
-	call BattleTowerRoomMenu_InitRAM
+	call RocketTowerRoomMenu_InitRAM
 	ld a, $15
 	ld [wcd33], a
 	ld a, $16
@@ -383,29 +383,29 @@ Function118329:
 .asm_118342
 	call JoyTextDelay
 	call Function118473
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	cp $18
 	jr c, .asm_118355
 	ld a, [wcd34]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 
 .asm_118355
 	call Function118671
-	call BattleTowerRoomMenu_WriteMessage
+	call RocketTowerRoomMenu_WriteMessage
 	farcall Function115dd3
 	farcall Function11619d
 	call DelayFrame
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	ld hl, wcd33
 	cp [hl]
 	jr nz, .asm_118342
 	pop af
 	ldh [rSVBK], a
-	call BattleTowerRoomMenu_Cleanup
+	call RocketTowerRoomMenu_Cleanup
 	ret
 
 Function11837a:
-	call BattleTowerRoomMenu_InitRAM
+	call RocketTowerRoomMenu_InitRAM
 	ld a, $16
 	ld [wcd33], a
 	ld a, $17
@@ -419,28 +419,28 @@ Function11837a:
 .asm_118393
 	call JoyTextDelay
 	call Function118473
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	cp $19
 	jr c, .asm_1183a6
 	ld a, [wcd34]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 
 .asm_1183a6
 	call Function1186b2
-	call BattleTowerRoomMenu_WriteMessage
+	call RocketTowerRoomMenu_WriteMessage
 	farcall Function115dd3
 	farcall Function11619d
 	call DelayFrame
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	ld hl, wcd33
 	cp [hl]
 	jr nz, .asm_118393
 	pop af
 	ldh [rSVBK], a
-	call BattleTowerRoomMenu_Cleanup
+	call RocketTowerRoomMenu_Cleanup
 	ret
 
-BattleTowerRoomMenu_InitRAM:
+RocketTowerRoomMenu_InitRAM:
 	di
 	ldh a, [rIE]
 	ld [wcd32], a
@@ -495,7 +495,7 @@ Function118440:
 	pop af
 	ret
 
-BattleTowerRoomMenu_Cleanup:
+RocketTowerRoomMenu_Cleanup:
 	di
 	xor a
 	ldh [hMobileReceive], a
@@ -544,7 +544,7 @@ Function118473:
 	ret
 
 Function1184a5:
-	jumptable .Jumptable, wBattleTowerRoomMenuJumptableIndex
+	jumptable .Jumptable, wRocketTowerRoomMenuJumptableIndex
 
 .Jumptable:
 	dw Function11886e
@@ -571,13 +571,13 @@ Function1184a5:
 	dw Function118e76
 	dw Function118e7e
 	dw Function11878d
-	dw BattleTowerRoomMenu_DoNothing
+	dw RocketTowerRoomMenu_DoNothing
 	dw Function118e76
-	dw BattleTowerRoomMenu_CallRoomMenu2
+	dw RocketTowerRoomMenu_CallRoomMenu2
 	dw Function118e76
 
 Function1184ec:
-	jumptable .Jumptable, wBattleTowerRoomMenuJumptableIndex
+	jumptable .Jumptable, wRocketTowerRoomMenuJumptableIndex
 
 .Jumptable:
 	dw Function11886e
@@ -614,37 +614,37 @@ Function1184ec:
 	dw Function118e76
 	dw Function118e7e
 	dw Function11878d
-	dw BattleTowerRoomMenu_DoNothing
+	dw RocketTowerRoomMenu_DoNothing
 	dw Function118e76
-	dw BattleTowerRoomMenu_CallRoomMenu2
+	dw RocketTowerRoomMenu_CallRoomMenu2
 	dw Function119b45
 	dw Function11878d
 	dw Function119ac9
 	dw Function118e76
 
-BattleTowerRoomMenu_Jumptable:
-	jumptable .Jumptable, wBattleTowerRoomMenuJumptableIndex
+RocketTowerRoomMenu_Jumptable:
+	jumptable .Jumptable, wRocketTowerRoomMenuJumptableIndex
 
 .Jumptable:
-	dw BattleTowerRoomMenu_PickLevelMessage
-	dw BattleTowerRoomMenu_PlacePickLevelMenu
-	dw BattleTowerRoomMenu_UpdatePickLevelMenu
-	dw BattleTowerRoomMenu_DoNothing
-	dw BattleTowerRoomMenu_PartyMonTopsThisLevelMessage
-	dw BattleTowerRoomMenu_WaitForMessage
-	dw BattleTowerRoomMenu_DelayRestartMenu
-	dw BattleTowerRoomMenu_QuitMessage
-	dw BattleTowerRoomMenu_PlaceYesNoMenu
-	dw BattleTowerRoomMenu_UpdateYesNoMenu
-	dw BattleTowerRoomMenu_UberRestrictionMessage
-	dw BattleTowerRoomMenu_WaitForMessage
-	dw BattleTowerRoomMenu_DelayRestartMenu
+	dw RocketTowerRoomMenu_PickLevelMessage
+	dw RocketTowerRoomMenu_PlacePickLevelMenu
+	dw RocketTowerRoomMenu_UpdatePickLevelMenu
+	dw RocketTowerRoomMenu_DoNothing
+	dw RocketTowerRoomMenu_PartyMonTopsThisLevelMessage
+	dw RocketTowerRoomMenu_WaitForMessage
+	dw RocketTowerRoomMenu_DelayRestartMenu
+	dw RocketTowerRoomMenu_QuitMessage
+	dw RocketTowerRoomMenu_PlaceYesNoMenu
+	dw RocketTowerRoomMenu_UpdateYesNoMenu
+	dw RocketTowerRoomMenu_UberRestrictionMessage
+	dw RocketTowerRoomMenu_WaitForMessage
+	dw RocketTowerRoomMenu_DelayRestartMenu
 	dw Function118e76 ; mobile
-	dw BattleTowerRoomMenu_CallRoomMenu2 ; mobile
+	dw RocketTowerRoomMenu_CallRoomMenu2 ; mobile
 	dw Function118e76 ; mobile
 
 Function11857c:
-	jumptable .Jumptable, wBattleTowerRoomMenuJumptableIndex
+	jumptable .Jumptable, wRocketTowerRoomMenuJumptableIndex
 
 .Jumptable:
 	dw Function11886e
@@ -671,13 +671,13 @@ Function11857c:
 	dw Function118e76
 	dw Function118e7e
 	dw Function11878d
-	dw BattleTowerRoomMenu_DoNothing
+	dw RocketTowerRoomMenu_DoNothing
 	dw Function118e76
-	dw BattleTowerRoomMenu_CallRoomMenu2
+	dw RocketTowerRoomMenu_CallRoomMenu2
 	dw Function118e76
 
 Function1185c3:
-	jumptable .Jumptable, wBattleTowerRoomMenuJumptableIndex
+	jumptable .Jumptable, wRocketTowerRoomMenuJumptableIndex
 
 .Jumptable:
 	dw Function11886e
@@ -713,17 +713,17 @@ Function1185c3:
 	dw Function118e76
 	dw Function118e7e
 	dw Function11878d
-	dw BattleTowerRoomMenu_DoNothing
+	dw RocketTowerRoomMenu_DoNothing
 	dw Function118e76
-	dw BattleTowerRoomMenu_CallRoomMenu2
-	dw BattleTowerRoomMenu_QuitMessage
-	dw BattleTowerRoomMenu_PlaceYesNoMenu
-	dw BattleTowerRoomMenu_UpdateYesNoMenu
+	dw RocketTowerRoomMenu_CallRoomMenu2
+	dw RocketTowerRoomMenu_QuitMessage
+	dw RocketTowerRoomMenu_PlaceYesNoMenu
+	dw RocketTowerRoomMenu_UpdateYesNoMenu
 	dw Function11914e
 	dw Function118e76
 
 Function118624:
-	jumptable .Jumptable, wBattleTowerRoomMenuJumptableIndex
+	jumptable .Jumptable, wRocketTowerRoomMenuJumptableIndex
 
 .Jumptable:
 	dw Function118866
@@ -753,13 +753,13 @@ Function118624:
 	dw Function118e76
 	dw Function118e7e
 	dw Function11878d
-	dw BattleTowerRoomMenu_DoNothing
+	dw RocketTowerRoomMenu_DoNothing
 	dw Function118e76
-	dw BattleTowerRoomMenu_CallRoomMenu2
+	dw RocketTowerRoomMenu_CallRoomMenu2
 	dw Function118e76
 
 Function118671:
-	jumptable .Jumptable, wBattleTowerRoomMenuJumptableIndex
+	jumptable .Jumptable, wRocketTowerRoomMenuJumptableIndex
 
 .Jumptable:
 	dw Function118866
@@ -783,13 +783,13 @@ Function118671:
 	dw Function118e76
 	dw Function118e7e
 	dw Function11878d
-	dw BattleTowerRoomMenu_DoNothing
+	dw RocketTowerRoomMenu_DoNothing
 	dw Function118e76
-	dw BattleTowerRoomMenu_CallRoomMenu2
+	dw RocketTowerRoomMenu_CallRoomMenu2
 	dw Function118e76
 
 Function1186b2:
-	jumptable .Jumptable, wBattleTowerRoomMenuJumptableIndex
+	jumptable .Jumptable, wRocketTowerRoomMenuJumptableIndex
 
 .Jumptable:
 	dw Function118866
@@ -814,13 +814,13 @@ Function1186b2:
 	dw Function118e76
 	dw Function118e7e
 	dw Function11878d
-	dw BattleTowerRoomMenu_DoNothing
+	dw RocketTowerRoomMenu_DoNothing
 	dw Function118e76
-	dw BattleTowerRoomMenu_CallRoomMenu2
+	dw RocketTowerRoomMenu_CallRoomMenu2
 	dw Function118e76
 
 Function1186f5:
-	jumptable .Jumptable, wBattleTowerRoomMenuJumptableIndex
+	jumptable .Jumptable, wRocketTowerRoomMenuJumptableIndex
 
 .Jumptable:
 	dw Function11886a
@@ -848,17 +848,17 @@ Function1186f5:
 	dw Function118e76
 	dw Function118e7e
 	dw Function11878d
-	dw BattleTowerRoomMenu_DoNothing
+	dw RocketTowerRoomMenu_DoNothing
 	dw Function11967d
 	dw Function119685
 	dw Function119665
 	dw Function11966d
 	dw Function118e76
-	dw BattleTowerRoomMenu_CallRoomMenu2
+	dw RocketTowerRoomMenu_CallRoomMenu2
 	dw Function118e76
 
 Function118746:
-	jumptable .Jumptable, wBattleTowerRoomMenuJumptableIndex
+	jumptable .Jumptable, wRocketTowerRoomMenuJumptableIndex
 
 .Jumptable:
 	dw Function11886e
@@ -885,9 +885,9 @@ Function118746:
 	dw Function118e76
 	dw Function118e7e
 	dw Function11878d
-	dw BattleTowerRoomMenu_DoNothing
+	dw RocketTowerRoomMenu_DoNothing
 	dw Function118e76
-	dw BattleTowerRoomMenu_CallRoomMenu2
+	dw RocketTowerRoomMenu_CallRoomMenu2
 	dw Function118e76
 
 Function11878d:
@@ -904,7 +904,7 @@ Function11878d:
 	ld a, $3
 	ldh [rSVBK], a
 .asm_1187a7
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 .asm_1187aa
 	call Function118821
 	ret c
@@ -922,7 +922,7 @@ Function11878d:
 	ld a, [wc3f0]
 	ld [wc319], a
 	ld a, [wcd34]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	ret
 .asm_1187d1
 	ld hl, wcd89
@@ -966,7 +966,7 @@ SetMobileErrorCode:
 	ld a, [wc3f0]
 	ld [wc319], a
 	ld a, [wcd34]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	ret
 
 Function118821:
@@ -985,7 +985,7 @@ Function118821:
 	ld a, [wc3f0]
 	ld [wc319], a
 	ld a, [wcd34]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	scf
 	ret
 .asm_11884a
@@ -1001,7 +1001,7 @@ Function11884c:
 	ld a, $a
 	ld [wMobileErrorCodeBuffer], a
 	ld a, [wcd34]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	scf
 	ret
 
@@ -1023,13 +1023,13 @@ Function11886e:
 asm_11886f:
 	ld [wBGMapPalBuffer], a
 	ld a, $0
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
-	call BattleTowerRoomMenu_IncrementJumptable
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
+	call RocketTowerRoomMenu_IncrementJumptable
 	ld a, [wcd33]
 	ld [wMobileInactivityTimerSeconds], a
 
 Function118880:
-	call BattleTowerRoomMenu2
+	call RocketTowerRoomMenu2
 	ret c
 	xor a
 	ld [wcf64], a
@@ -1053,8 +1053,8 @@ Function118896: ; unreferenced
 	jp Function119e2b
 
 .asm_1188aa
-	call BattleTowerRoomMenu_IncrementJumptable
-	jp BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function1188b0:
 	ld de, wc346
@@ -1113,15 +1113,15 @@ Function118903:
 	ld c, $1
 	farcall Function115e18
 	ld a, $8
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
-	call BattleTowerRoomMenu2
-	jp BattleTowerRoomMenu_IncrementJumptable
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
+	call RocketTowerRoomMenu2
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function11891c:
 	call Function118b42
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
-BattleTowerRoomMenu_PickLevelMessage:
+RocketTowerRoomMenu_PickLevelMessage:
 	ld a, [wcd38]
 	and a
 	jr nz, .asm_11892d
@@ -1132,10 +1132,10 @@ BattleTowerRoomMenu_PickLevelMessage:
 	ld hl, Text_CheckBattleRoomListByMaxLevel
 
 .asm_118930
-	call BattleTowerRoomMenu_SetMessage
-	call BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_SetMessage
+	call RocketTowerRoomMenu_IncrementJumptable
 
-BattleTowerRoomMenu_PlacePickLevelMenu:
+RocketTowerRoomMenu_PlacePickLevelMenu:
 	ld a, [wc31a]
 	and a
 	ret nz
@@ -1172,9 +1172,9 @@ BattleTowerRoomMenu_PlacePickLevelMenu:
 	ld [wcd4c], a
 	ld a, $3
 	ldh [rSVBK], a
-	call BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_IncrementJumptable
 
-BattleTowerRoomMenu_UpdatePickLevelMenu:
+RocketTowerRoomMenu_UpdatePickLevelMenu:
 	hlcoord 13, 8
 	ld de, String_119d07
 	call PlaceString
@@ -1275,15 +1275,15 @@ BattleTowerRoomMenu_UpdatePickLevelMenu:
 	ld a, [wcd38]
 	and a
 	jr nz, .asm_118a30
-	call BattleTower_LevelCheck
+	call RocketTower_LevelCheck
 	ret c
-	call BattleTower_UbersCheck
+	call RocketTower_UbersCheck
 	ret c
 
 .asm_118a30
 	ld a, [wcd4f]
 	ld [w3_d800], a
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 .b_button
 	call PlayClickSFX
@@ -1297,7 +1297,7 @@ BattleTowerRoomMenu_UpdatePickLevelMenu:
 	pop af
 	ldh [rSVBK], a
 	ld a, $7
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	ld a, $0
 	ld [wMobileInactivityTimerFrames], a
 	ret
@@ -1372,8 +1372,8 @@ Function118ae4:
 	push de
 	push hl
 	ld a, $8
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
-	call BattleTowerRoomMenu2
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
+	call RocketTowerRoomMenu2
 	pop hl
 	ld c, $0
 	ld de, wcc60
@@ -1401,8 +1401,8 @@ Function118b10:
 	push de
 	push bc
 	ld a, $8
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
-	call BattleTowerRoomMenu2
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
+	call RocketTowerRoomMenu2
 	call Function118b24
 	pop bc
 	pop de
@@ -1538,7 +1538,7 @@ Function118d35: ; unreferenced
 	jr nz, .asm_118d7b
 
 .asm_118d78
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 .asm_118d7b
 	ld a, $d3
@@ -1549,18 +1549,18 @@ Function118d80:
 	ld a, [wcd38]
 	and a
 	jr z, .asm_118d8e
-	call BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_IncrementJumptable
 	jr asm_118d9f
 
 .asm_118d8e
 	ld a, $9
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
 	ld a, $12
 	ld [wMobileInactivityTimerSeconds], a
-	call BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_IncrementJumptable
 
 Function118d9b:
-	call BattleTowerRoomMenu2
+	call RocketTowerRoomMenu2
 	ret c
 
 asm_118d9f:
@@ -1618,7 +1618,7 @@ Function118ded:
 	ldh [rSVBK], a
 
 .asm_118e03
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function118e06:
 	ld hl, wd002
@@ -1701,22 +1701,22 @@ Function118e6d:
 	jp Function119e2b
 
 Function118e76:
-	; Call $c in BattleTowerRoomMenu2
+	; Call $c in RocketTowerRoomMenu2
 	ld a, $c
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
-	jp BattleTowerRoomMenu_IncrementJumptable
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function118e7e:
-	call BattleTowerRoomMenu2
+	call RocketTowerRoomMenu2
 	ret c
 	ld a, $36
 	jp Function119e2b
 
-BattleTowerRoomMenu_CallRoomMenu2:
-	call BattleTowerRoomMenu2
+RocketTowerRoomMenu_CallRoomMenu2:
+	call RocketTowerRoomMenu2
 	ret c
 	ld a, [wcd33]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	ret
 
 Function118e92:
@@ -1741,7 +1741,7 @@ Function118eb0:
 	call CopyBytes
 	call Function1192cc
 	ret c
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function118ec6:
 	call Function118440
@@ -1764,17 +1764,17 @@ Function118ec6:
 	ld a, $2
 	ld [wc31a], a
 	ld a, $1d
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
 	ld a, $24
 	ld [wMobileInactivityTimerSeconds], a
 	ld a, $11
 	ld [wMobileInactivityTimerFrames], a
 	ld a, $1c
 	ld [wcd47], a
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function118f0d:
-	call BattleTowerRoomMenu2
+	call RocketTowerRoomMenu2
 	ret c
 	call Function118440
 
@@ -1791,7 +1791,7 @@ Function118f14:
 	and a
 	jr z, .DontSendSaveFile
 	ld hl, Text_SaveFileWillBeSent
-	call BattleTowerRoomMenu_SetMessage
+	call RocketTowerRoomMenu_SetMessage
 
 .DontSendSaveFile:
 	ld a, [wcd57]
@@ -1804,17 +1804,17 @@ Function118f14:
 	ld hl, wcc60
 	call Function118e39
 	ld a, $9
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
 	ld a, $24
 	ld [wMobileInactivityTimerSeconds], a
 	ld a, $13
 	ld [wMobileInactivityTimerFrames], a
 	ld a, $1c
 	ld [wcd47], a
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function118f5e:
-	call BattleTowerRoomMenu2
+	call RocketTowerRoomMenu2
 	ret c
 	call Function118440
 	call DelayFrame
@@ -1861,8 +1861,8 @@ Function118f68:
 	jp Function119e2b
 
 .asm_118fba
-	call BattleTowerRoomMenu_IncrementJumptable
-	jp BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function118fc0:
 	call Function118440
@@ -1893,15 +1893,15 @@ Function118fc0:
 	ld hl, Text_ReadingNews
 
 .asm_118ff5
-	call BattleTowerRoomMenu_SetMessage
+	call RocketTowerRoomMenu_SetMessage
 	jr Function119009
 
 .asm_118ffa
 	ld hl, Text_ReadingNews
-	call BattleTowerRoomMenu_SetMessage
-	call BattleTowerRoomMenu_IncrementJumptable
-	call BattleTowerRoomMenu_IncrementJumptable
-	jp BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_SetMessage
+	call RocketTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function119009:
 	call Function118440
@@ -1994,7 +1994,7 @@ Function119054:
 	pop af
 	ldh [rSVBK], a
 	call CloseSRAM
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function1190d0:
 	ld a, BANK(w3_d000)
@@ -2051,14 +2051,14 @@ Function1190ec:
 	ldh [rSVBK], a
 	call CloseSRAM
 	ld hl, Text_ReceivedNews
-	call BattleTowerRoomMenu_SetMessage
-	jp BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_SetMessage
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function11914e:
-	call BattleTowerRoomMenu2
+	call RocketTowerRoomMenu2
 	ret c
 	ld a, $1c
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	ld a, $a
 	ld [wMobileErrorCodeBuffer], a
 	ret
@@ -2081,12 +2081,12 @@ Function11915d:
 	inc hl
 	dec c
 	jr nz, .asm_119176
-	call BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_IncrementJumptable
 	jr .asm_11918e
 
 .asm_119184
 	ld a, $16
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	ld a, $b
 	ld [wMobileErrorCodeBuffer], a
 
@@ -2327,9 +2327,9 @@ Function1192cc:
 	dec c
 	jr nz, .asm_1192e8
 	ld a, $1f
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
 	ld a, $27
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	scf
 	ret
 
@@ -2426,7 +2426,7 @@ Function119300:
 Function119380:
 	ld a, $80
 	ld [wcd49], a
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function119388:
 	ld hl, wcd49
@@ -2435,18 +2435,18 @@ Function119388:
 	ld hl, wcc60
 	call Function118e39
 	ld a, $9
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
 	ld a, $10
 	ld [wMobileInactivityTimerSeconds], a
-	call BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_IncrementJumptable
 
 Function1193a0:
-	call BattleTowerRoomMenu2
+	call RocketTowerRoomMenu2
 	ret c
 	call DelayFrame
 	ld a, $8
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
-	call BattleTowerRoomMenu2
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
+	call RocketTowerRoomMenu2
 	ld hl, wc346
 	ld a, LOW(w3_d000)
 	ld [hli], a
@@ -2481,18 +2481,18 @@ Function1193e3:
 	ld hl, wcc60
 	call Function118e39
 	ld a, $9
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
 	ld a, $11
 	ld [wMobileInactivityTimerSeconds], a
-	call BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_IncrementJumptable
 
 Function1193fb:
-	call BattleTowerRoomMenu2
+	call RocketTowerRoomMenu2
 	ret c
 	call DelayFrame
 	ld a, $8
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
-	call BattleTowerRoomMenu2
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
+	call RocketTowerRoomMenu2
 	ld de, w3_d000
 	ld bc, $1000
 	jp Function118b10
@@ -2530,7 +2530,7 @@ Function119413:
 	ld a, BANK("Battle Tower RAM")
 	ldh [rSVBK], a
 	call CloseSRAM
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function119451:
 	ld a, [wcd89]
@@ -2713,7 +2713,7 @@ endr
 	and a
 	jr z, .asm_119571
 	ld a, $1a
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	ret
 .asm_119571
 	ld a, $d8
@@ -2724,7 +2724,7 @@ endr
 .asm_11957a
 	ld a, $f
 .asm_11957c
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	pop af
 	call Function1195c4
 	ret
@@ -2809,29 +2809,29 @@ Function1195c4:
 
 Function1195f8:
 	ld a, $11
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
 	ld a, $1c
 	ld [wMobileInactivityTimerSeconds], a
 	ld a, $f
 	ld [wMobileInactivityTimerFrames], a
 	ld a, $14
 	ld [wcd47], a
-	call BattleTowerRoomMenu_IncrementJumptable
-	jp BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function119612:
 	ld a, $14
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
 	ld a, $1c
 	ld [wMobileInactivityTimerSeconds], a
 	ld a, $10
 	ld [wMobileInactivityTimerFrames], a
 	ld a, $14
 	ld [wcd47], a
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function119629:
-	call BattleTowerRoomMenu2
+	call RocketTowerRoomMenu2
 	ret c
 	ld a, $60
 	ld l, a
@@ -2839,20 +2839,20 @@ Function119629:
 	ld h, a
 	call Function118e39
 	ld a, $9
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
 	ld a, $1c
 	ld [wMobileInactivityTimerSeconds], a
 	ld a, $14
 	ld [wcd47], a
-	call BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_IncrementJumptable
 
 Function119648:
-	call BattleTowerRoomMenu2
+	call RocketTowerRoomMenu2
 	ret c
 	call DelayFrame
 	ld a, $8
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
-	call BattleTowerRoomMenu2
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
+	call RocketTowerRoomMenu2
 	call Function118b24
 	ld de, w3_d000
 	ld bc, $1000
@@ -2861,28 +2861,28 @@ Function119648:
 
 Function119665:
 	ld a, $1a
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
-	call BattleTowerRoomMenu_IncrementJumptable
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
+	call RocketTowerRoomMenu_IncrementJumptable
 
 Function11966d:
-	call BattleTowerRoomMenu2
+	call RocketTowerRoomMenu2
 	ret c
 	ld a, [wcd47]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	ld a, $a
 	ld [wMobileErrorCodeBuffer], a
 	ret
 
 Function11967d:
 	ld a, $18
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
-	call BattleTowerRoomMenu_IncrementJumptable
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
+	call RocketTowerRoomMenu_IncrementJumptable
 
 Function119685:
-	call BattleTowerRoomMenu2
+	call RocketTowerRoomMenu2
 	ret c
 	ld a, $14
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	ld a, $a
 	ld [wMobileErrorCodeBuffer], a
 	ret
@@ -3082,7 +3082,7 @@ Function1196f2:
 	and $f
 	call Function1197bf
 	ld [hli], a
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function119798:
 	ld d, $0
@@ -3128,13 +3128,13 @@ Function1197c9:
 	ld hl, wd002
 	call Function118e39
 	ld a, $9
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
 	ld a, $12
 	ld [wMobileInactivityTimerSeconds], a
-	call BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_IncrementJumptable
 
 Function1197dc:
-	call BattleTowerRoomMenu2
+	call RocketTowerRoomMenu2
 	ret c
 	call DelayFrame
 	ld hl, wd002
@@ -3162,7 +3162,7 @@ Function119800:
 	push af
 	ld a, [wcf65]
 	push af
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	push af
 	ld a, $1
 	ldh [rSVBK], a
@@ -3173,7 +3173,7 @@ Function119800:
 	ld a, BANK("Battle Tower RAM")
 	ldh [rSVBK], a
 	pop af
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	pop af
 	ld [wcf65], a
 	pop af
@@ -3181,7 +3181,7 @@ Function119800:
 	pop af
 	ld [wJumptableIndex], a
 	farcall Function115dc3
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function11984e:
 	ld a, [wcd80]
@@ -3197,7 +3197,7 @@ Function11984e:
 	push af
 	ld a, [wcf65]
 	push af
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	push af
 	ld a, $1
 	ldh [rSVBK], a
@@ -3208,7 +3208,7 @@ Function11984e:
 	ld a, BANK("Battle Tower RAM")
 	ldh [rSVBK], a
 	pop af
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	pop af
 	ld [wcf65], a
 	pop af
@@ -3216,12 +3216,12 @@ Function11984e:
 	pop af
 	ld [wJumptableIndex], a
 	farcall Function115dc3
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 .asm_1198a0
 	ld a, $a
 	ld [wMobileErrorCodeBuffer], a
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 .asm_1198a8
 	farcall Function17005a
@@ -3231,7 +3231,7 @@ Function11984e:
 	push af
 	ld a, [wcf65]
 	push af
-	ld a, [wBattleTowerRoomMenuJumptableIndex]
+	ld a, [wRocketTowerRoomMenuJumptableIndex]
 	push af
 	ld a, $1
 	ldh [rSVBK], a
@@ -3242,7 +3242,7 @@ Function11984e:
 	ld a, BANK("Battle Tower RAM")
 	ldh [rSVBK], a
 	pop af
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	pop af
 	ld [wcf65], a
 	pop af
@@ -3250,12 +3250,12 @@ Function11984e:
 	pop af
 	ld [wJumptableIndex], a
 	farcall Function115dc3
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function1198ee:
 	ld hl, Text_RegisteringRecord
-	call BattleTowerRoomMenu_SetMessage
-	call BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_SetMessage
+	call RocketTowerRoomMenu_IncrementJumptable
 
 Function1198f7:
 	ld a, [wc31a]
@@ -3292,7 +3292,7 @@ Function1198f7:
 
 Function119937:
 	farcall Function1707f4
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 Function119940:
 	ld de, wc3cd
@@ -3316,8 +3316,8 @@ Function119940:
 
 Function119954:
 	ld a, $1c
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
-	call BattleTowerRoomMenu2
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
+	call RocketTowerRoomMenu2
 	ld hl, wc608
 	ld de, wc3cd
 .asm_119962
@@ -3359,12 +3359,12 @@ Function119987:
 	and a
 	jr z, .asm_1199ae
 	ld a, $16
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	jp Function119b0d
 
 .asm_1199ae
 	ld a, $1b
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	ret
 
 Function1199b4:
@@ -3374,7 +3374,7 @@ Function1199b4:
 	ld a, [w3_d081]
 	cp $7
 	jr nc, .asm_1199c7
-	call BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_IncrementJumptable
 	jp Function1199ca
 
 .asm_1199c7
@@ -3486,7 +3486,7 @@ Function1199e2:
 
 .asm_119aa7
 	ld a, $25
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	jp Function119b45
 
 .asm_119aaf
@@ -3521,7 +3521,7 @@ Function119ac9:
 	ld a, h
 	ld [wcf65], a
 	ld a, $10
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	ret
 
 pushc
@@ -3537,13 +3537,13 @@ popc
 
 Function119b0d:
 	ld a, $8
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
-	call BattleTowerRoomMenu2
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
+	call RocketTowerRoomMenu2
 	ld a, [w3_d090]
 	cp $1
 	jr z, .asm_119b23
 	ld a, $19
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	jr Function119b3b
 
 .asm_119b23
@@ -3593,7 +3593,7 @@ Function119b6b:
 	ld a, [w3_d090]
 	cp $1
 	jr z, .asm_119b75
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 .asm_119b75
 	ld a, [w3_d100]
@@ -3678,7 +3678,7 @@ Function119b6b:
 
 .asm_119be3
 	ld a, $19
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	ld a, BANK(s5_a800)
 	call OpenSRAM
 	ld a, $1
@@ -3716,7 +3716,7 @@ Function119b6b:
 	ld de, wc608
 	ld bc, 105
 	call CopyBytes
-	jp BattleTowerRoomMenu_IncrementJumptable
+	jp RocketTowerRoomMenu_IncrementJumptable
 
 pushc
 setcharmap ascii
@@ -3748,7 +3748,7 @@ popc
 
 .asm_119c68
 	ld a, $19
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	ld a, BANK(s5_a800)
 	call OpenSRAM
 	ld a, $1
@@ -3789,26 +3789,26 @@ popc
 	and a
 	ret
 
-BattleTowerRoomMenu_UberRestrictionMessage:
+RocketTowerRoomMenu_UberRestrictionMessage:
 	ld hl, Text_UberRestriction
-	call BattleTowerRoomMenu_SetMessage
-	call BattleTowerRoomMenu_IncrementJumptable
-	jr BattleTowerRoomMenu_WaitForMessage
+	call RocketTowerRoomMenu_SetMessage
+	call RocketTowerRoomMenu_IncrementJumptable
+	jr RocketTowerRoomMenu_WaitForMessage
 
-BattleTowerRoomMenu_PartyMonTopsThisLevelMessage:
+RocketTowerRoomMenu_PartyMonTopsThisLevelMessage:
 	ld hl, Text_PartyMonTopsThisLevel
-	call BattleTowerRoomMenu_SetMessage
-	call BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_SetMessage
+	call RocketTowerRoomMenu_IncrementJumptable
 
-BattleTowerRoomMenu_WaitForMessage:
+RocketTowerRoomMenu_WaitForMessage:
 	ld a, [wc31a]
 	and a
 	ret nz
 	ld a, $80
 	ld [wcd50], a
-	call BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_IncrementJumptable
 
-BattleTowerRoomMenu_DelayRestartMenu:
+RocketTowerRoomMenu_DelayRestartMenu:
 	; Loops while (--[wcd50] != 0),
 	;   to create some sort of "delay" after the message is written on the screen,
 	;   before starting the menu again.
@@ -3816,10 +3816,10 @@ BattleTowerRoomMenu_DelayRestartMenu:
 	dec [hl]
 	ret nz
 	ld a, $0
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	ret
 
-BattleTowerRoomMenu_QuitMessage:
+RocketTowerRoomMenu_QuitMessage:
 	ld a, [wcd38]
 	and a
 	jr z, .asm_119cd1
@@ -3836,23 +3836,23 @@ BattleTowerRoomMenu_QuitMessage:
 	ld hl, Text_ExitGymLeaderHonorRoll
 
 .asm_119cd9
-	call BattleTowerRoomMenu_SetMessage
-	call BattleTowerRoomMenu_IncrementJumptable
+	call RocketTowerRoomMenu_SetMessage
+	call RocketTowerRoomMenu_IncrementJumptable
 
-BattleTowerRoomMenu_PlaceYesNoMenu:
+RocketTowerRoomMenu_PlaceYesNoMenu:
 	ld a, [wc31a]
 	and a
 	ret nz
 	ld a, $f
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
-	call BattleTowerRoomMenu_IncrementJumptable
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
+	call RocketTowerRoomMenu_IncrementJumptable
 
-BattleTowerRoomMenu_UpdateYesNoMenu:
-	; Only ever called when [wBattleTowerRoomMenu2JumptableIndex] is $10
-	call BattleTowerRoomMenu2
+RocketTowerRoomMenu_UpdateYesNoMenu:
+	; Only ever called when [wRocketTowerRoomMenu2JumptableIndex] is $10
+	call RocketTowerRoomMenu2
 	ret c
 	ld a, [wMobileInactivityTimerFrames]
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	ret
 
 MenuHeader_119cf7:
@@ -3890,10 +3890,10 @@ Strings_Ll0ToL40:
 	db " L:40 @@"
 	db "CANCEL@@"
 
-BattleTowerCancelString: ; unreferenced
+RocketTowerCancelString: ; unreferenced
 	db "CANCEL@"
 
-BattleTower_LevelCheck:
+RocketTower_LevelCheck:
 	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wPartyMons)
@@ -3931,13 +3931,13 @@ BattleTower_LevelCheck:
 .exceeds
 	pop af
 	ld a, $4
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	pop af
 	ldh [rSVBK], a
 	scf
 	ret
 
-BattleTower_UbersCheck:
+RocketTower_UbersCheck:
 	ldh a, [rSVBK]
 	push af
 	ld a, [wcd4f]
@@ -3986,7 +3986,7 @@ BattleTower_UbersCheck:
 	ld bc, MON_NAME_LENGTH
 	call CopyBytes
 	ld a, $a
-	ld [wBattleTowerRoomMenuJumptableIndex], a
+	ld [wRocketTowerRoomMenuJumptableIndex], a
 	pop af
 	ldh [rSVBK], a
 	scf
@@ -3995,8 +3995,8 @@ BattleTower_UbersCheck:
 Function119e2b:
 	call Function3e32
 
-BattleTowerRoomMenu_IncrementJumptable:
-	ld hl, wBattleTowerRoomMenuJumptableIndex
+RocketTowerRoomMenu_IncrementJumptable:
+	ld hl, wRocketTowerRoomMenuJumptableIndex
 	inc [hl]
 	ret
 
@@ -4136,7 +4136,7 @@ Function119ec2:
 	call CloseSRAM
 	ret
 
-BattleTowerRoomMenu2:
+RocketTowerRoomMenu2:
 	ldh a, [rSVBK]
 	ld [wcd8c], a
 	ld a, $1
@@ -4151,7 +4151,7 @@ BattleTowerRoomMenu2:
 	ret
 
 .RunJumptable:
-	jumptable .Jumptable, wBattleTowerRoomMenu2JumptableIndex
+	jumptable .Jumptable, wRocketTowerRoomMenu2JumptableIndex
 
 .Jumptable:
 	dw Function119f3f
@@ -4169,8 +4169,8 @@ BattleTowerRoomMenu2:
 	dw Function11a2e6
 	dw Function11a302
 	dw Function11a33a
-	dw BattleTowerRoomMenu2_PlaceYesNoMenu
-	dw BattleTowerRoomMenu2_UpdateYesNoMenu
+	dw RocketTowerRoomMenu2_PlaceYesNoMenu
+	dw RocketTowerRoomMenu2_UpdateYesNoMenu
 	dw Function11a357
 	dw Function11a36b
 	dw Function11a38d
@@ -4190,7 +4190,7 @@ BattleTowerRoomMenu2:
 
 Function119f3f:
 	call Function11a5b9
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function119f45:
 	hlcoord 4, 2
@@ -4198,7 +4198,7 @@ Function119f45:
 	call PlaceString
 	ld a, $80
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function119f56:
 	ld a, [wMobileInactivityTimerMinutes]
@@ -4216,7 +4216,7 @@ Function119f56:
 	call PlaceString
 	ld a, $80
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function119f76:
 	ld a, [wMobileInactivityTimerMinutes]
@@ -4235,7 +4235,7 @@ Function119f76:
 	call Function11a5f5
 	xor a
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function119f98:
 	call Function11a536
@@ -4394,15 +4394,15 @@ Function11a113:
 Function11a129:
 	ld a, $80
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function11a131:
 	ld hl, wMobileInactivityTimerMinutes
 	dec [hl]
 	ret nz
-	ld a, [wBattleTowerRoomMenu2JumptableIndex]
+	ld a, [wRocketTowerRoomMenu2JumptableIndex]
 	inc a
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
 
 Function11a13d:
 	call Function11a63c
@@ -4429,7 +4429,7 @@ Function11a14b:
 	call PlaceString
 	ld a, $80
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function11a16d:
 	ld a, [wMobileInactivityTimerMinutes]
@@ -4449,7 +4449,7 @@ Function11a16d:
 	call Function11a5f5
 	xor a
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function11a192:
 	call Function11a536
@@ -4514,7 +4514,7 @@ Function11a1ff:
 	inc de
 	jr .asm_11a1ff
 
-BattleTowerRoomMenu2_PlaceYesNoMenu:
+RocketTowerRoomMenu2_PlaceYesNoMenu:
 	ld hl, MenuHeader_11a2de
 	call LoadMenuHeader
 	call MenuBox
@@ -4531,9 +4531,9 @@ BattleTowerRoomMenu2_PlaceYesNoMenu:
 	ld [hl], a
 	xor a
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
-BattleTowerRoomMenu2_UpdateYesNoMenu:
+RocketTowerRoomMenu2_UpdateYesNoMenu:
 	ld hl, hJoyPressed
 	ld a, [hl]
 	and A_BUTTON
@@ -4648,7 +4648,7 @@ Function11a2e6:
 	call PlaceString
 	ld a, $80
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function11a302:
 	ld a, [wMobileInactivityTimerMinutes]
@@ -4674,7 +4674,7 @@ Function11a302:
 	call PrintNum
 	ld a, $80
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function11a33a:
 	ld a, [wMobileInactivityTimerMinutes]
@@ -4699,7 +4699,7 @@ Function11a357:
 	call PlaceString
 	ld a, $80
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function11a36b:
 	ld a, [wMobileInactivityTimerMinutes]
@@ -4718,7 +4718,7 @@ Function11a36b:
 	call Function11a5f5
 	xor a
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function11a38d:
 	call Function11a536
@@ -4752,7 +4752,7 @@ Function11a3c5:
 	call PlaceString
 	ld a, $80
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function11a3d9:
 	ld a, [wMobileInactivityTimerMinutes]
@@ -4770,7 +4770,7 @@ Function11a3d9:
 	call PlaceString
 	ld a, $80
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function11a3f9:
 	ld a, [wMobileInactivityTimerMinutes]
@@ -4789,7 +4789,7 @@ Function11a3f9:
 	call Function11a5f5
 	xor a
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function11a41b:
 	call Function11a536
@@ -4823,7 +4823,7 @@ Function11a452:
 	call PlaceString
 	ld a, $80
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function11a466:
 	call Function11a63c
@@ -4832,7 +4832,7 @@ Function11a466:
 	call PlaceString
 	ld a, $80
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function11a47a:
 	ld a, [wMobileInactivityTimerMinutes]
@@ -4855,7 +4855,7 @@ Function11a488:
 	call Function11a5f5
 	xor a
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function11a49e:
 	call Function11a536
@@ -4899,7 +4899,7 @@ Function11a4e8:
 	call Function11a5f5
 	xor a
 	ld [wMobileInactivityTimerMinutes], a
-	jp BattleTowerRoomMenu2_IncrementJumptable
+	jp RocketTowerRoomMenu2_IncrementJumptable
 
 Function11a4fe:
 	call Function11a536
@@ -4941,7 +4941,7 @@ Function11a536:
 	and D_DOWN
 	jr nz, .asm_11a583
 .asm_11a54d
-	ld a, [wBattleTowerRoomMenu2JumptableIndex]
+	ld a, [wRocketTowerRoomMenu2JumptableIndex]
 	cp $4
 	jr z, .asm_11a562
 	call Function11a9f0
@@ -4998,10 +4998,10 @@ Function11a536:
 	and a
 	ret
 
-BattleTowerRoomMenu2_IncrementJumptable:
-	ld a, [wBattleTowerRoomMenu2JumptableIndex]
+RocketTowerRoomMenu2_IncrementJumptable:
+	ld a, [wRocketTowerRoomMenu2JumptableIndex]
 	inc a
-	ld [wBattleTowerRoomMenu2JumptableIndex], a
+	ld [wRocketTowerRoomMenu2JumptableIndex], a
 	scf
 	ret
 
@@ -5254,11 +5254,11 @@ for x, 0, 16**3, 16**2
 	bcd x % 100, x / 100
 endr
 
-BattleTowerRoomMenu_WriteMessage:
+RocketTowerRoomMenu_WriteMessage:
 	jumptable .Jumptable, wc31a
 
 .Jumptable:
-	dw BattleTowerRoomMenu_WriteMessage_DoNothing
+	dw RocketTowerRoomMenu_WriteMessage_DoNothing
 	dw Function11a90f
 	dw Function11a971
 
@@ -5320,7 +5320,7 @@ Function11a90f:
 	ld a, $3
 	ldh [rSVBK], a
 
-BattleTowerRoomMenu_WriteMessage_DoNothing:
+RocketTowerRoomMenu_WriteMessage_DoNothing:
 	ret
 
 Function11a971:
@@ -5371,7 +5371,7 @@ Function11a971:
 .asm_11a9bf
 	ret
 
-BattleTowerRoomMenu_SetMessage:
+RocketTowerRoomMenu_SetMessage:
 	ld a, l
 	ld [wc31b], a
 	ld a, h
@@ -7362,7 +7362,7 @@ Function11b7e5:
 	ret
 
 Function11b879:
-	farcall BattleTower_CheckSaveFileExistsAndIsYours
+	farcall RocketTower_CheckSaveFileExistsAndIsYours
 	ld a, [wScriptVar]
 	and a
 	ret z

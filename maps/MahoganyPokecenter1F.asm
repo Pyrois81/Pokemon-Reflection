@@ -13,7 +13,22 @@ MahoganyPokecenter1FNurseScript:
 	jumpstd PokecenterNurseScript
 
 MahoganyPokecenter1FPokefanMScript:
-	jumptextfaceplayer MahoganyPokecenter1FPokefanMText
+	faceplayer
+	opentext
+	checkflag ENGINE_GLACIERBADGE
+	iffalse .SusAmogus
+	checkevent EVENT_CLEARED_LAKE_OF_RAGE
+	iffalse .SusAmogus
+	writetext MahoganyPokecenter1FPokefanMNinjaText
+	waitbutton
+	closetext
+	end
+	
+.SusAmogus:
+	writetext MahoganyPokecenter1FPokefanMSuspiciousText
+	waitbutton
+	closetext
+	end
 
 MahoganyPokecenter1FYoungsterScript:
 	jumptextfaceplayer MahoganyPokecenter1FYoungsterText
@@ -21,14 +36,33 @@ MahoganyPokecenter1FYoungsterScript:
 MahoganyPokecenter1FCooltrainerFScript:
 	jumptextfaceplayer MahoganyPokecenter1FCooltrainerFText
 
-MahoganyPokecenter1FPokefanMText:
-	text "What's this? TEAM"
-	line "ROCKET has come"
-	cont "back?"
-
-	para "I saw some men in"
-	line "black at LAKE OF"
-	cont "RAGE…"
+MahoganyPokecenter1FPokefanMSuspiciousText:
+	text "AH!! TEAM ROCKET"
+	line "are back!!"
+	
+	para "Oh, sorry… I'm"
+	line "probably just"
+	cont "being paranoid…"
+	
+	para "I saw some guys"
+	line "hauling something"
+	
+	para "just outside of"
+	line "town, and they"
+	
+	para "looked awfully"
+	line "suspicious."
+	done
+	
+MahoganyPokecenter1FPokefanMNinjaText:
+	text "My granddad was a"
+	line "cunning ninja."
+	
+	para "He'd take care of"
+	line "TEAM ROCKET in a"
+	
+	para "flash if he were"
+	line "still around."
 	done
 
 MahoganyPokecenter1FYoungsterText:
@@ -36,10 +70,12 @@ MahoganyPokecenter1FYoungsterText:
 	line "from evolving too"
 	cont "early."
 
-	para "I make them learn"
-	line "certain moves be-"
-	cont "fore I let them"
-	cont "evolve."
+	para "Well, I did, but"
+	line "then I gave it an"
+	
+	para "EVERSTONE and now"
+	line "I don't have to"
+	cont "worry about it!"
 	done
 
 MahoganyPokecenter1FCooltrainerFText:
@@ -55,8 +91,8 @@ MahoganyPokecenter1F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  3,  7, MAHOGANY_TOWN, 4
-	warp_event  4,  7, MAHOGANY_TOWN, 4
+	warp_event  3,  7, MAHOGANY_TOWN, 3
+	warp_event  4,  7, MAHOGANY_TOWN, 3
 	warp_event  0,  7, POKECENTER_2F, 1
 
 	def_coord_events

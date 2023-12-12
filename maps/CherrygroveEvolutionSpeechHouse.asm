@@ -37,7 +37,8 @@ CherrygroveEvolutionSpeechHouseLassText:
 
 	para "I wonder if they"
 	line "get stronger when"
-	cont "that happens!"
+	
+	para "that happens!"
 	done
 
 CherrygroveEvolutionSpeechHouse_MapEvents:

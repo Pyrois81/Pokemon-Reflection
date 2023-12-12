@@ -4,7 +4,7 @@
 	;   hp  atk  def  spd  sat  sdf
 
 	db BUG, FLYING ; type
-	db 45 ; catch rate
+	db 90 ; catch rate
 	db 160 ; base exp
 	db NO_ITEM, SILVERPOWDER ; items
 	db GENDER_F50 ; gender ratio

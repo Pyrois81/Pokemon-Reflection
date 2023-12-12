@@ -208,13 +208,13 @@ INCBIN "data/tilesets/pokecom_center_metatiles.bin"
 TilesetPokeComCenterColl::
 INCLUDE "data/tilesets/pokecom_center_collision.asm"
 
-TilesetBattleTowerInsideGFX::
+TilesetRocketTowerInsideGFX::
 INCBIN "gfx/tilesets/battle_tower_inside.2bpp.lz"
 
-TilesetBattleTowerInsideMeta::
+TilesetRocketTowerInsideMeta::
 INCBIN "data/tilesets/battle_tower_inside_metatiles.bin"
 
-TilesetBattleTowerInsideColl::
+TilesetRocketTowerInsideColl::
 INCLUDE "data/tilesets/battle_tower_inside_collision.asm"
 
 TilesetGateGFX::
@@ -227,7 +227,7 @@ TilesetGateColl::
 INCLUDE "data/tilesets/gate_collision.asm"
 
 TilesetJohtoModernGFX::
-TilesetBattleTowerOutsideGFX::
+TilesetRocketTowerOutsideGFX::
 INCBIN "gfx/tilesets/johto_modern.2bpp.lz"
 
 TilesetJohtoModernMeta::
@@ -290,10 +290,10 @@ INCBIN "data/tilesets/facility_metatiles.bin"
 TilesetFacilityColl::
 INCLUDE "data/tilesets/facility_collision.asm"
 
-TilesetBattleTowerOutsideMeta::
+TilesetRocketTowerOutsideMeta::
 INCBIN "data/tilesets/battle_tower_outside_metatiles.bin"
 
-TilesetBattleTowerOutsideColl::
+TilesetRocketTowerOutsideColl::
 INCLUDE "data/tilesets/battle_tower_outside_collision.asm"
 
 TilesetBetaWordRoomMeta::

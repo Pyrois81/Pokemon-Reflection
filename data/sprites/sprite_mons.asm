@@ -36,4 +36,5 @@ SpriteMons:
 	db GYARADOS ; gyarados.png
 	db LUGIA ; lugia.png
 	db HO_OH ; ho_oh.png
+	db PORYGON ; porygon.png
 	assert_table_length NUM_POKEMON_SPRITES

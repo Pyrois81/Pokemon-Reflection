@@ -6,23 +6,13 @@
 	const ROUTE43_LASS
 	const ROUTE43_YOUNGSTER
 	const ROUTE43_FRUIT_TREE
-	const ROUTE43_POKE_BALL
+	const ROUTE43_POKE_BALL1
+	const ROUTE43_POKE_BALL2
 
 Route43_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, .CheckIfRockets
-
-.CheckIfRockets:
-	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftrue .NoRockets
-	setmapscene ROUTE_43_GATE, SCENE_DEFAULT
-	endcallback
-
-.NoRockets:
-	setmapscene ROUTE_43_GATE, SCENE_FINISHED
-	endcallback
 
 TrainerCamperSpencer:
 	trainer CAMPER, SPENCER, EVENT_BEAT_CAMPER_SPENCER, CamperSpencerSeenText, CamperSpencerBeatenText, 0, .Script
@@ -186,8 +176,6 @@ TrainerPicnickerTiffany:
 	iftrue .HasPinkBow
 	checkcellnum PHONE_PICNICKER_TIFFANY
 	iftrue .NumberAccepted
-	checkpoke CLEFAIRY
-	iffalse .NoClefairy
 	checkevent EVENT_TIFFANY_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskedAlready
 	writetext PicnickerTiffanyWantsPicnicText
@@ -265,12 +253,6 @@ TrainerPicnickerTiffany:
 .NoRoom:
 	sjump .PackFull
 
-.NoClefairy:
-	writetext PicnickerTiffanyClefairyText
-	waitbutton
-	closetext
-	end
-
 .AskNumber1:
 	jumpstd AskNumber1FScript
 	end
@@ -313,23 +295,25 @@ Route43Sign1:
 Route43Sign2:
 	jumptext Route43Sign2Text
 
-Route43TrainerTips:
-	jumptext Route43TrainerTipsText
+Route43RestAreaSign:
+	jumptext Route43RestAreaSignText
 
 Route43FruitTree:
 	fruittree FRUITTREE_ROUTE_43
 
-Route43MaxEther:
-	itemball MAX_ETHER
+Route43DireHit:
+	itemball DIRE_HIT
+	
+Route43PPUp:
+	itemball PP_UP
+	
+Route43HiddenHeavyBall:
+	hiddenitem HEAVY_BALL, EVENT_ROUTE_43_HIDDEN_HEAVY_BALL
 
 PokemaniacBenSeenText:
-	text "I love #MON!"
-
-	para "That's why I"
-	line "started--and why"
-
-	para "I'll keep on col-"
-	line "lecting #MON!"
+	text "Ahh, smell that"
+	line "fresh mountain"
+	cont "air!"
 	done
 
 PokemaniacBenBeatenText:
@@ -338,12 +322,12 @@ PokemaniacBenBeatenText:
 	done
 
 PokemaniacBenAfterBattleText:
-	text "What else do I"
-	line "like besides"
-	cont "#MON?"
-
-	para "MARY on the radio."
-	line "I bet she's cute!"
+	text "I'm here searching"
+	line "for cool #MON."
+	
+	para "There's all kinds"
+	line "of neat stuff"
+	cont "around here!"
 	done
 
 PokemaniacBrentSeenText:
@@ -363,20 +347,17 @@ PokemaniacBrentAfterBattleText:
 	done
 
 PokemaniacRonSeenText:
-	text "Would you get"
-	line "this?"
-
-	para "Some <RIVAL> guy"
-	line "made fun of my"
-	cont "#MON!"
-
-	para "Darn it! My #-"
-	line "MON's great!"
+	text "All kinds of"
+	line "#MON can be"
+	
+	para "useful if you"
+	line "raise them right."
+	
+	para "Let me show you!"
 	done
 
 PokemaniacRonBeatenText:
-	text "My NIDOKING did"
-	line "pretty right on!"
+	text "Maybe next time!"
 	done
 
 PokemaniacRonAfterBattleText:
@@ -392,13 +373,13 @@ PokemaniacRonAfterBattleText:
 	done
 
 FisherMarvinSeenText:
-	text "I'm in a slump."
-
-	para "Maybe it's the"
-	line "gear I'm using."
-
-	para "Let's battle for a"
-	line "change of pace!"
+	text "I'm so frustrated…"
+	
+	para "No bites today…"
+	line "Barely a nibble…"
+	
+	para "I think I'll take"
+	line "it out on you!"
 	done
 
 FisherMarvinBeatenText:
@@ -407,46 +388,49 @@ FisherMarvinBeatenText:
 	done
 
 FisherMarvinAfterBattleText:
-	text "KURT's LURE BALL"
-	line "is the best for"
-
-	para "catching hooked"
-	line "#MON."
-
-	para "It's much more"
-	line "effective than a"
-	cont "ULTRA BALL."
+	text "This whole area"
+	line "was pretty busted"
+	
+	para "up for a while,"
+	line "but it's nice and"
+	cont "serene now."
 	done
 
 CamperSpencerSeenText:
-	text "I can do so much"
-	line "with my #MON--"
-	cont "it's super-fun!"
+	text "Hey, what gives?"
+	
+	para "This is MY super-"
+	line "secluded spot!"
+	
+	para "Get out!!"
 	done
 
 CamperSpencerBeatenText:
-	text "Losing isn't fun"
-	line "at all…"
+	text "Caught with my"
+	line "pants down…"
 	done
 
 CamperSpencerAfterBattleText:
-	text "What is going on"
-	line "at LAKE OF RAGE?"
-
-	para "We were planning"
-	line "to camp there."
+	text "Did you know that"
+	line "in terms of……"
+	
+	para "Okay, okay, I'll"
+	line "go home."
 	done
 
 PicnickerTiffanySeenText:
-	text "Are you going to"
-	line "LAKE OF RAGE too?"
-
-	para "Let's play for a "
-	line "little while!"
+	text "Oh, it's just so"
+	line "pretty out here!"
+	
+	para "My favorite time"
+	line "to take in the"
+	
+	para "sights is during"
+	line "a #MON battle!"
 	done
 
 PicnickerTiffanyBeatenText:
-	text "I played too much!"
+	text "Beautiful!"
 	done
 
 PicnickerTiffanyWantsPicnicText:
@@ -454,12 +438,6 @@ PicnickerTiffanyWantsPicnicText:
 	line "nic with #MON."
 
 	para "Won't you join us?"
-	done
-
-PicnickerTiffanyClefairyText:
-	text "Isn't my CLEFAIRY"
-	line "just the most"
-	cont "adorable thing?"
 	done
 
 Route43Sign1Text:
@@ -472,30 +450,13 @@ Route43Sign1Text:
 Route43Sign2Text:
 	text "ROUTE 43"
 
-	para "LAKE OF RAGE -"
-	line "MAHOGANY TOWN"
+	para "MAHOGANY TOWN -"
+	line "LAKE OF RAGE"
 	done
 
-Route43TrainerTipsText:
-	text "TRAINER TIPS"
-
-	para "All #MON have"
-	line "pros and cons"
-
-	para "depending on their"
-	line "types."
-
-	para "If their types"
-	line "differ, a higher-"
-
-	para "level #MON may"
-	line "lose in battle."
-
-	para "Learn which types"
-	line "are strong and"
-
-	para "weak against your"
-	line "#MON's type."
+Route43RestAreaSignText:
+	text "ROUTE 43"
+	line "REST AREA"
 	done
 
 Route43_MapEvents:
@@ -513,14 +474,16 @@ Route43_MapEvents:
 	def_bg_events
 	bg_event 13,  3, BGEVENT_READ, Route43Sign1
 	bg_event 11, 49, BGEVENT_READ, Route43Sign2
-	bg_event 16, 38, BGEVENT_READ, Route43TrainerTips
+	bg_event 15, 35, BGEVENT_READ, Route43RestAreaSign
+	bg_event 13, 18, BGEVENT_ITEM, Route43HiddenHeavyBall
 
 	def_object_events
-	object_event 13,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerPokemaniacBen, -1
-	object_event 13, 20, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacBrent, -1
-	object_event 14,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerPokemaniacRon, -1
-	object_event  4, 16, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerFisherMarvin, -1
-	object_event  9, 25, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerPicnickerTiffany, -1
-	object_event 13, 40, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerCamperSpencer, -1
-	object_event  1, 26, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route43FruitTree, -1
-	object_event 12, 32, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route43MaxEther, EVENT_ROUTE_43_MAX_ETHER
+	object_event  8, 42, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerPokemaniacBen, -1
+	object_event 18, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 1, TrainerPokemaniacBrent, -1
+	object_event  1,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacRon, -1
+	object_event  8, 19, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 0, TrainerFisherMarvin, -1
+	object_event 10,  3, SPRITE_LASS, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerPicnickerTiffany, -1
+	object_event  2, 29, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerCamperSpencer, EVENT_BEAT_CAMPER_SPENCER
+	object_event 12, 22, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route43FruitTree, -1
+	object_event 19, 25, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route43DireHit, EVENT_ROUTE_43_DIRE_HIT
+	object_event  1, 26, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route43PPUp, EVENT_ROUTE_43_PP_UP

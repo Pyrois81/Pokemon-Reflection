@@ -19,20 +19,7 @@ CherrygrovePokecenter1FGentlemanScript:
 	jumptextfaceplayer CherrygrovePokecenter1FGentlemanText
 
 CherrygrovePokecenter1FTeacherScript:
-	faceplayer
-	opentext
-	checkevent EVENT_GAVE_TATTERED_HAT_TO_ELM
-	iftrue .CommCenterOpen
-	writetext CherrygrovePokecenter1FTeacherText
-	waitbutton
-	closetext
-	end
-
-.CommCenterOpen:
-	writetext CherrygrovePokecenter1FTeacherText_CommCenterOpen
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer CherrygrovePokecenter1FTeacherText
 
 CherrygrovePokecenter1FFisherText:
 	text "It's great. I can"
@@ -49,21 +36,15 @@ CherrygrovePokecenter1FGentlemanText:
 	done
 
 CherrygrovePokecenter1FTeacherText:
-	text "The COMMUNICATION"
-	line "CENTER upstairs"
-	cont "was just built."
-
-	para "But they're still"
-	line "finishing it up."
-	done
-
-CherrygrovePokecenter1FTeacherText_CommCenterOpen:
-	text "The COMMUNICATION"
-	line "CENTER upstairs"
-	cont "was just built."
-
-	para "I traded #MON"
-	line "there already!"
+	text "Have you visited"
+	line "the # MART?"
+	
+	para "Each one has"
+	line "different things"
+	
+	para "for sale, so be"
+	line "sure to check"
+	cont "all of them!"
 	done
 
 CherrygrovePokecenter1F_MapEvents:

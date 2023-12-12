@@ -1,4 +1,4 @@
-BattleTowerText::
+RocketTowerText::
 ; Print text c for trainer [wBT_OTTrainerClass]
 ; 1: Intro text
 ; 2: Player lost

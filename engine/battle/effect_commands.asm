@@ -655,7 +655,7 @@ BattleCommand_CheckObedience:
 	and a
 	ret nz
 
-	ld a, [wInBattleTowerBattle]
+	ld a, [wInRocketTowerBattle]
 	and a
 	ret nz
 
@@ -676,28 +676,28 @@ BattleCommand_CheckObedience:
 	; The maximum obedience level is constrained by owned badges:
 	ld hl, wJohtoBadges
 
-	; risingbadge
-	bit RISINGBADGE, [hl]
+	; Zephyr Badge (8)
+	bit ZEPHYRBADGE, [hl]
 	ld a, MAX_LEVEL + 1
 	jr nz, .getlevel
 
-	; stormbadge
-	bit STORMBADGE, [hl]
+	; Fog Badge (5)
+	bit FOGBADGE, [hl]
 	ld a, 70
 	jr nz, .getlevel
 
-	; fogbadge
-	bit FOGBADGE, [hl]
+	; Mineral Badge (3)
+	bit MINERALBADGE, [hl]
 	ld a, 50
 	jr nz, .getlevel
 
-	; hivebadge
-	bit HIVEBADGE, [hl]
+	; Rising Badge (1)
+	bit RISINGBADGE, [hl]
 	ld a, 30
 	jr nz, .getlevel
 
 	; no badges
-	ld a, 10
+	ld a, 15
 
 .getlevel
 ; c = obedience level
@@ -1260,12 +1260,6 @@ BattleCommand_Stab:
 	pop bc
 	pop de
 	pop hl
-
-	push de
-	push bc
-	farcall DoBadgeTypeBoosts
-	pop bc
-	pop de
 
 	ld a, [wCurType]
 	cp b
@@ -3660,7 +3654,7 @@ BattleCommand_SleepTarget:
 
 	call AnimateCurrentMove
 	ld b, SLP
-	ld a, [wInBattleTowerBattle]
+	ld a, [wInRocketTowerBattle]
 	and a
 	jr z, .random_loop
 	ld b, %011
@@ -3701,7 +3695,7 @@ BattleCommand_SleepTarget:
 	and a
 	jr nz, .dont_fail
 
-	ld a, [wInBattleTowerBattle]
+	ld a, [wInRocketTowerBattle]
 	and a
 	jr nz, .dont_fail
 
@@ -3796,7 +3790,7 @@ BattleCommand_Poison:
 	and a
 	jr nz, .dont_sample_failure
 
-	ld a, [wInBattleTowerBattle]
+	ld a, [wInRocketTowerBattle]
 	and a
 	jr nz, .dont_sample_failure
 
@@ -4454,7 +4448,7 @@ BattleCommand_StatDown:
 	and a
 	jr nz, .DidntMiss
 
-	ld a, [wInBattleTowerBattle]
+	ld a, [wInRocketTowerBattle]
 	and a
 	jr nz, .DidntMiss
 
@@ -5981,7 +5975,7 @@ BattleCommand_Paralyze:
 	and a
 	jr nz, .dont_sample_failure
 
-	ld a, [wInBattleTowerBattle]
+	ld a, [wInRocketTowerBattle]
 	and a
 	jr nz, .dont_sample_failure
 

@@ -103,8 +103,8 @@ Music:
 	dba Music_BuenasPassword
 	dba Music_LookMysticalMan
 	dba Music_CrystalOpening
-	dba Music_BattleTowerTheme
+	dba Music_RocketTowerTheme
 	dba Music_SuicuneBattle
-	dba Music_BattleTowerLobby
+	dba Music_RocketTowerLobby
 	dba Music_MobileCenter
 	assert_table_length NUM_MUSIC_SONGS

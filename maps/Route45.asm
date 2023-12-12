@@ -292,8 +292,8 @@ Route45Sign:
 Route45FruitTree:
 	fruittree FRUITTREE_ROUTE_45
 
-Route45SilverLeaf:
-	itemball SILVER_LEAF
+Route45TMSweetScent:
+	itemball TM_SWEET_SCENT
 
 Route45PPUp:
 	itemball PP_UP
@@ -360,8 +360,8 @@ HikerParry3SeenText:
 	text "Do you feel that"
 	line "rumble?"
 	
-	para "My #MON will rock"
-	line "your world!"
+	para "My #MON will"
+	line "rock your world!"
 	done
 
 HikerParry3BeatenText:
@@ -514,9 +514,9 @@ BerryJuiceText:
 	line "resting on a note"
 	cont "under this tree."
 	
-	para "\"Take a breather"
+	para "'Take a breather"
 	line "and relax by the"
-	cont "pond, friend!\""
+	cont "pond, friend!'"
 	done
 
 Route45SignText:
@@ -549,7 +549,7 @@ Route45_MapEvents:
 	object_event 16, 13, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainermRyan, -1
 	object_event  5, 40, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainerfKelly, -1
 	object_event 15, 68, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route45FruitTree, -1
-	object_event  7, 53, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45SilverLeaf, EVENT_ROUTE_45_SILVER_LEAF
+	object_event  7, 53, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45TMSweetScent, EVENT_ROUTE_45_TM12_SWEET_SCENT
 	object_event 17, 76, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45PPUp, EVENT_ROUTE_45_PP_UP
 	object_event  8, 20, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45ParlyzHeal, EVENT_ROUTE_45_PARLYZ_HEAL
 	object_event 17,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45XSpecial, EVENT_ROUTE_45_X_SPECIAL

@@ -98,8 +98,8 @@ IcePath1FGreatBall:
 IcePath1FIron:
 	itemball IRON
 
-IcePath1FRepel:
-	itemball REPEL
+IcePath1FTMEndure:
+	itemball TM_ENDURE
 	
 IcePath1FXAttack:
 	itemball X_ATTACK
@@ -148,11 +148,11 @@ SkierNatalieBeatenText:
 	
 SkierNatalieAfterBattleText:
 	text "Sometimes I wish I"
-	line "could be a sable."
+	line "could be a FURRET."
 	
 	para "They always look"
-	line "cute and warm in"
-	cont "the snow!"
+	line "so cute and warm"
+	cont "in the snow!"
 	done
 	
 CamperNeilSeenText:
@@ -258,10 +258,10 @@ IcePath1F_MapEvents:
 	bg_event 18, 21, BGEVENT_ITEM, IcePath1FHiddenStardust
 
 	def_object_events
-	object_event 12,  8, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_TRAINER, 1, TrainerSkierNatalie, -1
+	object_event 12,  6, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_TRAINER, 1, TrainerSkierNatalie, -1
 	object_event  9, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerCamperNeil, -1
-	object_event 16, 23, SPRITE_LORELEI, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, IcePath1FLoreleiScript, EVENT_FOUGHT_ARTICUNO
+	object_event 16, 23, SPRITE_LORELEI, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, IcePath1FLoreleiScript, EVENT_FOUGHT_ARTICUNO
 	object_event 24,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, IcePath1FGreatBall, EVENT_ICE_PATH_1F_GREAT_BALL
 	object_event 30, 13, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, IcePath1FIron, EVENT_ICE_PATH_1F_IRON
-	object_event 10, 18, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, IcePath1FRepel, EVENT_ICE_PATH_1F_REPEL
+	object_event 10, 18, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, IcePath1FTMEndure, EVENT_ICE_PATH_1F_TM20_ENDURE
 	object_event 30, 32, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, IcePath1FXAttack, EVENT_ICE_PATH_1F_X_ATTACK

@@ -64,7 +64,7 @@ SproutTower3FRivalScene:
 SageLiScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM52_FLASH
+	checkevent EVENT_DARK_CAVE_1F_TM52_FLASH
 	iftrue .GotFlash
 	writetext SageLiSeenText
 	waitbutton
@@ -77,7 +77,7 @@ SageLiScript:
 	writetext SageLiTakeThisFlashText
 	promptbutton
 	verbosegiveitem TM_FLASH
-	setevent EVENT_GOT_TM52_FLASH
+	setevent EVENT_DARK_CAVE_1F_TM52_FLASH
 	setevent EVENT_BEAT_SAGE_LI
 	writetext SageLiFlashExplanationText
 	waitbutton

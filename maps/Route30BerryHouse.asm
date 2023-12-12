@@ -9,39 +9,46 @@ Route30BerryHouse_MapScripts:
 Route30BerryHousePokefanMScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_BERRY_FROM_ROUTE_30_HOUSE
-	iftrue .GotBerry
-	writetext Route30BerrySpeechHouseMonEatBerriesText
+	checkevent EVENT_ROUTE_30_BERRY_HOUSE_TM05_ROAR
+	iftrue .GotTM
+	writetext Route30BerrySpeechHouseBerriesAreGoneText
 	promptbutton
-	verbosegiveitem BERRY
-	iffalse .NoRoom
-	setevent EVENT_GOT_BERRY_FROM_ROUTE_30_HOUSE
-.GotBerry:
-	writetext Route30BerrySpeechHouseCheckTreesText
+	verbosegiveitem TM_ROAR
+	iffalse .End
+	setevent EVENT_ROUTE_30_BERRY_HOUSE_TM05_ROAR
+.GotTM:
+	writetext Route30BerrySpeechHouseRoarText
 	waitbutton
-.NoRoom:
+.End
 	closetext
 	end
 
 Route30BerryHouseBookshelf:
 	jumpstd MagazineBookshelfScript
 
-Route30BerrySpeechHouseMonEatBerriesText:
-	text "You know, #MON"
-	line "eat BERRIES."
-
-	para "Well, my #MON"
-	line "got healthier by"
-	cont "eating a BERRY."
-
-	para "Here. I'll share"
-	line "one with you!"
+Route30BerrySpeechHouseBerriesAreGoneText:
+	text "I used to be"
+	line "rolling in"
+	cont "berries."
+	
+	para "But those pesky"
+	line "PIDGEY have been"
+	
+	para "eating them all"
+	line "up lately!"
+	
+	para "Here, if your"
+	line "#MON knew this"
+	
+	para "move, maybe you"
+	line "could scare them"
+	cont "off for me."
 	done
 
-Route30BerrySpeechHouseCheckTreesText:
-	text "Check trees for"
-	line "BERRIES. They just"
-	cont "drop right off."
+Route30BerrySpeechHouseRoarText:
+	text "ROAR will cause"
+	line "#MON to run"
+	cont "away."
 	done
 
 Route30BerryHouse_MapEvents:

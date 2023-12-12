@@ -64,9 +64,9 @@ AIChooseMove:
 .ApplyLayers:
 	ld hl, TrainerClassAttributes + TRNATTR_AI_MOVE_WEIGHTS
 
-	; If we have a battle in BattleTower just load the Attributes of the first trainer class in wTrainerClass (Falkner)
+	; If we have a battle in RocketTower just load the Attributes of the first trainer class in wTrainerClass (Falkner)
 	; so we have always the same AI, regardless of the loaded class of trainer
-	ld a, [wInBattleTowerBattle]
+	ld a, [wInRocketTowerBattle]
 	bit 0, a
 	jr nz, .battle_tower_skip
 

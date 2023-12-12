@@ -246,9 +246,9 @@ Route29HiddenRageCandyBar:
 	verbosegiveitem RAGECANDYBAR
 	iffalse .Done
 	setevent EVENT_ROUTE_29_HIDDEN_RAGECANDYBAR
-	closetext
-	
+		
 .Done:
+	closetext
 	end
 	
 GuardBlockingScript:

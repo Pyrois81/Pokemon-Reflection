@@ -1128,7 +1128,7 @@ _ExcuseMeYoureNotReadyText::
 	para ""
 	done
 
-_BattleTowerReturnWhenReadyText::
+_RocketTowerReturnWhenReadyText::
 	text "Please return when"
 	line "you're ready."
 	done

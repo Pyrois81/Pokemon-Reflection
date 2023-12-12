@@ -28,17 +28,8 @@ NationalParkPokefanFScript:
 NationalParkTeacher1Script:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_QUICK_CLAW
-	iftrue .GotQuickClaw
 	writetext NationalParkTeacher1Text
-	promptbutton
-	verbosegiveitem QUICK_CLAW
-	iffalse .NoRoom
-	setevent EVENT_GOT_QUICK_CLAW
-.GotQuickClaw:
-	writetext NationalParkTeacher1Text_GotQuickClaw
 	waitbutton
-.NoRoom:
 	closetext
 	end
 
@@ -340,15 +331,6 @@ NationalParkTeacher1Text:
 
 	para "want you to have"
 	line "this."
-	done
-
-NationalParkTeacher1Text_GotQuickClaw:
-	text "Let a #MON hold"
-	line "that QUICK CLAW."
-
-	para "Sometimes it will"
-	line "strike first"
-	cont "during battle."
 	done
 
 NationalParkYoungster1Text:

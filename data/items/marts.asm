@@ -16,8 +16,7 @@ Marts:
 	dw MartGoldenrod5F4
 	dw MartOlivine
 	dw MartEcruteak
-	dw MartMahogany1
-	dw MartMahogany2
+	dw MartMahogany
 	dw MartBlackthorn
 	dw MartViridian
 	dw MartPewter
@@ -229,15 +228,7 @@ MartEcruteak:
 	db REVIVE
 	db -1 ; end
 
-MartMahogany1:
-	db 4 ; # items
-	db TINYMUSHROOM
-	db SLOWPOKETAIL
-	db POKE_BALL
-	db POTION
-	db -1 ; end
-
-MartMahogany2:
+MartMahogany:
 	db 10 ; # items
 	db RAGECANDYBAR
 	db POKE_BALL

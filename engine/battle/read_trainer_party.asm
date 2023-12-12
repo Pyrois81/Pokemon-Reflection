@@ -1,5 +1,5 @@
 ReadTrainerParty:
-	ld a, [wInBattleTowerBattle]
+	ld a, [wInRocketTowerBattle]
 	bit 0, a
 	ret nz
 
@@ -322,7 +322,7 @@ ComputeTrainerReward:
 	ret
 
 Battle_GetTrainerName::
-	ld a, [wInBattleTowerBattle]
+	ld a, [wInRocketTowerBattle]
 	bit 0, a
 	ld hl, wOTPlayerName
 	jp nz, CopyTrainerName

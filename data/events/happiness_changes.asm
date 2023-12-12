@@ -21,4 +21,8 @@ HappinessChanges:
 	db   -8,  -8, -10 ; Used Revival Herb (bitter)
 	db   +6,  +6,  +2 ; Grooming
 	db  +20, +12,  +8 ; Gained a level in the place where it was caught
+	db   +5,  +5,  +3 ; EXP. Candy S
+	db  +12, +10,  +7 ; EXP. Candy M
+	db  +25, +20, +10 ; EXP. Candy L
+
 	assert_table_length NUM_HAPPINESS_CHANGES

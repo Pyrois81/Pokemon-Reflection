@@ -70,42 +70,42 @@ NUM_DEX_ENTRY_BANKS EQU 4
 
 ; party_struct members (see macros/wram.asm)
 rsreset
-MON_SPECIES            rb
-MON_ITEM               rb
-MON_MOVES              rb NUM_MOVES
-MON_ID                 rw
-MON_EXP                rb 3
-MON_STAT_EXP           rw NUM_EXP_STATS
+MON_SPECIES            rb ; _rs = 0
+MON_ITEM               rb ; 1
+MON_MOVES              rb NUM_MOVES ; 2
+MON_ID                 rw ; 6
+MON_EXP                rb 3 ; 8
+MON_STAT_EXP           rw NUM_EXP_STATS ; 11
 rsset MON_STAT_EXP
-MON_HP_EXP             rw
-MON_ATK_EXP            rw
-MON_DEF_EXP            rw
-MON_SPD_EXP            rw
-MON_SPC_EXP            rw
-MON_DVS                rw
-MON_PP                 rb NUM_MOVES
-MON_HAPPINESS          rb
-MON_POKERUS            rb
-MON_CAUGHTDATA         rw
+MON_HP_EXP             rw ; 11
+MON_ATK_EXP            rw ; 13
+MON_DEF_EXP            rw ; 15
+MON_SPD_EXP            rw ; 17
+MON_SPC_EXP            rw ; 19
+MON_DVS                rw ; 21
+MON_PP                 rb NUM_MOVES ; 23
+MON_HAPPINESS          rb ; 27
+MON_POKERUS            rb ; 28
+MON_CAUGHTDATA         rw ; 29
 rsset MON_CAUGHTDATA
-MON_CAUGHTTIME         rb
-MON_CAUGHTGENDER       rb
+MON_CAUGHTTIME         rb ; 29
+MON_CAUGHTGENDER       rb ; 30
 rsset MON_CAUGHTDATA
-MON_CAUGHTLEVEL        rb
-MON_CAUGHTLOCATION     rb
-MON_LEVEL              rb
+MON_CAUGHTLEVEL        rb ; 29
+MON_CAUGHTLOCATION     rb ; 30
+MON_LEVEL              rb ; 31
 BOXMON_STRUCT_LENGTH EQU _RS
-MON_STATUS             rb
+MON_STATUS             rb ; 32
                        rb_skip
-MON_HP                 rw
-MON_MAXHP              rw
-MON_STATS              rw NUM_BATTLE_STATS
+MON_HP                 rw ; 34
+MON_MAXHP              rw ; 36
+MON_STATS              rw NUM_BATTLE_STATS ; 38
 rsset MON_STATS
-MON_ATK                rw
-MON_DEF                rw
-MON_SPD                rw
-MON_SAT                rw
-MON_SDF                rw
+MON_ATK                rw ; 38
+MON_DEF                rw ; 40
+MON_SPD                rw ; 42
+MON_SAT                rw ; 44
+MON_SDF                rw ; 46
 PARTYMON_STRUCT_LENGTH EQU _RS
 
 NICKNAMED_MON_STRUCT_LENGTH EQU PARTYMON_STRUCT_LENGTH + MON_NAME_LENGTH
@@ -214,6 +214,10 @@ NUM_TREEMON_SETS EQU const_value
 	const HAPPINESS_REVIVALHERB       ; 11
 	const HAPPINESS_GROOMING          ; 12
 	const HAPPINESS_GAINLEVELATHOME   ; 13
+	const HAPPINESS_EXPCANDYS		  ; 14
+	const HAPPINESS_EXPCANDYM		  ; 15
+	const HAPPINESS_EXPCANDYL		  ; 16
+	
 NUM_HAPPINESS_CHANGES EQU const_value - 1
 
 ; significant happiness values

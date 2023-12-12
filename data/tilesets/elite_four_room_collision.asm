@@ -76,3 +76,5 @@
 	tilecoll FLOOR, FLOOR, PIT, PIT ; 4b
 	tilecoll PIT, FLOOR, WALL, WALL ; 4c
 	tilecoll WALL, WALL, FLOOR, PIT ; 4d
+	tilecoll WALL, WALL, ICE, ICE ; 4e
+	tilecoll ICE, ICE, ICE, ICE ; 4f

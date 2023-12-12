@@ -70,15 +70,14 @@ MeetMomScript:
 	writetext KnowTheInstructionsText
 	promptbutton
 	sjump .FinishPhone
-
+	
 .ExplainPhone:
 	writetext DontKnowTheInstructionsText
 	promptbutton
-	sjump .FinishPhone
 
 .FinishPhone:
-	writetext InstructionsNextText
-	waitbutton
+	writetext HoldBToRunText
+	promptbutton
 	closetext
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue .FromRight
@@ -221,24 +220,15 @@ ElmsLookingForYouText:
 	line "you to do some-"
 	cont "thing for him."
 
-	para "Oh! I almost for-"
-	line "got! Your #MON"
-
-	para "GEAR is back from"
-	line "the repair shop."
-
-	para "Here you go!"
+	para "Oh! If you're"
+	line "going out, make"
+	
+	para "sure to put on"
+	line "your #GEAR!"
 	done
 
 MomGivesPokegearText:
-	text "#MON GEAR, or"
-	line "just #GEAR."
-
-	para "It's essential if"
-	line "you want to be a"
-	cont "good trainer."
-
-	para "Oh, the day of the"
+	text "Oh, the day of the"
 	line "week isn't set."
 
 	para "You mustn't forget"
@@ -261,13 +251,10 @@ ComeHomeForDSTText:
 	line "know how to use"
 	cont "the PHONE?"
 	done
-
+	
 KnowTheInstructionsText:
-	text "Don't you just"
-	line "turn the #GEAR"
-
-	para "on and select the"
-	line "PHONE icon?"
+	text "It's super conven-"
+	line "ient, isn't it?"
 	done
 
 DontKnowTheInstructionsText:
@@ -277,10 +264,8 @@ DontKnowTheInstructionsText:
 	para "Turn the #GEAR"
 	line "on and select the"
 	cont "PHONE icon."
-	done
-
-InstructionsNextText:
-	text "Phone numbers are"
+	
+	para "Phone numbers are"
 	line "stored in memory."
 
 	para "Just choose a name"
@@ -288,6 +273,20 @@ InstructionsNextText:
 
 	para "Gee, isn't that"
 	line "convenient?"
+	done
+	
+HoldBToRunText:
+	text "And don't forget"
+	line "about those new"
+	
+	para "sneakers I bought"
+	line "you!"
+	
+	para "Remember, you can"
+	line "run super fast if"
+	
+	para "you hold the B"
+	line "button."
 	done
 
 HurryUpElmIsWaitingText:

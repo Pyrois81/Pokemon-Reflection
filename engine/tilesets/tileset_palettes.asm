@@ -20,7 +20,7 @@ LoadSpecialMapPalette:
 	ret
 
 .battle_tower_inside
-	call LoadBattleTowerInsidePalette
+	call LoadRocketTowerInsidePalette
 	scf
 	ret
 
@@ -63,15 +63,15 @@ LoadPokeComPalette:
 PokeComPalette:
 INCLUDE "gfx/tilesets/pokecom_center.pal"
 
-LoadBattleTowerInsidePalette:
+LoadRocketTowerInsidePalette:
 	ld a, BANK(wBGPals1)
 	ld de, wBGPals1
-	ld hl, BattleTowerInsidePalette
+	ld hl, RocketTowerInsidePalette
 	ld bc, 8 palettes
 	call FarCopyWRAM
 	ret
 
-BattleTowerInsidePalette:
+RocketTowerInsidePalette:
 INCLUDE "gfx/tilesets/battle_tower_inside.pal"
 
 LoadIcePathPalette:

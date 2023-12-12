@@ -5,18 +5,18 @@ TrainerClassDVs:
 	dn  13, 10, 13, 10 ; FALKNER
 	dn  10, 10, 10, 10 ; WHITNEY
 	dn  11, 11, 11, 11 ; BUGSY
-	dn  9,  8,  8,  8 ; MORTY
+	dn  9,  9,  8,  8 ; MORTY
 	dn  8,  8,  8,  8 ; PRYCE
 	dn  9,  13, 9,  8 ; JASMINE
 	dn  13, 8,  8,  8 ; CHUCK
 	dn  7,  7,  7,  7 ; CLAIR
-	dn 11, 11, 11, 11 ; RIVAL1
+	dn  7,  7,  7,  7 ; RIVAL1
 	dn  9,  8,  8,  8 ; POKEMON_PROF
-	dn 13, 12, 13, 13 ; WILL
+	dn 11, 13, 13, 13 ; WILL
 	dn 11, 11, 11, 11 ; CAL
-	dn 13, 12, 13, 13 ; BRUNO
-	dn 13, 15, 13, 15 ; KAREN
-	dn 13, 12, 13, 13 ; KOGA
+	dn 13, 13, 13, 11 ; BRUNO
+	dn 13, 13, 11, 13 ; KAREN
+	dn 13, 11, 13, 13 ; KOGA
 	dn 15, 15, 15, 15 ; CHAMPION
 	dn 11, 13, 11, 11 ; BROCK
 	dn 11, 11, 11, 13 ; MISTY
@@ -43,7 +43,7 @@ TrainerClassDVs:
 	dn  7,  8,  8,  8 ; SWIMMERF
 	dn  9,  8,  8,  8 ; SAILOR
 	dn  9,  8,  8,  8 ; SUPER_NERD
-	dn  15, 15, 15, 15 ; RIVAL2
+	dn  11, 11, 11, 11 ; RIVAL2
 	dn  9,  8,  8,  8 ; GUITARIST
 	dn 10,  8,  8,  8 ; HIKER
 	dn  9,  8,  8,  8 ; BIKER

@@ -306,7 +306,7 @@ Function1719c8:
 	ret
 
 Function1719d6:
-	farcall BattleTowerRoomMenu_InitRAM
+	farcall RocketTowerRoomMenu_InitRAM
 	call Function1719ed
 	ldh a, [rSVBK]
 	push af
@@ -384,7 +384,7 @@ Function171a5d:
 	push af
 	ld a, $1
 	ldh [rSVBK], a
-	farcall BattleTowerRoomMenu_Cleanup
+	farcall RocketTowerRoomMenu_Cleanup
 	pop af
 	ldh [rSVBK], a
 	ld a, $a
@@ -426,7 +426,7 @@ Function171aec:
 	push af
 	ld a, $1
 	ldh [rSVBK], a
-	farcall BattleTowerRoomMenu_Cleanup
+	farcall RocketTowerRoomMenu_Cleanup
 	pop af
 	ldh [rSVBK], a
 	hlcoord 2, 6

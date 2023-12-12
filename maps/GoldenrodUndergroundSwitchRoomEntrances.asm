@@ -156,11 +156,6 @@ UndergroundSilverScene2:
 	end
 
 UndergroundSilverBattleScript:
-	checkevent EVENT_RIVAL_BURNED_TOWER
-	iftrue .Continue
-	setevent EVENT_RIVAL_BURNED_TOWER
-	setmapscene BURNED_TOWER_1F, SCENE_BURNEDTOWER1F_RIVAL_BATTLE
-.Continue:
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	opentext
 	writetext UndergroundSilverBeforeText

@@ -844,8 +844,8 @@ ElmText_MissionFromMrPokemon:
 	para "Wait!"
 	line "I know!"
 
-	para "<PLAY_G>, can you"
-	line "go in our place?"
+	para "<PLAY_G>, could you"
+	line "go in my place?"
 	done
 
 ElmText_ChooseAPokemon:
@@ -1002,8 +1002,8 @@ ElmAfterTheftText1:
 
 ElmAfterTheftText2:
 	text "<PLAYER> handed"
-	line "the TATTERED HAT to"
-	cont "PROF.ELM."
+	line "the TATTERED HAT"
+	cont "to PROF.ELM."
 	done
 
 ElmAfterTheftText3:
@@ -1033,7 +1033,7 @@ ElmAfterTheftText5:
 	line "a #DEX?!"
 
 	para "<PLAY_G>, that's"
-	cont "simply incredible!"
+	line "simply incredible!"
 
 	para "He is superb at"
 	line "seeing the"

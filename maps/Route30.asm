@@ -257,7 +257,7 @@ RattataScript:
 	waitbutton
 	closetext
 	end
-
+	
 Route30Sign:
 	jumptext Route30SignText
 
@@ -425,11 +425,11 @@ Route30CooltrainerMText:
 
 Route30SignText:
 	text "ROUTE 30"
-
-	para "VIOLET CITY -"
-	line "CHERRYGROVE CITY"
+	
+	para "CHERRYGROVE CITY -"
+	line "VIOLET CITY"
 	done
-
+	
 MrPokemonsHouseSignText:
 	text "MR.#MON'S HOUSE"
 	done

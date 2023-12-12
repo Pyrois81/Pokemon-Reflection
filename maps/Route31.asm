@@ -12,16 +12,6 @@ Route31_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, .CheckMomCall
-
-.CheckMomCall:
-	checkevent EVENT_TALKED_TO_MOM_AFTER_TATTERED_HAT_QUEST
-	iffalse .DoMomCall
-	endcallback
-
-.DoMomCall:
-	specialphonecall SPECIALCALL_WORRIED
-	endcallback
 
 TrainerBugCatcherWade1:
 	trainer BUG_CATCHER, WADE1, EVENT_BEAT_BUG_CATCHER_WADE, BugCatcherWade1SeenText, BugCatcherWade1BeatenText, 0, .Script
@@ -184,8 +174,6 @@ TrainerBugCatcherWade1:
 Route31MailRecipientScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM50_NIGHTMARE
-	iftrue .DescribeNightmare
 	checkevent EVENT_GOT_KENYA
 	iftrue .TryGiveKenya
 	writetext Text_Route31SleepyMan
@@ -207,13 +195,7 @@ Route31MailRecipientScript:
 	writetext Text_Route31ReadingMail
 	promptbutton
 	setevent EVENT_GAVE_KENYA
-	verbosegiveitem TM_NIGHTMARE
-	iffalse .NoRoomForItems
-	setevent EVENT_GOT_TM50_NIGHTMARE
-.DescribeNightmare:
-	writetext Text_Route31DescribeNightmare
 	waitbutton
-.NoRoomForItems:
 	closetext
 	end
 
@@ -355,22 +337,6 @@ Text_Route31ReadingMail:
 
 	para "I know! I want you"
 	line "to have this!"
-	done
-
-Text_Route31DescribeNightmare:
-	text "TM50 is NIGHTMARE."
-
-	para "It's a wicked move"
-	line "that steadily cuts"
-
-	para "the HP of a sleep-"
-	line "ing enemy."
-
-	para "Ooooh…"
-	line "That's scary…"
-
-	para "I don't want to"
-	line "have bad dreams."
 	done
 
 Text_Route31WrongMail:
