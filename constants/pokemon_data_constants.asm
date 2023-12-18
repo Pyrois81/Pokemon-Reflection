@@ -94,18 +94,19 @@ rsset MON_CAUGHTDATA
 MON_CAUGHTLEVEL        rb ; 29
 MON_CAUGHTLOCATION     rb ; 30
 MON_LEVEL              rb ; 31
+MON_DV_TRAINING_COUNT  rb ; 32
 BOXMON_STRUCT_LENGTH EQU _RS
-MON_STATUS             rb ; 32
+MON_STATUS             rb ; 33
                        rb_skip
-MON_HP                 rw ; 34
-MON_MAXHP              rw ; 36
-MON_STATS              rw NUM_BATTLE_STATS ; 38
+MON_HP                 rw ; 35
+MON_MAXHP              rw ; 37
+MON_STATS              rw NUM_BATTLE_STATS ; 39
 rsset MON_STATS
-MON_ATK                rw ; 38
-MON_DEF                rw ; 40
-MON_SPD                rw ; 42
-MON_SAT                rw ; 44
-MON_SDF                rw ; 46
+MON_ATK                rw ; 39
+MON_DEF                rw ; 41
+MON_SPD                rw ; 43
+MON_SAT                rw ; 45
+MON_SDF                rw ; 47
 PARTYMON_STRUCT_LENGTH EQU _RS
 
 NICKNAMED_MON_STRUCT_LENGTH EQU PARTYMON_STRUCT_LENGTH + MON_NAME_LENGTH

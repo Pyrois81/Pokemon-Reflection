@@ -40,7 +40,7 @@ OddEggs:
 	db NO_ITEM
 	db THUNDERSHOCK, CHARM, DIZZY_PUNCH, 0
 	dw 02048 ; OT ID
-	dt 125 ; Exp
+	dt 0 ; Exp
 	; Stat exp
 	bigdw 0
 	bigdw 0
@@ -51,7 +51,8 @@ OddEggs:
 	db 30, 20, 10, 0 ; PP
 	db 20 ; Step cycles to hatch
 	db 0, 0, 0 ; Pokerus, Caught data
-	db 5 ; Level
+	db 1 ; Level
+	db 0 ; DV Training Count
 	db 0, 0 ; Status
 	bigdw 0 ; HP
 	bigdw 17 ; Max HP
@@ -66,7 +67,7 @@ OddEggs:
 	db NO_ITEM
 	db THUNDERSHOCK, CHARM, DIZZY_PUNCH, 0
 	dw 00256 ; OT ID
-	dt 125 ; Exp
+	dt 0 ; Exp
 	; Stat exp
 	bigdw 0
 	bigdw 0
@@ -77,7 +78,8 @@ OddEggs:
 	db 30, 20, 10, 0 ; PP
 	db 20 ; Step cycles to hatch
 	db 0, 0, 0 ; Pokerus, Caught data
-	db 5 ; Level
+	db 1 ; Level
+	db 0 ; DV Training Count
 	db 0, 0 ; Status
 	bigdw 0 ; HP
 	bigdw 17 ; Max HP
@@ -92,7 +94,7 @@ OddEggs:
 	db NO_ITEM
 	db POUND, CHARM, DIZZY_PUNCH, 0
 	dw 04096 ; OT ID
-	dt 125 ; Exp
+	dt 0 ; Exp
 	; Stat exp
 	bigdw 0
 	bigdw 0
@@ -103,7 +105,8 @@ OddEggs:
 	db 35, 20, 10, 0 ; PP
 	db 20 ; Step cycles to hatch
 	db 0, 0, 0 ; Pokerus, Caught data
-	db 5 ; Level
+	db 1 ; Level
+	db 0 ; DV Training Count
 	db 0, 0 ; Status
 	bigdw 0 ; HP
 	bigdw 20 ; Max HP
@@ -118,7 +121,7 @@ OddEggs:
 	db NO_ITEM
 	db POUND, CHARM, DIZZY_PUNCH, 0
 	dw 00768 ; OT ID
-	dt 125 ; Exp
+	dt 0 ; Exp
 	; Stat exp
 	bigdw 0
 	bigdw 0
@@ -129,7 +132,8 @@ OddEggs:
 	db 35, 20, 10, 0 ; PP
 	db 20 ; Step cycles to hatch
 	db 0, 0, 0 ; Pokerus, Caught data
-	db 5 ; Level
+	db 1 ; Level
+	db 0 ; DV Training Count
 	db 0, 0 ; Status
 	bigdw 0 ; HP
 	bigdw 20 ; Max HP
@@ -144,7 +148,7 @@ OddEggs:
 	db NO_ITEM
 	db SING, CHARM, DIZZY_PUNCH, 0
 	dw 04096 ; OT ID
-	dt 125 ; Exp
+	dt 0 ; Exp
 	; Stat exp
 	bigdw 0
 	bigdw 0
@@ -155,7 +159,8 @@ OddEggs:
 	db 15, 20, 10, 0 ; PP
 	db 20 ; Step cycles to hatch
 	db 0, 0, 0 ; Pokerus, Caught data
-	db 5 ; Level
+	db 1 ; Level
+	db 0 ; DV Training Count
 	db 0, 0 ; Status
 	bigdw 0 ; HP
 	bigdw 24 ; Max HP
@@ -170,7 +175,7 @@ OddEggs:
 	db NO_ITEM
 	db SING, CHARM, DIZZY_PUNCH, 0
 	dw 00768 ; OT ID
-	dt 125 ; Exp
+	dt 0 ; Exp
 	; Stat exp
 	bigdw 0
 	bigdw 0
@@ -181,7 +186,8 @@ OddEggs:
 	db 15, 20, 10, 0 ; PP
 	db 20 ; Step cycles to hatch
 	db 0, 0, 0 ; Pokerus, Caught data
-	db 5 ; Level
+	db 1 ; Level
+	db 0 ; DV Training Count
 	db 0, 0 ; Status
 	bigdw 0 ; HP
 	bigdw 24 ; Max HP
@@ -196,7 +202,7 @@ OddEggs:
 	db NO_ITEM
 	db POUND, LICK, DIZZY_PUNCH, 0
 	dw 03584 ; OT ID
-	dt 125 ; Exp
+	dt 0 ; Exp
 	; Stat exp
 	bigdw 0
 	bigdw 0
@@ -207,7 +213,8 @@ OddEggs:
 	db 35, 30, 10, 0 ; PP
 	db 20 ; Step cycles to hatch
 	db 0, 0, 0 ; Pokerus, Caught data
-	db 5 ; Level
+	db 1 ; Level
+	db 0 ; DV Training Count
 	db 0, 0 ; Status
 	bigdw 0 ; HP
 	bigdw 19 ; Max HP
@@ -222,7 +229,7 @@ OddEggs:
 	db NO_ITEM
 	db POUND, LICK, DIZZY_PUNCH, 0
 	dw 00512 ; OT ID
-	dt 125 ; Exp
+	dt 0 ; Exp
 	; Stat exp
 	bigdw 0
 	bigdw 0
@@ -233,7 +240,8 @@ OddEggs:
 	db 35, 30, 10, 0 ; PP
 	db 20 ; Step cycles to hatch
 	db 0, 0, 0 ; Pokerus, Caught data
-	db 5 ; Level
+	db 1 ; Level
+	db 0 ; DV Training Count
 	db 0, 0 ; Status
 	bigdw 0 ; HP
 	bigdw 19 ; Max HP
@@ -248,7 +256,7 @@ OddEggs:
 	db NO_ITEM
 	db EMBER, DIZZY_PUNCH, 0, 0
 	dw 02560 ; OT ID
-	dt 125 ; Exp
+	dt 0 ; Exp
 	; Stat exp
 	bigdw 0
 	bigdw 0
@@ -259,7 +267,8 @@ OddEggs:
 	db 25, 10, 0, 0 ; PP
 	db 20 ; Step cycles to hatch
 	db 0, 0, 0 ; Pokerus, Caught data
-	db 5 ; Level
+	db 1 ; Level
+	db 0 ; DV Training Count
 	db 0, 0 ; Status
 	bigdw 0 ; HP
 	bigdw 19 ; Max HP
@@ -274,7 +283,7 @@ OddEggs:
 	db NO_ITEM
 	db EMBER, DIZZY_PUNCH, 0, 0
 	dw 00512 ; OT ID
-	dt 125 ; Exp
+	dt 0 ; Exp
 	; Stat exp
 	bigdw 0
 	bigdw 0
@@ -285,7 +294,8 @@ OddEggs:
 	db 25, 10, 0, 0 ; PP
 	db 20 ; Step cycles to hatch
 	db 0, 0, 0 ; Pokerus, Caught data
-	db 5 ; Level
+	db 1 ; Level
+	db 0 ; DV Training Count
 	db 0, 0 ; Status
 	bigdw 0 ; HP
 	bigdw 19 ; Max HP
@@ -300,7 +310,7 @@ OddEggs:
 	db NO_ITEM
 	db QUICK_ATTACK, LEER, DIZZY_PUNCH, 0
 	dw 03072 ; OT ID
-	dt 125 ; Exp
+	dt 0 ; Exp
 	; Stat exp
 	bigdw 0
 	bigdw 0
@@ -311,7 +321,8 @@ OddEggs:
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Step cycles to hatch
 	db 0, 0, 0 ; Pokerus, Caught data
-	db 5 ; Level
+	db 1 ; Level
+	db 0 ; DV Training Count
 	db 0, 0 ; Status
 	bigdw 0 ; HP
 	bigdw 19 ; Max HP
@@ -326,7 +337,7 @@ OddEggs:
 	db NO_ITEM
 	db QUICK_ATTACK, LEER, DIZZY_PUNCH, 0
 	dw 00512 ; OT ID
-	dt 125 ; Exp
+	dt 0 ; Exp
 	; Stat exp
 	bigdw 0
 	bigdw 0
@@ -337,7 +348,8 @@ OddEggs:
 	db 30, 30, 10, 0 ; PP
 	db 20 ; Step cycles to hatch
 	db 0, 0, 0 ; Pokerus, Caught data
-	db 5 ; Level
+	db 1 ; Level
+	db 0 ; DV Training Count
 	db 0, 0 ; Status
 	bigdw 0 ; HP
 	bigdw 19 ; Max HP
@@ -352,7 +364,7 @@ OddEggs:
 	db NO_ITEM
 	db TACKLE, DIZZY_PUNCH, 0, 0
 	dw 02560 ; OT ID
-	dt 125 ; Exp
+	dt 0 ; Exp
 	; Stat exp
 	bigdw 0
 	bigdw 0
@@ -363,7 +375,8 @@ OddEggs:
 	db 35, 10, 0, 0 ; PP
 	db 20 ; Step cycles to hatch
 	db 0, 0, 0 ; Pokerus, Caught data
-	db 5 ; Level
+	db 1 ; Level
+	db 0 ; DV Training Count
 	db 0, 0 ; Status
 	bigdw 0 ; HP
 	bigdw 18 ; Max HP
@@ -378,7 +391,7 @@ OddEggs:
 	db NO_ITEM
 	db TACKLE, DIZZY_PUNCH, 0, 0
 	dw 00256 ; OT ID
-	dt 125 ; Exp
+	dt 0 ; Exp
 	; Stat exp
 	bigdw 0
 	bigdw 0
@@ -389,7 +402,8 @@ OddEggs:
 	db 35, 10, 0, 0 ; PP
 	db 20 ; Step cycles to hatch
 	db 0, 0, 0 ; Pokerus, Caught data
-	db 5 ; Level
+	db 1 ; Level
+	db 0 ; DV Training Count
 	db 0, 0 ; Status
 	bigdw 0 ; HP
 	bigdw 18 ; Max HP

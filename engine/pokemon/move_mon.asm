@@ -246,6 +246,11 @@ endr
 	ld a, [wCurPartyLevel]
 	ld [de], a
 	inc de
+	
+	; Initialize DV training count.
+	xor a
+	ld [de], a
+	inc de
 
 	xor a
 	; Status
@@ -307,6 +312,11 @@ endr
 
 	; Initialize level.
 	ld a, [wCurPartyLevel]
+	ld [de], a
+	inc de
+	
+	; Initialize DV training count.
+	xor a
 	ld [de], a
 	inc de
 

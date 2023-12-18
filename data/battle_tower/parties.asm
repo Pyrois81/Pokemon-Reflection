@@ -1,6 +1,6 @@
 RocketTowerMons:
 ; 10 groups (one per floor level) of 21 mons (BATTLETOWER_NUM_UNIQUE_MON).
-	table_width NICKNAMED_MON_STRUCT_LENGTH, RocketTowerMons
+	table_width NICKNAMED_MON_STRUCT_LENGTH - 1, RocketTowerMons ; workaround to make the ROM build without removing all the Battle Tower junk 
 
 ; RocketTowerMons group 1
 

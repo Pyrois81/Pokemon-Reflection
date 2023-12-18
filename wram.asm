@@ -3444,18 +3444,14 @@ w3_d8a2:: ds 1
 w3_d8a3:: ds 1
 ENDU
 
-	ds $1c0
-
 w3_dc00:: ds SCREEN_WIDTH * SCREEN_HEIGHT
 UNION
 w3_dd68:: ds SCREEN_WIDTH * SCREEN_HEIGHT
 
-	ds $11c
-
 w3_dfec:: ds $10
 w3_dffc:: ds 4
 NEXTU
-	ds $98
+
 w3_de00:: ds $200
 ENDU
 
