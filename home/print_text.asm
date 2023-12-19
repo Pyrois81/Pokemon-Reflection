@@ -2,6 +2,7 @@ PrintLetterDelay::
 ; Wait before printing the next letter.
 
 ; The text speed setting in wOptions is actually a frame count:
+;	none: 0 frames
 ; 	fast: 1 frame
 ; 	mid:  3 frames
 ; 	slow: 5 frames
@@ -38,6 +39,7 @@ PrintLetterDelay::
 ; text speed
 	ld a, [wOptions]
 	and %111
+	jr z, .end
 	jr .updatedelay
 
 .fast

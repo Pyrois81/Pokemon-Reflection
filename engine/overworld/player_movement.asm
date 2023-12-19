@@ -23,6 +23,10 @@ DoPlayerMovement::
 	ld c, a
 	and D_PAD
 	ret nz
+	
+	ld a, c ; brake with A or B button
+	and A_BUTTON | B_BUTTON
+	ret nz
 
 	ld a, c
 	or D_DOWN
