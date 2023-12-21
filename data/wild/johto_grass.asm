@@ -1154,7 +1154,7 @@ JohtoGrassWildMons:
 	db 8 percent, 8 percent, 8 percent ; encounter rates: morn/day/nite
 	; morn
 	db 2, HOOTHOOT
-	db 2, SENTRET
+	db 2, CLEFFA
 	db 3, SUNKERN
 	db 3, LEDYBA
 	db 2, SPINARAK
@@ -1162,7 +1162,7 @@ JohtoGrassWildMons:
 	db 4, SPINARAK
 	; day
 	db 2, HOOTHOOT
-	db 2, SENTRET
+	db 2, CLEFFA
 	db 3, SUNKERN
 	db 3, LEDYBA
 	db 2, SPINARAK
@@ -1170,7 +1170,7 @@ JohtoGrassWildMons:
 	db 4, SPINARAK
 	; nite
 	db 2, HOOTHOOT
-	db 2, SENTRET
+	db 2, CLEFFA
 	db 3, SUNKERN
 	db 3, LEDYBA
 	db 2, SPINARAK
@@ -1183,24 +1183,24 @@ JohtoGrassWildMons:
 	; morn
 	db 3, WEEDLE
 	db 3, CATERPIE
-	db 4, RATTATA
-	db 4, PIDGEY
+	db 4, MEOWTH
+	db 4, DODUO
 	db 1, PICHU
 	db 4, METAPOD
 	db 5, KAKUNA
 	; day
 	db 3, WEEDLE
 	db 3, CATERPIE
-	db 4, RATTATA
-	db 4, PIDGEY
+	db 4, MEOWTH
+	db 4, DODUO
 	db 1, PICHU
 	db 4, METAPOD
 	db 5, KAKUNA
 	; nite
 	db 3, WEEDLE
 	db 3, CATERPIE
-	db 4, RATTATA
-	db 4, PIDGEY
+	db 4, MEOWTH
+	db 4, DODUO
 	db 1, PICHU
 	db 4, METAPOD
 	db 5, KAKUNA
@@ -1464,7 +1464,7 @@ JohtoGrassWildMons:
 	db 10, MARILL
 	db 10, PHANPY
 	db 11, DROWZEE
-	db  5, CLEFFA
+	db  5, TOGEPI
 	db 11, GLIGAR
 	db 13, GLIGAR
 	db 14, HYPNO
@@ -1472,7 +1472,7 @@ JohtoGrassWildMons:
 	db 10, MARILL
 	db 10, PHANPY
 	db 11, DROWZEE
-	db  5, CLEFFA
+	db  5, TOGEPI
 	db 11, GLIGAR
 	db 13, GLIGAR
 	db 14, HYPNO
@@ -1480,7 +1480,7 @@ JohtoGrassWildMons:
 	db 10, MARILL
 	db 10, PHANPY
 	db 11, DROWZEE
-	db  5, CLEFFA
+	db  5, TOGEPI
 	db 11, GLIGAR
 	db 13, GLIGAR
 	db 14, HYPNO
@@ -1605,25 +1605,25 @@ JohtoGrassWildMons:
 	db 6, EKANS
 	db 6, MANKEY
 	db 2, IGGLYBUFF
-	db 5, DIGLETT
-	db 6, DIGLETT
-	db 8, DIGLETT
+	db 4, SNUBBULL
+	db 5, SNUBBULL
+	db 6, SNUBBULL
 	; day
 	db 5, HOPPIP
 	db 6, EKANS
 	db 6, MANKEY
 	db 2, IGGLYBUFF
-	db 5, DIGLETT
-	db 6, DIGLETT
-	db 8, DIGLETT
+	db 4, SNUBBULL
+	db 5, SNUBBULL
+	db 6, SNUBBULL
 	; nite
 	db 5, HOPPIP
 	db 6, EKANS
 	db 6, MANKEY
 	db 2, IGGLYBUFF
-	db 5, DIGLETT
-	db 6, DIGLETT
-	db 8, DIGLETT
+	db 4, SNUBBULL
+	db 5, SNUBBULL
+	db 6, SNUBBULL
 	end_grass_wildmons
 
 	def_grass_wildmons SILVER_CAVE_OUTSIDE

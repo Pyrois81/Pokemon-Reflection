@@ -3615,6 +3615,9 @@ UpdateMoveData:
 
 BattleCommand_SleepTarget:
 ; sleeptarget
+	ld hl, DoesntAffectText
+	call CheckPowderSpore
+	jr c, .fail
 
 	call GetOpponentItem
 	ld a, b
@@ -3724,7 +3727,11 @@ BattleCommand_PoisonTarget:
 	ld a, [wTypeModifier]
 	and $7f
 	ret z
-	call CheckIfTargetIsPoisonType
+	ld a, POISON ; don't poison a Poison-type...
+	call CheckIfTargetIsGivenType
+	ret z
+	ld a, STEEL ; ...or a Steel-type
+	call CheckIfTargetIsGivenType
 	ret z
 	call GetOpponentItem
 	ld a, b
@@ -3755,8 +3762,16 @@ BattleCommand_Poison:
 	and $7f
 	jp z, .failed
 
-	call CheckIfTargetIsPoisonType
+	ld a, POISON
+	call CheckIfTargetIsGivenType
 	jp z, .failed
+	
+	ld a, STEEL
+	call CheckIfTargetIsGivenType
+	jp z, .failed
+	
+	call CheckPowderSpore
+	jp c, .failed
 
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVar
@@ -3803,8 +3818,11 @@ BattleCommand_Poison:
 	jr c, .failed
 
 .dont_sample_failure
+	ld hl, ProtectingItselfText
 	call CheckSubstituteOpp
 	jr nz, .failed
+	
+	ld hl, EvadedText
 	ld a, [wAttackMissed]
 	and a
 	jr nz, .failed
@@ -3854,7 +3872,8 @@ BattleCommand_Poison:
 	cp EFFECT_TOXIC
 	ret
 
-CheckIfTargetIsPoisonType:
+CheckIfTargetIsGivenType:
+	ld b, a
 	ld de, wEnemyMonType1
 	ldh a, [hBattleTurn]
 	and a
@@ -3863,10 +3882,10 @@ CheckIfTargetIsPoisonType:
 .ok
 	ld a, [de]
 	inc de
-	cp POISON
+	cp b
 	ret z
 	ld a, [de]
-	cp POISON
+	cp b
 	ret
 
 PoisonOpponent:
@@ -3994,7 +4013,8 @@ BattleCommand_BurnTarget:
 	ld a, [wTypeModifier]
 	and $7f
 	ret z
-	call CheckMoveTypeMatchesTarget ; Don't burn a Fire-type
+	ld a, FIRE
+	call CheckIfTargetIsGivenType ; Don't burn a Fire-type
 	ret z
 	call GetOpponentItem
 	ld a, b
@@ -4063,7 +4083,8 @@ BattleCommand_FreezeTarget:
 	ld a, [wBattleWeather]
 	cp WEATHER_SUN
 	ret z
-	call CheckMoveTypeMatchesTarget ; Don't freeze an Ice-type
+	ld a, ICE
+	call CheckIfTargetIsGivenType ; Don't freeze an Ice-type
 	ret z
 	call GetOpponentItem
 	ld a, b
@@ -4112,6 +4133,9 @@ BattleCommand_ParalyzeTarget:
 	ret nz
 	ld a, [wTypeModifier]
 	and $7f
+	ret z
+	ld a, ELECTRIC ; don't paralyze an Electric-type
+	call CheckIfTargetIsGivenType
 	ret z
 	call GetOpponentItem
 	ld a, b
@@ -4383,8 +4407,15 @@ BattleCommand_DefenseDown2:
 
 BattleCommand_SpeedDown2:
 ; speeddown2
+	call CheckPowderSpore
+	jr c, .doesnt_affect
+	
 	ld a, $10 | SPEED
 	jr BattleCommand_StatDown
+	
+.doesnt_affect
+	call AnimateFailedMove
+	jp PrintDoesntAffect
 
 BattleCommand_SpecialAttackDown2:
 ; specialattackdown2
@@ -5951,10 +5982,20 @@ BattleCommand_Paralyze:
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVar
 	bit PAR, a
-	jr nz, .paralyzed
+	jp nz, .paralyzed
+	
+	ld hl, DoesntAffectText
 	ld a, [wTypeModifier]
 	and $7f
-	jr z, .didnt_affect
+	jp z, .doesnt_affect
+	
+	ld a, ELECTRIC ; don't paralyze an Electric-type
+	call CheckIfTargetIsGivenType
+	jp z, .doesnt_affect
+
+	call CheckPowderSpore
+	jr c, .doesnt_affect
+
 	call GetOpponentItem
 	ld a, b
 	cp HELD_PREVENT_PARALYZE
@@ -6021,45 +6062,9 @@ BattleCommand_Paralyze:
 .failed
 	jp PrintDidntAffect2
 
-.didnt_affect
+.doesnt_affect
 	call AnimateFailedMove
 	jp PrintDoesntAffect
-
-CheckMoveTypeMatchesTarget:
-; Compare move type to opponent type.
-; Return z if matching the opponent type,
-; unless the move is Normal (Tri Attack).
-
-	push hl
-
-	ld hl, wEnemyMonType1
-	ldh a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld hl, wBattleMonType1
-.ok
-
-	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVar
-	and TYPE_MASK
-	cp NORMAL
-	jr z, .normal
-
-	cp [hl]
-	jr z, .return
-
-	inc hl
-	cp [hl]
-
-.return
-	pop hl
-	ret
-
-.normal
-	ld a, 1
-	and a
-	pop hl
-	ret
 
 INCLUDE "engine/battle/move_effects/substitute.asm"
 
@@ -6239,6 +6244,27 @@ BattleCommand_Heal:
 
 INCLUDE "engine/battle/move_effects/transform.asm"
 
+CheckPowderSpore: ; sets carry flag if target is immune
+; Checks if the move is powder/spore-based
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	ld hl, PowderSporeMoves
+	call IsInByteArray
+	ret nc
+
+; If the opponent is Grass-type, the move fails.
+	ld a, GRASS
+	call CheckIfTargetIsGivenType
+	jp z, .doesnt_affect
+	xor a ; reset carry flag
+	ret
+	
+.doesnt_affect:
+	ld a, 1
+	ld [wAttackMissed], a
+	scf
+	ret
+
 BattleEffect_ButItFailed:
 	call AnimateFailedMove
 	jp PrintButItFailed
@@ -6354,8 +6380,8 @@ PrintDidntAffect:
 
 PrintDidntAffect2:
 	call AnimateFailedMove
-	ld hl, DidntAffect1Text ; 'it didn't affect'
-	ld de, DidntAffect2Text ; 'it didn't affect'
+	ld hl, EvadedText ; 'evaded the attack'
+	ld de, ProtectingItselfText ; 'protecting itself'
 	jp FailText_CheckOpponentProtect
 
 PrintParalyze:
