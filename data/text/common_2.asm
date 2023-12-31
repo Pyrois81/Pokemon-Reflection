@@ -544,6 +544,40 @@ _WhitedOutText::
 	line "out!"
 	done
 
+_WhitedOutToWildMonText::
+	text "<PLAYER> is out of"
+	line "useable #MON!"
+
+	para "<PLAYER> panicked"
+	line "and dropped"
+	cont "¥@"
+	text_decimal hMoneyTemp, 3, 6
+	text "…"
+
+	para "<……><……><……>"
+	line "<……><……><……>"
+
+	para "<PLAYER> whited"
+	line "out!"
+	done
+
+_WhitedOutToTrainerText::
+	text "<PLAYER> is out of"
+	line "useable #MON!"
+
+	para "<PLAYER> paid"
+	line "¥@"
+	text_decimal hMoneyTemp, 3, 6
+	text " to the"
+	cont "winner."
+
+	para "<……><……><……>"
+	line "<……><……><……>"
+
+	para "<PLAYER> whited"
+	line "out!"
+	done
+
 _ItemfinderItemNearbyText::
 	text "Yes! ITEMFINDER"
 	line "indicates there's"
@@ -555,18 +589,10 @@ _ItemfinderNopeText::
 	line "isn't responding."
 	prompt
 
-_PoisonFaintText::
+_PoisonRecoveryText::
 	text_ram wStringBuffer3
 	text_start
-	line "fainted!"
-	prompt
-
-_PoisonWhiteoutText::
-	text "<PLAYER> is out of"
-	line "useable #MON!"
-
-	para "<PLAYER> whited"
-	line "out!"
+	line "narrowly survived!"
 	prompt
 
 _UseSweetScentText::
@@ -737,12 +763,7 @@ _ActorNameText::
 	text "<USER>@"
 	text_end
 
-_UsedMove1Text::
-	text_start
-	line "used @"
-	text_end
-
-_UsedMove2Text::
+_UsedMoveText::
 	text_start
 	line "used @"
 	text_end
@@ -754,27 +775,6 @@ _UsedInsteadText::
 
 _MoveNameText::
 	text_ram wStringBuffer2
-	text_end
-
-	text_end ; unreferenced
-
-_EndUsedMove1Text::
-	text "!"
-	done
-
-_EndUsedMove2Text::
-	text "!"
-	done
-
-_EndUsedMove3Text::
-	text "!"
-	done
-
-_EndUsedMove4Text::
-	text "!"
-	done
-
-_EndUsedMove5Text::
 	text "!"
 	done
 
@@ -1572,4 +1572,9 @@ _OakText5::
 
 	para "That's why I study"
 	line "#MON every day."
+	prompt
+
+_CantDepositText::
+	text "Can't deposit"
+	line "this item."
 	prompt
