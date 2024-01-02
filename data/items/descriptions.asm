@@ -870,7 +870,7 @@ MoonBallDesc:
 	next "STONE evolvers.@"
 
 LoveBallDesc:
-	db   "For catching the"
+	db   "For same species &"
 	next "opposite gender.@"
 
 NormalBoxDesc:
