@@ -25,8 +25,17 @@ ResetFlashIfOutOfCave::
 	ret
 
 EventFlagAction::
+	; Switch banks since we moved event flags to WRAM4
+	ld a, [rSVBK]
+	push af
+	ld a, BANK("Event Flags")
+	ldh [rSVBK], a
+	
 	ld hl, wEventFlags
 	call FlagAction
+	
+	pop af
+	ldh [rSVBK], a
 	ret
 
 FlagAction::

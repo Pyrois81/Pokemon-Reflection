@@ -64,6 +64,7 @@ sBackupCheckValue1:: db ; loaded with SAVE_CHECK_VALUE_1, used to check save cor
 sBackupGameData::
 sBackupPlayerData::  ds wPlayerDataEnd - wPlayerData
 sBackupCurMapData::  ds wCurMapDataEnd - wCurMapData
+sBackupEventFlagsData:: ds wEventFlagsDataEnd - wEventFlagsData
 sBackupPokemonData:: ds wPokemonDataEnd - wPokemonData
 sBackupGameDataEnd::
 
@@ -93,6 +94,7 @@ sCheckValue1:: db ; loaded with SAVE_CHECK_VALUE_1, used to check save corruptio
 sGameData::
 sPlayerData::  ds wPlayerDataEnd - wPlayerData
 sCurMapData::  ds wCurMapDataEnd - wCurMapData
+sEventFlagsData:: ds wEventFlagsDataEnd - wEventFlagsData
 sPokemonData:: ds wPokemonDataEnd - wPokemonData
 sGameDataEnd::
 

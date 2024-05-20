@@ -3116,8 +3116,6 @@ wErinFightCount::    db
 
 	ds 100
 
-wEventFlags:: flag_array NUM_EVENTS
-
 wCurBox:: db
 
 	ds 2
@@ -3451,6 +3449,11 @@ NEXTU
 w3_de00:: ds $200
 ENDU
 
+SECTION "Event Flags", WRAMX
+
+wEventFlagsData::
+wEventFlags:: flag_array NUM_EVENTS
+wEventFlagsDataEnd::
 
 SECTION "GBC Video", WRAMX, ALIGN[8]
 ; LCD expects wLYOverrides to have an alignment of $100

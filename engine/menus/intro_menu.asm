@@ -116,6 +116,16 @@ _ResetWRAM:
 	xor a
 	call ByteFill
 
+	; also clear event flags since we moved them to WRAM4
+	ld a, BANK("Event Flags")
+	ldh [rSVBK], a
+	ld hl, wEventFlagsData
+	ld bc, wEventFlagsDataEnd - wEventFlagsData
+	xor a
+	call ByteFill
+	ld a, 1
+	ld [rSVBK], a
+
 	ldh a, [rLY]
 	ldh [hUnusedBackup], a
 	call DelayFrame

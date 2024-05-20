@@ -1446,6 +1446,6 @@
 	
 	const EVENT_GOT_SECRET_PONYTA
 
-	const_next 1438
+	const_next 3000
 
 NUM_EVENTS EQU const_value
