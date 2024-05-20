@@ -449,16 +449,16 @@ SavePlayerData:
 	ld bc, wCurMapDataEnd - wCurMapData
 	call CopyBytes
 	; switch banks since we moved flags to WRAM4
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, BANK("Event Flags")
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld hl, wEventFlagsData
 	ld de, sEventFlagsData
 	ld bc, wEventFlagsDataEnd - wEventFlagsData
 	call CopyBytes
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	jp CloseSRAM
 
 SavePokemonData:
@@ -521,16 +521,16 @@ SaveBackupPlayerData:
 	ld bc, wCurMapDataEnd - wCurMapData
 	call CopyBytes
 	; switch banks since we moved flags to WRAM4
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, BANK("Event Flags")
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld hl, wEventFlagsData
 	ld de, sBackupEventFlagsData
 	ld bc, wEventFlagsDataEnd - wEventFlagsData
 	call CopyBytes
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	call CloseSRAM
 	ret
 
@@ -706,16 +706,16 @@ LoadPlayerData:
 	ld bc, wCurMapDataEnd - wCurMapData
 	call CopyBytes
 	; switch banks since we moved flags to WRAM4
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, BANK("Event Flags")
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld hl, sEventFlagsData
 	ld de, wEventFlagsData
 	ld bc, wEventFlagsDataEnd - wEventFlagsData
 	call CopyBytes
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	call CloseSRAM
 	ld a, BANK(sRocketTowerChallengeState)
 	call OpenSRAM
@@ -772,16 +772,16 @@ LoadBackupPlayerData:
 	ld bc, wCurMapDataEnd - wCurMapData
 	call CopyBytes
 	; switch banks since we moved flags to WRAM4
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, BANK("Event Flags")
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld hl, sBackupEventFlagsData
 	ld de, wEventFlagsData
 	ld bc, wEventFlagsDataEnd - wEventFlagsData
 	call CopyBytes
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	call CloseSRAM
 	ret
 

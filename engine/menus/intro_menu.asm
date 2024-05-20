@@ -124,7 +124,7 @@ _ResetWRAM:
 	xor a
 	call ByteFill
 	ld a, 1
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 	ldh a, [rLY]
 	ldh [hUnusedBackup], a
