@@ -302,9 +302,8 @@ String_oclock:
 
 OakTimeWhatHoursText:
 	; What?@ @
-	text_far _OakTimeWhatHoursText
 	text_asm
-	hlcoord 1, 16
+	hlcoord 1, 14
 	call DisplayHourOClock
 	ld hl, .OakTimeHoursQuestionMarkText
 	ret
@@ -322,9 +321,8 @@ String_min:
 
 OakTimeWhoaMinutesText:
 	; Whoa!@ @
-	text_far _OakTimeWhoaMinutesText
 	text_asm
-	hlcoord 7, 14
+	hlcoord 1, 14
 	call DisplayMinutesWithMinString
 	ld hl, .OakTimeMinutesQuestionMarkText
 	ret

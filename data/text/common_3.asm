@@ -1,28 +1,46 @@
 _OakText6::
-	text "Now, what did you"
-	line "say your name was?"
+	text "Oh, how rude of"
+	line "me!"
+	
+	para "I never asked your"
+	line "name!"
 	prompt
 
 _OakText7::
-	text "<PLAYER>, are you"
-	line "ready?"
+	text "<PLAYER>, is it?"
+	
+	para "Well, nice to meet"
+	line "you, <PLAYER>!"
 
-	para "Your very own"
-	line "#MON story is"
-	cont "about to unfold."
-
-	para "You'll face fun"
-	line "times and tough"
-	cont "challenges."
-
-	para "A world of dreams"
-	line "and adventures"
-
-	para "with #MON"
-	line "awaits! Let's go!"
-
-	para "I'll be seeing you"
-	line "later!"
+	para "Prepare yourself,"
+	line "for a lot has hap-"
+	
+	para "pened around here"
+	line "lately."
+	
+	para "It seems like"
+	line "there's always"
+	
+	para "some new problem"
+	line "rearing its ugly"
+	
+	para "head, and it"
+	line "falls to good"
+	
+	para "people like you"
+	line "and me to make"
+	cont "things right!"
+	
+	para "Anyway, enough of"
+	line "all that."
+	
+	para "I'll surely run"
+	line "into you again on"
+	
+	para "your travels, but"
+	line "for now…"
+	
+	para "Welcome to JOHTO!"
 	done
 
 _ClockTimeMayBeWrongText::

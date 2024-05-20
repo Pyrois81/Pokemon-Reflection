@@ -1,6 +1,8 @@
-; pink
-	RGB 31, 19, 31
-; green
-	RGB 21, 31, 14
+; purple
+	RGB 22, 21, 31
 ; blue
-	RGB 17, 31, 31
+	RGB 16, 23, 31
+; green
+	RGB 13, 31, 20
+; yellow
+	RGB 31, 29, 22

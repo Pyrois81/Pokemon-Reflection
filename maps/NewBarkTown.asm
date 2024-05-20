@@ -1,7 +1,6 @@
 	object_const_def
 	const NEWBARKTOWN_TEACHER
 	const NEWBARKTOWN_FISHER
-	const NEWBARKTOWN_SILVER
 ;	const NEWBARKTOWN_POKEBALL1
 ;	const NEWBARKTOWN_POKEBALL2
 
@@ -106,24 +105,13 @@ NewBarkTownTeacherScript:
 NewBarkTownFisherScript:
 	jumptextfaceplayer Text_LeagueResuming
 
-NewBarkTownSilverScript:
-	opentext
-	writetext NewBarkTownRivalText1
-	waitbutton
-	closetext
-	turnobject NEWBARKTOWN_SILVER, LEFT
-	opentext
-	writetext NewBarkTownRivalText2
-	waitbutton
-	closetext
-	applymovement PLAYER, NewBarkTown_YouGetPushedAwayMovement
-	applymovement NEWBARKTOWN_SILVER, NewBarkTown_SilverPushesYouAwayMovement
-	pause 10
-	playsound SFX_TACKLE
-	applymovement PLAYER, NewBarkTown_SilverShovesYouOutMovement
-	pause 10
-	applymovement NEWBARKTOWN_SILVER, NewBarkTown_SilverReturnsToTheShadowsMovement
-	end
+NewBarkTownWindowScript:
+	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
+	iftrue .GotMon
+	jumptext NewBarkTownOpenWindowText
+
+.GotMon
+	jumptext NewBarkTownClosedWindowText
 
 NewBarkTownSign:
 	jumptext NewBarkTownSignText
@@ -136,6 +124,9 @@ NewBarkTownElmsLabSign:
 
 NewBarkTownElmsHouseSign:
 	jumptext NewBarkTownElmsHouseSignText
+
+NewBarkTownEthansHouseSign:
+	jumptext NewBarkTownEthansHouseSignText
 	
 TestGiveMons:
 	opentext
@@ -183,29 +174,6 @@ NewBarkTown_TeacherBringsYouBackMovement2:
 	turn_head LEFT
 	step_end
 
-NewBarkTown_YouGetPushedAwayMovement:
-	turn_head UP
-	fix_facing
-	step DOWN
-	remove_fixed_facing
-	step_end
-
-NewBarkTown_SilverPushesYouAwayMovement:
-	step LEFT
-	turn_head DOWN
-	step_end
-	
-NewBarkTown_SilverShovesYouOutMovement:
-	turn_head UP
-	fix_facing
-	jump_step DOWN
-	remove_fixed_facing
-	step_end
-
-NewBarkTown_SilverReturnsToTheShadowsMovement:
-	step RIGHT
-	step_end
-
 Text_GearIsImpressive:
 	text "Wow, your #GEAR"
 	line "is impressive!"
@@ -215,7 +183,7 @@ Text_GearIsImpressive:
 	done
 
 Text_WaitPlayer:
-	text "Wait, <PLAY_G>!"
+	text "Wait, <PLAYER>!"
 	done
 
 Text_WhatDoYouThinkYoureDoing:
@@ -242,7 +210,7 @@ Text_YourMonIsAdorable:
 	done
 
 Text_TellMomIfLeaving:
-	text "Hi, <PLAY_G>!"
+	text "Hi, <PLAYER>!"
 	line "Leaving again?"
 
 	para "You should tell"
@@ -271,17 +239,18 @@ Text_LeagueResuming:
 	line "DARK CAVE."
 	done
 
-NewBarkTownRivalText1:
-	text "<……>"
-
-	para "So this is the"
-	line "famous ELM #MON"
-	cont "LAB…"
+NewBarkTownOpenWindowText:
+	text "The window is wide"
+	line "open to let the"
+	cont "breeze roll in."
 	done
-
-NewBarkTownRivalText2:
-	text "…What are you"
-	line "staring at?"
+	
+NewBarkTownClosedWindowText:
+	text "The window is shut"
+	line "tight."
+	
+	para "You can see PROF."
+	line "ELM inside!"
 	done
 
 NewBarkTownSignText:
@@ -301,7 +270,11 @@ NewBarkTownElmsLabSignText:
 	done
 
 NewBarkTownElmsHouseSignText:
-	text "ELM'S HOUSE"
+	text "ELM's House"
+	done
+
+NewBarkTownEthansHouseSignText:
+	text "ETHAN's House"
 	done
 
 NewBarkTown_MapEvents:
@@ -309,9 +282,10 @@ NewBarkTown_MapEvents:
 
 	def_warp_events
 	warp_event  6,  3, ELMS_LAB, 1
-	warp_event 13,  5, PLAYERS_HOUSE_1F, 1
+	warp_event  9, 15, PLAYERS_HOUSE_1F, 1
 	warp_event  3, 11, PLAYERS_NEIGHBORS_HOUSE, 1
-	warp_event 11, 13, ELMS_HOUSE, 1
+	warp_event 15, 13, ELMS_HOUSE, 1
+	warp_event 13,  5, ETHANS_HOUSE_1F, 1
 
 	def_coord_events
 	coord_event  1,  8, SCENE_DEFAULT, NewBarkTown_TeacherStopsYouScene1
@@ -319,13 +293,14 @@ NewBarkTown_MapEvents:
 
 	def_bg_events
 	bg_event  8,  8, BGEVENT_READ, NewBarkTownSign
-	bg_event 11,  5, BGEVENT_READ, NewBarkTownPlayersHouseSign
+	bg_event  7, 15, BGEVENT_READ, NewBarkTownPlayersHouseSign
 	bg_event  3,  3, BGEVENT_READ, NewBarkTownElmsLabSign
-	bg_event  9, 13, BGEVENT_READ, NewBarkTownElmsHouseSign
+	bg_event 14, 14, BGEVENT_READ, NewBarkTownElmsHouseSign
+	bg_event 11,  5, BGEVENT_READ, NewBarkTownEthansHouseSign
+	bg_event  4,  2, BGEVENT_READ, NewBarkTownWindowScript
 
 	def_object_events
 	object_event  6,  8, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
-	object_event 12,  9, SPRITE_FISHER, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, NewBarkTownFisherScript, -1
-	object_event  3,  2, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
+	object_event 13,  9, SPRITE_FISHER, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, NewBarkTownFisherScript, -1
 ;	object_event 10,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TestGiveMons, -1
 ;	object_event 11,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TestGiveItems, -1

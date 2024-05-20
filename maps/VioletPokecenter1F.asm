@@ -104,7 +104,7 @@ MovementData_AideFinishesLeavingPokecenter:
 	step_end
 
 VioletPokecenterElmsAideFavorText:
-	text "<PLAY_G>, long"
+	text "<PLAYER>, long"
 	line "time, no see."
 
 	para "PROF.ELM asked me"
@@ -128,7 +128,7 @@ VioletPokecenterElmsAideGiveEggText:
 	line "with other active"
 	cont "#MON to hatch."
 
-	para "<PLAY_G>, you're"
+	para "<PLAYER>, you're"
 	line "the only person"
 	cont "we can rely on."
 
@@ -153,7 +153,7 @@ VioletPokecenterElmsAideRefuseText:
 	done
 
 VioletPokecenterElmsAideAskEggText:
-	text "<PLAY_G>, will you"
+	text "<PLAYER>, will you"
 	line "take the EGG?"
 	done
 

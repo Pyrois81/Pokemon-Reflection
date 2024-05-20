@@ -61,12 +61,14 @@ CherrygroveMartYoungsterText:
 	para "bug #MON poi-"
 	line "soned my #MON!"
 
-	para "I just kept going,"
-	line "but then my"
-	cont "#MON fainted."
+	para "It stayed sick for"
+	line "a while…"
 
-	para "You should keep an"
-	line "ANTIDOTE with you."
+	para "You should keep"
+	line "some ANTIDOTEs"
+
+	para "handy just in"
+	line "case."
 	done
 
 CherrygroveMart_MapEvents:

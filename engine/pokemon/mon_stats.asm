@@ -86,7 +86,14 @@ PrintTempMonStats:
 ; Print wTempMon's stats at hl, with spacing bc.
 	push bc
 	push hl
-	ld de, .StatNames
+	ld de, PrintTempMonStatNames
+	jr PrintTempMonStatsPlaceString
+PrintTempMonStatsShort:
+	push bc
+	push hl
+	ld de, PrintTempMonShortStatNames
+	; fallthrough
+PrintTempMonStatsPlaceString:
 	call PlaceString
 	pop hl
 	pop bc
@@ -113,13 +120,118 @@ PrintTempMonStats:
 	add hl, de
 	ret
 
-.StatNames:
+PrintTempMonStatNames:
 	db   "ATTACK"
 	next "DEFENSE"
 	next "SPCL.ATK"
 	next "SPCL.DEF"
 	next "SPEED"
 	next "@"
+
+PrintTempMonShortStatNames:
+	db	 "Attack"
+	next "Defense"
+	next "S. Atk"
+	next "S. Def"
+	next "Speed"
+	next "@"
+
+PrintTempMonDVs:
+	; Print wTempMon's DVs at hl, with spacing bc.
+	push bc
+	push hl
+	ld de, PrintDVStatsString
+	call PlaceString
+	pop hl
+	pop bc
+	add hl, bc
+	push hl
+	ld de, PrintDVsTextString
+	call PlaceString
+	pop hl
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+
+	; build HP DV
+	push hl
+	ld hl, wTempMonDVs
+	ld a, [hl]
+	swap a
+	and 1
+	add a
+	add a
+	add a
+	ld b, a
+	ld a, [hli]
+	and 1
+	add a
+	add a
+	add b
+	ld b, a
+	ld a, [hl]
+	swap a
+	and 1
+	add a
+	add b
+	ld b, a
+	ld a, [hl]
+	and 1
+	add b ; HP DV in a
+	pop hl
+	lb bc, 1, 2
+	call .PrintDV
+
+	ld de, wTempMonDVs
+	ld a, [de]
+	swap a
+	and $F ; get Atk DV
+	call .PrintDV
+	
+	ld de, wTempMonDVs
+	ld a, [de]
+	and $F ; get Def DV
+	call .PrintDV
+
+	ld de, wTempMonDVs + 1
+	ld a, [de]
+	swap a
+	and $F ; get Spd DV
+	call .PrintDV
+	
+	ld de, wTempMonDVs + 1
+	ld a, [de]
+	and $F ; get Spcl DV
+	;fallthrough
+	
+.PrintDV:
+	push hl
+	ld de, wStringBuffer4
+	ld [de], a
+	push de
+	call PrintNum
+	pop de
+	ld a, [de]
+	cp $C
+	jr c, .PrintDVDone
+	ld [hl], "⁂" ; 3 stars
+	;fallthrough
+	
+.PrintDVDone
+	pop hl
+	ld de, SCREEN_WIDTH * 2
+	add hl, de
+	ret
+
+PrintDVStatsString:
+	db   "<LF>HP"
+	next "Atk"
+	next "Def"
+	next "Spd"
+	next "Spcl"
+	next "@"
+	
+PrintDVsTextString:
+	db "DV@"
 
 GetGender:
 ; Return the gender of a given monster (wCurPartyMon/wCurOTMon/wCurWildMon).

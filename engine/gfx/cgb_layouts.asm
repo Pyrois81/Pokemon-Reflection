@@ -213,7 +213,7 @@ _CGB_StatsScreenHPPals:
 	call LoadPalette_White_Col1_Col2_Black ; exp palette
 	ld hl, StatsScreenPagePals
 	ld de, wBGPals1 palette 3
-	ld bc, 3 palettes ; pink, green, and blue page palettes
+	ld bc, 4 palettes ; purple, blue, green, and yellow page palettes
 	ld a, BANK(wBGPals1)
 	call FarCopyWRAM
 	call WipeAttrmap
@@ -223,26 +223,40 @@ _CGB_StatsScreenHPPals:
 	ld a, $1 ; mon palette
 	call FillBoxCGB
 
-	hlcoord 10, 16, wAttrmap
-	ld bc, 10
+	; make the area where EXP bars will be drawn use the EXP palette
+	push de
+	ld e, 9 ; row counter
+	hlcoord 11, 9, wAttrmap
 	ld a, $2 ; exp palette
+.exp_palette_loop
+	ld bc, 8
 	call ByteFill
+	ld bc, SCREEN_WIDTH - 8
+	add hl, bc
+	dec e
+	jr nz, .exp_palette_loop
+	pop de
+
+	hlcoord 11, 5, wAttrmap
+	lb bc, 2, 2
+	ld a, $3 ; purple page palette
+	call FillBoxCGB
 
 	hlcoord 13, 5, wAttrmap
 	lb bc, 2, 2
-	ld a, $3 ; pink page palette
+	ld a, $4 ; blue page palette
 	call FillBoxCGB
 
 	hlcoord 15, 5, wAttrmap
 	lb bc, 2, 2
-	ld a, $4 ; green page palette
+	ld a, $5 ; green page palette
 	call FillBoxCGB
 
 	hlcoord 17, 5, wAttrmap
 	lb bc, 2, 2
-	ld a, $5 ; blue page palette
+	ld a, $6 ; yellow page palette
 	call FillBoxCGB
-
+	
 	call ApplyAttrmap
 	call ApplyPals
 	ld a, TRUE

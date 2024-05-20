@@ -171,12 +171,7 @@ _BootedHMText::
 	prompt
 
 _ContainedMoveText::
-	text "It contained"
-	line "@"
-	text_ram wStringBuffer2
-	text "."
-
-	para "Teach @"
+	text "Teach @"
 	text_ram wStringBuffer2
 	text_start
 	line "to a #MON?"
@@ -687,8 +682,9 @@ _YouCantUseItInABattleText::
 	prompt
 
 _AreYouABoyOrAreYouAGirlText::
-	text "Are you a boy?"
-	line "Or are you a girl?"
+	text "Would you like to"
+	line "play as a boy or"
+	cont "a girl?"
 	done
 
 Text_BattleEffectActivate::
@@ -1524,22 +1520,26 @@ _MayRegisterItemText::
 	done
 
 _OakText1::
-	text "Hello! Sorry to"
-	line "keep you waiting!"
-
-	para "Welcome to the"
-	line "world of #MON!"
+	text "So good to see"
+	line "you!"
 
 	para "My name is OAK."
 
-	para "People call me the"
-	line "#MON PROF."
+	para "Some people call"
+	line "me the #MON"
+	cont "PROFESSOR."
+	
+	para "…I'm rather fond"
+	line "of that title"
+	cont "myself!"
 	prompt
 
 _OakText2::
-	text "This world is in-"
-	line "habited by crea-"
-	cont "tures that we call"
+	text "As you know, we"
+	line "coinhabit this"
+	
+	para "world with crea-"
+	line "tures called"
 	cont "#MON.@"
 	text_end
 
@@ -1550,28 +1550,23 @@ _OakText3::
 	text_end ; unreferenced
 
 _OakText4::
-	text "People and #MON"
-	line "live together by"
-
-	para "supporting each"
-	line "other."
-
-	para "Some people play"
-	line "with #MON, some"
-	cont "battle with them."
+	text "Some people love"
+	line "their #MON like"
+	
+	para "family, while"
+	line "others use them as"
+	
+	para "tools to nefarious"
+	line "ends."
 	prompt
 
 _OakText5::
-	text "But we don't know"
-	line "everything about"
-	cont "#MON yet."
-
-	para "There are still"
-	line "many mysteries to"
-	cont "solve."
-
-	para "That's why I study"
-	line "#MON every day."
+	text "It's important to"
+	line "learn all we can"
+	
+	para "about #MON, and"
+	line "that's why I study"
+	cont "them every day!"
 	prompt
 
 _CantDepositText::

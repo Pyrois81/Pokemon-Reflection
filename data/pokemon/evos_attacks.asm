@@ -1287,6 +1287,7 @@ SeelEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, HEADBUTT
 	db 5, GROWL
+	db 11, WATER_GUN
 	db 16, AURORA_BEAM
 	db 21, REST
 	db 27, SIGNAL_BEAM
@@ -1301,6 +1302,7 @@ DewgongEvosAttacks:
 	db 1, GROWL
 	db 1, AURORA_BEAM
 	db 5, GROWL
+	db 11, WATER_GUN
 	db 16, AURORA_BEAM
 	db 21, REST
 	db 27, SIGNAL_BEAM
@@ -2779,9 +2781,10 @@ HoppipEvosAttacks:
 	db EVOLVE_LEVEL, 18, SKIPLOOM
 	db 0 ; no more evolutions
 	db 1, SPLASH
-	db 5, SYNTHESIS
+	db 3, TACKLE
 	db 5, LEER
-	db 10, TACKLE
+	db 6, ABSORB
+	db 10, SYNTHESIS
 	db 13, POISONPOWDER
 	db 15, STUN_SPORE
 	db 17, SLEEP_POWDER
@@ -2798,9 +2801,10 @@ SkiploomEvosAttacks:
 	db 1, SYNTHESIS
 	db 1, LEER
 	db 1, TACKLE
-	db 5, SYNTHESIS
+	db 3, TACKLE
 	db 5, LEER
-	db 10, TACKLE
+	db 6, ABSORB
+	db 10, SYNTHESIS
 	db 13, POISONPOWDER
 	db 15, STUN_SPORE
 	db 17, SLEEP_POWDER
@@ -2816,9 +2820,10 @@ JumpluffEvosAttacks:
 	db 1, SYNTHESIS
 	db 1, LEER
 	db 1, TACKLE
-	db 5, SYNTHESIS
+	db 3, TACKLE
 	db 5, LEER
-	db 10, TACKLE
+	db 6, ABSORB
+	db 10, SYNTHESIS
 	db 13, POISONPOWDER
 	db 15, STUN_SPORE
 	db 17, SLEEP_POWDER
@@ -3174,7 +3179,8 @@ SneaselEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SCRATCH
 	db 1, LEER
-	db 9, QUICK_ATTACK
+	db 7, QUICK_ATTACK
+	db 10, POWDER_SNOW
 	db 17, SCREECH
 	db 25, FAINT_ATTACK
 	db 33, FURY_SWIPES

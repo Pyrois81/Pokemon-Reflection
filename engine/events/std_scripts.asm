@@ -461,6 +461,7 @@ BugContestResults_CopyContestantsToResults:
 	end
 
 InitializeEventsScript:
+	setevent EVENT_ETHAN_IN_NEW_BARK
 	setevent EVENT_EARLS_ACADEMY_EARL
 	setevent EVENT_ILEX_FOREST_APPRENTICE
 	setevent EVENT_ILEX_FOREST_FARFETCHD

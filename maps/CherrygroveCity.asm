@@ -36,48 +36,21 @@ CherrygroveSilverSceneNorth:
 	writetext CherrygroveRivalText_Seen
 	waitbutton
 	closetext
-	checkevent EVENT_GOT_POLIWAG_FROM_ELM
-	iftrue .Poliwag
-	checkevent EVENT_GOT_ODDISH_FROM_ELM
-	iftrue .Oddish
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
 	setlasttalked CHERRYGROVECITY_SILVER
-	loadtrainer RIVAL1, RIVAL1_1_POLIWAG
+	loadtrainer RIVAL1, RIVAL1_1
 	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic
 	reloadmap
-	iftrue .AfterVictorious
-	sjump .AfterYourDefeat
-
-.Poliwag:
-	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
-	setlasttalked CHERRYGROVECITY_SILVER
-	loadtrainer RIVAL1, RIVAL1_1_ODDISH
-	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
-	startbattle
-	dontrestartmapmusic
-	reloadmap
-	iftrue .AfterVictorious
-	sjump .AfterYourDefeat
-
-.Oddish:
-	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
-	setlasttalked CHERRYGROVECITY_SILVER
-	loadtrainer RIVAL1, RIVAL1_1_VULPIX
-	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
-	startbattle
-	dontrestartmapmusic
-	reloadmap
-	iftrue .AfterVictorious
-	sjump .AfterYourDefeat
+	readvar VAR_BATTLERESULT
+	iftrue .AfterYourDefeat
 
 .AfterVictorious:
 	playmusic MUSIC_RIVAL_AFTER
 	opentext
 	writetext CherrygroveRivalText_YouWon
 	waitbutton
-	closetext
 	sjump .FinishRival
 
 .AfterYourDefeat:
@@ -85,8 +58,13 @@ CherrygroveSilverSceneNorth:
 	opentext
 	writetext CherrygroveRivalText_YouLost
 	waitbutton
-	closetext
 .FinishRival:
+	writetext CherrygroveRivalText_Name
+	promptbutton
+	closetext
+	special NameRival
+	reloadmappart
+	pause 20
 	playsound SFX_TACKLE
 	applymovement PLAYER, CherrygroveCity_RivalPushesYouOutOfTheWay
 	turnobject PLAYER, LEFT
@@ -158,7 +136,7 @@ CherrygroveRivalText_Seen:
 	text "<……> <……> <……>"
 
 	para "You got a #MON"
-	line "from PROF.ELM."
+	line "from PROF.ELM?"
 	
 	para "Unbelievable."
 	
@@ -168,12 +146,16 @@ CherrygroveRivalText_Seen:
 	para "giving them away"
 	line "like candy."
 	
-	para "Whatever. He gave"
-	line "me one too. You're"
+	para "Whatever. I just"
+	line "went in there and"
+	cont "grabbed one."
 	
-	para "not special, kid."
+	para "Sometimes you've"
+	line "just got to take"
+	cont "what you want…"
 	
-	para "I'll prove it!"
+	para "And I want to beat"
+	line "you into the dirt!"
 	done
 
 SilverCherrygroveWinText:
@@ -184,8 +166,8 @@ SilverCherrygroveWinText:
 CherrygroveRivalText_YouLost:
 	text "<……> <……> <……>"
 
-	para "My name's ???."
-
+	para "As expected."
+	
 	para "I'm going to be"
 	line "the world's"
 	
@@ -202,14 +184,29 @@ SilverCherrygroveLossText:
 CherrygroveRivalText_YouWon:
 	text "<……> <……> <……>"
 
-	para "My name's ???."
-
+	para "Like I care."
+	
 	para "I'm going to be"
 	line "the world's"
 	
 	para "greatest #MON"
 	line "trainer, so you'd"	
 	cont "better watch out!"
+	done
+
+CherrygroveRivalText_Name:
+	text "You want to know"
+	line "my name?"
+	
+	para "I'm not telling"
+	line "you that."
+	
+	para "You can call me"
+	line "whatever you want"
+	
+	para "while you try to"
+	line "follow in my"
+	cont "footsteps."
 	done
 
 CherrygroveYoungsterText:

@@ -1,7 +1,8 @@
-	const_def 1
-	const PINK_PAGE  ; 1
-	const GREEN_PAGE ; 2
-	const BLUE_PAGE  ; 3
+	const_def
+	const PURPLE_PAGE ; 0
+	const BLUE_PAGE   ; 1
+	const GREEN_PAGE  ; 2
+	const YELLOW_PAGE ; 3
 NUM_STAT_PAGES EQU const_value - 1
 
 STAT_PAGE_MASK EQU %00000011
@@ -29,7 +30,7 @@ StatsScreenInit_gotaddress:
 	push af
 	xor a
 	ldh [hMapAnims], a ; disable overworld tile animations
-	ld a, [wBoxAlignment] ; whether sprite is to be mirrorred
+	ld a, [wBoxAlignment] ; whether sprite is to be mirrored
 	push af
 	ld a, [wJumptableIndex]
 	ld b, a
@@ -60,14 +61,17 @@ StatsScreenInit_gotaddress:
 	ret
 
 StatsScreenMain:
+	ld a, [wStatsScreenFlags]
+	maskbits NUM_STAT_PAGES
+	cp BLUE_PAGE
+	jr z, .returning_from_moves_screen
 	xor a
 	ld [wJumptableIndex], a
-; ???
-	ld [wStatsScreenFlags], a
-	ld a, [wStatsScreenFlags]
-	and $ff ^ STAT_PAGE_MASK
-	or PINK_PAGE ; first_page
-	ld [wStatsScreenFlags], a
+	ld [wStatsScreenFlags], a ; PURPLE_PAGE
+	jr .loop
+.returning_from_moves_screen
+	xor a
+	ld [wJumptableIndex], a
 .loop
 	ld a, [wJumptableIndex]
 	and $ff ^ (1 << 7)
@@ -76,18 +80,37 @@ StatsScreenMain:
 	call StatsScreen_WaitAnim
 	ld a, [wJumptableIndex]
 	bit 7, a
-	jr z, .loop
-	ret
-
+	ret nz
+	ld a, [wStatsScreenFlags]
+	maskbits NUM_STAT_PAGES
+	cp BLUE_PAGE
+	jr nz, .loop
+	; blink [SEL] text on blue page
+	; need to set hBGMapMode so we can draw to the screen again
+	ld a, 1
+	ldh [hBGMapMode], a
+	hlcoord 15, 17
+	ld de, .SelTextString
+	ldh a, [hVBlankCounter]
+	and %00100000 ; changes every 32 frames
+	jr z, .blank_text
+	call PlaceString
+	jr .loop
+.blank_text
+	ld de, .BlankTextString
+	call PlaceString
+	jr .loop
+	
+.SelTextString:
+	db "[SEL]@"
+	
+.BlankTextString:
+	db "     @"
+	
 StatsScreenMobile:
 	xor a
 	ld [wJumptableIndex], a
-; ???
-	ld [wStatsScreenFlags], a
-	ld a, [wStatsScreenFlags]
-	and $ff ^ STAT_PAGE_MASK
-	or PINK_PAGE ; first_page
-	ld [wStatsScreenFlags], a
+	ld [wStatsScreenFlags], a ; PURPLE_PAGE
 .loop
 	farcall Mobile_SetOverworldDelay
 	ld a, [wJumptableIndex]
@@ -231,6 +254,7 @@ if DEF(_DEBUG)
 endc
 
 StatsScreen_LoadPage:
+	call ClearSprites
 	call StatsScreen_LoadGFX
 	ld hl, wStatsScreenFlags
 	res 4, [hl]
@@ -247,7 +271,7 @@ MonStatsJoypad:
 	ret
 
 .next
-	and D_DOWN | D_UP | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON
+	and D_DOWN | D_UP | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON | SELECT
 	jp StatsScreen_JoypadAction
 
 StatsScreenWaitCry:
@@ -330,7 +354,17 @@ StatsScreen_JoypadAction:
 	jr nz, .d_up
 	bit D_DOWN_F, a
 	jr nz, .d_down
+	bit SELECT_F, a
+	jr nz, .select
 	jr .done
+
+.select
+	ld a, c
+	cp BLUE_PAGE
+	jr nz, .done
+	ld h, 7
+	call StatsScreen_SetJumptableIndex
+	predef ManagePokemonMoves
 
 .d_down
 	ld a, [wMonType]
@@ -373,20 +407,22 @@ StatsScreen_JoypadAction:
 
 .a_button
 	ld a, c
-	cp BLUE_PAGE ; last page
+	cp YELLOW_PAGE ; last page
 	jr z, .b_button
 .d_right
 	inc c
-	ld a, BLUE_PAGE ; last page
+	ld a, YELLOW_PAGE ; last page
 	cp c
 	jr nc, .set_page
-	ld c, PINK_PAGE ; first page
+	ld c, PURPLE_PAGE ; first page
 	jr .set_page
 
 .d_left
+	ld a, c
 	dec c
+	and a ; are we on PURPLE_PAGE?
 	jr nz, .set_page
-	ld c, BLUE_PAGE ; last page
+	ld c, YELLOW_PAGE ; last page
 	jr .set_page
 
 .done
@@ -407,6 +443,8 @@ StatsScreen_JoypadAction:
 	ret
 
 .b_button
+	xor a
+	ld [wStatsScreenFlags], a
 	ld h, 7
 	call StatsScreen_SetJumptableIndex
 	ret
@@ -499,7 +537,7 @@ StatsScreen_PlaceVerticalDivider: ; unreferenced
 StatsScreen_PlaceHorizontalDivider:
 	hlcoord 0, 7
 	ld b, SCREEN_WIDTH
-	ld a, $62 ; horizontal divider (empty HP/exp bar)
+	ld a, $62 ; horizontal divider (empty EXP bar)
 .loop
 	ld [hli], a
 	dec b
@@ -507,7 +545,7 @@ StatsScreen_PlaceHorizontalDivider:
 	ret
 
 StatsScreen_PlacePageSwitchArrows:
-	hlcoord 12, 6
+	hlcoord 10, 6
 	ld [hl], "◀"
 	hlcoord 19, 6
 	ld [hl], "▶"
@@ -518,7 +556,7 @@ StatsScreen_PlaceShinyIcon:
 	farcall CheckShininess
 	ret nc
 	hlcoord 19, 0
-	ld [hl], "⁂"
+	ld [hl], "⁂" ; 3 stars
 	ret
 
 StatsScreen_LoadGFX:
@@ -563,18 +601,18 @@ StatsScreen_LoadGFX:
 .PageTilemap:
 	ld a, [wStatsScreenFlags]
 	maskbits NUM_STAT_PAGES
-	dec a
 	ld hl, .Jumptable
 	rst JumpTable
 	ret
 
 .Jumptable:
 ; entries correspond to *_PAGE constants
-	dw LoadPinkPage
-	dw LoadGreenPage
+	dw LoadPurplePage
 	dw LoadBluePage
+	dw LoadGreenPage
+	dw LoadYellowPage
 
-LoadPinkPage:
+LoadPurplePage: ; status and EXP
 	hlcoord 0, 9
 	ld b, $0
 	predef DrawPlayerHP
@@ -614,6 +652,7 @@ LoadPinkPage:
 .done_status
 	hlcoord 1, 15
 	predef PrintMonTypes
+	
 	hlcoord 9, 8
 	ld de, SCREEN_WIDTH
 	ld b, 10
@@ -623,26 +662,30 @@ LoadPinkPage:
 	add hl, de
 	dec b
 	jr nz, .vertical_divider
+	
 	ld de, .ExpPointStr
 	hlcoord 10, 9
 	call PlaceString
-	hlcoord 17, 14
-	call .PrintNextLevel
-	hlcoord 13, 10
+	hlcoord 12, 10
 	lb bc, 3, 7
 	ld de, wTempMonExp
 	call PrintNum
+	
+
+	ld de, .LevelUpStr
+	hlcoord 11, 12
+	call PlaceString
+	ld de, .ToStr
+	hlcoord 12, 13
+	call PlaceString
+	hlcoord 15, 13
+	call .PrintNextLevel
 	call .CalcExpToNextLevel
-	hlcoord 13, 13
+	hlcoord 12, 14
 	lb bc, 3, 7
 	ld de, wExpToNextLevel
 	call PrintNum
-	ld de, .LevelUpStr
-	hlcoord 10, 12
-	call PlaceString
-	ld de, .ToStr
-	hlcoord 14, 14
-	call PlaceString
+
 	hlcoord 11, 16
 	ld a, [wTempMonLevel]
 	ld b, a
@@ -698,46 +741,67 @@ LoadPinkPage:
 	ret
 
 .Status_Type:
-	db   "STATUS/"
-	next "TYPE/@"
+	db   "Status/"
+	next "Type/@"
 
 .OK_str:
 	db "OK @"
 
 .ExpPointStr:
-	db "EXP POINTS@"
+	db "Total EXP@"
 
 .LevelUpStr:
-	db "LEVEL UP@"
+	db "Level up@"
 
 .ToStr:
-	db "TO@"
+	db "to    :@"
 
 .PkrsStr:
-	db "#RUS@"
+	db "#rus@"
 
-LoadGreenPage:
-	ld de, .Item
-	hlcoord 0, 8
-	call PlaceString
-	call .GetItemName
-	hlcoord 8, 8
-	call PlaceString
-	ld de, .Move
-	hlcoord 0, 10
-	call PlaceString
+LoadBluePage: ; moves and item
 	ld hl, wTempMonMoves
 	ld de, wListMoves_MoveIndicesBuffer
 	ld bc, NUM_MOVES
 	call CopyBytes
-	hlcoord 8, 10
+	hlcoord 1, 8
 	ld a, SCREEN_WIDTH * 2
 	ld [wListMovesLineSpacing], a
 	predef ListMoves
-	hlcoord 12, 11
+	hlcoord 11, 9
 	ld a, SCREEN_WIDTH * 2
 	ld [wListMovesLineSpacing], a
 	predef ListMovePP
+
+	hlcoord 0, 16
+	ld b, SCREEN_WIDTH - 6
+	ld a, $7A ; current Frame horizontal piece
+.horizontal_divider_loop
+	ld [hli], a
+	dec b
+	jr nz, .horizontal_divider_loop
+	ld a, $7B ; current Frame top-right corner
+	ld [hl], a
+	ld de, SCREEN_WIDTH
+	add hl, de
+	ld a, $7C ; current Frame vertical piece
+	ld [hl], a
+
+	; Load item box into wVirtualOAMSprite00
+	; YCoord, XCoord, TileID, Attributes
+	ld hl, wVirtualOAMSprite00YCoord
+	ld a, 19 * TILE_WIDTH - 1
+	ld [hli], a
+	ld a, 1 * TILE_WIDTH + 1
+	ld [hli], a
+	ld a, $09 ; item box icon
+	ld [hli], a
+	ld a, PAL_OW_RED | OBP_NUM
+	ld [hl], a
+	
+	call .GetItemName
+	hlcoord 2, 17
+	call PlaceString
 	ret
 
 .GetItemName:
@@ -752,17 +816,101 @@ LoadGreenPage:
 	call GetItemName
 	ret
 
-.Item:
-	db "ITEM@"
-
 .ThreeDashes:
 	db "---@"
 
-.Move:
-	db "MOVE@"
+LoadGreenPage: ; Stats and stat EXP
+	; print 8-column stats
+	hlcoord 1, 8
+	ld bc, 3
+	predef PrintTempMonStatsShort
+	hlcoord 8, 8
+	ld de, SCREEN_WIDTH
+	ld b, 10
+	ld a, $31 ; vertical divider
+	call .vertical_divider
+	
+	; print Stat EXP labels
+	hlcoord 9, 9
+	ld de, StatEXPLabel
+	call PlaceString
+	hlcoord 11, 8
+	ld de, StatEXPStatLabels
+	call PlaceString
+	
+	; print left bar ends
+	ld a, $40 ; left exp bar end cap
+	hlcoord 10, 9
+	ld [hl], a
+	hlcoord 10, 11
+	ld [hl], a
+	hlcoord 10, 13
+	ld [hl], a
+	hlcoord 10, 15
+	ld [hl], a
+	hlcoord 10, 17
+	ld [hl], a
 
-LoadBluePage:
+	; print right bar ends
+	ld a, $41 ; right exp bar end cap
+	hlcoord 19, 9
+	ld [hl], a
+	hlcoord 19, 11
+	ld [hl], a
+	hlcoord 19, 13
+	ld [hl], a
+	hlcoord 19, 15
+	ld [hl], a
+	hlcoord 19, 17
+	ld [hl], a
+	
+	; draw the five bars
+	hlcoord 11, 9
+	ld de, wTempMonHPExp
+	call FillInStatExpBar
+	hlcoord 11, 11
+	ld de, wTempMonAtkExp
+	call FillInStatExpBar
+	hlcoord 11, 13
+	ld de, wTempMonDefExp
+	call FillInStatExpBar
+	hlcoord 11, 15
+	ld de, wTempMonSpcExp
+	call FillInStatExpBar
+	hlcoord 11, 17
+	ld de, wTempMonSpdExp
+	call FillInStatExpBar	
+	ret
+	
+.vertical_divider
+	ld [hl], a
+	add hl, de
+	dec b
+	jr nz, .vertical_divider
+	ret
+
+StatEXPLabel:
+	db "S<LF>t<LF>a<LF>t<LF><LF>E<LF>X<LF>P@"
+
+StatEXPStatLabels:
+	db	 "      HP"
+	next "  Attack"
+	next " Defense"
+	next " Special"
+	next "   Speed"
+	next "@"
+
+LoadYellowPage: ; ID, OT, happiness, and DVs
 	call .PlaceOTInfo
+	
+	ld de, HappinessString
+	hlcoord 1, 15
+	call PlaceString
+	hlcoord 3, 16
+	lb bc, PRINTNUM_LEFTALIGN | 1, 3
+	ld de, wTempMonHappiness
+	call PrintNum
+
 	hlcoord 10, 8
 	ld de, SCREEN_WIDTH
 	ld b, 10
@@ -772,19 +920,23 @@ LoadBluePage:
 	add hl, de
 	dec b
 	jr nz, .vertical_divider
+	
+	; print 9-column DVs
 	hlcoord 11, 8
 	ld bc, 6
-	predef PrintTempMonStats
-	ret
-
+	predef PrintTempMonDVs
+	hlcoord 19, 9
+	ld [hl], " " ; overwrite HP DV stars with blank space
+	ret 
+	
 .PlaceOTInfo:
 	ld de, IDNoString
-	hlcoord 0, 9
+	hlcoord 1, 9
 	call PlaceString
 	ld de, OTString
-	hlcoord 0, 12
+	hlcoord 1, 12
 	call PlaceString
-	hlcoord 2, 10
+	hlcoord 3, 10
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	ld de, wTempMonID
 	call PrintNum
@@ -792,7 +944,7 @@ LoadBluePage:
 	call GetNicknamenamePointer
 	call CopyNickname
 	farcall CorrectNickErrors
-	hlcoord 2, 13
+	hlcoord 3, 13
 	call PlaceString
 	ld a, [wTempMonCaughtGender]
 	and a
@@ -804,7 +956,7 @@ LoadBluePage:
 	jr z, .got_gender
 	ld a, "♀"
 .got_gender
-	hlcoord 9, 13
+	hlcoord 1, 13
 	ld [hl], a
 .done
 	ret
@@ -813,13 +965,83 @@ LoadBluePage:
 	dw wPartyMonOTs
 	dw wOTPartyMonOTs
 	dw sBoxMonOTs
-	dw wBufferMonOT
+	dw wBufferMonOT	
 
 IDNoString:
 	db "<ID>№.@"
 
 OTString:
 	db "OT/@"
+
+HappinessString:
+	db "Happiness@"
+
+DVTrainCountString:
+	db "Times DV<LF> trained@"
+
+OutOf3String:
+	db "/3@"
+
+FillInStatExpBar:
+	push hl
+	call CalcStatExpBar
+	pop hl
+	ld de, 7
+	add hl, de
+	jp PlaceStatExpBar
+	
+CalcStatExpBar:
+	; Calculate 64ths of stat EXP compared to max ($FFFF) to determine length of bar
+	; In: Stat EXP address in de
+	; Out: 64ths of max in b
+	ld a, [de]
+	cp $FF
+	jr nz, .not_max
+	inc de
+	ld a, [de]
+	cp $FF
+	dec de ; make sure we return to the high byte
+	jr nz, .not_max
+	ld b, $40 ; if stat EXP = $FFFF then draw the full bar
+	ret
+.not_max ; dividing by 65536 then multiplying by 64 (pixels) is the same as dividing by 1024
+	; 8 shifts would move the entire high byte into the low byte, and 2 more makes x/2^10, so just srl high byte twice
+	ld a, [de]
+	srl a
+	srl a
+	ld b, a
+	ret
+
+PlaceStatExpBar:
+	ld c, $8 ; number of tiles in the bar
+.loop1
+	ld a, b
+	sub $8
+	jr c, .next
+	ld b, a
+	ld a, $6a ; full bar
+	ld [hld], a
+	dec c
+	jr z, .finish
+	jr .loop1
+
+.next
+	add $8
+	jr z, .loop2
+	add $54 ; tile to the left of small exp bar tile
+	jr .skip
+
+.loop2
+	ld a, $62 ; empty bar
+
+.skip
+	ld [hld], a
+	ld a, $62 ; empty bar
+	dec c
+	jr nz, .loop2
+
+.finish
+	ret
 
 StatsScreen_PlaceFrontpic:
 	ld hl, wTempMonDVs
@@ -1104,8 +1326,11 @@ StatsScreen_AnimateEgg:
 	ret
 
 StatsScreen_LoadPageIndicators:
-	hlcoord 13, 5
+	hlcoord 11, 5
 	ld a, $36 ; first of 4 small square tiles
+	call .load_square
+	hlcoord 13, 5
+	ld a, $36 ; " " " "
 	call .load_square
 	hlcoord 15, 5
 	ld a, $36 ; " " " "
@@ -1114,13 +1339,19 @@ StatsScreen_LoadPageIndicators:
 	ld a, $36 ; " " " "
 	call .load_square
 	ld a, c
+	cp PURPLE_PAGE
+	hlcoord 11, 5
+	jr z, .load_highlighted_square
+	cp BLUE_PAGE
+	hlcoord 13, 5
+	jr z, .load_highlighted_square
 	cp GREEN_PAGE
+	hlcoord 15, 5
+	jr z, .load_highlighted_square
+	; must be YELLOW_PAGE
+	hlcoord 17, 5
+.load_highlighted_square
 	ld a, $3a ; first of 4 large square tiles
-	hlcoord 13, 5 ; PINK_PAGE (< GREEN_PAGE)
-	jr c, .load_square
-	hlcoord 15, 5 ; GREEN_PAGE (= GREEN_PAGE)
-	jr z, .load_square
-	hlcoord 17, 5 ; BLUE_PAGE (> GREEN_PAGE)
 .load_square
 	push bc
 	ld [hli], a

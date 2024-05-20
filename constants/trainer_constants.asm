@@ -53,9 +53,7 @@ KRIS EQU __trainer_class__
 	const CLAIR1
 
 	trainerclass RIVAL1 ; 9
-	const RIVAL1_1_ODDISH ; Cherrygrove City
-	const RIVAL1_1_VULPIX
-	const RIVAL1_1_POLIWAG
+	const RIVAL1_1 ; Cherrygrove City
 	const RIVAL1_2_ODDISH
 	const RIVAL1_2_VULPIX
 	const RIVAL1_2_POLIWAG
@@ -354,7 +352,7 @@ KRIS EQU __trainer_class__
 	const KYLE
 	const HENRY
 	const MARVIN ; Route 43
-	const TULLY1 ; Route 42
+	const TULLY1 ; Route 42 (1st battle)
 	const ANDRE ; Lake of Rage
 	const RAYMOND ; Lake of Rage
 	const WILTON ; Route 44
@@ -365,12 +363,12 @@ KRIS EQU __trainer_class__
 	const BARNEY
 	const RALPH2
 	const RALPH3
-	const TULLY2
-	const TULLY3
+	const TULLY2 ; Route 42 (2nd battle)
+	const TULLY3 ; Route 42 (3rd battle)
 	const SCOTT
 	const RALPH4
 	const RALPH5
-	const TULLY4
+	const TULLY4 ; Route 42 (4th battle)
 
 	trainerclass SWIMMERM ; 26
 	const HAROLD
@@ -468,7 +466,7 @@ KRIS EQU __trainer_class__
 	const BENJAMIN ; Route 42
 	const ERIK ; Route 45
 	const MICHAEL ; Route 45
-	const PARRY1 ; Route 45
+	const PARRY1 ; Route 45 (2nd battle)
 	const TIMOTHY ; Route 45
 	const BAILEY ; Route 46
 	const ANTHONY3
@@ -478,8 +476,8 @@ KRIS EQU __trainer_class__
 	const KENNY
 	const JIM
 	const DANIEL
-	const PARRY2
-	const PARRY3
+	const PARRY2 ; Route 45 (3rd battle)
+	const PARRY3 ; Route 45 (1st battle)
 	const ANTHONY4
 	const ANTHONY5
 
@@ -566,11 +564,11 @@ KRIS EQU __trainer_class__
 	const HEIDI
 	const EDNA
 	const GINA3
-	const TIFFANY1 ; Route 43
-	const TIFFANY2
+	const TIFFANY1 ; Route 43 (2nd battle)
+	const TIFFANY2 ; Route 43 (3rd battle)
 	const ERIN2
 	const TANYA
-	const TIFFANY3
+	const TIFFANY3 ; Route 43 (1st battle)
 	const ERIN3
 	const LIZ4
 	const LIZ5

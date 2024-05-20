@@ -1,5 +1,5 @@
 ElmPhoneHealYourMonText:
-	text "Hello, <PLAY_G>?"
+	text "Hello, <PLAYER>?"
 
 	para "Try not to overdo"
 	line "it."
@@ -10,7 +10,7 @@ ElmPhoneHealYourMonText:
 	done
 
 ElmPhoneSawMrPokemonText:
-	text "Hello, <PLAY_G>?"
+	text "Hello, <PLAYER>?"
 
 	para "Did you meet MR."
 	line "#MON? Great!"
@@ -18,7 +18,7 @@ ElmPhoneSawMrPokemonText:
 	done
 
 ElmPhonePokemonStolenText:
-	text "<PLAY_G>? I'm very"
+	text "<PLAYER>? I'm very"
 	line "upset now."
 
 	para "We had a #MON"
@@ -29,7 +29,7 @@ ElmPhonePokemonStolenText:
 	done
 
 ElmPhoneAssistantText:
-	text "Hello, <PLAY_G>?"
+	text "Hello, <PLAYER>?"
 
 	para "Did you see my"
 	line "assistant? He's at"
@@ -39,7 +39,7 @@ ElmPhoneAssistantText:
 	done
 
 ElmPhoneHowIsTheEggText:
-	text "Hello, <PLAY_G>?"
+	text "Hello, <PLAYER>?"
 
 	para "How's the EGG? Has"
 	line "anything changed?"
@@ -49,7 +49,7 @@ ElmPhoneHowIsTheEggText:
 	done
 
 ElmPhoneEggHatchedText:
-	text "Hello, <PLAY_G>?"
+	text "Hello, <PLAYER>?"
 	line "How is the EGG?"
 
 	para "What? It hatched?"
@@ -61,7 +61,7 @@ ElmPhoneEggHatchedText:
 	done
 
 ElmPhoneDiscoveredHatchTimeText:
-	text "Hello, <PLAY_G>?"
+	text "Hello, <PLAYER>?"
 
 	para "I just made a new"
 	line "discovery."
@@ -74,7 +74,7 @@ ElmPhoneDiscoveredHatchTimeText:
 	done
 
 ElmPhoneInvestigatingEggMovesText:
-	text "Hello, <PLAY_G>?"
+	text "Hello, <PLAYER>?"
 
 	para "It's still a"
 	line "mystery what kinds"
@@ -87,7 +87,7 @@ ElmPhoneInvestigatingEggMovesText:
 	done
 
 ElmPhoneDiscoveredPokerusText:
-	text "Hello, <PLAY_G>?"
+	text "Hello, <PLAYER>?"
 
 	para "I discovered an"
 	line "odd thing."
@@ -120,7 +120,7 @@ ElmPhoneDiscoveredPokerusText:
 	done
 
 ElmPhoneDisasterText:
-	text "H-hello? <PLAY_G>?"
+	text "H-hello? <PLAYER>?"
 	line "It's a disaster!"
 
 	para "Uh, um, it's just"
@@ -134,7 +134,7 @@ ElmPhoneDisasterText:
 	done
 
 ElmPhoneEggAssistantText:
-	text "Hello, <PLAY_G>? We"
+	text "Hello, <PLAYER>? We"
 	line "discovered some-"
 
 	para "thing about the"
@@ -149,7 +149,7 @@ ElmPhoneEggAssistantText:
 	done
 
 ElmPhoneRadioTowerRocketTakeoverText:
-	text "<PLAY_G>, how are"
+	text "<PLAYER>, how are"
 	line "things going?"
 
 	para "I called because"
@@ -161,7 +161,7 @@ ElmPhoneRadioTowerRocketTakeoverText:
 	para "They were talking"
 	line "about TEAM ROCKET."
 
-	para "<PLAY_G>, do you"
+	para "<PLAYER>, do you"
 	line "know anything"
 	cont "about it?"
 
@@ -176,7 +176,7 @@ ElmPhoneRadioTowerRocketTakeoverText:
 	done
 
 ElmPhoneGiftText:
-	text "Hello, <PLAY_G>?"
+	text "Hello, <PLAYER>?"
 
 	para "I have something"
 	line "here for you."
@@ -188,7 +188,7 @@ ElmPhoneGiftText:
 	done
 
 ElmPhoneGotAholdOfSomethingNeatText:
-	text "Hello, <PLAY_G>?"
+	text "Hello, <PLAYER>?"
 	line "How's it going?"
 
 	para "I got ahold of"

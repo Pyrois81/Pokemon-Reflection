@@ -125,22 +125,6 @@ MrPokemonsHouse_OakScript:
 	clearevent EVENT_PLAYERS_NEIGHBORS_HOUSE_NEIGHBOR
 	setscene SCENE_FINISHED
 	setmapscene CHERRYGROVE_CITY, SCENE_CHERRYGROVECITY_MEET_RIVAL
-	setmapscene ELMS_LAB, SCENE_ELMSLAB_MEET_OFFICER
-	specialphonecall SPECIALCALL_ROBBED
-	clearevent EVENT_COP_IN_ELMS_LAB
-	checkevent EVENT_GOT_POLIWAG_FROM_ELM
-	iftrue .RivalTakesOddish
-	checkevent EVENT_GOT_ODDISH_FROM_ELM
-	iftrue .RivalTakesVulpix
-	setevent EVENT_POLIWAG_POKEBALL_IN_ELMS_LAB
-	end
-
-.RivalTakesOddish:
-	setevent EVENT_ODDISH_POKEBALL_IN_ELMS_LAB
-	end
-
-.RivalTakesVulpix:
-	setevent EVENT_VULPIX_POKEBALL_IN_ELMS_LAB
 	end
 
 MrPokemonsHouse_ForeignMagazines:
@@ -173,7 +157,7 @@ MrPokemonsHouse_OakExits:
 
 MrPokemonIntroText1:
 	text "Hello, hello! You"
-	line "must be <PLAY_G>."
+	line "must be <PLAYER>."
 
 	para "PROF.ELM said that"
 	line "you would visit."
@@ -265,7 +249,7 @@ MrPokemonText_AlwaysNewDiscoveries:
 
 MrPokemonsHouse_OakText1:
 	text "OAK: Aha! So"
-	line "you're <PLAY_G>!"
+	line "you're <PLAYER>!"
 
 	para "I'm OAK! A #MON"
 	line "researcher."
@@ -354,7 +338,7 @@ MrPokemonsHouse_OakText2:
 	line "GOLDENROD for my"
 	cont "usual radio show."
 
-	para "<PLAY_G>, I'm"
+	para "<PLAYER>, I'm"
 	line "looking forward"
 	
 	para "to seeing what"
@@ -369,7 +353,7 @@ MrPokemonText_GimmeTheScale:
 	para "That's rare! "
 	line "I, I want it…"
 
-	para "<PLAY_G>, would you"
+	para "<PLAYER>, would you"
 	line "care to trade it?"
 
 	para "I can offer this"

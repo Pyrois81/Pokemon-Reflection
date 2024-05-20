@@ -214,6 +214,7 @@ Route39_Blocks:
 	INCBIN "maps/Route39.blk"
 
 PlayersHouse1F_Blocks:
+EthansHouse1F_Blocks:
 	INCBIN "maps/PlayersHouse1F.blk"
 
 Route38EcruteakGate_Blocks:
@@ -701,6 +702,9 @@ SafariZoneMainOffice_Blocks:
 
 PlayersHouse2F_Blocks:
 	INCBIN "maps/PlayersHouse2F.blk"
+
+EthansHouse2F_Blocks:
+	INCBIN "maps/EthansHouse2F.blk"
 
 SaffronMagnetTrainStation_Blocks:
 	INCBIN "maps/SaffronMagnetTrainStation.blk"

@@ -168,6 +168,9 @@ TrainerHikerBailey:
 
 Route46Sign:
 	jumptext Route46SignText
+	
+Route46TrainerTips:
+	jumptext Route46TrainerTipsText
 
 Route46GreatBall:
 	itemball GREAT_BALL
@@ -261,6 +264,23 @@ Route46SignText:
 	line "MOUNTAIN RD. AHEAD"
 	done
 
+Route46TrainerTipsText:
+	text "TRAINER TIPS"
+	
+	para "Every #MON who"
+	line "participates in a"
+	
+	para "battle will re-"
+	line "ceive full EXP"
+	
+	para "points, so don't"
+	line "hesitate to switch"
+	
+	para "out if you've got"
+	line "a strategic ad-"
+	cont "vantage!"
+	done
+
 Route46_MapEvents:
 	db 0, 0 ; filler
 
@@ -272,6 +292,7 @@ Route46_MapEvents:
 
 	def_bg_events
 	bg_event  7, 29, BGEVENT_READ, Route46Sign
+	bg_event 11, 17, BGEVENT_READ, Route46TrainerTips
 	bg_event  5, 18, BGEVENT_ITEM, Route46HiddenMaxRevive
 
 	def_object_events

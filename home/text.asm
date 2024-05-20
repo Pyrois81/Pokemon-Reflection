@@ -241,7 +241,7 @@ ENDM
 	dict "<TARGET>",  PlaceMoveTargetsName
 	dict "<USER>",    PlaceMoveUsersName
 	dict "<ENEMY>",   PlaceEnemysName
-	dict "<PLAY_G>",  PlaceGenderedPlayerName
+	dict "<PLAYER>",  PlaceGenderedPlayerName
 	dict "ﾟ",         .place ; should be .diacritic
 	dict "ﾞ",         .place ; should be .diacritic
 	jr .not_diacritic

@@ -3809,10 +3809,8 @@ TryToRunAwayFromBattle:
 	ld de, SFX_RUN
 	call WaitPlaySFX
 	pop de
-	call WaitSFX
 	ld hl, BattleText_GotAwaySafely
 	call StdBattleTextbox
-	call WaitSFX
 	call LoadTilemapToTempTilemap
 	scf
 	ret

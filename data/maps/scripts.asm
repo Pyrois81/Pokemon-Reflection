@@ -153,10 +153,8 @@ INCLUDE "maps/PlayersHouse1F.asm"
 INCLUDE "maps/PlayersHouse2F.asm"
 INCLUDE "maps/PlayersNeighborsHouse.asm"
 INCLUDE "maps/ElmsHouse.asm"
-INCLUDE "maps/Route26HealHouse.asm"
-INCLUDE "maps/DayOfWeekSiblingsHouse.asm"
-INCLUDE "maps/Route27SandstormHouse.asm"
-INCLUDE "maps/Route29Route46Gate.asm"
+INCLUDE "maps/EthansHouse1F.asm"
+INCLUDE "maps/EthansHouse2F.asm"
 
 
 SECTION "Map Scripts 10", ROMX
@@ -240,6 +238,10 @@ INCLUDE "maps/BrunosRoom.asm"
 INCLUDE "maps/KarensRoom.asm"
 INCLUDE "maps/LancesRoom.asm"
 INCLUDE "maps/HallOfFame.asm"
+INCLUDE "maps/Route26HealHouse.asm"
+INCLUDE "maps/DayOfWeekSiblingsHouse.asm"
+INCLUDE "maps/Route27SandstormHouse.asm"
+INCLUDE "maps/Route29Route46Gate.asm"
 
 
 SECTION "Map Scripts 14", ROMX

@@ -1074,7 +1074,15 @@ MoveScreenLoop:
 	ld hl, w2DMenuFlags1
 	res 6, [hl]
 	call ClearSprites
+	ld a, [wStatsScreenFlags]
+	maskbits 3 ; (NUM_STAT_PAGES)
+	cp 1 ; (BLUE_PAGE)
+	jr z, .return_to_stats_screen
 	jp ClearTilemap
+
+.return_to_stats_screen
+	call ClearTilemap
+	predef StatsScreenInit
 
 MoveScreen2DMenuData:
 	db 3, 1 ; cursor start y, x
