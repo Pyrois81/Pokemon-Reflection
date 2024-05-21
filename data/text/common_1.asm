@@ -114,6 +114,13 @@ _GainedEXPText::
 	text_promptbutton
 	text_end
 
+_GainedHappinessText::
+	text_ram wStringBuffer1
+	text "'s"
+	line "happiness rose!@"
+	text_promptbutton
+	text_end
+
 _EnterNewPasscodeText::
 	text "Please enter any"
 	line "four-digit number."

@@ -14,7 +14,7 @@ Route45HealHouseGrannyScript:
 	writetext Route45HealHouseGrannyIntroText
 	waitbutton
 	setevent EVENT_MET_ROUTE_45_HEAL_HOUSE_GRANNY
-	
+
 .DoHeal
 	writetext Route45HealHouseBeforeHealText
 	waitbutton
@@ -29,6 +29,23 @@ Route45HealHouseGrannyScript:
 	special RestartMapMusic
 	opentext
 	writetext Route45HealHouseAfterHealText
+	waitbutton
+	checkevent EVENT_GOT_HONEY_DROP_FROM_GRANNY
+	iffalse .GiveDrop
+	closetext
+	end
+
+.GiveDrop
+	writetext Route45HealHouseHoneyDropText
+	waitbutton
+	giveitem HONEY_DROP
+	iffalse .NoRoom
+	setevent EVENT_GOT_HONEY_DROP_FROM_GRANNY
+	closetext
+	end
+	
+.NoRoom
+	writetext Route45HealHouseNoRoomText
 	waitbutton
 	closetext
 	end
@@ -76,6 +93,22 @@ Route45HealHouseAfterHealText:
 
 	para "Come back anytime,"
 	line "child."
+	done
+
+Route45HealHouseHoneyDropText:
+	text "Say… your #MON"
+	line "looks like it"
+	cont "could use a treat."
+	
+	para "I've got just the"
+	line "thing!"
+	done
+	
+Route45HealHouseNoRoomText:
+	text "Oh, sorry sweetie."
+	
+	para "You don't seem to"
+	line "have room for it."
 	done
 	
 DrawersText:

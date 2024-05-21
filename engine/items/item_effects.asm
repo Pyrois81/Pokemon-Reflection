@@ -58,7 +58,7 @@ ItemEffects:
 	dw SuperRepelEffect    ; SUPER_REPEL
 	dw MaxRepelEffect      ; MAX_REPEL
 	dw DireHitEffect       ; DIRE_HIT
-	dw NoEffect            ; ITEM_2D
+	dw RaiseHappinessEffect; HONEY_DROP
 	dw RestoreHPEffect     ; FRESH_WATER
 	dw RestoreHPEffect     ; SODA_POP
 	dw RestoreHPEffect     ; LEMONADE
@@ -1379,13 +1379,42 @@ RareCandyLevelUp:
 .return
 	ret
 
-ExpCandyEffect:
+UseItemGetParams:
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 	
 	jp c, RareCandy_StatBooster_ExitMenu
 	
 	call RareCandy_StatBooster_GetParameters
+	ret
+
+RaiseHappinessEffect:
+	call UseItemGetParams
+	
+	ld a, MON_HAPPINESS
+	call GetPartyParamLocation
+	ld a, [hl]
+	cp $FF
+	jp nc, NoEffectMessage ; if max happiness, no effect
+	
+	xor a ; this block may be useless idk
+	ld [wMonType], a ; 0 = PARTYMON
+	predef CopyMonToTempMon
+
+	ld c, HAPPINESS_HONEYDROP
+	farcall ChangeHappiness
+	
+	ld de, SFX_1ST_PLACE
+	call WaitPlaySFX
+	ld a, PARTYMENUTEXT_GAIN_HAPPINESS ; "(MON)'s happiness rose!"
+	ld [wPartyMenuActionText], a
+	call ItemActionText
+	
+	call UseDisposableItem
+	ret	
+	
+ExpCandyEffect:
+	call UseItemGetParams
 	
 	ld a, MON_LEVEL
 	call GetPartyParamLocation

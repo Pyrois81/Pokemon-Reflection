@@ -439,9 +439,9 @@ AideScript_GiveYouTM:
 	opentext
 	writetext AideText_GiveYouTM
 	promptbutton
-	verbosegiveitem TM_RETURN
-	setevent EVENT_ELMS_LAB_TM27_RETURN
-	writetext AideText_ExplainReturn
+	verbosegiveitem TM_FRUSTRATION
+	setevent EVENT_ELMS_LAB_TM21_FRUSTRATION
+	writetext AideText_ExplainFrustration
 	waitbutton
 	closetext
 	setscene SCENE_ELMSLAB_NOTHING
@@ -1256,16 +1256,26 @@ AideText_GiveYouTM:
 	line "TECHNICAL MACHINE."
 	done
 	
-AideText_ExplainReturn:
-	text "RETURN becomes"
-	line "stronger as your"
+AideText_ExplainFrustration:
+	text "FRUSTRATION is at"
+	line "its strongest"
 	
-	para "bond with your"
-	line "#MON becomes"
-	cont "stronger."
+	para "when your #MON"
+	line "doesn't trust you."
+	
+	para "As it becomes more"
+	line "friendly, the move"
+	cont "will lose power."
+	
+	para "That's obviously"
+	line "the goal, but"
+	
+	para "we hope this'll"
+	line "smooth things out"
+	cont "in the meantime!"
 	
 	para "Most #MON can"
-	line "learn it."
+	line "learn FRUSTRATION."
 	
 	para "Oh, and don't for-"
 	line "get, you can use"

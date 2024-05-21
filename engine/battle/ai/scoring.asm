@@ -3125,14 +3125,31 @@ AI_Status:
 	inc de
 	call AIGetEnemyMove
 
+; Check if the opponent is immune to powder/spore moves.      
+	ld a, [wEnemyMoveStruct + MOVE_ANIM]
+	push bc
+	push de
+	push hl
+	ld hl, PowderSporeMoves
+	call IsInByteArray
+	pop hl
+	pop de
+	pop bc
+	jr nc, .normal_check
+
+	ld a, GRASS
+	callfar CheckIfTargetIsGivenType
+	jr z, .immune
+	
+.normal_check
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_TOXIC
 	jr z, .poisonimmunity
 	cp EFFECT_POISON
 	jr z, .poisonimmunity
-	cp EFFECT_SLEEP
-	jr z, .typeimmunity
 	cp EFFECT_PARALYZE
+	jr z, .paralyzeimmunity
+	cp EFFECT_SLEEP
 	jr z, .typeimmunity
 
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
@@ -3142,11 +3159,16 @@ AI_Status:
 	jr .typeimmunity
 
 .poisonimmunity
-	ld a, [wBattleMonType1]
-	cp POISON
+	ld a, POISON
+	callfar CheckIfTargetIsGivenType
 	jr z, .immune
-	ld a, [wBattleMonType2]
-	cp POISON
+	ld a, STEEL
+	callfar CheckIfTargetIsGivenType
+	jr z, .immune
+
+.paralyzeimmunity
+	ld a, ELECTRIC
+	callfar CheckIfTargetIsGivenType
 	jr z, .immune
 
 .typeimmunity

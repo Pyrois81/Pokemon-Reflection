@@ -365,6 +365,7 @@ StatsScreen_JoypadAction:
 	ld h, 7
 	call StatsScreen_SetJumptableIndex
 	predef ManagePokemonMoves
+	ret
 
 .d_down
 	ld a, [wMonType]

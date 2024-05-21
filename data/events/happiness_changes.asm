@@ -24,5 +24,6 @@ HappinessChanges:
 	db   +5,  +5,  +3 ; EXP. Candy S
 	db  +12, +10,  +7 ; EXP. Candy M
 	db  +25, +20, +10 ; EXP. Candy L
+	db  +64, +64, +64 ; Honey Drop
 
 	assert_table_length NUM_HAPPINESS_CHANGES
