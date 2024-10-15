@@ -13,7 +13,7 @@ OlivinePokecenter1FNurseScript:
 	jumpstd PokecenterNurseScript
 
 OlivinePokecenter1FFishingGuruScript:
-	jumpstd HappinessCheckScript
+	jumptextfaceplayer OlivinePokecenter1FFishingGuruText
 
 OlivinePokecenter1FFisherScript:
 	jumptextfaceplayer OlivinePokecenter1FFisherText
@@ -21,28 +21,46 @@ OlivinePokecenter1FFisherScript:
 OlivinePokecenter1FTeacherScript:
 	jumptextfaceplayer OlivinePokecenter1FTeacherText
 
+OlivinePokecenter1FFishingGuruText:
+	text "Hey kid, I'll sell"
+	line "ya this MAGIKARP I"
+	
+	para "caught for just"
+	line "¥500."
+	
+	para "<……>"
+	
+	para "HOHOHO, just"
+	line "jokin' around!"
+	
+	para "Who'd be enough of"
+	line "a scumbag to scam"
+	cont "someone like that?"
+	done
+
 OlivinePokecenter1FFisherText:
-	text "The SAILOR in the"
-	line "OLIVINE CAFE next"
-
-	para "door is really"
-	line "generous."
-
-	para "He taught my"
-	line "#MON STRENGTH."
-
-	para "Now it can move"
-	line "big boulders."
+	text "All kinds of peo-"
+	line "ple come through"
+	cont "OLIVINE."
+	
+	para "It is a major port"
+	line "city, after all."
 	done
 
 OlivinePokecenter1FTeacherText:
-	text "There's a person"
-	line "in CIANWOOD CITY"
-	cont "across the sea."
-
-	para "I heard him brag-"
-	line "ging about his"
-	cont "rare #MON."
+	text "That CHUCK who"
+	line "leads the CIANWOOD"
+	cont "GYM…"
+	
+	para "He's so strong…"
+	line "and that mustache…"
+	
+	para "They say he can"
+	line "throw boulders"
+	
+	para "around like"
+	line "they're made of"
+	cont "paper!"
 	done
 
 OlivinePokecenter1F_MapEvents:
@@ -60,5 +78,5 @@ OlivinePokecenter1F_MapEvents:
 	def_object_events
 	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePokecenter1FNurseScript, -1
 	object_event  8,  4, SPRITE_FISHING_GURU, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePokecenter1FFishingGuruScript, -1
-	object_event  2,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, OlivinePokecenter1FFisherScript, -1
+	object_event  1,  5, SPRITE_FISHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, OlivinePokecenter1FFisherScript, -1
 	object_event  7,  1, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePokecenter1FTeacherScript, -1

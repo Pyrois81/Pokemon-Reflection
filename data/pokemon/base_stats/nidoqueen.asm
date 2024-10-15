@@ -6,7 +6,7 @@
 	db POISON, GROUND ; type
 	db 45 ; catch rate
 	db 194 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db YLW_APRICORN, MOON_STONE ; items
 	db GENDER_F100 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/nidoqueen/front.dimensions"

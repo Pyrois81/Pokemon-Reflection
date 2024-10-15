@@ -34,6 +34,18 @@ OlivineLighthouse1FPokefanFText:
 	cont "those #MON."
 	done
 
+OlivineLighthouseBook:
+	jumptext OlivineLighthouseBookText
+	
+OlivineLighthouseBookText:
+	text "sike"
+	
+	para "u cant go in here"
+	line "<……>"
+	
+	para "yet ;]"
+	done
+
 OlivineLighthouse1F_MapEvents:
 	db 0, 0 ; filler
 
@@ -47,6 +59,7 @@ OlivineLighthouse1F_MapEvents:
 	def_coord_events
 
 	def_bg_events
+	bg_event 11, 15, BGEVENT_READ, OlivineLighthouseBook
 
 	def_object_events
 	object_event  8,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineLighthouse1FSailorScript, -1

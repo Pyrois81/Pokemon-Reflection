@@ -198,12 +198,12 @@ MonMenuIconPals:
 	icon_pals PURPLE, PINK ; AIPOM
 	icon_pals GREEN, BROWN ; SUNKERN
 	icon_pals GREEN, BROWN ; SUNFLORA
-	icon_pals RED, BLUE ; YANMA
+	icon_pals GREEN, BLUE ; YANMA
 	icon_pals BLUE, PINK ; WOOPER
 	icon_pals BLUE, PURPLE ; QUAGSIRE
 	icon_pals PURPLE, GREEN ; ESPEON
 	icon_pals BROWN, BLUE ; UMBREON
-	icon_pals BLUE, PURPLE ; MURKROW
+	icon_pals GRAY, PURPLE ; MURKROW
 	icon_pals RED, PINK ; SLOWKING
 	icon_pals PURPLE, BROWN ; MISDREAVUS
 	icon_pals GRAY, BLUE ; UNOWN

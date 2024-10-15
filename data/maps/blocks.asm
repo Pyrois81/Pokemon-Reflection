@@ -113,8 +113,8 @@ Route38_Blocks:
 	INCBIN "maps/Route38.blk"
 
 OlivineTimsHouse_Blocks:
-OlivineHouseBeta_Blocks:
-OlivinePunishmentSpeechHouse_Blocks:
+OlivineSmeargleHouse_Blocks:
+OlivineIslandsSpeechHouse_Blocks:
 OlivineGoodRodHouse_Blocks:
 Route39Farmhouse_Blocks:
 BlackthornDragonSpeechHouse_Blocks:
@@ -125,7 +125,6 @@ CeruleanPoliceStation_Blocks:
 CeruleanTradeSpeechHouse_Blocks:
 BillsHouse_Blocks:
 CharcoalKiln_Blocks:
-LakeOfRageHiddenPowerHouse_Blocks:
 LakeOfRageMagikarpHouse_Blocks:
 GoldenrodHappinessRater_Blocks:
 BillsFamilysHouse_Blocks:
@@ -162,6 +161,9 @@ GuideGentsHouse_Blocks:
 CherrygroveEvolutionSpeechHouse_Blocks:
 Route30BerryHouse_Blocks:
 	INCBIN "maps/House1.blk"
+
+LakeOfRageHiddenPowerHouse_Blocks:
+	INCBIN "maps/PCHouse.blk"
 
 SafariZoneFuchsiaGateBeta_Blocks:
 Route19FuchsiaGate_Blocks:

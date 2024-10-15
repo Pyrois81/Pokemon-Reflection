@@ -6,7 +6,7 @@
 	db WATER, WATER ; type
 	db 190 ; catch rate
 	db 58 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db FRESH_WATER, EVERSTONE ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/marill/front.dimensions"

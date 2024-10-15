@@ -6,7 +6,7 @@
 	db GRASS, POISON ; type
 	db 75 ; catch rate
 	db 141 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db PSNCUREBERRY, CALCIUM ; items
 	db GENDER_F12_5 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/ivysaur/front.dimensions"

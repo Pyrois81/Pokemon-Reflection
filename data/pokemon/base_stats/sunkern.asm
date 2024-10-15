@@ -6,7 +6,7 @@
 	db GRASS, GRASS ; type
 	db 235 ; catch rate
 	db 52 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db SILVER_LEAF, SUN_STONE ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/sunkern/front.dimensions"

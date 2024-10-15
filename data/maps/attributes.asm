@@ -455,8 +455,8 @@ ENDM
 	map_attributes OlivinePokecenter1F, OLIVINE_POKECENTER_1F, $00, 0
 	map_attributes OlivineGym, OLIVINE_GYM, $00, 0
 	map_attributes OlivineTimsHouse, OLIVINE_TIMS_HOUSE, $00, 0
-	map_attributes OlivineHouseBeta, OLIVINE_HOUSE_BETA, $00, 0
-	map_attributes OlivinePunishmentSpeechHouse, OLIVINE_PUNISHMENT_SPEECH_HOUSE, $00, 0
+	map_attributes OlivineSmeargleHouse, OLIVINE_SMEARGLE_HOUSE, $00, 0
+	map_attributes OlivineIslandsSpeechHouse, OLIVINE_ISLANDS_SPEECH_HOUSE, $00, 0
 	map_attributes OlivineGoodRodHouse, OLIVINE_GOOD_ROD_HOUSE, $00, 0
 	map_attributes OlivineCafe, OLIVINE_CAFE, $00, 0
 	map_attributes OlivineMart, OLIVINE_MART, $00, 0

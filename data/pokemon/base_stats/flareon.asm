@@ -6,7 +6,7 @@
 	db FIRE, FIRE ; type
 	db 60 ; catch rate
 	db 198 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db BURNT_BERRY, FIRE_STONE ; items
 	db GENDER_F12_5 ; gender ratio
 	db 35 ; step cycles to hatch
 	INCBIN "gfx/pokemon/flareon/front.dimensions"

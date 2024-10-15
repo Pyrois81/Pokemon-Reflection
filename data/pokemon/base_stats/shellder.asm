@@ -6,7 +6,7 @@
 	db WATER, WATER ; type
 	db 190 ; catch rate
 	db 97 ; base exp
-	db PEARL, BIG_PEARL ; items
+	db PEARL, WATER_STONE ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/shellder/front.dimensions"

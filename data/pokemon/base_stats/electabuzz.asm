@@ -6,7 +6,7 @@
 	db ELECTRIC, ELECTRIC ; type
 	db 60 ; catch rate
 	db 156 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db PRZCUREBERRY, NUGGET ; items
 	db GENDER_F25 ; gender ratio
 	db 25 ; step cycles to hatch
 	INCBIN "gfx/pokemon/electabuzz/front.dimensions"

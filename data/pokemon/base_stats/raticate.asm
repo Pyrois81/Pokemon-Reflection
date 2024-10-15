@@ -6,7 +6,7 @@
 	db NORMAL, NORMAL ; type
 	db 90 ; catch rate
 	db 116 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db BERRY, PINK_BOW ; items
 	db GENDER_F50 ; gender ratio
 	db 15 ; step cycles to hatch
 	INCBIN "gfx/pokemon/raticate/front.dimensions"

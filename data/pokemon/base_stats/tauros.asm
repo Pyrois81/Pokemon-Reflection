@@ -6,7 +6,7 @@
 	db NORMAL, NORMAL ; type
 	db 60 ; catch rate
 	db 211 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db X_ATTACK, PROTEIN ; items
 	db GENDER_F0 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/tauros/front.dimensions"

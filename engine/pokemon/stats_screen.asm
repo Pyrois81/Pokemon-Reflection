@@ -781,6 +781,7 @@ LoadBluePage: ; moves and item
 	ld [hli], a
 	dec b
 	jr nz, .horizontal_divider_loop
+	
 	ld a, $7B ; current Frame top-right corner
 	ld [hl], a
 	ld de, SCREEN_WIDTH
@@ -788,18 +789,9 @@ LoadBluePage: ; moves and item
 	ld a, $7C ; current Frame vertical piece
 	ld [hl], a
 
-	; Load item box into wVirtualOAMSprite00
-	; YCoord, XCoord, TileID, Attributes
-	ld hl, wVirtualOAMSprite00YCoord
-	ld a, 19 * TILE_WIDTH - 1
-	ld [hli], a
-	ld a, 1 * TILE_WIDTH + 1
-	ld [hli], a
-	ld a, $09 ; item box icon
-	ld [hli], a
-	ld a, PAL_OW_RED | OBP_NUM
-	ld [hl], a
-	
+	ld de, .ItemBox
+	hlcoord 0, 17
+	call PlaceString
 	call .GetItemName
 	hlcoord 2, 17
 	call PlaceString
@@ -817,6 +809,8 @@ LoadBluePage: ; moves and item
 	call GetItemName
 	ret
 
+.ItemBox:
+	db "<BOX>@" ; $de, item box
 .ThreeDashes:
 	db "---@"
 

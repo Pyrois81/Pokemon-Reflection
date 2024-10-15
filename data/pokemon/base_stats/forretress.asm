@@ -6,7 +6,7 @@
 	db BUG, STEEL ; type
 	db 75 ; catch rate
 	db 118 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db MIRACLEBERRY, METAL_COAT ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/forretress/front.dimensions"

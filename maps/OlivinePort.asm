@@ -46,8 +46,6 @@ OlivinePortSailorAtGangwayScript:
 	playsound SFX_EXIT_BUILDING
 	special FadeOutPalettes
 	waitsfx
-	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iffalse .FirstTime
 	clearevent EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	setevent EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 	clearevent EVENT_BEAT_COOLTRAINERM_SEAN
@@ -59,7 +57,6 @@ OlivinePortSailorAtGangwayScript:
 	clearevent EVENT_BEAT_SAILOR_GARRETT
 	clearevent EVENT_BEAT_FISHER_JONAH
 	clearevent EVENT_BEAT_BLACKBELT_WAI
-.FirstTime:
 	clearevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
 	appear OLIVINEPORT_SAILOR1
 	setmapscene FAST_SHIP_1F, SCENE_FASTSHIP1F_ENTER_SHIP
@@ -72,88 +69,11 @@ OlivinePortAlreadyRodeScript:
 	closetext
 	end
 
-OlivinePortWalkUpToShipScript:
-	turnobject OLIVINEPORT_SAILOR3, RIGHT
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue .skip
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	iftrue .skip
-	turnobject PLAYER, LEFT
-	opentext
-	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iffalse .FirstTime
-	readvar VAR_WEEKDAY
-	ifequal SUNDAY, .NextShipMonday
-	ifequal SATURDAY, .NextShipMonday
-	ifequal TUESDAY, .NextShipFriday
-	ifequal WEDNESDAY, .NextShipFriday
-	ifequal THURSDAY, .NextShipFriday
-.FirstTime:
-	writetext OlivinePortAskBoardText
-	yesorno
-	iffalse OlivinePortNotRidingMoveAwayScript
-	writetext OlivinePortAskTicketText
-	promptbutton
-	checkitem S_S_TICKET
-	iffalse .NoTicket
-	writetext OlivinePortFlashTicketText
-	waitbutton
-	closetext
-	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	applymovement PLAYER, OlivinePortApproachFastShipFirstTimeMovement
-	sjump OlivinePortSailorAtGangwayScript
-
-.NoTicket:
-	writetext OlivinePortNoTicketText
-	waitbutton
-	closetext
-	applymovement PLAYER, OlivinePortCannotEnterFastShipMovement
-	end
-
-.NextShipMonday:
-	writetext OlivinePortMondayShipText
-	waitbutton
-	closetext
-	applymovement PLAYER, OlivinePortCannotEnterFastShipMovement
-	end
-
-.NextShipFriday:
-	writetext OlivinePortFridayShipText
-	waitbutton
-	closetext
-	applymovement PLAYER, OlivinePortCannotEnterFastShipMovement
-	end
-
-.skip:
-	end
-
-OlivinePortNotRidingScript:
-	writetext OlivinePortComeAgainText
-	waitbutton
-	closetext
-	end
-
-OlivinePortNotRidingMoveAwayScript:
-	writetext OlivinePortComeAgainText
-	waitbutton
-	closetext
-	applymovement PLAYER, OlivinePortCannotEnterFastShipMovement
-	end
-
 OlivinePortSailorAfterHOFScript:
 	faceplayer
 	opentext
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue OlivinePortAlreadyRodeScript
-	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iffalse .FirstTime
-	readvar VAR_WEEKDAY
-	ifequal SUNDAY, .NextShipMonday
-	ifequal SATURDAY, .NextShipMonday
-	ifequal TUESDAY, .NextShipFriday
-	ifequal WEDNESDAY, .NextShipFriday
-	ifequal THURSDAY, .NextShipFriday
-.FirstTime:
 	writetext OlivinePortAskBoardText
 	yesorno
 	iffalse OlivinePortNotRidingScript
@@ -166,12 +86,11 @@ OlivinePortSailorAfterHOFScript:
 	closetext
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	readvar VAR_FACING
-	ifequal RIGHT, .Right
+	ifequal DOWN, .Down
+	applymovement PLAYER, OlivinePortApproachFastShipAfterHOFFromLeftMovement
+	; fallthrough
+.Down
 	applymovement PLAYER, OlivinePortApproachFastShipAfterHOFMovement
-	sjump OlivinePortSailorAtGangwayScript
-
-.Right:
-	applymovement PLAYER, OlivinePortApproachFastShipAfterHOFRightMovement
 	sjump OlivinePortSailorAtGangwayScript
 
 .NoTicket:
@@ -180,16 +99,48 @@ OlivinePortSailorAfterHOFScript:
 	closetext
 	end
 
-.NextShipMonday:
-	writetext OlivinePortMondayShipText
+OlivinePortWalkUpToShipScript:
+	turnobject OLIVINEPORT_SAILOR3, RIGHT
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	iftrue .skip
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	iftrue .skip
+	turnobject PLAYER, LEFT
+	opentext
+	writetext OlivinePortAskBoardText
+	yesorno
+	iffalse OlivinePortNotRidingMoveAwayScript
+	writetext OlivinePortAskTicketText
+	promptbutton
+	checkitem S_S_TICKET
+	iffalse .NoTicket
+	writetext OlivinePortFlashTicketText
+	waitbutton
+	closetext
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	applymovement PLAYER, OlivinePortApproachFastShipMovement
+	sjump OlivinePortSailorAtGangwayScript
+
+.NoTicket:
+	writetext OlivinePortNoTicketText
+	waitbutton
+	closetext
+	applymovement PLAYER, OlivinePortMoveFromCoordEventMovement
+	; fallthrough
+.skip:
+	end
+
+OlivinePortNotRidingScript:
+	writetext OlivinePortNotRidingText
 	waitbutton
 	closetext
 	end
 
-.NextShipFriday:
-	writetext OlivinePortFridayShipText
+OlivinePortNotRidingMoveAwayScript:
+	writetext OlivinePortMoveFromCoordEventText
 	waitbutton
 	closetext
+	applymovement PLAYER, OlivinePortMoveFromCoordEventMovement
 	end
 
 OlivinePortSailorBeforeHOFScript:
@@ -242,25 +193,12 @@ OlivinePortLeaveFastShipMovement:
 	step UP
 	step_end
 
-OlivinePortCannotEnterFastShipMovement:
+OlivinePortMoveFromCoordEventMovement:
 	step RIGHT
 	turn_head LEFT
 	step_end
 
-OlivinePortApproachFastShipFirstTimeMovement:
-	step DOWN
-	step DOWN
-	step DOWN
-	step DOWN
-	step DOWN
-	step DOWN
-	step DOWN
-	step_end
-
-OlivinePortApproachFastShipAfterHOFMovement:
-	step RIGHT
-	step DOWN
-	step DOWN
+OlivinePortApproachFastShipMovement:
 	step DOWN
 	step DOWN
 	step DOWN
@@ -269,11 +207,13 @@ OlivinePortApproachFastShipAfterHOFMovement:
 	step DOWN
 	step_end
 
-OlivinePortApproachFastShipAfterHOFRightMovement:
+OlivinePortApproachFastShipAfterHOFFromLeftMovement:
 	step UP
 	step RIGHT
+	step_end
+	
+OlivinePortApproachFastShipAfterHOFMovement:
 	step RIGHT
-	step DOWN
 	step DOWN
 	step DOWN
 	step DOWN
@@ -290,13 +230,16 @@ OlivinePortSailorGetOnBoardText:
 	done
 
 OlivinePortCantBoardText:
-	text "Sorry. You can't"
-	line "board now."
+	text "Ship's not settin'"
+	line "sail again for a"
+	cont "while."
+	
+	para "Go enjoy JOHTO!"
 	done
 
 OlivinePortAskBoardText:
 	text "Welcome to FAST"
-	line "SHIP S.S.AQUA."
+	line "SHIP S.S.AQUA!"
 
 	para "Will you be board-"
 	line "ing today?"
@@ -307,31 +250,37 @@ OlivinePortAskTicketText:
 	line "S.S.TICKET?"
 	done
 
-OlivinePortComeAgainText:
-	text "We hope to see you"
-	line "again!"
+OlivinePortNotRidingText:
+	text "No? No worries!"
+	
+	para "We hope to see you"
+	line "again soon!"
 	done
 
 OlivinePortFlashTicketText:
 	text "<PLAYER> flashed"
 	line "the S.S.TICKET."
 
-	para "That's it."
-	line "Thank you!"
+	para "That'll do it."
+	line "Thank you very"
+	cont "much!"
 	done
 
 OlivinePortNoTicketText:
-	text "<PLAYER> tried to"
-	line "show the S.S."
-	cont "TICKET…"
+	text "Hmm… looks as"
+	line "though you don't"
+	cont "have a ticket."
 
-	para "…But no TICKET!"
+	para "We'll be here when"
+	line "you get one!"
+	done
 
-	para "Sorry!"
-	line "You may board only"
-
-	para "if you have an"
-	line "S.S.TICKET."
+OlivinePortMoveFromCoordEventText:
+	text "Very well. I will"
+	line "ask that you clear"
+	
+	para "the gangway,"
+	line "though."
 	done
 
 OlivinePortMondayShipText:
@@ -345,41 +294,63 @@ OlivinePortFridayShipText:
 	done
 
 OlivinePortFishingGuru1Text:
-	text "SHELLDER are easy"
-	line "to catch here."
-
-	para "They're kind of"
-	line "rare elsewhere."
+	text "These here're"
+	line "ocean waters."
+	
+	para "That means you c'n"
+	line "find all sorts 'a"
+	
+	para "sea critters in"
+	line "'em."
 	done
 
 OlivinePortFishingGuru2Text:
-	text "How many RODS do"
-	line "you have?"
+	text "Different RODS are"
+	line "better at catching"
+	
+	para "different #MON,"
+	line "and different"
 
-	para "Different RODS"
-	line "catch different"
-	cont "#MON."
+	para "#MON are found"
+	line "in different"
+	cont "climates."
+	
+	para "Over time one"
+	line "gains a sort of"
+	
+	para "intuition about"
+	line "it all."
 	done
 
 OlivinePortYoungsterText:
 	text "S.S.AQUA uses jets"
 	line "to skim over the"
 	cont "waves!"
+	
+	para "It's a real smooth"
+	line "ride."
 	done
 
 OlivinePortCooltrainerFText:
-	text "There are lots of"
-	line "#MON in KANTO."
+	text "I've heard the"
+	line "#MON in KANTO are"
+	cont "super strong."
 
-	para "I wish I could go…"
+	para "Part of me wants"
+	line "to go see, but"
+	
+	para "the rest of me is"
+	line "scared stiff!"
 	done
 
 OlivinePortSailorBeforeHOFText:
-	text "We don't want you"
-	line "to fall into the"
-
-	para "sea, so you're not"
-	line "allowed in."
+	text "Careful, kid."
+	
+	para "You're fine on the"
+	line "pier, but you're"
+	
+	para "not authorized to"
+	line "be on the gangway."
 	done
 
 OlivinePort_MapEvents:
@@ -390,16 +361,16 @@ OlivinePort_MapEvents:
 	warp_event  7, 23, FAST_SHIP_1F, 1
 
 	def_coord_events
-	coord_event  7, 15, SCENE_DEFAULT, OlivinePortWalkUpToShipScript
+	coord_event  7, 16, SCENE_DEFAULT, OlivinePortWalkUpToShipScript
 
 	def_bg_events
-	bg_event  1, 22, BGEVENT_ITEM, OlivinePortHiddenProtein
+	bg_event  1, 18, BGEVENT_ITEM, OlivinePortHiddenProtein
 
 	def_object_events
 	object_event  7, 23, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortSailorAtGangwayScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
-	object_event  7, 15, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortSailorBeforeHOFScript, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
-	object_event  6, 15, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortSailorAfterHOFScript, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
+	object_event  7, 16, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortSailorBeforeHOFScript, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
+	object_event  6, 16, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortSailorAfterHOFScript, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
 	object_event  4, 14, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortFishingGuru1Script, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
 	object_event 13, 14, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortFishingGuru2Script, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
-	object_event  4, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortYoungsterScript, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
-	object_event 11, 15, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortCooltrainerFScript, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
+	object_event  3, 16, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortYoungsterScript, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
+	object_event 15, 16, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePortCooltrainerFScript, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME

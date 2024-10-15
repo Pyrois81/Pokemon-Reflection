@@ -6,7 +6,7 @@
 	db NORMAL, NORMAL ; type
 	db 50 ; catch rate
 	db 129 ; base exp
-	db MYSTERYBERRY, MOON_STONE ; items
+	db POKE_DOLL, MOON_STONE ; items
 	db GENDER_F75 ; gender ratio
 	db 10 ; step cycles to hatch
 	INCBIN "gfx/pokemon/clefable/front.dimensions"

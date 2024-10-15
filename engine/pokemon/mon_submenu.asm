@@ -100,6 +100,12 @@ GetMonMenuString:
 	jr z, .NotMove
 	inc hl
 	ld a, [hl]
+	; check if it's Zen Headbutt - move name is too long so just call it HEADBUTT instead
+	cp ZEN_HEADBUTT
+	jr nz, .GotMoveID
+	ld a, HEADBUTT
+	; fallthrough
+.GotMoveID:
 	ld [wNamedObjectIndex], a
 	call GetMoveName
 	ret

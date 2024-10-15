@@ -6,7 +6,7 @@
 	db BUG, STEEL ; type
 	db 40 ; catch rate
 	db 200 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db BLK_APRICORN, METAL_COAT ; items
 	db GENDER_F50 ; gender ratio
 	db 25 ; step cycles to hatch
 	INCBIN "gfx/pokemon/scizor/front.dimensions"

@@ -6,7 +6,7 @@
 	db WATER, ICE ; type
 	db 75 ; catch rate
 	db 203 ; base exp
-	db PEARL, BIG_PEARL ; items
+	db BIG_PEARL, WATER_STONE ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/cloyster/front.dimensions"

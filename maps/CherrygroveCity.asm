@@ -38,7 +38,7 @@ CherrygroveSilverSceneNorth:
 	closetext
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
 	setlasttalked CHERRYGROVECITY_SILVER
-	loadtrainer RIVAL1, RIVAL1_1
+	loadtrainer RIVAL1, RIVAL1_CHERRYGROVE
 	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic
@@ -64,13 +64,14 @@ CherrygroveSilverSceneNorth:
 	closetext
 	special NameRival
 	reloadmappart
-	pause 20
+	pause 30
 	playsound SFX_TACKLE
 	applymovement PLAYER, CherrygroveCity_RivalPushesYouOutOfTheWay
 	turnobject PLAYER, LEFT
 	applymovement CHERRYGROVECITY_SILVER, CherrygroveCity_RivalExitsStageLeft
 	disappear CHERRYGROVECITY_SILVER
 	setscene SCENE_CHERRYGROVECITY_NOTHING
+	setevent EVENT_BEAT_RIVAL1_CHERRYGROVE
 	special HealParty
 	playmapmusic
 	end
@@ -163,19 +164,6 @@ SilverCherrygroveWinText:
 	line "whatever."
 	done
 
-CherrygroveRivalText_YouLost:
-	text "<……> <……> <……>"
-
-	para "As expected."
-	
-	para "I'm going to be"
-	line "the world's"
-	
-	para "greatest #MON"
-	line "trainer, so stay"
-	cont "out of my way."
-	done
-
 SilverCherrygroveLossText:
 	text "What a waste of"
 	line "time."
@@ -192,6 +180,19 @@ CherrygroveRivalText_YouWon:
 	para "greatest #MON"
 	line "trainer, so you'd"	
 	cont "better watch out!"
+	done
+	
+CherrygroveRivalText_YouLost:
+	text "<……> <……> <……>"
+
+	para "As expected."
+	
+	para "I'm going to be"
+	line "the world's"
+	
+	para "greatest #MON"
+	line "trainer, so stay"
+	cont "out of my way."
 	done
 
 CherrygroveRivalText_Name:

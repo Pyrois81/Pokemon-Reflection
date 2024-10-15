@@ -798,6 +798,7 @@ PrintPartyMenuActionText:
 	dw .CameToItsSensesText
 	dw .GainedEXPText
 	dw .GainedHappinessText
+	dw .LostHPText
 
 .RecoveredSomeHPText:
 	text_far _RecoveredSomeHPText
@@ -845,6 +846,10 @@ PrintPartyMenuActionText:
 
 .GainedHappinessText:
 	text_far _GainedHappinessText
+	text_end
+
+.LostHPText:
+	text_far _LostHPText
 	text_end
 
 .PrintText:

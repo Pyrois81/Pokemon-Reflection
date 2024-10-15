@@ -77,9 +77,6 @@ BattleCommand_Thief:
 	and a
 	ret nz
 
-; If the enemy steals your item,
-; it's gone for good if you don't get it back.
-
 	call .playeritem
 	xor a
 	ld [hl], a
@@ -89,6 +86,13 @@ BattleCommand_Thief:
 	ld a, [wNamedObjectIndex]
 	ld [hl], a
 	ld [de], a
+
+; Items stolen by enemies are returned at the end of battle. (BattleTurn.quit)
+	ld [wThievedItem], a
+	ld a, [wCurBattleMon]
+	ld [wThievedItemStolenFrom], a
+	ld a, [wCurOTMon]
+	ld [wThievedItemStolenBy], a
 
 .stole
 	call GetItemName

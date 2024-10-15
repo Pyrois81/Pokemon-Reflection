@@ -66,7 +66,7 @@ AzaleaTownRivalBattleScript:
 	iftrue .Oddish
 	winlosstext AzaleaTownRivalWinText, AzaleaTownRivalLossText
 	setlasttalked AZALEATOWN_SILVER
-	loadtrainer RIVAL1, RIVAL1_2_POLIWAG
+	loadtrainer RIVAL1, RIVAL1_OLIVINE
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
@@ -75,7 +75,7 @@ AzaleaTownRivalBattleScript:
 .Poliwag:
 	winlosstext AzaleaTownRivalWinText, AzaleaTownRivalLossText
 	setlasttalked AZALEATOWN_SILVER
-	loadtrainer RIVAL1, RIVAL1_2_ODDISH
+	loadtrainer RIVAL1, RIVAL1_OLIVINE
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
@@ -84,7 +84,7 @@ AzaleaTownRivalBattleScript:
 .Oddish:
 	winlosstext AzaleaTownRivalWinText, AzaleaTownRivalLossText
 	setlasttalked AZALEATOWN_SILVER
-	loadtrainer RIVAL1, RIVAL1_2_VULPIX
+	loadtrainer RIVAL1, RIVAL1_OLIVINE
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle

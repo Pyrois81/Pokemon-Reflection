@@ -6,7 +6,7 @@
 	db BUG, FLYING ; type
 	db 90 ; catch rate
 	db 160 ; base exp
-	db NO_ITEM, SILVERPOWDER ; items
+	db BERRY, BRIGHTPOWDER ; items
 	db GENDER_F50 ; gender ratio
 	db 15 ; step cycles to hatch
 	INCBIN "gfx/pokemon/butterfree/front.dimensions"

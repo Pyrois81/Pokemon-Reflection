@@ -6,7 +6,7 @@
 	db FIRE, FIRE ; type
 	db 75 ; catch rate
 	db 178 ; base exp
-	db BURNT_BERRY, BURNT_BERRY ; items
+	db BURNT_BERRY, FIRE_STONE ; items
 	db GENDER_F75 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/ninetales/front.dimensions"

@@ -35,18 +35,21 @@ KimonoGirlHonokoScript:
 .FromLeft:
 	closetext
 	applymovement PLAYER, DanceTheatreMoveFromLeftMovement
+	turnobject DANCETHEATRE_KIMONO_GIRL_HONOKO, DOWN
 	opentext
 	sjump KimonoGirlGauntlet
 	
 .FromRight:
 	closetext
 	applymovement PLAYER, DanceTheatreMoveFromRightMovement
+	turnobject DANCETHEATRE_KIMONO_GIRL_HONOKO, DOWN
 	opentext
 	sjump KimonoGirlGauntlet
 	
 .FromTop:
 	closetext
 	applymovement PLAYER, DanceTheatreMoveFromTopMovement
+	turnobject DANCETHEATRE_KIMONO_GIRL_HONOKO, DOWN
 	opentext
 	sjump KimonoGirlGauntlet
 	
@@ -200,8 +203,8 @@ DanceTheatreGentlemanScript:
 
 DanceTheatreRhydon:
 	opentext
-	cry RHYDON
 	writetext RhydonText
+	cry RHYDON
 	waitbutton
 	closetext
 	end
@@ -296,25 +299,21 @@ DanceTheatreMoveFromTopMovement:
 	step_end
 	
 DanceTheatreMinatoMovement:
-	step DOWN
 	step LEFT
 	step LEFT
-	turn_head DOWN
 	step_end
 	
 DanceTheatreAzumaMovement:
-	step DOWN
 	step RIGHT
 	step RIGHT
-	turn_head DOWN
 	step_end
 	
 DanceTheatreReikoMovement:
 	step LEFT
 	step LEFT
 	step LEFT
-	step DOWN
 	step LEFT
+	turn_head DOWN
 	step_end
 	
 DanceTheatreAnjuMovement:
@@ -322,8 +321,7 @@ DanceTheatreAnjuMovement:
 	step RIGHT
 	step RIGHT
 	step RIGHT
-	step DOWN
-	step RIGHT
+	turn_head DOWN
 	step_end	
 
 KimonoGirlHonokoTakeChallengeText:
@@ -466,7 +464,7 @@ KimonoGirlHonokoPrizeText:
 	para "They have been"
 	line "laid out in the"
 	
-	para "center of the room"
+	para "back of the room"
 	line "for your perusal."
 	done
 
@@ -626,16 +624,16 @@ DanceTheatre_MapEvents:
 	bg_event  6,  6, BGEVENT_UP, DanceTheatreFancyPanel
 
 	def_object_events
-	object_event  6,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, KimonoGirlHonokoScript, -1
-	object_event 11,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, KimonoGirlReikoScript, -1
-	object_event  0,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, KimonoGirlAnjuScript, -1
-	object_event  9,  1, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, KimonoGirlMinatoScript, -1
-	object_event  3,  1, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, KimonoGirlAzumaScript, -1
+	object_event  6,  1, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, KimonoGirlHonokoScript, -1
+	object_event 11,  1, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, KimonoGirlReikoScript, -1
+	object_event  1,  1, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, KimonoGirlAnjuScript, -1
+	object_event  9,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, KimonoGirlMinatoScript, -1
+	object_event  3,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, KimonoGirlAzumaScript, -1
 	object_event  8,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DanceTheatreGentlemanScript, -1
-	object_event 10,  6, SPRITE_RHYDON, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, DanceTheatreRhydon, -1
+	object_event 10,  6, SPRITE_RHYDON, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, DanceTheatreRhydon, -1
 	object_event 10, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, DanceTheatreCooltrainerMScript, -1
-	object_event  1,  8, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DanceTheatreGrannyScript, -1
-	object_event  4,  8, SPRITE_ROCK, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, DanceTheatreFireStoneScript, EVENT_DANCE_THEATRE_GOT_STONE
-	object_event  5,  8, SPRITE_ROCK, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, DanceTheatreWaterStoneScript, EVENT_DANCE_THEATRE_GOT_STONE
-	object_event  6,  8, SPRITE_ROCK, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, DanceTheatreLeafStoneScript, EVENT_DANCE_THEATRE_GOT_STONE
-	object_event  7,  8, SPRITE_ROCK, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, DanceTheatreSunStoneScript, EVENT_DANCE_THEATRE_GOT_STONE
+	object_event  1,  8, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, DanceTheatreGrannyScript, -1
+	object_event  4, 11, SPRITE_ROCK, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, DanceTheatreFireStoneScript, EVENT_DANCE_THEATRE_STONES_TOGGLE
+	object_event  5, 11, SPRITE_ROCK, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, DanceTheatreWaterStoneScript, EVENT_DANCE_THEATRE_STONES_TOGGLE
+	object_event  6, 11, SPRITE_ROCK, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, DanceTheatreLeafStoneScript, EVENT_DANCE_THEATRE_STONES_TOGGLE
+	object_event  7, 11, SPRITE_ROCK, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, DanceTheatreSunStoneScript, EVENT_DANCE_THEATRE_STONES_TOGGLE

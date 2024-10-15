@@ -1,189 +1,163 @@
 	object_const_def
-	const ROUTE39BARN_TWIN1
-	const ROUTE39BARN_TWIN2
 	const ROUTE39BARN_MOOMOO
+	const ROUTE39BARN_MILTANK2
+	const ROUTE39BARN_BEEDRILL1
+	const ROUTE39BARN_BEEDRILL2
+	const ROUTE39BARN_BEEDRILL3
+	const ROUTE39BARN_BEEDRILL4
+	const ROUTE39BARN_BEEDRILL5
+	const ROUTE39BARN_HIVE
+	const ROUTE39BARN_POKEBALL
 
 Route39Barn_MapScripts:
 	def_scene_scripts
+	scene_script .DummyScene1 ; SCENE_ROUTE_39_BARN_NOTHING
+	scene_script .BeesMusic ; SCENE_ROUTE_39_BARN_BEES
 
 	def_callbacks
 
-Route39BarnTwin1Script:
-	faceplayer
+.DummyScene1
+	end
+
+.BeesMusic
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	iftrue .End
+	playmusic MUSIC_ROCKET_BATTLE
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+.End
+	end
+
+Route39BarnMoomooScript:
 	opentext
-	checkevent EVENT_HEALED_MOOMOO
-	iftrue .FeedingMooMoo
-	writetext Route39BarnTwinMoomooIsSickText
+	writetext Route39BarnMoomooText1
+	cry MILTANK
+	waitbutton
+	writetext Route39BarnMoomooText2
 	waitbutton
 	closetext
-	turnobject ROUTE39BARN_TWIN1, RIGHT
 	end
 
-.FeedingMooMoo:
-	writetext Route39BarnTwinWereFeedingMoomooText
-	waitbutton
-	closetext
-	turnobject ROUTE39BARN_TWIN1, RIGHT
-	end
-
-Route39BarnTwin2Script:
-	faceplayer
+Route39BarnMiltankScript:
 	opentext
-	checkevent EVENT_HEALED_MOOMOO
-	iftrue .FeedingMooMoo
-	writetext Route39BarnTwinMoomooIsSickText
-	waitbutton
-	closetext
-	turnobject ROUTE39BARN_TWIN2, LEFT
-	end
-
-.FeedingMooMoo:
-	writetext Route39BarnTwinWereFeedingMoomooText
-	waitbutton
-	closetext
-	turnobject ROUTE39BARN_TWIN2, LEFT
-	end
-
-MoomooScript:
-	opentext
-	checkevent EVENT_HEALED_MOOMOO
-	iftrue .HappyCow
-	writetext MoomooWeakMooText
-	setval MILTANK
-	special PlaySlowCry
-	promptbutton
-	writetext Route39BarnItsCryIsWeakText
-	checkevent EVENT_TALKED_TO_FARMER_ABOUT_MOOMOO
-	iftrue .GiveBerry
-	waitbutton
-	closetext
-	end
-
-.GiveBerry:
-	promptbutton
-	writetext Route39BarnAskGiveBerryText
-	yesorno
-	iffalse .Refused
-	checkitem BERRY
-	iffalse .NoBerriesInBag
-	takeitem BERRY
-	readmem wMooMooBerries
-	addval 1
-	writemem wMooMooBerries
-	ifequal 3, .ThreeBerries
-	ifequal 5, .FiveBerries
-	ifequal 7, .SevenBerries
-	writetext Route39BarnGaveBerryText
-	waitbutton
-	closetext
-	end
-
-.ThreeBerries:
-	writetext Route39BarnGaveBerryText
-	promptbutton
-	writetext Route39BarnLittleHealthierText
-	waitbutton
-	closetext
-	end
-
-.FiveBerries:
-	writetext Route39BarnGaveBerryText
-	promptbutton
-	writetext Route39BarnQuiteHealthyText
-	waitbutton
-	closetext
-	end
-
-.SevenBerries:
-	playmusic MUSIC_HEAL
-	writetext Route39BarnGaveBerryText
-	pause 60
-	promptbutton
-	special RestartMapMusic
-	writetext Route39BarnTotallyHealthyText
-	waitbutton
-	closetext
-	setevent EVENT_HEALED_MOOMOO
-	end
-
-.NoBerriesInBag:
-	writetext Route39BarnNoBerriesText
-	waitbutton
-	closetext
-	end
-
-.Refused:
-	writetext Route39BarnRefusedBerryText
-	waitbutton
-	closetext
-	end
-
-.HappyCow:
-	writetext MoomooHappyMooText
+	writetext Route39BarnMiltankText
 	cry MILTANK
 	waitbutton
 	closetext
 	end
+	
+Route39BarnGenericBeedrillScript:
+	opentext
+	writetext Route39BarnBeedrillText
+	cry BEEDRILL
+	waitbutton
+	closetext
+	end
+	
+Route39BarnBeedrill1Script:
+	opentext
+	writetext Route39BarnRedBeedrillCryText
+	cry BEEDRILL
+	waitbutton
+	writetext Route39BarnRedBeedrillFightText
+	waitbutton
+	closetext
+	loadwildmon BEEDRILL, 15
+	startbattle
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	disappear ROUTE39BARN_BEEDRILL1
+	reloadmapafterbattle
+	end	
 
-Route39BarnTwinMoomooIsSickText:
-	text "MOOMOO is sick…"
+Route39BarnBeedrill2Script:
+	opentext
+	writetext Route39BarnRedBeedrillCryText
+	cry BEEDRILL
+	waitbutton
+	writetext Route39BarnRedBeedrillFightText
+	waitbutton
+	closetext
+	loadwildmon BEEDRILL, 20
+	startbattle
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	disappear ROUTE39BARN_BEEDRILL2
+	reloadmapafterbattle
+	end	
 
-	para "She needs lots of"
-	line "BERRIES."
+Route39BarnBeedrill3Script:
+	opentext
+	writetext Route39BarnRedBeedrillCryText
+	cry BEEDRILL
+	waitbutton
+	writetext Route39BarnRedBeedrillFightText
+	waitbutton
+	closetext
+	loadvar VAR_BATTLETYPE, BATTLETYPE_SHINY
+	loadwildmon BEEDRILL, 25
+	startbattle
+	disappear ROUTE39BARN_BEEDRILL3
+	setscene SCENE_ROUTE_39_BARN_NOTHING
+	reloadmapafterbattle
+	end	
+
+Route39BarnHiveScript:
+	opentext
+	writetext Route39BarnHiveText
+	waitbutton
+	closetext
+	end
+
+Route39BarnPoisonBarb:
+	itemball POISON_BARB
+
+Route39BarnMoomooText1:
+	text "MILTANK: Moo…moo…"
+	done
+	
+Route39BarnMoomooText2:
+	text "This old MILTANK"
+	line "is weak and frail,"
+	
+	para "but she still"
+	line "seems happy to"
+	cont "see you."
 	done
 
-Route39BarnTwinWereFeedingMoomooText:
-	text "We're feeding"
-	line "MOOMOO!"
-	done
-
-MoomooWeakMooText:
-	text "MILTANK: …Moo…"
-	done
-
-Route39BarnItsCryIsWeakText:
-	text "Its cry is weak…"
-	done
-
-MoomooHappyMooText:
+Route39BarnMiltankText:
 	text "MILTANK: Mooo!"
 	done
 
-Route39BarnAskGiveBerryText:
-	text "Give a BERRY to"
-	line "MILTANK?"
+Route39BarnBeedrillText:
+	text "BEEDRILL: Bzzzz…"
+	done
+	
+Route39BarnRedBeedrillCryText:
+	text "BEEDRILL: BZZZZ!"
+	done
+	
+Route39BarnRedBeedrillFightText:
+	text "The BEEDRILL be-"
+	line "comes aggressive"
+	
+	para "as you move closer"
+	line "toward its hive."
+	
+	para "<……>"
+	
+	para "It wants to fight!"
 	done
 
-Route39BarnGaveBerryText:
-	text "<PLAYER> gave a"
-	line "BERRY to MILTANK."
-	done
-
-Route39BarnLittleHealthierText:
-	text "MILTANK became a"
-	line "little healthier!"
-	done
-
-Route39BarnQuiteHealthyText:
-	text "MILTANK became"
-	line "quite healthy!"
-	done
-
-Route39BarnTotallyHealthyText:
-	text "MILTANK became"
-	line "totally healthy!"
-	done
-
-Route39BarnNoBerriesText:
-	text "<PLAYER> has no"
-	line "BERRIES…"
-	done
-
-Route39BarnRefusedBerryText:
-	text "<PLAYER> wouldn't"
-	line "give a BERRY."
-
-	para "MILTANK looks sad."
+Route39BarnHiveText:
+	text "With the defeat of"
+	line "their leader, much"
+	
+	para "of the colony is"
+	line "already leaving."
+	
+	para "Someone experi-"
+	line "enced could"
+	
+	para "probably remove"
+	line "this hive now."
 	done
 
 Route39Barn_MapEvents:
@@ -198,6 +172,13 @@ Route39Barn_MapEvents:
 	def_bg_events
 
 	def_object_events
-	object_event  2,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39BarnTwin1Script, -1
-	object_event  4,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route39BarnTwin2Script, -1
-	object_event  3,  3, SPRITE_TAUROS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MoomooScript, -1
+	object_event  6,  6, SPRITE_TAUROS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39BarnMoomooScript, -1
+	object_event  2,  2, SPRITE_TAUROS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39BarnMiltankScript, -1
+	object_event  3,  3, SPRITE_PARAS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route39BarnBeedrill1Script, EVENT_ROUTE_39_BARN_BEEDRILL1_TOGGLE
+	object_event  0,  2, SPRITE_PARAS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route39BarnBeedrill2Script, EVENT_ROUTE_39_BARN_BEEDRILL2_TOGGLE
+	object_event  2,  1, SPRITE_PARAS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route39BarnBeedrill3Script, EVENT_ROUTE_39_BARN_BEEDRILL3_TOGGLE
+	object_event  3,  2, SPRITE_PARAS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, Route39BarnGenericBeedrillScript, EVENT_ROUTE_39_BEES_TOGGLE
+	object_event  1,  2, SPRITE_PARAS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, Route39BarnGenericBeedrillScript, EVENT_ROUTE_39_BEES_TOGGLE
+	object_event  2,  0, SPRITE_HIVE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39BarnHiveScript, EVENT_ROUTE_39_BEES_TOGGLE
+	object_event  7,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route39BarnPoisonBarb, EVENT_ROUTE_39_BARN_POISON_BARB
+	

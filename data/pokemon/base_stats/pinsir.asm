@@ -4,9 +4,9 @@
 	;   hp  atk  def  spd  sat  sdf
 
 	db BUG, BUG ; type
-	db 60 ; catch rate
+	db 75 ; catch rate
 	db 200 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db X_ATTACK, PP_UP ; items
 	db GENDER_F50 ; gender ratio
 	db 25 ; step cycles to hatch
 	INCBIN "gfx/pokemon/pinsir/front.dimensions"

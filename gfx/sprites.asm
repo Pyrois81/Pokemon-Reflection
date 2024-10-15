@@ -110,3 +110,4 @@ SECTION "Sprites 3", ROMX
 ChrisRunSpriteGFX::			   INCBIN "gfx/sprites/chris_run.2bpp"
 KrisRunSpriteGFX::			   INCBIN "gfx/sprites/kris_run.2bpp"
 LoreleiSpriteGFX::			   INCBIN "gfx/sprites/lorelei.2bpp"
+HiveSpriteGFX::				   INCBIN "gfx/sprites/hive.2bpp"

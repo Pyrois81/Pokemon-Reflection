@@ -21,26 +21,27 @@ OlivineMartLassScript:
 	jumptextfaceplayer OlivineMartLassText
 
 OlivineMartCooltrainerFText:
-	text "Do your #MON"
-	line "already know the"
-
-	para "move for carrying"
-	line "people on water?"
+	text "There's a move"
+	line "that lets #MON"
+	
+	para "carry people"
+	line "across the water."
+	
+	para "I've heard it's"
+	line "pretty hard to get"
+	cont "a hold of, though."
 	done
 
 OlivineMartLassText:
-	text "My BUTTERFREE came"
-	line "from my boyfriend"
-	cont "overseas."
-
-	para "It carried some"
-	line "MAIL from him."
-
-	para "Want to know what"
-	line "it says?"
-
-	para "Let's see… Nope!"
-	line "It's a secret!"
+	text "REVIVE is great"
+	line "for getting a"
+	
+	para "#MON back in"
+	line "the fight!"
+	
+	para "I seem to go"
+	line "through an awful"
+	cont "lot of them…"
 	done
 
 OlivineMart_MapEvents:

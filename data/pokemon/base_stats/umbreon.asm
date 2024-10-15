@@ -6,7 +6,7 @@
 	db DARK, DARK ; type
 	db 60 ; catch rate
 	db 197 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db GRN_APRICORN, BLACKGLASSES ; items
 	db GENDER_F12_5 ; gender ratio
 	db 35 ; step cycles to hatch
 	INCBIN "gfx/pokemon/umbreon/front.dimensions"

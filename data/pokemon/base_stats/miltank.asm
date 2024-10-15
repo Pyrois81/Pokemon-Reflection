@@ -6,7 +6,7 @@
 	db NORMAL, NORMAL ; type
 	db 75 ; catch rate
 	db 200 ; base exp
-	db MOOMOO_MILK, MOOMOO_MILK ; items
+	db MOOMOO_MILK, CALCIUM ; items
 	db GENDER_F100 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/miltank/front.dimensions"

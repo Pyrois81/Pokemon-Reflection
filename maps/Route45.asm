@@ -12,6 +12,8 @@
 	const ROUTE45_POKE_BALL2
 	const ROUTE45_POKE_BALL3
 	const ROUTE45_POKE_BALL4
+	const ROUTE45_ROCK1
+	const ROUTE45_ROCK2
 
 Route45_MapScripts:
 	def_scene_scripts
@@ -289,6 +291,9 @@ Route45HiddenBerryJuice:
 Route45Sign:
 	jumptext Route45SignText
 
+Route45TrainerTips:
+	jumptext Route45TrainerTipsText
+
 Route45FruitTree:
 	fruittree FRUITTREE_ROUTE_45
 
@@ -306,6 +311,9 @@ Route45XSpecial:
 
 Route45HiddenFriendBall:
 	hiddenitem FRIEND_BALL, EVENT_ROUTE_45_HIDDEN_FRIEND_BALL
+
+Route45Rock:
+	jumpstd SmashRockScript
 
 HikerErikSeenText:
 	text "Be prepared for"
@@ -524,6 +532,20 @@ Route45SignText:
 	line "MOUNTAIN RD. AHEAD"
 	done
 
+Route45TrainerTipsText:
+	text "TRAINER TIPS"
+	
+	para "A poisoned, para-"
+	line "lyzed, or burned"
+	
+	para "#MON is easier"
+	line "to catch, and one"
+	
+	para "that is asleep or"
+	line "frozen is even"
+	cont "more so!"
+	done
+
 Route45_MapEvents:
 	db 0, 0 ; filler
 
@@ -536,14 +558,15 @@ Route45_MapEvents:
 	def_bg_events
 	bg_event 11,  5, BGEVENT_READ, Route45Sign
 	bg_event  2, 78, BGEVENT_READ, Route45Sign
+	bg_event 10, 16, BGEVENT_READ, Route45TrainerTips
 	bg_event 17, 52, BGEVENT_ITEM, Route45HiddenFriendBall
 	bg_event  3, 69, BGEVENT_IFNOTSET, Route45HiddenBerryJuice
 
 	def_object_events
 	object_event  2, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerHikerErik, -1
-	object_event 12, 60, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerHikerMichael, -1
-	object_event  4, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerParry, -1
-	object_event  3, 58, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, TrainerHikerTimothy, -1
+	object_event 12, 60, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_TRAINER, 1, TrainerHikerMichael, -1
+	object_event  4, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerHikerParry, -1
+	object_event  3, 58, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerHikerTimothy, -1
 	object_event  8, 33, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 1, TrainerBlackbeltKenji, -1
 	object_event  9, 33, SPRITE_MACHOP, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route45MachopScript, -1
 	object_event 16, 13, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 2, TrainerCooltrainermRyan, -1
@@ -553,3 +576,6 @@ Route45_MapEvents:
 	object_event 17, 76, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45PPUp, EVENT_ROUTE_45_PP_UP
 	object_event  8, 20, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45ParlyzHeal, EVENT_ROUTE_45_PARLYZ_HEAL
 	object_event 17,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route45XSpecial, EVENT_ROUTE_45_X_SPECIAL
+	object_event 13,  9, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route45Rock, -1
+	object_event 11, 31, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route45Rock, -1
+

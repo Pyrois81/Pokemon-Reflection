@@ -63,7 +63,7 @@ ItemEffects:
 	dw RestoreHPEffect     ; SODA_POP
 	dw RestoreHPEffect     ; LEMONADE
 	dw XItemEffect         ; X_ATTACK
-	dw NoEffect            ; ITEM_32
+	dw RemoveHPEffect      ; MOMO_MILK
 	dw XItemEffect         ; X_DEFEND
 	dw XItemEffect         ; X_SPEED
 	dw XItemEffect         ; X_SPECIAL
@@ -1379,17 +1379,13 @@ RareCandyLevelUp:
 .return
 	ret
 
-UseItemGetParams:
+RaiseHappinessEffect:
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 	
 	jp c, RareCandy_StatBooster_ExitMenu
 	
 	call RareCandy_StatBooster_GetParameters
-	ret
-
-RaiseHappinessEffect:
-	call UseItemGetParams
 	
 	ld a, MON_HAPPINESS
 	call GetPartyParamLocation
@@ -1404,7 +1400,7 @@ RaiseHappinessEffect:
 	ld c, HAPPINESS_HONEYDROP
 	farcall ChangeHappiness
 	
-	ld de, SFX_1ST_PLACE
+	ld de, SFX_3RD_PLACE
 	call WaitPlaySFX
 	ld a, PARTYMENUTEXT_GAIN_HAPPINESS ; "(MON)'s happiness rose!"
 	ld [wPartyMenuActionText], a
@@ -1414,7 +1410,12 @@ RaiseHappinessEffect:
 	ret	
 	
 ExpCandyEffect:
-	call UseItemGetParams
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+	
+	jp c, RareCandy_StatBooster_ExitMenu
+	
+	call RareCandy_StatBooster_GetParameters
 	
 	ld a, MON_LEVEL
 	call GetPartyParamLocation
@@ -1812,6 +1813,10 @@ RestoreHPEffect:
 	call ItemRestoreHP
 	jp StatusHealer_Jumptable
 
+RemoveHPEffect:
+	call ItemRemoveHP
+	jp StatusHealer_Jumptable
+
 EnergypowderEffect:
 	ld c, HAPPINESS_BITTERPOWDER
 	jr EnergypowderEnergyRootCommon
@@ -1856,6 +1861,51 @@ ItemRestoreHP:
 	ld a, PARTYMENUTEXT_HEAL_HP
 	ld [wPartyMenuActionText], a
 	call ItemActionTextWaitButton
+	call UseDisposableItem
+	ld a, 0
+	ret
+
+ItemRemoveHP:
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+	ld a, 2
+	ret c ; backed out
+
+	call IsMonFainted
+	ld a, 1
+	ret z
+
+	ld a, MON_HP ; HP high byte
+	call GetPartyParamLocation
+	
+	ld de, 10 ; amount of damage to deal
+	ld a, [hli] ; does the HP high byte have anything in it?
+	and a
+	jr nz, .enough_HP
+	
+	ld a, [hl] ; if HP = 1, no effect
+	cp 1
+	ret z	
+	
+	ld a, [hl] ; otherwise, is the low byte >= 11?
+	cp 11
+	jr nc, .enough_HP
+	
+	dec a ; leave mon with 1 HP
+	ld d, 0
+	ld e, a
+	
+.enough_HP
+	call RemoveHP	
+	call BattlemonRestoreHealth ; just copies from wCurPartyMon to wBattleMon	
+	call HealHP_SFX_GFX
+	ld a, PARTYMENUTEXT_LOSE_HP
+	ld [wPartyMenuActionText], a
+	call ItemActionTextWaitButton
+	
+	ld c, HAPPINESS_BITTERPOWDER
+	farcall ChangeHappiness
+	
 	call UseDisposableItem
 	ld a, 0
 	ret

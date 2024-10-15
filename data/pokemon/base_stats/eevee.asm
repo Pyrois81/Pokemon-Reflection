@@ -6,7 +6,7 @@
 	db NORMAL, NORMAL ; type
 	db 90 ; catch rate
 	db 92 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db GRN_APRICORN, HONEY_DROP ; items
 	db GENDER_F12_5 ; gender ratio
 	db 35 ; step cycles to hatch
 	INCBIN "gfx/pokemon/eevee/front.dimensions"

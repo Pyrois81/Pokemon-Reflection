@@ -6,7 +6,7 @@
 	db NORMAL, PSYCHIC_TYPE ; type
 	db 120 ; catch rate
 	db 149 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db GUARD_SPEC, EXP_CANDY_S ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/girafarig/front.dimensions"

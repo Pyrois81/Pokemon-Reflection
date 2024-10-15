@@ -6,7 +6,7 @@
 	db GHOST, GHOST ; type
 	db 60 ; catch rate
 	db 147 ; base exp
-	db NO_ITEM, SPELL_TAG ; items
+	db MINT_BERRY, SPELL_TAG ; items
 	db GENDER_F50 ; gender ratio
 	db 25 ; step cycles to hatch
 	INCBIN "gfx/pokemon/misdreavus/front.dimensions"

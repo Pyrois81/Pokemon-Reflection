@@ -6,7 +6,7 @@
 	db DARK, ICE ; type
 	db 90 ; catch rate
 	db 132 ; base exp
-	db NO_ITEM, QUICK_CLAW ; items
+	db WHT_APRICORN, QUICK_CLAW ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/sneasel/front.dimensions"

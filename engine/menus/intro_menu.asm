@@ -63,7 +63,7 @@ NewGame:
 	ld [wDebugFlags], a
 	call ResetWRAM
 	call NewGame_ClearTilemapEtc
-	call AreYouABoyOrAreYouAGirl
+	call ChooseGenderAndBattleMode
 	call OakSpeech
 	call InitializeWorld
 
@@ -77,10 +77,10 @@ NewGame:
 	ldh [hMapEntryMethod], a
 	jp FinishContinueFunction
 
-AreYouABoyOrAreYouAGirl:
+ChooseGenderAndBattleMode:
 	farcall Mobile_AlwaysReturnNotCarry ; mobile
 	jr c, .ok
-	farcall InitGender
+	farcall InitGenderChooseBattleMode
 	ret
 
 .ok
@@ -654,9 +654,32 @@ OakSpeech:
 	call RotateThreePalettesRight
 	call ClearTilemap
 
-	ld a, WOOPER
+	call Random
+	sub 64
+	jr c, .Mareep
+	sub 64
+	jr c, .Pichu
+	sub 64
+	jr c, .Marill
+	ld a, SENTRET
+	jr .LoadMonData
+	
+.Mareep:
+	ld a, MAREEP
+	jr .LoadMonData
+	
+.Pichu:
+	ld a, PICHU
+	jr .LoadMonData
+	
+.Marill:
+	ld a, MARILL
+	; fallthrough
+	
+.LoadMonData:
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
+	push af
 	call GetBaseData
 
 	hlcoord 6, 4
@@ -672,6 +695,10 @@ OakSpeech:
 
 	ld hl, OakText2
 	call PrintText
+	pop af
+	call PlayMonCry
+	ld c, 45
+	call DelayFrames
 	ld hl, OakText4
 	call PrintText
 	call RotateThreePalettesRight
@@ -713,15 +740,6 @@ OakText1:
 
 OakText2:
 	text_far _OakText2
-	text_asm
-	ld a, WOOPER
-	call PlayMonCry
-	call WaitSFX
-	ld hl, OakText3
-	ret
-
-OakText3:
-	text_far _OakText3
 	text_end
 
 OakText4:

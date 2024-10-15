@@ -38,7 +38,7 @@ Route45HealHouseGrannyScript:
 .GiveDrop
 	writetext Route45HealHouseHoneyDropText
 	waitbutton
-	giveitem HONEY_DROP
+	verbosegiveitem HONEY_DROP
 	iffalse .NoRoom
 	setevent EVENT_GOT_HONEY_DROP_FROM_GRANNY
 	closetext

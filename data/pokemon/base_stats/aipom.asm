@@ -6,7 +6,7 @@
 	db NORMAL, NORMAL ; type
 	db 75 ; catch rate
 	db 94 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db BERRY, EXP_CANDY_M ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/aipom/front.dimensions"

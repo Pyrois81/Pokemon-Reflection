@@ -87,6 +87,16 @@ SCENE_ALWAYS   EQU -1
 	const SCENE_GOLDENRODGYM_NOTHING              ; 0
 	const SCENE_GOLDENRODGYM_WHITNEY_STOPS_CRYING ; 1
 
+; wRoute39BarnSceneID
+	const_def
+	const SCENE_ROUTE_39_BARN_NOTHING	; 0
+	const SCENE_ROUTE_39_BARN_BEES		; 1
+
+; wOlivineCitySceneID
+	const_def
+	const SCENE_OLIVINECITY_NOTHING ; 0
+	const SCENE_OLIVINECITY_RIVAL_FIGHT ; 1
+
 ; wEcruteakCitySceneID
 	const_def
 	const SCENE_ECRUTEAKCITY_NOTHING 		   ; 0

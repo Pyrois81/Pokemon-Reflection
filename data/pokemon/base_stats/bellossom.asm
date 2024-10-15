@@ -6,7 +6,7 @@
 	db GRASS, GRASS ; type
 	db 45 ; catch rate
 	db 184 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db GOLD_BERRY, SUN_STONE ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/bellossom/front.dimensions"

@@ -8,8 +8,29 @@
 
 EcruteakGym_MapScripts:
 	def_scene_scripts
+	scene_script .FirstVisit ; SCENE_DEFAULT
+	scene_script .DummyScene ; SCENE_FINISHED
 
 	def_callbacks
+
+.FirstVisit:
+	sdefer .GuideExplanation
+	end
+	
+.DummyScene:
+	end
+
+.GuideExplanation:
+	applymovement ECRUTEAKGYM_GYM_GUIDE, EcruteakGymGuideWalksUpMovement
+	opentext
+	writetext EcruteakGymGuideMortyNotInText
+	waitbutton
+	closetext
+	pause 5
+	applymovement ECRUTEAKGYM_GYM_GUIDE, EcruteakGymGuideReturnsMovement
+	pause 5
+	setscene SCENE_FINISHED
+	end
 
 EcruteakGymMortyScript:
 	faceplayer
@@ -122,6 +143,21 @@ EcruteakGymStatue:
 .Beaten:
 	gettrainername STRING_BUFFER_4, MORTY, MORTY1
 	jumpstd GymStatue2Script
+
+EcruteakGymGuideWalksUpMovement:
+	step LEFT
+	step LEFT
+	step LEFT
+	step DOWN
+	step_end
+	
+EcruteakGymGuideReturnsMovement:
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step UP
+	turn_head DOWN
+	step_end
 
 MortyIntroText:
 	text "Life…"
@@ -320,8 +356,9 @@ MediumGraceAfterBattleText:
 	done
 
 EcruteakGymGuideMortyNotInText:
-	text "Welcome to the"
-	line "ECRUTEAK GYM!"
+	text "Hey, hotshot!"
+	line "Welcome to the"
+	cont "ECRUTEAK GYM."
 	
 	para "Unfortunately --"
 	line "or maybe fortu-"
@@ -330,11 +367,23 @@ EcruteakGymGuideMortyNotInText:
 	para "the gym leader,"
 	line "MORTY, isn't in."
 	
-	para "Feel free to take"
-	line "a look around,"
+	para "This place might"
+	line "be a struggle for"
+	cont "you anyway."
 	
-	para "but be sure to"
-	line "watch your step…"
+	para "You should think"
+	line "about visiting"
+	
+	para "OLIVINE and CIAN-"
+	line "WOOD to the east"
+	cont "first."
+	
+	para "That said, you're"
+	line "free to look"
+
+	para "around, but make"
+	line "sure you watch"
+	cont "your step…"
 	done
 
 EcruteakGymGuideText:

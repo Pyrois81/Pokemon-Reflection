@@ -97,8 +97,6 @@ _GrewToLevelText::
 	text_promptbutton
 	text_end
 
-	text_end ; unreferenced
-
 _CameToItsSensesText::
 	text_ram wStringBuffer1
 	text " came"
@@ -120,6 +118,19 @@ _GainedHappinessText::
 	line "happiness rose!@"
 	text_promptbutton
 	text_end
+
+_LostHPText::
+	text_ram wStringBuffer1
+	text " lost"
+	line "@"
+	text_decimal wCurHPAnimDeltaHP, 2, 3
+	text "HP…"
+	
+	para "@"
+	text_ram wStringBuffer1
+	text " looks"
+	line "a bit sick…"
+	done	
 
 _EnterNewPasscodeText::
 	text "Please enter any"
@@ -1554,11 +1565,12 @@ _NPCTradeAfterText3::
 	done
 
 _NPCTradeCompleteText4::
-	text "Uh? What happened?"
+	text "Whoa! Did it work?"
 	done
 
 _NPCTradeAfterText4::
-	text "Trading is so odd…"
+	text "Trading is so"
+	line "cool!"
 
 	para "I still have a lot"
 	line "to learn about it."

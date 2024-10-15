@@ -179,7 +179,7 @@ MoveDescriptions::
 	dw ProtectDescription
 	dw MachPunchDescription
 	dw ScaryFaceDescription
-	dw FaintAttackDescription
+	dw FeintAttackDescription
 	dw SweetKissDescription
 	dw BellyDrumDescription
 	dw SludgeBombDescription
@@ -536,7 +536,7 @@ CounterDescription:
 
 SeismicTossDescription:
 	db	 "Does damage equal"
-	next "to user's level."
+	next "to user's level.@"
 
 StrengthDescription:
 	db   "A powerful physi-"
@@ -664,7 +664,7 @@ TeleportDescription:
 
 NightShadeDescription:
 	db	 "Does damage equal"
-	next "to user's level."
+	next "to user's level.@"
 
 MimicDescription:
 	db   "Copies a move used"
@@ -978,7 +978,7 @@ ScaryFaceDescription:
 	db   "Sharply reduces"
 	next "the foe's SPEED.@"
 
-FaintAttackDescription:
+FeintAttackDescription:
 	db   "An attack that"
 	next "never misses.@"
 

@@ -6,7 +6,7 @@
 	db ELECTRIC, ELECTRIC ; type
 	db 255 ; catch rate
 	db 42 ; base exp
-	db NO_ITEM, BERRY ; items
+	db PRZCUREBERRY, THUNDERSTONE ; items
 	db GENDER_F50 ; gender ratio
 	db 10 ; step cycles to hatch
 	INCBIN "gfx/pokemon/pichu/front.dimensions"

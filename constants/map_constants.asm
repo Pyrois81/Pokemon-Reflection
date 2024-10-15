@@ -39,10 +39,10 @@ ENDM
 	map_const OLIVINE_POKECENTER_1F,                        5,  4 ;  1
 	map_const OLIVINE_GYM,                                  5,  8 ;  2
 	map_const OLIVINE_TIMS_HOUSE,                           4,  4 ;  3
-	map_const OLIVINE_HOUSE_BETA,                           4,  4 ;  4
-	map_const OLIVINE_PUNISHMENT_SPEECH_HOUSE,              4,  4 ;  5
+	map_const OLIVINE_SMEARGLE_HOUSE,                       4,  4 ;  4
+	map_const OLIVINE_ISLANDS_SPEECH_HOUSE,              	4,  4 ;  5
 	map_const OLIVINE_GOOD_ROD_HOUSE,                       4,  4 ;  6
-	map_const OLIVINE_CAFE,                                 4,  4 ;  7
+	map_const OLIVINE_CAFE,                                 6,  4 ;  7
 	map_const OLIVINE_MART,                                 6,  4 ;  8
 	map_const ROUTE_38_ECRUTEAK_GATE,                       5,  4 ;  9
 	map_const ROUTE_39_BARN,                                4,  4 ; 10

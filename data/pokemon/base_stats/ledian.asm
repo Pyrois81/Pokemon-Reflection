@@ -6,7 +6,7 @@
 	db BUG, FLYING ; type
 	db 125 ; catch rate
 	db 134 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db STICK, GOLD_LEAF ; items
 	db GENDER_F50 ; gender ratio
 	db 15 ; step cycles to hatch
 	INCBIN "gfx/pokemon/ledian/front.dimensions"

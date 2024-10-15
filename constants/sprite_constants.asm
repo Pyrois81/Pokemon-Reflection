@@ -105,6 +105,7 @@
 	const SPRITE_LORELEI ; 66
 	const SPRITE_CHRIS_RUN ; 67
 	const SPRITE_KRIS_RUN ; 68
+	const SPRITE_HIVE ; 69
 NUM_OVERWORLD_SPRITES EQU const_value - 1
 
 ; SpriteMons indexes (see data/sprites/sprite_mons.asm)

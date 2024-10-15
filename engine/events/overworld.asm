@@ -1288,8 +1288,12 @@ HeadbuttScript:
 TryHeadbuttOW::
 	ld d, HEADBUTT
 	call CheckPartyMove
+	jr nc, .yes
+	ld d, ZEN_HEADBUTT
+	call CheckPartyMove
 	jr c, .no
-
+	; fallthrough
+.yes	
 	ld a, BANK(AskHeadbuttScript)
 	ld hl, AskHeadbuttScript
 	call CallScript
@@ -1371,14 +1375,22 @@ RockSmashScript:
 	applymovementlasttalked MovementData_RockSmash
 	disappear -2
 
-	callasm RockMonEncounter
+	callasm RockMonEncounter ; 40% chance for mon encounter
 	readmem wTempWildMonSpecies
-	iffalse .done
+	iffalse .no_battle
 	randomwildmon
 	startbattle
 	reloadmapafterbattle
-.done
 	end
+
+.no_battle
+	callasm RockItemEncounter ; 2/3 chance for item (40% overall), 1/3 for nothing (20% overall)
+	iffalse .no_item
+	opentext
+	verbosegiveitem ITEM_FROM_MEM
+	closetext
+.no_item
+	end	
 
 MovementData_RockSmash:
 	rock_smash 10

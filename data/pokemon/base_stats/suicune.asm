@@ -6,7 +6,7 @@
 	db WATER, WATER ; type
 	db 3 ; catch rate
 	db 215 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db NUGGET, MYSTIC_WATER ; items
 	db GENDER_UNKNOWN ; gender ratio
 	db 80 ; step cycles to hatch
 	INCBIN "gfx/pokemon/suicune/front.dimensions"

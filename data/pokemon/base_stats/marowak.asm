@@ -6,7 +6,7 @@
 	db GROUND, GROUND ; type
 	db 75 ; catch rate
 	db 124 ; base exp
-	db NO_ITEM, THICK_CLUB ; items
+	db REVIVAL_HERB, THICK_CLUB ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/marowak/front.dimensions"

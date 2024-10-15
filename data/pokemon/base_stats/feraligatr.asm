@@ -6,7 +6,7 @@
 	db WATER, WATER ; type
 	db 45 ; catch rate
 	db 210 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db BERRY, MYSTIC_WATER ; items
 	db GENDER_F12_5 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/feraligatr/front.dimensions"

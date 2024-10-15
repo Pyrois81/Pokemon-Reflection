@@ -6,7 +6,7 @@
 	db WATER, POISON ; type
 	db 75 ; catch rate
 	db 205 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db BLU_APRICORN, POISON_BARB ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/tentacruel/front.dimensions"

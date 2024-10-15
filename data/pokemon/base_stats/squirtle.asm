@@ -6,7 +6,7 @@
 	db WATER, WATER ; type
 	db 120 ; catch rate
 	db 66 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db GOLD_BERRY, IRON ; items
 	db GENDER_F12_5 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/squirtle/front.dimensions"

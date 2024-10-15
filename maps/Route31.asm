@@ -1,5 +1,4 @@
 	object_const_def
-	const ROUTE31_FISHER
 	const ROUTE31_YOUNGSTER
 	const ROUTE31_BUG_CATCHER
 	const ROUTE31_COOLTRAINER_M
@@ -7,11 +6,20 @@
 	const ROUTE31_POKE_BALL1
 	const ROUTE31_POKE_BALL2
 	const ROUTE31_POKE_BALL3
+	const ROUTE31_ROCK
 
 Route31_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_OBJECTS, .BlockCaveEntrance
+	
+.BlockCaveEntrance:
+	checkevent EVENT_MET_MR_POKEMON
+	iftrue .EndCallback
+	moveobject ROUTE31_COOLTRAINER_M, 34, 6
+.EndCallback:
+	endcallback
 
 TrainerBugCatcherWade1:
 	trainer BUG_CATCHER, WADE1, EVENT_BEAT_BUG_CATCHER_WADE, BugCatcherWade1SeenText, BugCatcherWade1BeatenText, 0, .Script
@@ -237,7 +245,20 @@ DarkCaveSign:
 	jumptext DarkCaveSignText
 
 Route31CooltrainerMScript:
-	jumptextfaceplayer Route31CooltrainerMText
+	faceplayer
+	opentext
+	checkevent EVENT_MET_MR_POKEMON
+	iffalse .Blocking
+	writetext Route31CooltrainerMTextStandard
+	waitbutton
+	closetext
+	end
+
+.Blocking
+	writetext Route31CooltrainerMTextBlocking
+	waitbutton
+	closetext
+	end
 
 Route31FruitTree:
 	fruittree FRUITTREE_ROUTE_31
@@ -254,7 +275,20 @@ Route31StarPiece:
 Route31HiddenTinyMushroom:
 	hiddenitem TINYMUSHROOM, EVENT_ROUTE_31_HIDDEN_TINYMUSHROOM
 
-Route31CooltrainerMText:
+Route31Rock:
+	jumpstd SmashRockScript
+
+Route31CooltrainerMTextBlocking:
+	text "Whoa, there!"
+	
+	para "You really"
+	line "shouldn't go into"
+	
+	para "this cave without"
+	line "a good reason."
+	done
+
+Route31CooltrainerMTextStandard:
 	text "DARK CAVE…"
 
 	para "I heard that"
@@ -423,9 +457,9 @@ Route31_MapEvents:
 	def_object_events
 	object_event  9,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31YoungsterScript, -1
 	object_event 15, 11, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 5, TrainerBugCatcherWade1, -1
-	object_event 32, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31CooltrainerMScript, -1
+	object_event 32, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31CooltrainerMScript, -1
 	object_event 12,  8, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31FruitTree, -1
-	object_event 32, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31Potion, EVENT_ROUTE_31_POTION
+	object_event 33, 13, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31Potion, EVENT_ROUTE_31_POTION
 	object_event 10, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31UltraBall, EVENT_ROUTE_31_ULTRA_BALL
 	object_event 29,  2, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route31StarPiece, EVENT_ROUTE_31_STAR_PIECE
-
+	object_event 32,  6, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route31Rock, -1

@@ -14,8 +14,8 @@ BurnedTower1FSageScript:
 BurnedTower1FGreatBall:
 	itemball GREAT_BALL
 	
-BurnedTower1FGoldBerry:
-	itemball GOLD_BERRY
+BurnedTower1FMoonStone:
+	itemball MOON_STONE
 
 BurnedTower1FHiddenHyperPotion:
 	hiddenitem HYPER_POTION, EVENT_BURNED_TOWER_1F_HIDDEN_HYPER_POTION
@@ -61,4 +61,4 @@ BurnedTower1F_MapEvents:
 	def_object_events
 	object_event 11, 13, SPRITE_SAGE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BurnedTower1FSageScript, -1
 	object_event 12,  5, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, BurnedTower1FGreatBall, EVENT_BURNED_TOWER_1F_GREAT_BALL
-	object_event 15, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, BurnedTower1FGoldBerry, EVENT_BURNED_TOWER_1F_GOLD_BERRY
+	object_event 15, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, BurnedTower1FMoonStone, EVENT_BURNED_TOWER_1F_MOON_STONE

@@ -6,7 +6,7 @@
 	db ROCK, GROUND ; type
 	db 75 ; catch rate
 	db 108 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db BLK_APRICORN, HARD_STONE ; items
 	db GENDER_F50 ; gender ratio
 	db 25 ; step cycles to hatch
 	INCBIN "gfx/pokemon/onix/front.dimensions"

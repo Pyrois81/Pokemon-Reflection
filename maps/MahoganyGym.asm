@@ -39,6 +39,7 @@ MahoganyGymPryceScript:
 	setevent EVENT_BEAT_BOARDER_RONALD
 	setevent EVENT_BEAT_BOARDER_BRAD
 	setevent EVENT_BEAT_BOARDER_DOUGLAS
+	setmapscene ROUTE_39_BARN, SCENE_ROUTE_39_BARN_BEES
 	writetext PryceText_GlacierBadgeSpeech
 	promptbutton
 	verbosegiveitem TM_ICY_WIND

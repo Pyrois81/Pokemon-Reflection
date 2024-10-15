@@ -6,7 +6,7 @@
 	db ELECTRIC, ELECTRIC ; type
 	db 190 ; catch rate
 	db 103 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db X_SPEED, CARBOS ; items
 	db GENDER_UNKNOWN ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/voltorb/front.dimensions"

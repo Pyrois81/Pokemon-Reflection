@@ -20,7 +20,7 @@ InitCrystalData:
 
 INCLUDE "mobile/mobile_12.asm"
 
-InitGender:
+InitGenderChooseBattleMode:
 	call InitGenderScreen
 	call LoadGenderScreenPal
 	call LoadGenderScreenLightBlueTile
@@ -28,7 +28,7 @@ InitGender:
 	call SetPalettes
 	ld hl, AreYouABoyOrAreYouAGirlText
 	call PrintText
-	ld hl, .MenuHeader
+	ld hl, .GenderMenuHeader
 	call LoadMenuHeader
 	call WaitBGMap2
 	call VerticalMenu
@@ -38,22 +38,60 @@ InitGender:
 	ld [wPlayerGender], a
 	ld c, 10
 	call DelayFrames
+	
+	ld hl, DefaultBattleModeText
+	call PrintText
+	ld hl, .BattleModeMenuHeader
+	call LoadMenuHeader
+	call WaitBGMap2
+	call VerticalMenu
+	call CloseWindow
+	ld a, [wMenuCursorY]
+	dec a
+	xor 1
+	ld hl, wOptions
+	jr z, .ShiftMode ; 0 = SHIFT, 1 = SET
+	set BATTLE_SHIFT, [hl]
+	jr .done
+	
+.ShiftMode
+	res BATTLE_SHIFT, [hl]
+	; fallthrough
+.done
+	ld c, 10
+	call DelayFrames
 	ret
 
-.MenuHeader:
+.GenderMenuHeader:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 6, 4, 12, 9
-	dw .MenuData
+	menu_coords 6, 4, 13, 9
+	dw .GenderMenuData
 	db 1 ; default option
 
-.MenuData:
+.GenderMenuData:
 	db STATICMENU_CURSOR | STATICMENU_WRAP | STATICMENU_DISABLE_B ; flags
 	db 2 ; items
 	db "Boy@"
 	db "Girl@"
 
+.BattleModeMenuHeader:
+	db MENU_BACKUP_TILES ; flags
+	menu_coords 1, 4, 18, 9
+	dw .BattleModeMenuData
+	db 1 ; default option
+
+.BattleModeMenuData:
+	db STATICMENU_CURSOR | STATICMENU_WRAP | STATICMENU_DISABLE_B ; flags
+	db 2 ; items
+	db "Keep it on SET@"
+	db "Back to SHIFT@"
+
 AreYouABoyOrAreYouAGirlText:
 	text_far _AreYouABoyOrAreYouAGirlText
+	text_end
+
+DefaultBattleModeText:
+	text_far _DefaultBattleModeText
 	text_end
 
 InitGenderScreen:

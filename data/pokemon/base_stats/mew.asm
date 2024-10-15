@@ -6,7 +6,7 @@
 	db PSYCHIC_TYPE, PSYCHIC_TYPE ; type
 	db 45 ; catch rate
 	db 64 ; base exp
-	db NO_ITEM, MIRACLEBERRY ; items
+	db EVERSTONE, EVERSTONE ; items
 	db GENDER_UNKNOWN ; gender ratio
 	db 120 ; step cycles to hatch
 	INCBIN "gfx/pokemon/mew/front.dimensions"

@@ -6,7 +6,7 @@
 	db ROCK, FLYING ; type
 	db 45 ; catch rate
 	db 202 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db BLK_APRICORN, CARBOS ; items
 	db GENDER_F12_5 ; gender ratio
 	db 35 ; step cycles to hatch
 	INCBIN "gfx/pokemon/aerodactyl/front.dimensions"

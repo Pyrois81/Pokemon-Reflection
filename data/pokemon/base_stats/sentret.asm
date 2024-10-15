@@ -6,7 +6,7 @@
 	db NORMAL, NORMAL ; type
 	db 255 ; catch rate
 	db 57 ; base exp
-	db NO_ITEM, BERRY ; items
+	db RED_APRICORN, POLKADOT_BOW ; items
 	db GENDER_F50 ; gender ratio
 	db 15 ; step cycles to hatch
 	INCBIN "gfx/pokemon/sentret/front.dimensions"

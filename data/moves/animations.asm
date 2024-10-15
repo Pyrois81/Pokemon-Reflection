@@ -180,7 +180,7 @@ BattleAnimations::
 	dw BattleAnim_Protect
 	dw BattleAnim_MachPunch
 	dw BattleAnim_ScaryFace
-	dw BattleAnim_FaintAttack
+	dw BattleAnim_FeintAttack
 	dw BattleAnim_SweetKiss
 	dw BattleAnim_BellyDrum
 	dw BattleAnim_SludgeBomb
@@ -3362,7 +3362,7 @@ BattleAnim_ScaryFace:
 	anim_wait 64
 	anim_ret
 
-BattleAnim_FaintAttack:
+BattleAnim_FeintAttack:
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_CURSE
 	anim_call BattleAnim_TargetObj_1Row

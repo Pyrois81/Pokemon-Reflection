@@ -3,7 +3,7 @@ FruitTreeItems:
 	table_width 1, FruitTreeItems
 	db BERRY        ; ROUTE_29
 	db BERRY        ; ROUTE_30_1
-	db BERRY        ; ROUTE_38
+	db GOLD_BERRY   ; ROUTE_38
 	db BERRY        ; ROUTE_46_1
 	db PSNCUREBERRY ; ROUTE_30_2
 	db PSNCUREBERRY ; ROUTE_33
@@ -15,7 +15,7 @@ FruitTreeItems:
 	db MYSTERYBERRY ; ROUTE_45
 	db ICE_BERRY    ; ROUTE_36
 	db ICE_BERRY    ; ROUTE_26
-	db MINT_BERRY   ; ROUTE_39
+	db GRN_APRICORN ; ROUTE_39
 	db BURNT_BERRY  ; ROUTE_44
 	db RED_APRICORN ; ROUTE_37_1
 	db BLU_APRICORN ; ROUTE_37_2

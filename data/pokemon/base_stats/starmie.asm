@@ -6,7 +6,7 @@
 	db WATER, PSYCHIC_TYPE ; type
 	db 75 ; catch rate
 	db 207 ; base exp
-	db STARDUST, STAR_PIECE ; items
+	db STARDUST, WATER_STONE ; items
 	db GENDER_UNKNOWN ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/starmie/front.dimensions"

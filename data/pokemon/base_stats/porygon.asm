@@ -6,7 +6,7 @@
 	db NORMAL, NORMAL ; type
 	db 75 ; catch rate
 	db 130 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db ULTRA_BALL, UP_GRADE ; items
 	db GENDER_UNKNOWN ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/porygon/front.dimensions"

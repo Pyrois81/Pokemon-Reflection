@@ -144,6 +144,7 @@ CherrygroveGroupSprites:
 	db SPRITE_OFFICER
 	db SPRITE_POKE_BALL
 	db SPRITE_FRUIT_TREE
+	db SPRITE_ROCK
 	db 0 ; end
 
 ; Route37 and EcruteakCity are connected
@@ -166,6 +167,7 @@ EcruteakGroupSprites:
 	db SPRITE_FRUIT_TREE
 	db SPRITE_SUICUNE
 	db SPRITE_MAGIKARP
+	db SPRITE_GRANNY
 	db 0 ; end
 
 AzaleaGroupSprites:
@@ -207,7 +209,7 @@ CianwoodGroupSprites:
 	db SPRITE_SWIMMER_GUY
 	db SPRITE_POKEFAN_M
 	db SPRITE_LASS
-	db SPRITE_BUENA
+	db SPRITE_BEAUTY
 	db SPRITE_SWIMMER_GIRL
 	db SPRITE_SAILOR
 	db SPRITE_POKEFAN_F
@@ -218,6 +220,9 @@ CianwoodGroupSprites:
 	db SPRITE_ROCK
 	db SPRITE_YOUNGSTER
 	db SPRITE_SUICUNE
+	db SPRITE_ROCKET
+	db SPRITE_SCIENTIST
+	db SPRITE_POKE_BALL
 	db 0 ; end
 
 MahoganyGroupSprites:
@@ -234,6 +239,7 @@ MahoganyGroupSprites:
 	db SPRITE_FRUIT_TREE
 	db SPRITE_POKE_BALL
 	db SPRITE_SUICUNE
+	db SPRITE_ROCK
 	db 0 ; end
 
 LakeOfRageGroupSprites:
@@ -269,6 +275,7 @@ BlackthornGroupSprites:
 	db SPRITE_POKE_BALL
 	db SPRITE_MACHOP
 	db SPRITE_OFFICER
+	db SPRITE_ROCK
 	db 0 ; end
 
 SilverGroupSprites:

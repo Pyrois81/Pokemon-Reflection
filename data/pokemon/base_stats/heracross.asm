@@ -6,7 +6,7 @@
 	db BUG, FIGHTING ; type
 	db 60 ; catch rate
 	db 200 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db GOLD_BERRY, SILVERPOWDER ; items
 	db GENDER_F50 ; gender ratio
 	db 25 ; step cycles to hatch
 	INCBIN "gfx/pokemon/heracross/front.dimensions"

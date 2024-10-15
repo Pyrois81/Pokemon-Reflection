@@ -6,7 +6,7 @@
 	db FIRE, ROCK ; type
 	db 75 ; catch rate
 	db 154 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db X_SPECIAL, EXP_CANDY_M ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/magcargo/front.dimensions"

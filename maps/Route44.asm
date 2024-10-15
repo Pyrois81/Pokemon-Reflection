@@ -10,6 +10,9 @@
 	const ROUTE44_POKE_BALL1
 	const ROUTE44_POKE_BALL2
 	const ROUTE44_POKE_BALL3
+	const ROUTE44_ROCK1
+	const ROUTE44_ROCK2
+	const ROUTE44_ROCK3
 
 Route44_MapScripts:
 	def_scene_scripts
@@ -113,6 +116,9 @@ Route44GreatBall:
 
 Route44HiddenElixir:
 	hiddenitem ELIXIR, EVENT_ROUTE_44_HIDDEN_ELIXIR
+
+Route44Rock:
+	jumpstd SmashRockScript
 
 FisherWiltonSeenText:
 	text "You came through"
@@ -304,3 +310,7 @@ Route44_MapEvents:
 	object_event 33,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route44EnergyPowder, EVENT_ROUTE_44_ENERGYPOWDER
 	object_event 57, 10, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route44NeverMeltIce, EVENT_ROUTE_44_NEVERMELTICE
 	object_event 23, 12, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route44GreatBall, EVENT_ROUTE_44_GREAT_BALL
+	object_event 17, 13, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route44Rock, -1
+	object_event 40,  2, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route44Rock, -1
+	object_event 52,  4, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route44Rock, -1
+

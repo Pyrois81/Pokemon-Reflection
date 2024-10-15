@@ -6,7 +6,7 @@
 	db ICE, PSYCHIC_TYPE ; type
 	db 60 ; catch rate
 	db 137 ; base exp
-	db ICE_BERRY, ICE_BERRY ; items
+	db ICE_BERRY, CALCIUM ; items
 	db GENDER_F100 ; gender ratio
 	db 25 ; step cycles to hatch
 	INCBIN "gfx/pokemon/jynx/front.dimensions"

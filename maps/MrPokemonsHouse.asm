@@ -26,37 +26,49 @@ MrPokemonsHouse_MapScripts:
 	applymovement PLAYER, MrPokemonsHouse_PlayerWalksToMrPokemon
 	opentext
 	writetext MrPokemonIntroText2
+	waitbutton
+	writetext MrPokemonHealText1
 	promptbutton
-	waitsfx
-	giveitem TATTERED_HAT
-	writetext MrPokemonsHouse_GotHatText
-	playsound SFX_KEY_ITEM
-	waitsfx
-	itemnotify
-	setevent EVENT_GOT_TATTERED_HAT_FROM_MR_POKEMON
-	blackoutmod CHERRYGROVE_CITY
-	writetext MrPokemonIntroText3
-	promptbutton
-	turnobject MRPOKEMONSHOUSE_GENTLEMAN, RIGHT
-	writetext MrPokemonIntroText4
-	promptbutton
-	turnobject MRPOKEMONSHOUSE_GENTLEMAN, DOWN
-	turnobject MRPOKEMONSHOUSE_OAK, LEFT
-	writetext MrPokemonIntroText5
+	closetext
+	scall MrPokemonsHouse_Heal
+	opentext
+	writetext MrPokemonImDependingOnYouText
 	waitbutton
 	closetext
-	sjump MrPokemonsHouse_OakScript
-
+	setevent EVENT_MET_MR_POKEMON
+	setscene SCENE_FINISHED
+	end
+	
 MrPokemonsHouse_MrPokemonScript:
 	faceplayer
 	opentext
 	checkitem RED_SCALE
 	iftrue .RedScale
-	checkevent EVENT_GAVE_TATTERED_HAT_TO_ELM
+	checkevent EVENT_SHOWED_TATTERED_HAT_TO_MR_POKEMON
 	iftrue .AlwaysNewDiscoveries
-	writetext MrPokemonText_ImDependingOnYou
+	checkitem TATTERED_HAT
+	iffalse .GetToIt
+	writetext MrPokemonReturnedText
+	promptbutton
+	writetext MrPokemonShowHatText
+	waitbutton
+	setevent EVENT_SHOWED_TATTERED_HAT_TO_MR_POKEMON
+	blackoutmod CHERRYGROVE_CITY
+	writetext MrPokemonRocketText1
+	promptbutton
+	turnobject MRPOKEMONSHOUSE_GENTLEMAN, RIGHT
+	turnobject MRPOKEMONSHOUSE_OAK, LEFT
+	writetext MrPokemonRocketText2
+	promptbutton
+	turnobject MRPOKEMONSHOUSE_GENTLEMAN, DOWN
+	closetext
+	sjump MrPokemonsHouse_OakScene
+
+.GetToIt:
+	writetext MrPokemonGetToItText
 	waitbutton
 	closetext
+	scall MrPokemonsHouse_Heal
 	end
 
 .AlwaysNewDiscoveries:
@@ -82,18 +94,21 @@ MrPokemonsHouse_MrPokemonScript:
 	end
 
 MrPokemonsHouse_OakScript:
+	jumptextfaceplayer MrPokemonsHouse_OakText1
+
+MrPokemonsHouse_OakScene:
 	playmusic MUSIC_PROF_OAK
 	applymovement MRPOKEMONSHOUSE_OAK, MrPokemonsHouse_OakWalksToPlayer
 	turnobject PLAYER, RIGHT
 	opentext
-	writetext MrPokemonsHouse_OakText1
+	writetext MrPokemonsHouse_OakText2
 	promptbutton
 	waitsfx
 	writetext MrPokemonsHouse_GetDexText
 	playsound SFX_ITEM
 	waitsfx
 	setflag ENGINE_POKEDEX
-	writetext MrPokemonsHouse_OakText2
+	writetext MrPokemonsHouse_OakText3
 	waitbutton
 	closetext
 	turnobject PLAYER, DOWN
@@ -105,9 +120,21 @@ MrPokemonsHouse_OakScript:
 	pause 15
 	turnobject PLAYER, UP
 	opentext
-	writetext MrPokemonsHouse_MrPokemonHealText
+	writetext MrPokemonRocketText3
 	waitbutton
 	closetext
+	scall MrPokemonsHouse_Heal
+	opentext
+	writetext MrPokemonGoodLuckText
+	waitbutton
+	closetext
+	setevent EVENT_RIVAL_NEW_BARK_TOWN
+	setevent EVENT_PLAYERS_HOUSE_1F_NEIGHBOR
+	clearevent EVENT_PLAYERS_NEIGHBORS_HOUSE_NEIGHBOR
+	setmapscene CHERRYGROVE_CITY, SCENE_CHERRYGROVECITY_MEET_RIVAL
+	end
+
+MrPokemonsHouse_Heal:
 	special FadeBlackQuickly
 	special ReloadSpritesNoPalettes
 	playmusic MUSIC_HEAL
@@ -116,15 +143,6 @@ MrPokemonsHouse_OakScript:
 	pause 60
 	special FadeInQuickly
 	special RestartMapMusic
-	opentext
-	writetext MrPokemonText_ImDependingOnYou
-	waitbutton
-	closetext
-	setevent EVENT_RIVAL_NEW_BARK_TOWN
-	setevent EVENT_PLAYERS_HOUSE_1F_NEIGHBOR
-	clearevent EVENT_PLAYERS_NEIGHBORS_HOUSE_NEIGHBOR
-	setscene SCENE_FINISHED
-	setmapscene CHERRYGROVE_CITY, SCENE_CHERRYGROVECITY_MEET_RIVAL
 	end
 
 MrPokemonsHouse_ForeignMagazines:
@@ -164,56 +182,86 @@ MrPokemonIntroText1:
 	done
 
 MrPokemonIntroText2:
-	text "This is what I"
-	line "want PROF.ELM to"
-	cont "examine."
+	text "The last time I"
+	line "was poking around"
+	
+	para "in DARK CAVE, I"
+	line "came across a few"
+	
+	para "crystal shards of"
+	line "various colors."
+	
+	para "Now, I've been"
+	line "around long enough"
+	
+	para "to recognize them"
+	line "as sheared-off"
+	
+	para "slivers of evolu-"
+	line "tion stones."
+	
+	para "If you'd be so"
+	line "kind, I'd ask you"
+	
+	para "to check out DARK"
+	line "CAVE and see if"
+	
+	para "you can find any"
+	line "more clues as to"
+	cont "what's going on."
 	done
 
-MrPokemonsHouse_GotHatText:
-	text "<PLAYER> received"
-	line "TATTERED HAT."
+MrPokemonHealText1:
+	text "Oh, and before you"
+	line "go, allow me to"
+	cont "heal your #MON."
+	done
+	
+MrPokemonImDependingOnYouText:
+	text "I'm depending on"
+	line "you, <PLAYER>!"
 	done
 
-MrPokemonIntroText3:
-	text "I was doing some"
-	line "investigating in"
+MrPokemonGetToItText:
+	text "I've got a bad"
+	line "feeling that"
+	cont "trouble is afoot…"
 	
-	para "DARK CAVE a few"
-	line "days back and"
+	para "Please, investi-"
+	line "gate the cave!"
 	
-	para "stumbled across a"
-	line "passage I hadn't"
-	cont "seen before."
-	
-	para "I wasn't able to"
-	line "squeeze through,"
-	
-	para "but I did find"
-	line "this old hat and"
-	
-	para "a bunch of crystal"
-	line "shards, which I"
-	
-	para "believe were"
-	line "fragments of"
-	cont "evolution stones."
+	para "Ah, and let me"
+	line "heal your #MON"
+	cont "while you're here."
 	done
 
-MrPokemonIntroText4:
-	text "I'm sure PROF.OAK"
-	line "recognizes the"
+MrPokemonReturnedText:
+	text "Yes, <PLAYER>?"
 	
-	para "significance of"
-	line "this hat."
+	para "What did you find?"
 	done
 
-MrPokemonIntroText5:
+MrPokemonShowHatText:
+	text "<PLAYER> showed"
+	line "the TATTERED HAT"
+	cont "to MR.#MON."
+	done
+	
+MrPokemonRocketText1:
+	text "Oh, my…"
+	
+	para "I recognize this"
+	line "hat, and I'm sure"
+	cont "PROF.OAK does too."
+	done
+
+MrPokemonRocketText2:
 	text "A black cap with a"
 	line "large red 'R'"
 	cont "embroidered on it…"
 	
-	para "It leads me to"
-	line "believe that"
+	para "I'm beginning to"
+	line "wonder whether"
 	
 	para "TEAM ROCKET may"	
 	line "have had something"
@@ -222,7 +270,7 @@ MrPokemonIntroText5:
 	line "collapse."
 	done
 
-MrPokemonsHouse_MrPokemonHealText:
+MrPokemonRocketText3:
 	text "You should return"
 	line "to the lab and"
 	
@@ -234,9 +282,16 @@ MrPokemonsHouse_MrPokemonHealText:
 	cont "rest."
 	done
 
-MrPokemonText_ImDependingOnYou:
-	text "I'm depending on"
-	line "you!"
+MrPokemonGoodLuckText:
+	text "Good luck out"
+	line "there, <PLAYER>."
+	
+	para "This may turn out"
+	line "to be much bigger"
+	
+	para "than any of us"
+	line "could have"
+	cont "anticipated."
 	done
 
 MrPokemonText_AlwaysNewDiscoveries:
@@ -257,29 +312,25 @@ MrPokemonsHouse_OakText1:
 	para "I was just visit-"
 	line "ing my old friend"
 	cont "MR.#MON."
+	done
 	
-	para "I never expected"
-	line "to land right in"
-	
-	para "the middle of a"
-	line "mystery!"
+MrPokemonsHouse_OakText2:	
+	text "Wow! I never ex-"
+	line "pected to land"
+
+	para "right in the mid-"
+	line "dle of a mystery!"
 	
 	para "And one concerning"
 	line "TEAM ROCKET,"
 	cont "no less…"
 
-	para "I heard you were"
-	line "aiding PROF.ELM in"
-
-	para "his research, so I"
-	line "waited here."
-
 	para "Oh! What's this?"
 	line "A #MON!"
 
-	para "Let's see…"
+	para "Let's take a look…"
 
-	para "Hm, I see!"
+	para "Ahh, I see!"
 
 	para "I understand why"
 	line "PROF.ELM gave you"
@@ -305,9 +356,9 @@ MrPokemonsHouse_OakText1:
 	para "How would you like"
 	line "to help me out?"
 
-	para "See? This is the"
-	line "latest version of"
-	cont "my #DEX."
+	para "Behold! This is"
+	line "the latest version"
+	cont "of my #DEX."
 
 	para "It automatically"
 	line "records data on"
@@ -324,7 +375,7 @@ MrPokemonsHouse_GetDexText:
 	line "#DEX!"
 	done
 
-MrPokemonsHouse_OakText2:
+MrPokemonsHouse_OakText3:
 	text "Go meet many kinds"
 	line "of #MON and"
 
@@ -423,4 +474,4 @@ MrPokemonsHouse_MapEvents:
 
 	def_object_events
 	object_event  3,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
-	object_event  6,  5, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
+	object_event  6,  5, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MrPokemonsHouse_OakScript, EVENT_MR_POKEMONS_HOUSE_OAK_TOGGLE

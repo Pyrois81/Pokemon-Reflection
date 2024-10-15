@@ -6,7 +6,7 @@
 	db DARK, FIRE ; type
 	db 60 ; catch rate
 	db 204 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db BERRY, CHARCOAL ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/houndoom/front.dimensions"

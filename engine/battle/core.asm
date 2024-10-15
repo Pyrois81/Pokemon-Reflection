@@ -85,6 +85,7 @@ DoBattle:
 	call LoadTilemapToTempTilemap
 	call ResetBattleParticipants
 	call InitBattleMon
+	farcall LoadBattleScreenTypeIconGFX
 	call ResetPlayerStatLevels
 	call SendOutMonText
 	call NewBattleMonStatus
@@ -226,6 +227,42 @@ BattleTurn:
 	jp .loop
 
 .quit
+	; return stolen item to player if it exists
+	ld a, [wThievedItem]
+	and a
+	ret z
+	ld a, MON_ITEM
+	ld c, a
+	ld b, 0
+	ld hl, wOTPartyMons
+	add hl, bc ; hl = wOTPartyMon1Item
+	ld a, [wThievedItemStolenBy]
+	call GetPartyLocation ; hl = wOTPartyMon#Item
+	ld a, [hl]
+	ld [wNamedObjectIndex], a
+	ld a, MON_ITEM
+	ld c, a
+	ld b, 0
+	ld hl, wPartyMons
+	add hl, bc ; hl = wPartyMon1Item
+	ld a, [wThievedItemStolenFrom]
+	call GetPartyLocation ; hl = wPartyMon#Item
+	ld a, [wNamedObjectIndex]
+	ld [hl], a
+	ld a, [wThievedItemStolenFrom]
+	ld hl, wPartyMonNicknames
+	call GetNickname
+	call CopyName1 ; copy nickname to wStringBuffer2
+	call GetItemName ; item name in wStringBuffer1
+	ld hl, ItemReturnedText
+	call StdBattleTextbox
+	
+	; clear stolen item info
+	xor a
+	ld hl, wThievedItem
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
 	ret
 
 Stubbed_Increments5_a89a:
@@ -2725,6 +2762,7 @@ ForcePlayerMonChoice:
 	ld [wCurBattleMon], a
 	call AddBattleParticipant
 	call InitBattleMon
+	farcall LoadBattleScreenTypeIconGFX
 	call ResetPlayerStatLevels
 	call ClearPalettes
 	call DelayFrame
@@ -2752,6 +2790,7 @@ PlayerPartyMonEntrance:
 	ld [wCurBattleMon], a
 	call AddBattleParticipant
 	call InitBattleMon
+	farcall LoadBattleScreenTypeIconGFX
 	call ResetPlayerStatLevels
 	call SendOutMonText
 	call NewBattleMonStatus
@@ -3105,6 +3144,7 @@ EnemySwitch:
 	call OfferSwitch
 	push af
 	call ClearEnemyMonBox
+	farcall LoadBattleScreenTypeIconGFX
 	call ShowBattleTextEnemySentOut
 	call ShowSetEnemyMonAndSendOutAnimation
 	pop af
@@ -3130,8 +3170,10 @@ EnemySwitch_SetMode:
 	ld a, 1
 	ld [wEnemyIsSwitching], a
 	call ClearEnemyMonBox
+	farcall LoadBattleScreenTypeIconGFX
 	call ShowBattleTextEnemySentOut
-	jp ShowSetEnemyMonAndSendOutAnimation
+	call ShowSetEnemyMonAndSendOutAnimation
+	ret
 
 CheckWhetherSwitchmonIsPredetermined:
 ; returns the enemy switchmon index in b, or
@@ -4585,6 +4627,7 @@ DrawPlayerHUD:
 	ld a, [wTempMonLevel]
 	ld b, a
 	call FillInExpBar
+	farcall PlaceBattleScreenTypeIcons
 	pop de
 	ret
 
@@ -4668,11 +4711,6 @@ PrintPlayerHUD:
 	pop hl
 	pop bc
 	ret nz
-	ld a, b
-	cp " "
-	jr nz, .copy_level ; male or female
-	dec hl ; genderless
-
 .copy_level
 	ld a, [wBattleMonLevel]
 	ld [wTempMonLevel], a
@@ -4745,16 +4783,11 @@ DrawEnemyHUD:
 	pop hl
 	pop bc
 	jr nz, .skip_level
-	ld a, b
-	cp " "
-	jr nz, .print_level
-	dec hl
 .print_level
 	ld a, [wEnemyMonLevel]
 	ld [wTempMonLevel], a
 	call PrintLevel
 .skip_level
-
 	ld hl, wEnemyMonHP
 	ld a, [hli]
 	ldh [hMultiplicand + 1], a
@@ -4819,6 +4852,9 @@ DrawEnemyHUD:
 	hlcoord 2, 2
 	ld b, 0
 	call DrawBattleHPBar
+	push de
+	farcall PlaceBattleScreenTypeIcons
+	pop de
 	ret
 
 UpdateEnemyHPPal:
@@ -5229,6 +5265,7 @@ BattleMonEntrance:
 	ld [wCurPartyMon], a
 	call AddBattleParticipant
 	call InitBattleMon
+	farcall LoadBattleScreenTypeIconGFX
 	call ResetPlayerStatLevels
 	call SendOutMonText
 	call NewBattleMonStatus
@@ -5979,19 +6016,19 @@ LoadEnemyMon:
 
 ; Failing that, it's all up to chance
 ;  Effective chances:
-;    75% None
-;    23% Item1
-;     2% Item2
+;    60% None
+;    35% Item1
+;     5% Item2
 
-; 25% chance of getting an item
+; 40% chance of getting an item
 	call BattleRandom
-	cp 75 percent + 1
+	cp 60 percent
 	ld a, NO_ITEM
 	jr c, .UpdateItem
 
-; From there, an 8% chance for Item2
+; From there, a 1/8 chance for Item2
 	call BattleRandom
-	cp 8 percent ; 8% of 25% = 2% Item2
+	cp 13 percent - 1 ; 1/8 of 40% = 5% Item2
 	ld a, [wBaseItem1]
 	jr nc, .UpdateItem
 	ld a, [wBaseItem2]
@@ -6035,10 +6072,8 @@ LoadEnemyMon:
 ; Here's where the fun starts
 
 .NotRoaming:
-; Register a contains wBattleType
-
 ; Forced shiny battle type
-; Used by Red Gyarados at Lake of Rage
+	ld a, [wBattleType]
 	cp BATTLETYPE_SHINY
 	jr nz, .GenerateDVs
 

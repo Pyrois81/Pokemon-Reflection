@@ -972,6 +972,15 @@ StoleText:
 	cont "from its foe!"
 	prompt
 
+ItemReturnedText:
+	text_ram wStringBuffer1
+	text " was"
+	line "returned to"
+	cont "@"
+	text_ram wStringBuffer2
+	text "."
+	prompt	
+
 CantEscapeNowText:
 	text "<TARGET>"
 	line "can't escape now!"

@@ -133,6 +133,7 @@ SquirtleEvosAttacks:
 	db 10, DEFENSE_CURL
 	db 13, WATER_GUN
 	db 18, BITE
+	db 20, BUBBLEBEAM
 	db 23, RAPID_SPIN
 	db 28, PROTECT
 	db 33, RAIN_DANCE
@@ -152,6 +153,7 @@ WartortleEvosAttacks:
 	db 10, DEFENSE_CURL
 	db 13, WATER_GUN
 	db 19, BITE
+	db 22, BUBBLEBEAM
 	db 25, RAPID_SPIN
 	db 31, PROTECT
 	db 37, RAIN_DANCE
@@ -171,6 +173,7 @@ BlastoiseEvosAttacks:
 	db 10, DEFENSE_CURL
 	db 13, WATER_GUN
 	db 19, BITE
+	db 22, BUBBLEBEAM
 	db 25, RAPID_SPIN
 	db 31, PROTECT
 	db 37, SIGNAL_BEAM
@@ -769,7 +772,7 @@ MeowthEvosAttacks:
 	db 1, GROWL
 	db 11, BITE
 	db 20, PAY_DAY
-	db 28, FAINT_ATTACK
+	db 28, FEINT_ATTACK
 	db 35, SCREECH
 	db 38, SEED_BOMB
 	db 41, FURY_SWIPES
@@ -785,7 +788,7 @@ PersianEvosAttacks:
 	db 1, BITE
 	db 11, BITE
 	db 20, PAY_DAY
-	db 29, FAINT_ATTACK
+	db 29, FEINT_ATTACK
 	db 38, SCREECH
 	db 42, SEED_BOMB
 	db 46, FURY_SWIPES
@@ -2452,7 +2455,7 @@ HoothootEvosAttacks:
 	db 16, HYPNOSIS
 	db 22, REFLECT
 	db 28, TAKE_DOWN
-	db 29, AIR_SLASH
+	db 30, AIR_SLASH
 	db 33, ZEN_HEADBUTT
 	db 34, CONFUSION
 	db 48, DREAM_EATER
@@ -2468,8 +2471,8 @@ NoctowlEvosAttacks:
 	db 11, PECK
 	db 16, HYPNOSIS
 	db 25, REFLECT
-	db 32, AIR_SLASH
 	db 33, TAKE_DOWN
+	db 35, AIR_SLASH
 	db 37, ZEN_HEADBUTT
 	db 41, CONFUSION
 	db 57, DREAM_EATER
@@ -2763,7 +2766,7 @@ SudowoodoEvosAttacks:
 	db 19, LOW_KICK
 	db 28, ROCK_SLIDE
 	db 33, EARTH_POWER
-	db 37, FAINT_ATTACK
+	db 37, FEINT_ATTACK
 	db 46, SLAM
 	db 0 ; no more level-up moves
 
@@ -2939,7 +2942,7 @@ UmbreonEvosAttacks:
 	db 16, PURSUIT
 	db 23, QUICK_ATTACK
 	db 30, CONFUSE_RAY
-	db 36, FAINT_ATTACK
+	db 36, FEINT_ATTACK
 	db 42, MEAN_LOOK
 	db 47, SCREECH
 	db 52, MOONLIGHT
@@ -2952,7 +2955,7 @@ MurkrowEvosAttacks:
 	db 11, PURSUIT
 	db 16, HAZE
 	db 26, NIGHT_SHADE
-	db 31, FAINT_ATTACK
+	db 31, FEINT_ATTACK
 	db 41, MEAN_LOOK
 	db 48, DARK_PULSE
 	db 0 ; no more level-up moves
@@ -3066,7 +3069,7 @@ GligarEvosAttacks:
 	db 13, DEFENSE_CURL
 	db 20, QUICK_ATTACK
 	db 24, EARTH_POWER
-	db 28, FAINT_ATTACK
+	db 28, FEINT_ATTACK
 	db 32, POISON_JAB
 	db 36, SLASH
 	db 42, X_SCISSOR
@@ -3182,7 +3185,7 @@ SneaselEvosAttacks:
 	db 7, QUICK_ATTACK
 	db 10, POWDER_SNOW
 	db 17, SCREECH
-	db 25, FAINT_ATTACK
+	db 25, FEINT_ATTACK
 	db 33, FURY_SWIPES
 	db 37, X_SCISSOR
 	db 39, DARK_PULSE
@@ -3201,7 +3204,7 @@ TeddiursaEvosAttacks:
 	db 1, LEER
 	db 8, LICK
 	db 15, FURY_SWIPES
-	db 22, FAINT_ATTACK
+	db 22, FEINT_ATTACK
 	db 29, REST
 	db 36, SLASH
 	db 39, SEED_BOMB
@@ -3218,7 +3221,7 @@ UrsaringEvosAttacks:
 	db 1, FURY_SWIPES
 	db 8, LICK
 	db 15, FURY_SWIPES
-	db 22, FAINT_ATTACK
+	db 22, FEINT_ATTACK
 	db 29, REST
 	db 39, SLASH
 	db 44, SEED_BOMB
@@ -3372,7 +3375,7 @@ HoundourEvosAttacks:
 	db 7, ROAR
 	db 13, SMOG
 	db 20, BITE
-	db 27, FAINT_ATTACK
+	db 27, FEINT_ATTACK
 	db 35, FLAMETHROWER
 	db 39, DARK_PULSE
 	db 43, CRUNCH
@@ -3385,7 +3388,7 @@ HoundoomEvosAttacks:
 	db 7, ROAR
 	db 13, SMOG
 	db 20, BITE
-	db 30, FAINT_ATTACK
+	db 30, FEINT_ATTACK
 	db 41, FLAMETHROWER
 	db 46, DARK_PULSE
 	db 52, CRUNCH

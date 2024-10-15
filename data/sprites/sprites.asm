@@ -110,4 +110,5 @@ OverworldSprites:
 	overworld_sprite LoreleiSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite ChrisRunSpriteGFX, 12, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite KrisRunSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BLUE
+	overworld_sprite HiveSpriteGFX, 4, STILL_SPRITE, PAL_OW_BROWN
 	assert_table_length NUM_OVERWORLD_SPRITES

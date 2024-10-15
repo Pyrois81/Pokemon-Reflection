@@ -13,16 +13,9 @@
 	const POISON
 	const GROUND
 	const ROCK
-	const BIRD
 	const BUG
 	const GHOST
 	const STEEL
-
-UNUSED_TYPES EQU const_value
-	const_next 19
-	const CURSE_TYPE
-UNUSED_TYPES_END EQU const_value
-
 	const FIRE
 	const WATER
 	const GRASS
@@ -31,6 +24,8 @@ UNUSED_TYPES_END EQU const_value
 	const ICE
 	const DRAGON
 	const DARK
+	const CURSE_TYPE
+
 TYPES_END EQU const_value
 
 TYPE_MASK EQU %00111111
@@ -38,6 +33,6 @@ PHYSICAL  EQU %01000000
 SPECIAL   EQU %10000000
 STATUS    EQU %11000000
 
-NUM_TYPES EQU TYPES_END + UNUSED_TYPES - UNUSED_TYPES_END - 1 ; discount BIRD
+NUM_TYPES EQU TYPES_END - 1
 
 POKEDEX_TYPE_STRING_LENGTH EQU 9

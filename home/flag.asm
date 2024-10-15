@@ -1,7 +1,13 @@
 ResetMapBufferEventFlags::
+	ldh a, [rSVBK] ; switch WRAM bank since we moved event flags
+	push af
+	ld a, BANK("Event Flags")
+	ldh [rSVBK], a
 	xor a
 	ld hl, wEventFlags
-	ld [hli], a
+	ld [hli], a ; clear byte containing temp map events
+	pop af
+	ldh [rSVBK], a
 	ret
 
 ResetBikeFlags::

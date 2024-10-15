@@ -4,9 +4,9 @@
 	;   hp  atk  def  spd  sat  sdf
 
 	db BUG, FLYING ; type
-	db 60 ; catch rate
+	db 75 ; catch rate
 	db 187 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db WHT_APRICORN, METAL_COAT ; items
 	db GENDER_F50 ; gender ratio
 	db 25 ; step cycles to hatch
 	INCBIN "gfx/pokemon/scyther/front.dimensions"

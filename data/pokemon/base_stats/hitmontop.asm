@@ -6,7 +6,7 @@
 	db FIGHTING, FIGHTING ; type
 	db 45 ; catch rate
 	db 138 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db BRICK_PIECE, BLACKBELT_I ; items
 	db GENDER_F0 ; gender ratio
 	db 25 ; step cycles to hatch
 	INCBIN "gfx/pokemon/hitmontop/front.dimensions"

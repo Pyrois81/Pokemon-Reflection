@@ -5,6 +5,7 @@
 	const ROUTE46_FRUIT_TREE1
 	const ROUTE46_FRUIT_TREE2
 	const ROUTE46_POKE_BALL
+	const ROUTE46_ROCK
 
 Route46_MapScripts:
 	def_scene_scripts
@@ -184,6 +185,9 @@ Route46FruitTree1:
 Route46FruitTree2:
 	fruittree FRUITTREE_ROUTE_46_2
 
+Route46Rock:
+	jumpstd SmashRockScript
+
 HikerBaileySeenText:
 	text "Awright! I'll show"
 	line "you the power of"
@@ -302,3 +306,4 @@ Route46_MapEvents:
 	object_event  7,  5, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route46FruitTree1, -1
 	object_event  8,  6, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route46FruitTree2, -1
 	object_event  3, 15, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route46GreatBall, EVENT_ROUTE_46_GREAT_BALL
+	object_event 15, 13, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route46Rock, -1

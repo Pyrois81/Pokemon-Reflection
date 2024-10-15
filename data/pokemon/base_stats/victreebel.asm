@@ -6,7 +6,7 @@
 	db GRASS, POISON ; type
 	db 45 ; catch rate
 	db 191 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db ENERGY_ROOT, MIRACLE_SEED ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/victreebel/front.dimensions"

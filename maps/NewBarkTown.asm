@@ -140,6 +140,7 @@ TestGiveItems:
 	giveitem EXP_CANDY_M, 99
 	giveitem EXP_CANDY_L, 99
 	giveitem HONEY_DROP, 99
+	giveitem MOMO_MILK, 99
 	end
 
 NewBarkTown_TeacherRunsToYouMovement1:
@@ -303,5 +304,5 @@ NewBarkTown_MapEvents:
 	def_object_events
 	object_event  6,  8, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
 	object_event 13,  9, SPRITE_FISHER, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, NewBarkTownFisherScript, -1
-	object_event 10,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TestGiveMons, -1
-	object_event 11,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TestGiveItems, -1
+;	object_event 10,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TestGiveMons, -1
+;	object_event 11,  6, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TestGiveItems, -1

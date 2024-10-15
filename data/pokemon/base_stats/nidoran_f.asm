@@ -6,7 +6,7 @@
 	db POISON, POISON ; type
 	db 235 ; catch rate
 	db 59 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db YLW_APRICORN, MOON_STONE ; items
 	db GENDER_F100 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/nidoran_f/front.dimensions"

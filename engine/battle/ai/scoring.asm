@@ -3137,8 +3137,8 @@ AI_Status:
 	pop bc
 	jr nc, .normal_check
 
-	ld a, GRASS
-	callfar CheckIfTargetIsGivenType
+	ld b, GRASS
+	callfar CheckIfPlayerMonIsGivenType
 	jr z, .immune
 	
 .normal_check
@@ -3159,16 +3159,16 @@ AI_Status:
 	jr .typeimmunity
 
 .poisonimmunity
-	ld a, POISON
-	callfar CheckIfTargetIsGivenType
+	ld b, POISON
+	callfar CheckIfPlayerMonIsGivenType
 	jr z, .immune
-	ld a, STEEL
-	callfar CheckIfTargetIsGivenType
+	ld b, STEEL
+	callfar CheckIfPlayerMonIsGivenType
 	jr z, .immune
 
 .paralyzeimmunity
-	ld a, ELECTRIC
-	callfar CheckIfTargetIsGivenType
+	ld b, ELECTRIC
+	callfar CheckIfPlayerMonIsGivenType
 	jr z, .immune
 
 .typeimmunity

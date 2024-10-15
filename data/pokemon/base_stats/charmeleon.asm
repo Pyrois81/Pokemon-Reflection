@@ -6,7 +6,7 @@
 	db FIRE, FIRE ; type
 	db 75 ; catch rate
 	db 142 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db BURNT_BERRY, CARBOS ; items
 	db GENDER_F12_5 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/charmeleon/front.dimensions"

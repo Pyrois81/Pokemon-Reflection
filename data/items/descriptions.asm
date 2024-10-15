@@ -50,7 +50,7 @@ ItemDescriptions:
 	dw SodaPopDesc
 	dw LemonadeDesc
 	dw XAttackDesc
-	dw TeruSama4Desc
+	dw MomoMilkDesc
 	dw XDefendDesc
 	dw XSpeedDesc
 	dw XSpecialDesc
@@ -403,7 +403,7 @@ MetalPowderDesc:
 
 NuggetDesc:
 	db   "Made of pure gold."
-	next "Sell high.@"
+	next "Sell. (¥¥¥)@"
 
 PokeDollDesc:
 	db   "Use to escape from"
@@ -457,8 +457,9 @@ XAttackDesc:
 	db   "Raises ATTACK."
 	next "(1 BTL)@"
 
-TeruSama4Desc:
-	db   "?@"
+MomoMilkDesc:
+	db   "Smells strange."
+	next "Restores HP…?@"
 
 XDefendDesc:
 	db   "Raises DEFENSE."
@@ -596,22 +597,24 @@ MintBerryDesc:
 	next "for sleep. (HOLD)@"
 
 RedApricornDesc:
-	db   "A red APRICORN.@"
+	db   "A tasty, candy-"
+	next "like APRICORN.@"
 
 TinyMushroomDesc:
 	db   "An ordinary mush-"
-	next "room. Sell low.@"
+	next "room. Sell. (¥)@"
 
 BigMushroomDesc:
 	db   "A rare mushroom."
-	next "Sell high.@"
+	next "Sell. (¥¥)@"
 
 SilverPowderDesc:
 	db   "Powers up bug-type"
 	next "moves. (HOLD)@"
 
 BluApricornDesc:
-	db   "A blue APRICORN.@"
+	db   "An APRICORN with a"
+	next "net-like coating.@"
 
 TeruSama6Desc:
 	db   "?@"
@@ -621,10 +624,12 @@ AmuletCoinDesc:
 	next "earnings. (HOLD)@"
 
 YlwApricornDesc:
-	db   "A yellow APRICORN.@"
+	db   "A faintly glowing"
+	next "APRICORN.@"
 
 GrnApricornDesc:
-	db   "A green APRICORN.@"
+	db   "An APRICORN with a"
+	next "funny shape.@"
 
 CleanseTagDesc:
 	db   "Helps repel wild"
@@ -639,38 +644,39 @@ TwistedSpoonDesc:
 	next "type moves. (HOLD)@"
 
 WhtApricornDesc:
-	db   "A white APRICORN.@"
+	db   "A surprisingly"
+	next "light APRICORN.@"
 
 BlackbeltDesc:
 	db   "Boosts fighting-"
 	next "type moves. (HOLD)@"
 
 BlkApricornDesc:
-	db   "A black APRICORN."
-	next "@"
+	db   "A remarkably"
+	next "heavy APRICORN.@"
 
 TeruSama7Desc:
 	db   "?@"
 
 PnkApricornDesc:
-	db   "A pink APRICORN."
-	next "@"
+	db   "An APRICORN with"
+	next "an alluring smell.@"
 
 BlackGlassesDesc:
 	db   "Powers up dark-"
 	next "type moves. (HOLD)@"
 
 SlowpokeTailDesc:
-	db   "Very tasty. Sell"
-	next "high.@"
+	db   "Very tasty."
+	next "Sell. (¥¥¥)@"
 
 PinkBowDesc:
 	db   "Powers up normal-"
 	next "type moves. (HOLD)@"
 
 StickDesc:
-	db   "An ordinary stick."
-	next "Sell low.@"
+	db   "Boosts crit. rate"
+	next "of FARFETCH'D.@"
 
 SmokeBallDesc:
 	db   "Escape from wild"
@@ -690,11 +696,11 @@ MiracleBerryDesc:
 
 PearlDesc:
 	db   "A beautiful pearl."
-	next "Sell low.@"
+	next "Sell. (¥)@"
 
 BigPearlDesc:
 	db   "A big, beautiful"
-	next "pearl. Sell high.@"
+	next "pearl. Sell. (¥¥)@"
 
 EverStoneDesc:
 	db   "Stops evolution."
@@ -721,8 +727,8 @@ MiracleSeedDesc:
 	next "type moves. (HOLD)@"
 
 ThickClubDesc:
-	db   "A bone of some"
-	next "sort. Sell low.@"
+	db   "Raises ATK of"
+	next "CUBONE & MAROWAK.@"
 
 FocusBandDesc:
 	db   "May prevent faint-"
@@ -773,11 +779,11 @@ LostItemDesc:
 
 StardustDesc:
 	db   "Pretty, red sand."
-	next "Sell high.@"
+	next "Sell. (¥¥)@"
 
 StarPieceDesc:
 	db   "A hunk of red gem."
-	next "Sell very high.@"
+	next "Sell. (¥¥¥)@"
 
 BasementKeyDesc:
 	db   "Opens doors.@"
@@ -859,8 +865,8 @@ FastBallDesc:
 	next "ing fast #MON.@"
 
 LightBallDesc:
-	db   "An odd, electrical"
-	next "orb. (HOLD)@"
+	db   "Raises SP.ATK of"
+	next "PIKACHU. (HOLD)@"
 
 FriendBallDesc:
 	db   "A BALL that makes"

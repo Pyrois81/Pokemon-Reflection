@@ -14,7 +14,7 @@ ElmPhoneCalleeScript:
 	iftrue .assistant
 	checkevent EVENT_ELM_CALLED_ABOUT_STOLEN_POKEMON
 	iftrue .stolen
-	checkevent EVENT_GOT_TATTERED_HAT_FROM_MR_POKEMON
+	checkevent EVENT_SHOWED_TATTERED_HAT_TO_MR_POKEMON
 	iftrue .sawmrpokemon
 	farwritetext ElmPhoneHealYourMonText
 	end

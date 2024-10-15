@@ -687,6 +687,28 @@ _AreYouABoyOrAreYouAGirlText::
 	cont "a girl?"
 	done
 
+_DefaultBattleModeText::
+	text "This game defaults"
+	line "to the SET battle"
+	
+	para "mode in an attempt"
+	line "to provide a more"
+	
+	para "challenging and"
+	line "strategic exper-"
+	cont "ience."
+	
+	para "Would you like to"
+	line "switch back to"
+	cont "SHIFT mode?"
+	
+	para "You can always"
+	line "change this set-"
+	
+	para "ing in the OPTIONS"
+	line "menu."
+	done
+
 Text_BattleEffectActivate::
 	text "<USER>'s"
 	line "@"
@@ -1540,14 +1562,8 @@ _OakText2::
 	
 	para "world with crea-"
 	line "tures called"
-	cont "#MON.@"
-	text_end
-
-_OakText3::
-	text_promptbutton
-	text_end
-
-	text_end ; unreferenced
+	cont "#MON."
+	prompt
 
 _OakText4::
 	text "Some people love"

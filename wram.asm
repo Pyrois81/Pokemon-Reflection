@@ -566,7 +566,7 @@ wBattleWeather::
 ; 02 sun
 ; 03 sandstorm
 ; 04 rain stopped
-; 05 sunliight faded
+; 05 sunlight faded
 ; 06 sandstorm subsided
 	db
 
@@ -597,8 +597,11 @@ wLastEnemyMove:: db
 
 wPlayerFutureSightCount:: db
 wEnemyFutureSightCount:: db
+wThievedItem:: db
+wThievedItemStolenFrom:: db
+wThievedItemStolenBy:: db
 
-	ds 8
+	ds 5
 
 wPlayerFutureSightDamage:: dw
 wEnemyFutureSightDamage:: dw
@@ -2997,8 +3000,7 @@ wPlayerState:: db
 wHallOfFameCount:: db
 wExpShareToggle:: db
 wTradeFlags:: flag_array NUM_NPC_TRADES
-	ds 1
-wMooMooBerries:: db
+	ds 2
 wUndergroundSwitchPositions:: db
 wFarfetchdPosition:: db
 
@@ -3039,6 +3041,7 @@ wAzaleaTownSceneID::                              db
 wGoldenrodGymSceneID::                            db
 wGoldenrodMagnetTrainStationSceneID::             db
 wGoldenrodPokecenter1FSceneID::                   db
+wRoute39BarnSceneID::							  db
 wOlivineCitySceneID::                             db
 wRoute34SceneID::                                 db
 wRoute34IlexForestGateSceneID::                   db

@@ -3650,8 +3650,8 @@ UpdateMoveData:
 
 BattleCommand_SleepTarget:
 ; sleeptarget
-	ld hl, DoesntAffectText
 	call CheckPowderSpore
+	ld hl, DoesntAffectText
 	jr c, .fail
 
 	call GetOpponentItem
@@ -3806,6 +3806,7 @@ BattleCommand_Poison:
 	jp z, .failed
 	
 	call CheckPowderSpore
+	ld hl, DoesntAffectText
 	jp c, .failed
 
 	ld a, BATTLE_VARS_STATUS_OPP
@@ -3907,14 +3908,24 @@ BattleCommand_Poison:
 	cp EFFECT_TOXIC
 	ret
 
+CheckIfPlayerMonIsGivenType: ; takes type to check in b as input
+	ld de, wBattleMonType1
+	jr DoCheckTypes
+
+CheckIfOpponentMonIsGivenType:
+	ld b, a
+	ld de, wEnemyMonType1
+	jr DoCheckTypes
+
 CheckIfTargetIsGivenType:
 	ld b, a
 	ld de, wEnemyMonType1
 	ldh a, [hBattleTurn]
 	and a
-	jr z, .ok
+	jr z, DoCheckTypes
 	ld de, wBattleMonType1
-.ok
+	; fallthrough
+DoCheckTypes:
 	ld a, [de]
 	inc de
 	cp b
@@ -6028,6 +6039,7 @@ BattleCommand_Paralyze:
 	jp z, .doesnt_affect
 
 	call CheckPowderSpore
+	ld hl, DoesntAffectText
 	jr c, .doesnt_affect
 
 	call GetOpponentItem

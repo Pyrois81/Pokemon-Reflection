@@ -6,7 +6,7 @@
 	db GROUND, GROUND ; type
 	db 190 ; catch rate
 	db 87 ; base exp
-	db NO_ITEM, THICK_CLUB ; items
+	db REVIVAL_HERB, THICK_CLUB ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/cubone/front.dimensions"

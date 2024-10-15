@@ -6,7 +6,7 @@
 	db NORMAL, NORMAL ; type
 	db 75 ; catch rate
 	db 178 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db PNK_APRICORN, PINK_BOW ; items
 	db GENDER_F75 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/granbull/front.dimensions"

@@ -7,25 +7,62 @@ AsleepTreeMonsNite:
 	db WEEDLE
 	db KAKUNA
 	db BEEDRILL
+	db PIDGEY
+	db PIDGEOTTO
+	db PIDGEOT
 	db SPEAROW
+	db FEAROW
 	db EKANS
+	db ARBOK
+	db MANKEY
+	db PRIMEAPE
+	db FARFETCH_D
 	db EXEGGCUTE
+	db SCYTHER
+	db PINSIR
+	db DRATINI
+	db DRAGONAIR
 	db LEDYBA
+	db LEDIAN
+	db NATU
+	db XATU
 	db AIPOM
+	db SENTRET
+	db FURRET
+	db TEDDIURSA
+	db URSARING
+	db SKARMORY
 	db -1 ; end
 
 AsleepTreeMonsDay:
+	db ZUBAT
+	db GOLBAT
+	db PARAS
+	db PARASECT
 	db VENONAT
+	db VENOMOTH
 	db HOOTHOOT
 	db NOCTOWL
 	db SPINARAK
+	db ARIADOS
 	db HERACROSS
+	db GLIGAR
 	db -1 ; end
 
 AsleepTreeMonsMorn:
+	db CLEFAIRY
+	db JIGGLYPUFF
+	db ZUBAT
+	db GOLBAT
+	db MEOWTH
+	db PERSIAN
 	db VENONAT
+	db VENOMOTH
+	db ABRA
 	db HOOTHOOT
 	db NOCTOWL
 	db SPINARAK
+	db ARIADOS
 	db HERACROSS
+	db MURKROW
 	db -1 ; end

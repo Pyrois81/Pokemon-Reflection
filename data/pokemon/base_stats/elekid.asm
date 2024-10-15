@@ -6,7 +6,7 @@
 	db ELECTRIC, ELECTRIC ; type
 	db 255 ; catch rate
 	db 106 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db RED_APRICORN, NUGGET ; items
 	db GENDER_F25 ; gender ratio
 	db 25 ; step cycles to hatch
 	INCBIN "gfx/pokemon/elekid/front.dimensions"

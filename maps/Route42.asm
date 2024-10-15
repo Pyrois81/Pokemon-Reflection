@@ -9,6 +9,8 @@
 	const ROUTE42_FRUIT_TREE3
 	const ROUTE42_POKE_BALL1
 	const ROUTE42_POKE_BALL2
+	const ROUTE42_ROCK1
+	const ROUTE42_ROCK2
 
 Route42_MapScripts:
 	def_scene_scripts
@@ -226,6 +228,9 @@ Route42FruitTree3:
 Route42HiddenNugget:
 	hiddenitem NUGGET, EVENT_ROUTE_42_HIDDEN_NUGGET
 
+Route42Rock:
+	jumpstd SmashRockScript
+
 FisherTullySeenText:
 	text "I swear I saw a"
 	line "blue blur whiz"
@@ -284,14 +289,14 @@ PokemaniacShaneSeenText:
 	line "there are all"
 	
 	para "kinds of rare"
-	line "#MON in MT."
-	cont "MORTAR over there."
+	line "#MON right over"
+	
+	para "there in MT."
+	line "MORTAR."
 	
 	para "I dunno how I'm"
 	line "supposed to get"
-	
-	para "over there,"
-	line "though!"
+	cont "to it, though!"
 	done
 
 PokemaniacShaneBeatenText:
@@ -379,7 +384,7 @@ Route42_MapEvents:
 	bg_event 29,  4, BGEVENT_ITEM, Route42HiddenNugget
 
 	def_object_events
-	object_event 26, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherTully, -1
+	object_event 26, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerFisherTully, -1
 	object_event 49,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 3, TrainerHikerBenjamin, -1
 	object_event 11,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 3, TrainerPokemaniacShane, -1
 	object_event 53,  7, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route42Rocket1Script, EVENT_ROUTE_42_ROCKETS_GONE
@@ -389,3 +394,6 @@ Route42_MapEvents:
 	object_event 27, 11, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route42FruitTree3, -1
 	object_event 50, 11, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route42UltraBall, EVENT_ROUTE_42_ULTRA_BALL
 	object_event 20, 11, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route42SuperPotion, EVENT_ROUTE_42_SUPER_POTION
+	object_event 22, 12, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route42Rock, -1
+	object_event 48,  6, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route42Rock, -1
+

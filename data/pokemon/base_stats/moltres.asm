@@ -6,7 +6,7 @@
 	db FIRE, FLYING ; type
 	db 3 ; catch rate
 	db 217 ; base exp
-	db NUGGET, CHARCOAL ; items
+	db STAR_PIECE, CHARCOAL ; items
 	db GENDER_UNKNOWN ; gender ratio
 	db 80 ; step cycles to hatch
 	INCBIN "gfx/pokemon/moltres/front.dimensions"

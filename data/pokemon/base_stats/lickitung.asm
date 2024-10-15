@@ -6,7 +6,7 @@
 	db NORMAL, NORMAL ; type
 	db 60 ; catch rate
 	db 127 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db MYSTERYBERRY, HP_UP ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/lickitung/front.dimensions"

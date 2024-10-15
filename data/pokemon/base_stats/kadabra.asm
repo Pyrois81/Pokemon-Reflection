@@ -6,7 +6,7 @@
 	db PSYCHIC_TYPE, PSYCHIC_TYPE ; type
 	db 100 ; catch rate
 	db 145 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db BITTER_BERRY, CALCIUM ; items
 	db GENDER_F25 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/kadabra/front.dimensions"

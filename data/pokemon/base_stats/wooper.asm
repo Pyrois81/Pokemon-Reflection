@@ -6,7 +6,7 @@
 	db WATER, GROUND ; type
 	db 255 ; catch rate
 	db 52 ; base exp
-	db NO_ITEM, NO_ITEM ; items
+	db BITTER_BERRY, SOFT_SAND ; items
 	db GENDER_F50 ; gender ratio
 	db 20 ; step cycles to hatch
 	INCBIN "gfx/pokemon/wooper/front.dimensions"

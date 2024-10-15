@@ -53,10 +53,8 @@ KRIS EQU __trainer_class__
 	const CLAIR1
 
 	trainerclass RIVAL1 ; 9
-	const RIVAL1_1 ; Cherrygrove City
-	const RIVAL1_2_ODDISH
-	const RIVAL1_2_VULPIX
-	const RIVAL1_2_POLIWAG
+	const RIVAL1_CHERRYGROVE ; Cherrygrove City
+	const RIVAL1_OLIVINE ; Olivine City
 	const RIVAL1_3_ODDISH
 	const RIVAL1_3_VULPIX
 	const RIVAL1_3_POLIWAG
@@ -134,28 +132,28 @@ KRIS EQU __trainer_class__
 	const DUDLEY
 	const JOE
 	const BILLY
-	const CHAD1
+	const CHAD1 ; Route 38 (1st battle)
 	const NATE
 	const RICKY
 	const JACK2
 	const JACK3
 	const ALAN2
 	const ALAN3
-	const CHAD2
-	const CHAD3
+	const CHAD2 ; Route 38 (2nd battle)
+	const CHAD3 ; Route 38 (3rd battle)
 	const JACK4
 	const JACK5
 	const ALAN4
 	const ALAN5
-	const CHAD4
-	const CHAD5
+	const CHAD4 ; Route 38 (4th battle)
+	const CHAD5 ; Route 38 (5th battle)
 
 	trainerclass BIRD_KEEPER ; 18
 	const ROD
 	const ABE
 	const BRYAN
 	const THEO
-	const TOBY
+	const TOBY ; Route 38
 	const DENIS
 	const VANCE ; Route 44
 	const HANK
@@ -179,14 +177,15 @@ KRIS EQU __trainer_class__
 	const LAURA
 	const SHANNON
 	const MICHELLE
-	const DANA1
+	const DANA1 ; Route 38 (1st battle)
 	const ELLEN
 	const CONNIE2
 	const CONNIE3
-	const DANA2
-	const DANA3
-	const DANA4
-	const DANA5
+	const DANA2 ; Route 38 (2nd battle)
+	const DANA3 ; Route 38 (3rd battle)
+	const DANA4 ; Route 38 (4th battle)
+	const DANA5 ; Route 38 (5th battle)
+	const THIEFTEST
 
 	trainerclass JANINE ; 1a
 	const JANINE1
@@ -251,8 +250,9 @@ KRIS EQU __trainer_class__
 	const VERONICA
 	const JULIA
 	const THERESA
-	const VALERIE
-	const OLIVIA
+	const VALERIE ; Route 38
+	const OLIVIA ; Route 38
+	const MELISSA ; Olivine Gym
 
 	trainerclass POKEMANIAC ; 1e
 	const LARRY
@@ -415,7 +415,7 @@ KRIS EQU __trainer_class__
 	const BRIANA
 
 	trainerclass SAILOR ; 28
-	const EUGENE
+	const EUGENE ; Route 39
 	const HUEY1
 	const TERRELL
 	const KENT
@@ -424,7 +424,7 @@ KRIS EQU __trainer_class__
 	const GARRETT
 	const KENNETH
 	const STANLY
-	const HARRY
+	const HARRY ; Route 38
 	const HUEY2
 	const HUEY3
 	const HUEY4
@@ -444,6 +444,7 @@ KRIS EQU __trainer_class__
 	const NORTON
 	const HUGH
 	const MARKUS
+	const JACOB ; Olivine Gym
 
 	trainerclass RIVAL2 ; 2a
 	const RIVAL2_1_ODDISH
@@ -456,6 +457,7 @@ KRIS EQU __trainer_class__
 	trainerclass GUITARIST ; 2b
 	const CLYDE
 	const VINCENT
+	const RIDLEY ; Olivine Gym
 
 	trainerclass HIKER ; 2c
 	const ANTHONY1
@@ -540,7 +542,7 @@ KRIS EQU __trainer_class__
 	const HERMAN
 	const FIDEL
 	const GREG
-	const NORMAN
+	const NORMAN ; Route 39
 	const MARK
 	const PHIL ; Route 44
 	const RICHARD
@@ -634,7 +636,7 @@ KRIS EQU __trainer_class__
 
 	trainerclass POKEFANM ; 3b
 	const WILLIAM
-	const DEREK1
+	const DEREK1 ; Route 39
 	const ROBERT
 	const JOSHUA
 	const CARTER
@@ -669,11 +671,11 @@ KRIS EQU __trainer_class__
 
 	trainerclass POKEFANF ; 3e
 	const BEVERLY1
-	const RUTH
+	const RUTH ; Route 39
 	const BEVERLY2
 	const BEVERLY3
 	const GEORGIA
-	const JAIME
+	const JAMIE ; Route 39
 
 	trainerclass RED ; 3f
 	const RED1

@@ -116,7 +116,7 @@ ElmCheckMasterBall:
 	checkflag ENGINE_ZEPHYRBADGE
 	iftrue ElmGiveMasterBallScript
 ElmCheckHat:
-	checkevent EVENT_GOT_TATTERED_HAT_FROM_MR_POKEMON
+	checkevent EVENT_SHOWED_TATTERED_HAT_TO_MR_POKEMON
 	iffalse ElmCheckPokemon
 	checkevent EVENT_GAVE_TATTERED_HAT_TO_ELM
 	iffalse ElmGiveHatScript
@@ -439,9 +439,9 @@ AideScript_GiveYouTM:
 	opentext
 	writetext AideText_GiveYouTM
 	promptbutton
-	verbosegiveitem TM_FRUSTRATION
-	setevent EVENT_ELMS_LAB_TM21_FRUSTRATION
-	writetext AideText_ExplainFrustration
+	verbosegiveitem TM_CUT
+	setevent EVENT_ELMS_LAB_TM51_CUT
+	writetext AideText_ExplainCut
 	waitbutton
 	closetext
 	setscene SCENE_ELMSLAB_NOTHING
@@ -452,7 +452,7 @@ ElmsAideScript:
 	opentext
 	checkevent EVENT_GAVE_TATTERED_HAT_TO_ELM
 	iftrue AideScript_ExplainBalls
-	checkevent EVENT_GOT_TATTERED_HAT_FROM_MR_POKEMON
+	checkevent EVENT_SHOWED_TATTERED_HAT_TO_MR_POKEMON
 	iftrue AideScript_HowWasMrPokemon
 	writetext AideText_AlwaysBusy
 	waitbutton
@@ -490,11 +490,11 @@ ElmsLabBookshelf:
 	jumpstd DifficultBookshelfScript
 
 ElmsLab_WalkUpToElmMovement:
+	step UP
+	step UP
+	step UP
+	step UP
 	step RIGHT
-	step UP
-	step UP
-	step UP
-	step UP
 	step UP
 	step UP
 	step UP
@@ -949,7 +949,7 @@ ElmGiveHatText3:
 	done
 
 ElmGiveHatText4:
-	text "You say he found"
+	text "You say you found"
 	line "this inside"
 	cont "DARK CAVE?"
 	
@@ -1256,26 +1256,33 @@ AideText_GiveYouTM:
 	line "TECHNICAL MACHINE."
 	done
 	
-AideText_ExplainFrustration:
-	text "FRUSTRATION is at"
-	line "its strongest"
+AideText_ExplainCut:
+	text "CUT is a simple"
+	line "move - a staple"
 	
-	para "when your #MON"
-	line "doesn't trust you."
+	para "in any trainer's"
+	line "toolkit."
 	
-	para "As it becomes more"
-	line "friendly, the move"
-	cont "will lose power."
+	para "It used to be very"
+	line "important for"
 	
-	para "That's obviously"
-	line "the goal, but"
+	para "trainers to have,"
+	line "but the JOHTO"
 	
-	para "we hope this'll"
-	line "smooth things out"
-	cont "in the meantime!"
+	para "Park Service has"
+	line "made a concerted"
 	
-	para "Most #MON can"
-	line "learn FRUSTRATION."
+	para "effort to remove"
+	line "all those pesky"
+	
+	para "trees from the"
+	line "main roads."
+	
+	para "It may still come"
+	line "in handy off the"
+	
+	para "beaten path,"
+	line "though."
 	
 	para "Oh, and don't for-"
 	line "get, you can use"

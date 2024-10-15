@@ -143,6 +143,8 @@ INCLUDE "engine/pokemon/print_move_description.asm"
 INCLUDE "engine/events/pokerus/pokerus.asm"
 INCLUDE "engine/battle/start_battle.asm"
 INCLUDE "engine/gfx/place_graphic.asm"
+INCLUDE "engine/gfx/type_icons.asm"
+INCLUDE "data/types/type_icon_palettes.asm"
 
 
 SECTION "Effect Commands", ROMX
