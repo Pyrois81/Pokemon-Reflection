@@ -118,7 +118,7 @@ OlivineGymJasmineScript:
 	end
 
 .GotSteelWing:
-	checkevent EVENT_OLIVINE_LIGHTHOUSE_6F_HM02_SURF
+	checkevent EVENT_OLIVINE_LIGHTHOUSE_1F_HM02_SURF
 	iffalse .GoToLighthouse
 	writetext OlivineGymJasmineGoodLuckText
 	waitbutton

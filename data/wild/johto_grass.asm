@@ -1486,6 +1486,34 @@ JohtoGrassWildMons:
 	db 16, WARTORTLE
 	end_grass_wildmons
 
+	def_grass_wildmons OLIVINE_LIGHTHOUSE_1F
+	db 5 percent, 5 percent, 5 percent ; encounter rates: morn/day/nite
+	; morn
+	db 12, MAREEP
+	db 12, RATTATA
+	db 13, SQUIRTLE
+	db 14, SCYTHER
+	db 15, LICKITUNG
+	db 16, RATICATE
+	db 16, WARTORTLE
+	; day
+	db 12, MAREEP
+	db 12, RATTATA
+	db 13, SQUIRTLE
+	db 14, SCYTHER
+	db 15, LICKITUNG
+	db 16, RATICATE
+	db 16, WARTORTLE
+	; nite
+	db 12, MAREEP
+	db 12, RATTATA
+	db 13, SQUIRTLE
+	db 14, SCYTHER
+	db 15, LICKITUNG
+	db 16, RATICATE
+	db 16, WARTORTLE
+	end_grass_wildmons
+
 	def_grass_wildmons ROUTE_42
 	db 8 percent, 8 percent, 8 percent ; encounter rates: morn/day/nite
 	; morn

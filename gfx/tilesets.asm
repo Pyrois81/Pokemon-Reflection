@@ -251,15 +251,6 @@ INCBIN "data/tilesets/house_metatiles.bin"
 TilesetHouseColl::
 INCLUDE "data/tilesets/house_collision.asm"
 
-TilesetLighthouseGFX::
-INCBIN "gfx/tilesets/lighthouse.2bpp.lz"
-
-TilesetLighthouseMeta::
-INCBIN "data/tilesets/lighthouse_metatiles.bin"
-
-TilesetLighthouseColl::
-INCLUDE "data/tilesets/lighthouse_collision.asm"
-
 TilesetForestColl::
 INCLUDE "data/tilesets/forest_collision.asm"
 
@@ -337,3 +328,12 @@ INCBIN "data/tilesets/players_room_metatiles.bin"
 
 TilesetPlayersRoomColl::
 INCLUDE "data/tilesets/players_room_collision.asm"
+
+TilesetLighthouseGFX::
+INCBIN "gfx/tilesets/lighthouse.2bpp.lz"
+
+TilesetLighthouseMeta::
+INCBIN "data/tilesets/lighthouse_metatiles.bin"
+
+TilesetLighthouseColl::
+INCLUDE "data/tilesets/lighthouse_collision.asm"

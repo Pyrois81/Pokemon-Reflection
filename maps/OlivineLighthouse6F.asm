@@ -1,6 +1,4 @@
 	object_const_def
-	const OLIVINELIGHTHOUSE6F_JASMINE
-	const OLIVINELIGHTHOUSE6F_MONSTER
 	const OLIVINELIGHTHOUSE6F_POKE_BALL
 
 OlivineLighthouse6F_MapScripts:
@@ -8,266 +6,107 @@ OlivineLighthouse6F_MapScripts:
 
 	def_callbacks
 
-OlivineLighthouseJasmine:
-	faceplayer
-	opentext
-	checkitem SECRETPOTION
-	iftrue .BroughtSecretpotion
-	checkevent EVENT_JASMINE_EXPLAINED_AMPHYS_SICKNESS
-	iftrue .ExplainedSickness
-	writetext JasmineCianwoodPharmacyText
-	promptbutton
-	setevent EVENT_JASMINE_EXPLAINED_AMPHYS_SICKNESS
-.ExplainedSickness:
-	writetext JasmineGetSomeMedicineText
-	waitbutton
-	closetext
-	end
+OlivineLighthouse6FMaxElixir:
+	itemball MAX_ELIXIR
 
-.BroughtSecretpotion:
-	writetext JasmineCureAmphyText
-	yesorno
-	iffalse .Refused
-	writetext PlayerHandedSecretpotionText
-	promptbutton
-	takeitem SECRETPOTION
-	writetext JasmineDontBeOffendedText
-	waitbutton
-	closetext
-	turnobject OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
-	pause 15
-	turnobject OLIVINELIGHTHOUSE6F_MONSTER, LEFT
-	opentext
-	playmusic MUSIC_HEAL
-	writetext JasmineAmphyHowAreYouFeelingText
-	pause 60
-	promptbutton
-	closetext
-	special RestartMapMusic
-	cry AMPHAROS
-	special FadeOutPalettes
-	pause 10
-	special FadeInPalettes
-	opentext
-	writetext AmphyPaluPaluluText
-	waitbutton
-	closetext
-	turnobject OLIVINELIGHTHOUSE6F_MONSTER, RIGHT
-	pause 10
-	turnobject OLIVINELIGHTHOUSE6F_MONSTER, LEFT
-	pause 10
-	turnobject OLIVINELIGHTHOUSE6F_MONSTER, RIGHT
-	pause 10
-	turnobject OLIVINELIGHTHOUSE6F_MONSTER, LEFT
-	pause 10
-	faceplayer
-	opentext
-	writetext JasmineThankYouText
-	waitbutton
-	closetext
-	setevent EVENT_JASMINE_RETURNED_TO_GYM
-	clearevent EVENT_OLIVINE_GYM_JASMINE
-	readvar VAR_FACING
-	ifequal DOWN, .FacingDown
-	ifequal RIGHT, .FacingRight
-	applymovement OLIVINELIGHTHOUSE6F_JASMINE, OlivineLighthouseJasmineLeavesUpMovement
-	disappear OLIVINELIGHTHOUSE6F_JASMINE
-	end
+OlivineLighthouse6FHiddenProtein:
+	hiddenitem PROTEIN, EVENT_OLIVINE_LIGHTHOUSE_6F_HIDDEN_PROTEIN
 
-.FacingDown:
-	applymovement OLIVINELIGHTHOUSE6F_JASMINE, OlivineLighthouseJasmineLeavesDownMovement
-	disappear OLIVINELIGHTHOUSE6F_JASMINE
-	end
+OlivineLighthouse6FBookshelf1:
+	jumptext OlivineLighthouseBookshelf1Text
 
-.FacingRight:
-	applymovement OLIVINELIGHTHOUSE6F_JASMINE, OlivineLighthouseJasmineLeavesRightMovement
-	disappear OLIVINELIGHTHOUSE6F_JASMINE
-	end
+OlivineLighthouse6FBookshelf2:
+	jumptext OlivineLighthouseBookshelf2Text
 
-.Refused:
-	writetext JasmineISeeText
-	waitbutton
-	closetext
-	turnobject OLIVINELIGHTHOUSE6F_JASMINE, RIGHT
-	pause 15
-	turnobject OLIVINELIGHTHOUSE6F_MONSTER, LEFT
-	opentext
-	writetext JasmineAmphyHangOnText
-	waitbutton
-	closetext
-	end
-
-.Unused: ; unreferenced
-	end
-
-OlivineLighthouseAmphy:
-	faceplayer
-	opentext
-	checkevent EVENT_JASMINE_RETURNED_TO_GYM
-	iftrue .HealthyNow
-	writetext AmphyPalPalooText
-	setval AMPHAROS
-	special PlaySlowCry
-	promptbutton
-	writetext AmphyBreathingLaboredText
-	waitbutton
-	closetext
-	end
-
-.HealthyNow:
-	writetext AmphyPaluPaluluText
-	cry AMPHAROS
-	waitbutton
-	closetext
-	special FadeOutPalettes
-	special FadeInPalettes
-	special FadeOutPalettes
-	special FadeInPalettes
-	end
-
-OlivineLighthouse6FSuperPotion:
-	itemball SUPER_POTION
-
-OlivineLighthouseJasmineLeavesUpMovement:
-	slow_step UP
-	slow_step UP
-	slow_step RIGHT
-	slow_step UP
-	slow_step UP
-	step_sleep 8
-	step_sleep 8
-	step_end
-
-OlivineLighthouseJasmineLeavesDownMovement:
-	slow_step DOWN
-	slow_step RIGHT
-	slow_step RIGHT
-	slow_step RIGHT
-	slow_step UP
-	slow_step RIGHT
-	slow_step RIGHT
-	slow_step RIGHT
-	step_end
-
-OlivineLighthouseJasmineLeavesRightMovement:
-	slow_step UP
-	slow_step UP
-	slow_step RIGHT
-	slow_step UP
-	slow_step UP
-	slow_step UP
-	step_sleep 8
-	step_end
-
-JasmineCianwoodPharmacyText:
-	text "JASMINE: … This"
-	line "#MON always"
-
-	para "kept the sea lit"
-	line "at night."
-
-	para "…But it suddenly"
-	line "got sick… It's"
-	cont "gasping for air…"
-
-	para "…I understand"
-	line "that there is a"
-
-	para "wonderful PHARMACY"
-	line "in CIANWOOD…"
-
-	para "But that's across"
-	line "the sea…"
-
-	para "And I can't leave"
-	line "AMPHY unattended…"
+OlivineLighthouse6FJournal:
+	jumptext OlivineLighthouseJournalText
+	
+OlivineLighthouseBookshelf1Text:
+	text "There are a bunch"
+	line "of manuals ex-"
+	
+	para "plaining how to"
+	line "operate various"
+	
+	para "equipment in the"
+	line "lighthouse."
+	
+	para "They all look"
+	line "pretty out of"
+	cont "date."
 	done
 
-JasmineGetSomeMedicineText:
-	text "…May I ask you to"
-	line "get some medicine"
-	cont "for me? Please?"
+OlivineLighthouseBookshelf2Text:
+	text "All kinds of books"
+	line "about #MON:"
+	
+	para "Fauna of KANTO by"
+	line "S. OAK, PhD.;"
+	
+	para "From AIPOM to"
+	line "DROWZEE: A Compre-"
+	
+	para "hensive Guide to"
+	line "#MON Reproduct-"
+	cont "ion by ELM;"
+	
+	para "On Safari by"
+	line "Baoba; among many"
+	cont "others."
 	done
 
-JasmineCureAmphyText:
-	text "JASMINE: …Will"
-	line "that medicine cure"
-	cont "AMPHY?"
-	done
-
-PlayerHandedSecretpotionText:
-	text "<PLAYER> handed the"
-	line "SECRETPOTION to"
-	cont "JASMINE."
-	done
-
-JasmineDontBeOffendedText:
-	text "JASMINE: …Um,"
-	line "please don't be"
-	cont "offended…"
-
-	para "…AMPHY will not"
-	line "take anything from"
-	cont "anyone but me…"
-	done
-
-JasmineAmphyHowAreYouFeelingText:
-	text "JASMINE: …"
-
-	para "AMPHY, how are you"
-	line "feeling?"
-	done
-
-JasmineThankYouText:
-	text "JASMINE: …Oh, I'm"
-	line "so relieved…"
-
-	para "This is just so"
-	line "wonderful…"
-
-	para "Thank you so very,"
-	line "very much."
-
-	para "…I will return to"
-	line "the GYM…"
-	done
-
-JasmineISeeText:
-	text "JASMINE: …I see…"
-	done
-
-JasmineAmphyHangOnText:
-	text "…AMPHY, hang on!"
-	done
-
-AmphyPalPalooText:
-	text "AMPHY: …"
-	line "…Pa… paloo…"
-	done
-
-AmphyBreathingLaboredText:
-	text "Its breathing is"
-	line "terribly labored…"
-	done
-
-AmphyPaluPaluluText:
-	text "AMPHY: Palu!"
-	line "Palulu!"
+OlivineLighthouseJournalText:
+	text "Well, it seems as"
+	line "though my tenure"
+	
+	para "here must come to"
+	line "an end since they-"
+	
+	para "'re dead set on"
+	line "automating every-"
+	cont "thing."
+	
+	para "All the same -- I"
+	line "was intending to"
+	
+	para "retire soon"
+	line "anyway."
+	
+	para "Where to, though…?"
+	
+	para "Maybe I should"
+	line "throw a dart at"
+	
+	para "the map and let"
+	line "fate decide."
+	
+	para "Perhaps I'll pay a"
+	line "visit to that"
+	
+	para "SAFARI ZONE across"
+	line "the sea, first…"
+	
+	para "I've always wanted"
+	line "to see it ter-"
+	cont "ribly."
 	done
 
 OlivineLighthouse6F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  9, 15, OLIVINE_LIGHTHOUSE_5F, 1
-	warp_event 16,  5, OLIVINE_LIGHTHOUSE_5F, 6
-	warp_event 17,  5, OLIVINE_LIGHTHOUSE_5F, 7
+	warp_event 17, 11, OLIVINE_LIGHTHOUSE_5F, 2
+	warp_event 16,  7, OLIVINE_LIGHTHOUSE_5F, 4
+	warp_event 17,  7, OLIVINE_LIGHTHOUSE_5F, 5
+	warp_event 11, 11, OLIVINE_LIGHTHOUSE_5F, 6
 
 	def_coord_events
 
 	def_bg_events
+	bg_event  8,  7, BGEVENT_READ, OlivineLighthouse6FBookshelf1
+	bg_event  9,  7, BGEVENT_READ, OlivineLighthouse6FBookshelf2
+	bg_event  3,  5, BGEVENT_READ, OlivineLighthouse6FJournal
+	bg_event  5,  4, BGEVENT_ITEM, OlivineLighthouse6FHiddenProtein
 
 	def_object_events
-	object_event  8,  8, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlivineLighthouseJasmine, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
-	object_event  9,  8, SPRITE_MONSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, OlivineLighthouseAmphy, -1
-	object_event  3,  4, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, OlivineLighthouse6FSuperPotion, EVENT_OLIVINE_LIGHTHOUSE_6F_SUPER_POTION
+	object_event  6, 11, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, OlivineLighthouse6FMaxElixir, EVENT_OLIVINE_LIGHTHOUSE_6F_MAX_ELIXIR

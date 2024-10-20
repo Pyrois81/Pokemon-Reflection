@@ -571,11 +571,6 @@ BirdKeeperGroup:
 
 	; BIRD_KEEPER (4)
 	db "THEO@", TRAINERTYPE_NORMAL
-	db 17, PIDGEY
-	db 15, PIDGEY
-	db 19, PIDGEY
-	db 15, PIDGEY
-	db 15, PIDGEY
 	db -1 ; end
 
 	; BIRD_KEEPER (5)
@@ -587,9 +582,6 @@ BirdKeeperGroup:
 
 	; BIRD_KEEPER (6)
 	db "DENIS@", TRAINERTYPE_NORMAL
-	db 18, SPEAROW
-	db 20, FEAROW
-	db 18, SPEAROW
 	db -1 ; end
 
 	; BIRD_KEEPER (7)
@@ -683,7 +675,6 @@ LassGroup:
 
 	; LASS (5)
 	db "CONNIE@", TRAINERTYPE_NORMAL
-	db 21, MARILL
 	db -1 ; end
 
 	; LASS (6)
@@ -726,16 +717,6 @@ LassGroup:
 	db 34, GRANBULL
 	db -1 ; end
 
-	; LASS (12)
-	db "CONNIE@", TRAINERTYPE_NORMAL
-	db 21, MARILL
-	db -1 ; end
-
-	; LASS (13)
-	db "CONNIE@", TRAINERTYPE_NORMAL
-	db 21, MARILL
-	db -1 ; end
-
 	; LASS (14) [Dana, 2nd match]
 	db "DANA@", TRAINERTYPE_MOVES
 	db 21, FLAAFFY,    TACKLE, GROWL, THUNDERSHOCK, THUNDER_WAVE
@@ -759,13 +740,6 @@ LassGroup:
 	db 36, AMPHAROS,   SWIFT, THUNDERPUNCH, THUNDER_WAVE, COTTON_SPORE
 	db 36, GOLDUCK,    DISABLE, SURF, PSYCHIC_M, SCREECH
 	db -1 ; end
-
-	; THIEFTEST
-	db "THIEF@", TRAINERTYPE_MOVES
-	db 1, MAGIKARP, SPLASH, NO_MOVE, NO_MOVE, NO_MOVE
-	db 12, SNEASEL, THIEF, TACKLE, NO_MOVE, NO_MOVE
-	db 1, MAGIKARP, SPLASH, NO_MOVE, NO_MOVE, NO_MOVE
-	db -1, ; end
 
 JanineGroup:
 	; JANINE (1)
@@ -1408,8 +1382,6 @@ GruntMGroup:
 GentlemanGroup:
 	; GENTLEMAN (1)
 	db "PRESTON@", TRAINERTYPE_NORMAL
-	db 18, GROWLITHE
-	db 18, GROWLITHE
 	db -1 ; end
 
 	; GENTLEMAN (2)
@@ -1430,7 +1402,6 @@ GentlemanGroup:
 
 	; GENTLEMAN (5)
 	db "ALFRED@", TRAINERTYPE_NORMAL
-	db 20, NOCTOWL
 	db -1 ; end
 
 SkierGroup:
@@ -2003,26 +1974,18 @@ SailorGroup:
 
 	; SAILOR (2)
 	db "HUEY@", TRAINERTYPE_NORMAL
-	db 18, POLIWAG
-	db 18, POLIWHIRL
 	db -1 ; end
 
 	; SAILOR (3)
 	db "TERRELL@", TRAINERTYPE_NORMAL
-	db 20, POLIWHIRL
 	db -1 ; end
 
 	; SAILOR (4)
 	db "KENT@", TRAINERTYPE_MOVES
-	db 18, KRABBY,     BUBBLE, LEER, VICEGRIP, DEFENSE_CURL
-	db 20, KRABBY,     BUBBLEBEAM, LEER, VICEGRIP, DEFENSE_CURL
 	db -1 ; end
 
 	; SAILOR (5)
 	db "ERNEST@", TRAINERTYPE_NORMAL
-	db 18, MACHOP
-	db 18, MACHOP
-	db 18, POLIWHIRL
 	db -1 ; end
 
 	; SAILOR (6)
@@ -2055,24 +2018,6 @@ SailorGroup:
 	db "HARRY@", TRAINERTYPE_NORMAL
 	db 19, STARYU
 	db 19, MANTINE
-	db -1 ; end
-
-	; SAILOR (11)
-	db "HUEY@", TRAINERTYPE_NORMAL
-	db 28, POLIWHIRL
-	db 28, POLIWHIRL
-	db -1 ; end
-
-	; SAILOR (12)
-	db "HUEY@", TRAINERTYPE_NORMAL
-	db 34, POLIWHIRL
-	db 34, POLIWRATH
-	db -1 ; end
-
-	; SAILOR (13)
-	db "HUEY@", TRAINERTYPE_MOVES
-	db 38, POLITOED,   WHIRLPOOL, RAIN_DANCE, BODY_SLAM, PERISH_SONG
-	db 38, POLIWRATH,  SURF, STRENGTH, ICE_PUNCH, SUBMISSION
 	db -1 ; end
 
 SuperNerdGroup:

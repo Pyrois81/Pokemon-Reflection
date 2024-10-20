@@ -152,9 +152,9 @@ KRIS EQU __trainer_class__
 	const ROD
 	const ABE
 	const BRYAN
-	const THEO
+	const THEO ; Unreferenced
 	const TOBY ; Route 38
-	const DENIS
+	const DENIS ; Unreferenced
 	const VANCE ; Route 44
 	const HANK
 	const ROY
@@ -172,20 +172,17 @@ KRIS EQU __trainer_class__
 	const BRIDGET
 	const ALICE
 	const KRISE
-	const CONNIE1
+	const CONNIE ; Unreferenced
 	const LINDA
 	const LAURA
 	const SHANNON
 	const MICHELLE
 	const DANA1 ; Route 38 (1st battle)
 	const ELLEN
-	const CONNIE2
-	const CONNIE3
 	const DANA2 ; Route 38 (2nd battle)
 	const DANA3 ; Route 38 (3rd battle)
 	const DANA4 ; Route 38 (4th battle)
 	const DANA5 ; Route 38 (5th battle)
-	const THIEFTEST
 
 	trainerclass JANINE ; 1a
 	const JANINE1
@@ -305,11 +302,11 @@ KRIS EQU __trainer_class__
 	const GRUNTM_31
 
 	trainerclass GENTLEMAN ; 20
-	const PRESTON
+	const PRESTON ; Unreferenced
 	const EDWARD
 	const GREGORY
 	const VIRGIL
-	const ALFRED
+	const ALFRED ; Unreferenced
 
 	trainerclass SKIER ; 21
 	const ROXANNE ; Mahogany Gym
@@ -416,18 +413,15 @@ KRIS EQU __trainer_class__
 
 	trainerclass SAILOR ; 28
 	const EUGENE ; Route 39
-	const HUEY1
-	const TERRELL
-	const KENT
-	const ERNEST
+	const HUEY ; Unreferenced
+	const TERRELL ; Unreferenced
+	const KENT ; Unreferenced
+	const ERNEST ; Unreferenced
 	const JEFF
 	const GARRETT
 	const KENNETH
 	const STANLY
 	const HARRY ; Route 38
-	const HUEY2
-	const HUEY3
-	const HUEY4
 
 	trainerclass SUPER_NERD ; 29
 	const STAN

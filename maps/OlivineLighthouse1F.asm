@@ -1,66 +1,39 @@
 	object_const_def
-	const OLIVINELIGHTHOUSE1F_SAILOR
-	const OLIVINELIGHTHOUSE1F_POKEFAN_F
+	const OLIVINELIGHTHOUSE1F_POKE_BALL1
+	const OLIVINELIGHTHOUSE1F_POKE_BALL2
 
 OlivineLighthouse1F_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
 
-OlivineLighthouse1FSailorScript:
-	jumptextfaceplayer OlivineLighthouse1FSailorText
-
-OlivineLighthouse1FPokefanFScript:
-	jumptextfaceplayer OlivineLighthouse1FPokefanFText
-
-OlivineLighthouse1FSailorText:
-	text "People train at"
-	line "this LIGHTHOUSE."
-
-	para "It's not easy to"
-	line "climb because of"
-	cont "all the trainers."
-	done
-
-OlivineLighthouse1FPokefanFText:
-	text "In the past, #-"
-	line "MON used to light"
-
-	para "the sea around"
-	line "OLIVINE at night."
-
-	para "The LIGHTHOUSE was"
-	line "made in honor of"
-	cont "those #MON."
-	done
-
-OlivineLighthouseBook:
-	jumptext OlivineLighthouseBookText
+OlivineLighthouse1FEverstone:
+	itemball EVERSTONE
 	
-OlivineLighthouseBookText:
-	text "sike"
+OlivineLighthouse1FEscapeRope:
+	itemball ESCAPE_ROPE
 	
-	para "u cant go in here"
-	line "<……>"
-	
-	para "yet ;]"
-	done
+OlivineLighthouse1FHMSurf:
+	itemball HM_SURF
 
 OlivineLighthouse1F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event 10, 17, OLIVINE_CITY, 9
-	warp_event 11, 17, OLIVINE_CITY, 9
-	warp_event  3, 11, OLIVINE_LIGHTHOUSE_2F, 1
-	warp_event 16, 13, OLIVINE_LIGHTHOUSE_2F, 3
-	warp_event 17, 13, OLIVINE_LIGHTHOUSE_2F, 4
+	warp_event 12, 21, OLIVINE_CITY, 9
+	warp_event 13, 21, OLIVINE_CITY, 9
+	warp_event  9, 19, OLIVINE_LIGHTHOUSE_2F, 1
+	warp_event 13,  9, OLIVINE_LIGHTHOUSE_2F, 3
+	warp_event 11, 15, OLIVINE_LIGHTHOUSE_2F, 4
+	warp_event 20, 17, OLIVINE_LIGHTHOUSE_2F, 7
+	warp_event 21, 17, OLIVINE_LIGHTHOUSE_2F, 8
+	warp_event 13, 17, OLIVINE_LIGHTHOUSE_2F, 9
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 11, 15, BGEVENT_READ, OlivineLighthouseBook
 
 	def_object_events
-	object_event  8,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineLighthouse1FSailorScript, -1
-	object_event 16,  9, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineLighthouse1FPokefanFScript, -1
+	object_event  16,  7, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, OlivineLighthouse1FEverstone, EVENT_OLIVINE_LIGHTHOUSE_1F_EVERSTONE
+	object_event   6, 19, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, OlivineLighthouse1FEscapeRope, EVENT_OLIVINE_LIGHTHOUSE_1F_ESCAPE_ROPE
+	object_event  11, 11, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, OlivineLighthouse1FHMSurf, EVENT_OLIVINE_LIGHTHOUSE_1F_HM02_SURF
