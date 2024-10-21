@@ -92,6 +92,10 @@ INCLUDE "maps/Route8.asm"
 INCLUDE "maps/MahoganyMart1F.asm"
 INCLUDE "maps/TeamRocketBaseB1F.asm"
 INCLUDE "maps/IlexForest.asm"
+INCLUDE "maps/CeruleanCity.asm"
+INCLUDE "maps/SproutTower1F.asm"
+INCLUDE "maps/SproutTower2F.asm"
+INCLUDE "maps/SproutTower3F.asm"
 
 
 SECTION "Map Scripts 7", ROMX
@@ -148,7 +152,6 @@ INCLUDE "maps/TinTowerRoof.asm"
 SECTION "Map Scripts 9", ROMX
 
 INCLUDE "maps/Route34.asm"
-INCLUDE "maps/ElmsLab.asm"
 INCLUDE "maps/PlayersHouse1F.asm"
 INCLUDE "maps/PlayersHouse2F.asm"
 INCLUDE "maps/PlayersNeighborsHouse.asm"
@@ -246,10 +249,6 @@ INCLUDE "maps/Route29Route46Gate.asm"
 
 SECTION "Map Scripts 14", ROMX
 
-INCLUDE "maps/CeruleanCity.asm"
-INCLUDE "maps/SproutTower1F.asm"
-INCLUDE "maps/SproutTower2F.asm"
-INCLUDE "maps/SproutTower3F.asm"
 INCLUDE "maps/TinTower1F.asm"
 INCLUDE "maps/TinTower2F.asm"
 INCLUDE "maps/TinTower3F.asm"
@@ -261,6 +260,7 @@ INCLUDE "maps/TinTower8F.asm"
 INCLUDE "maps/TinTower9F.asm"
 INCLUDE "maps/BurnedTower1F.asm"
 INCLUDE "maps/BurnedTowerB1F.asm"
+INCLUDE "maps/ElmsLab.asm"
 
 
 SECTION "Map Scripts 15", ROMX

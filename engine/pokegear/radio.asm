@@ -231,27 +231,19 @@ OaksPKMNTalk4:
 	jr .loop
 
 .done
-	; Point hl to the list of morning Pokémon., skipping percentages
-rept 4
+	; Point hl to the list of Pokémon, skipping encounter rate
+rept 2
 	inc hl
 endr
-	; Generate a number, either 0, 1, or 2, to choose a time of day.
-.loop2
-	call Random
-	maskbits NUM_DAYTIMES
-	cp DARKNESS_F
-	jr z, .loop2
 
-	ld bc, 2 * NUM_GRASSMON
-	call AddNTimes
-.loop3
+.loop2
 	; Choose one of the middle three Pokemon.
 	call Random
 	maskbits NUM_GRASSMON
 	cp 2
-	jr c, .loop3
+	jr c, .loop2
 	cp 5
-	jr nc, .loop3
+	jr nc, .loop2
 	ld e, a
 	ld d, 0
 	add hl, de

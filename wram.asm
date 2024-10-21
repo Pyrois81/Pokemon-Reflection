@@ -2669,10 +2669,9 @@ wCurDamage:: dw
 
 	ds 2
 
-wMornEncounterRate::  db
-wDayEncounterRate::   db
-wNiteEncounterRate::  db
+wGrassEncounterRate::  db
 wWaterEncounterRate:: db
+	ds 2
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
 wPutativeTMHMMove:: db
 wInitListType:: db

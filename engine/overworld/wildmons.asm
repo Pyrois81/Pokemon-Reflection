@@ -1,18 +1,16 @@
 LoadWildMonData:
 	call _GrassWildmonLookup
 	jr c, .copy
-	ld hl, wMornEncounterRate
+	ld hl, wGrassEncounterRate
 	xor a
-	ld [hli], a
-	ld [hli], a
 	ld [hl], a
 	jr .done_copy
 
 .copy
 	inc hl
 	inc hl
-	ld de, wMornEncounterRate
-	ld bc, 3
+	ld de, wGrassEncounterRate
+	ld bc, 1
 	call CopyBytes
 .done_copy
 	call _WaterWildmonLookup
@@ -167,15 +165,11 @@ TryWildEncounter::
 	ret
 
 GetMapEncounterRate:
-	ld hl, wMornEncounterRate
+	ld hl, wGrassEncounterRate
 	call CheckOnWater
-	ld a, wWaterEncounterRate - wMornEncounterRate
-	jr z, .ok
-	ld a, [wTimeOfDay]
-.ok
-	ld c, a
-	ld b, 0
-	add hl, bc
+	jr nz, .not_water
+	inc hl ; wWaterEncounterRate
+.not_water
 	ld b, [hl]
 	ret
 
@@ -225,11 +219,6 @@ ChooseWildEncounter:
 	call CheckOnWater
 	ld de, WaterMonProbTable
 	jr z, .watermon
-	inc hl
-	inc hl
-	ld a, [wTimeOfDay]
-	ld bc, NUM_GRASSMON * 2
-	call AddNTimes
 	ld de, GrassMonProbTable
 
 .watermon
@@ -263,18 +252,23 @@ ChooseWildEncounter:
 	jr nz, .ok
 ; Check if we buff the wild mon, and by how much.
 	call Random
-	cp 35 percent
+	cp 10 percent ; 10% for -1 level
+	jr c, .dec
+	cp 45 percent ; 35% for defined lvl
 	jr c, .ok
 	inc b
-	cp 65 percent
+	cp 70 percent ; 25% +1
 	jr c, .ok
 	inc b
-	cp 85 percent
+	cp 85 percent ; 15% +2
 	jr c, .ok
 	inc b
-	cp 95 percent
+	cp 95 percent ; 10% +3
 	jr c, .ok
-	inc b
+	inc b ; 5% +4
+	jr .ok
+.dec
+	dec b
 ; Store the level
 .ok
 	ld a, b
@@ -454,7 +448,6 @@ LookUpWildmonsForMapDE:
 	ret
 
 ValidateTempWildMonSpecies:
-; Due to a development oversight, this function is called with the wild Pokemon's level, not its species, in a.
 	and a
 	jr z, .nowildmon ; = 0
 	cp NUM_POKEMON + 1 ; 252
@@ -482,11 +475,8 @@ RandomUnseenWildMon:
 
 .GetGrassmon:
 	push hl
-	ld bc, 5 + 4 * 2 ; Location of the level of the 5th wild Pokemon in that map
+	ld bc, 3 + 4 * 2 ; Location of the level of the 5th wild Pokemon in that map
 	add hl, bc
-	ld a, [wTimeOfDay]
-	ld bc, NUM_GRASSMON * 2
-	call AddNTimes
 .randloop1
 	call Random
 	and %11
@@ -500,7 +490,7 @@ RandomUnseenWildMon:
 	inc hl
 	ld c, [hl] ; Contains the species index of this rare Pokemon
 	pop hl
-	ld de, 5 + 0 * 2
+	ld de, 3 + 0 * 2
 	add hl, de
 	inc hl ; Species index of the most common Pokemon on that route
 	ld b, 4
@@ -551,18 +541,9 @@ RandomPhoneWildMon:
 	call LookUpWildmonsForMapDE
 
 .ok
-	ld bc, 5 + 0 * 2
+	ld bc, 3 + 0 * 2
 	add hl, bc
-	ld a, [wTimeOfDay]
-	inc a
-	ld bc, NUM_GRASSMON * 2
-.loop
-	dec a
-	jr z, .done
-	add hl, bc
-	jr .loop
 
-.done
 	call Random
 	and %11
 	ld c, a

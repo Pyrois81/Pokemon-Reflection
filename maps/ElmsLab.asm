@@ -49,7 +49,7 @@ ElmsLab_MapScripts:
 
 .WalkUpToElm:
 	applymovement PLAYER, ElmsLab_WalkUpToElmMovement
-	showemote EMOTE_SAD, ELMSLAB_ELM, 25
+	showemote EMOTE_SAD, ELMSLAB_ELM, 40
 	opentext
 	writetext ElmText_StolenMon1
 	waitbutton
@@ -81,7 +81,7 @@ ElmsLab_MapScripts:
 	playsound SFX_GLASS_TING
 	pause 30
 	showemote EMOTE_SHOCK, ELMSLAB_ELM, 10
-	applymovement ELMSLAB_ELM, ElmsLab_ElmToComputerMovement
+	applymovement ELMSLAB_ELM, ElmsLab_ElmToComputerMovement1
 	turnobject PLAYER, LEFT
 	opentext
 	writetext ElmText_GotAnEmail
@@ -252,6 +252,7 @@ ElmDirectionsScript:
 	writetext ElmDirectionsText3
 	waitbutton
 	closetext
+	applymovement ELMSLAB_ELM, ElmsLab_ElmToComputerMovement2
 	setevent EVENT_GOT_A_POKEMON_FROM_ELM
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	setscene SCENE_ELMSLAB_AIDE_GIVES_SUPPLIES
@@ -390,13 +391,24 @@ AideScript_WalkSupplies1:
 	turnobject PLAYER, DOWN
 	scall AideScript_GiveSupplies
 	applymovement ELMSLAB_ELMS_AIDE, AideWalksLeft1
-	end
+	sjump AideScript_Books
 
 AideScript_WalkSupplies2:
 	applymovement ELMSLAB_ELMS_AIDE, AideWalksRight2
 	turnobject PLAYER, DOWN
 	scall AideScript_GiveSupplies
 	applymovement ELMSLAB_ELMS_AIDE, AideWalksLeft2
+	; fallthrough
+
+AideScript_Books:
+	pause 30
+	showemote EMOTE_SHOCK, ELMSLAB_ELMS_AIDE, 15
+	turnobject ELMSLAB_ELMS_AIDE, RIGHT
+	opentext
+	writetext AideText_Books
+	waitbutton
+	closetext
+	turnobject ELMSLAB_ELMS_AIDE, DOWN
 	end
 
 AideScript_GiveSupplies:
@@ -434,7 +446,7 @@ AideScript_WalkTM2:
 	scall AideScript_GiveYouTM
 	applymovement ELMSLAB_ELMS_AIDE, AideWalksLeft2
 	end
-
+	
 AideScript_GiveYouTM:
 	opentext
 	writetext AideText_GiveYouTM
@@ -482,12 +494,33 @@ ElmsLabTravelTip3:
 
 ElmsLabTravelTip4:
 	jumptext ElmsLabTravelTip4Text
+	
+ElmsLabPokemonPrimer1:
+	jumptext ElmsLabPokemonPrimer1Text
+
+ElmsLabPokemonPrimer2:
+	jumptext ElmsLabPokemonPrimer2Text
+	
+ElmsLabPokemonPrimer3:
+	jumptext ElmsLabPokemonPrimer3Text
+	
+ElmsLabPokemonPrimer4:
+	jumptext ElmsLabPokemonPrimer4Text
+	
+ElmsLabPokemonPrimer5:
+	jumptext ElmsLabPokemonPrimer5Text
+	
+ElmsLabPokemonPrimer6:
+	jumptext ElmsLabPokemonPrimer6Text
+	
+ElmsLabPokemonPrimer7:
+	jumptext ElmsLabPokemonPrimer7Text
+	
+ElmsLabPokemonPrimer8:
+	jumptext ElmsLabPokemonPrimer8Text
 
 ElmsLabPC:
 	jumptext ElmsLabPCText
-
-ElmsLabBookshelf:
-	jumpstd DifficultBookshelfScript
 
 ElmsLab_WalkUpToElmMovement:
 	step UP
@@ -500,11 +533,12 @@ ElmsLab_WalkUpToElmMovement:
 	step UP
 	step_end
 
-ElmsLab_ElmToComputerMovement:
+ElmsLab_ElmToComputerMovement1:
+	step DOWN
+ElmsLab_ElmToComputerMovement2:
 	step LEFT
 	step DOWN
 	step LEFT
-	step DOWN
 	step DOWN
 	step_end
 
@@ -884,6 +918,8 @@ ElmDirectionsText2:
 ElmDirectionsText3:
 	text "<PLAYER>, I'm"
 	line "counting on you!"
+	
+	para "Now, where was I…"
 	done
 
 GotElmsNumberText:
@@ -1291,6 +1327,25 @@ AideText_ExplainCut:
 	line "as you want!"
 	done
 	
+AideText_Books:
+	text "One last thing!"
+	
+	para "If you feel you"
+	line "need to brush up"
+	
+	para "on your #MON"
+	line "knowledge, you"
+	
+	para "might want to look"
+	line "at some of the"
+	
+	para "books we've got in"
+	line "the LAB."
+	
+	para "They're full of"
+	line "useful tips!"
+	done
+	
 ElmsLabTravelTip1Text:
 	text "<PLAYER> opened a"
 	line "book."
@@ -1302,20 +1357,15 @@ ElmsLabTravelTip1Text:
 	done
 
 ElmsLabTravelTip2Text:
-	text "<PLAYER> opened a"
-	line "book."
+	text "Travel Tip 2:"
 
-	para "Travel Tip 2:"
-
-	para "Record your trip"
-	line "with SAVE!"
+	para "Be sure to record"
+	line "your progress with"
+	cont "SAVE!"
 	done
 
 ElmsLabTravelTip3Text:
-	text "<PLAYER> opened a"
-	line "book."
-
-	para "Travel Tip 3:"
+	text "Travel Tip 3:"
 
 	para "Open your PACK and"
 	line "press SELECT to"
@@ -1323,24 +1373,238 @@ ElmsLabTravelTip3Text:
 	done
 
 ElmsLabTravelTip4Text:
-	text "<PLAYER> opened a"
-	line "book."
+	text "Travel Tip 4:"
 
-	para "Travel Tip 4:"
+	para "Select MOVES to"
+	line "learn more about"
+	
+	para "your #MONs'"
+	line "attacks."
+	
+	para "Press the A Button"
+	line "to switch them"
+	cont "around!"
+	done
 
-	para "Check your #MON"
-	line "moves. Press the"
-
-	para "A Button to switch"
-	line "moves."
+ElmsLabPokemonPrimer1Text:
+	text "#MON Primer 1:"
+	line "Parties"
+	
+	para "#MON can be"
+	line "caught using #"
+	cont "BALLS."
+	
+	para "Each TRAINER can"
+	line "carry up to 6"
+	
+	para "#MON, and"
+	line "whichever one is"
+	
+	para "at the top of the"
+	line "party list will"
+	
+	para "appear first in"
+	line "battle."
+	done
+	
+ElmsLabPokemonPrimer2Text:
+	text "#MON Primer 2:"
+	line "Catching Tips"
+	
+	para "#MON are easier"
+	line "to catch the"
+	cont "weaker they are."
+	
+	para "Try lowering their"
+	line "HP or inflicting a"
+	
+	para "status effect"
+	line "before throwing"
+	cont "a BALL!"
+	done
+	
+ElmsLabPokemonPrimer3Text:
+	text "#MON Primer 3:"
+	line "Status and Catch"
+	cont "Rates"
+	
+	para "Sleep and Freeze"
+	line "are the best at"
+	
+	para "raising catch"
+	line "rates, but Burn,"
+	
+	para "Poison, and Para-"
+	line "lysis also have"
+	cont "an effect."
+	done
+	
+ElmsLabPokemonPrimer4Text:
+	text "#MON Primer 4:"
+	line "Types"
+	
+	para "Each #MON has"
+	line "a type, and many"
+	cont "have two!"
+	
+	para "In addition, every"
+	line "move has a type."
+	
+	para "The move you pick"
+	line "compared to your"
+	
+	para "opponent's type"
+	line "can make a huge"
+	
+	para "difference, all"
+	line "the way from doing"
+	
+	para "multiple times the"
+	line "normal damage to"
+	
+	para "doing nothing at"
+	line "all!"
+	
+	para "#MON will also"
+	line "do more damage"
+	
+	para "with moves that"
+	line "match their own"
+	cont "type."
+	done
+	
+ElmsLabPokemonPrimer5Text:
+	text "#MON Primer 5:"
+	line "Held Items"
+	
+	para "#MON can hold"
+	line "items."
+	
+	para "Some items provide"
+	line "a passive effect,"
+	
+	para "while others, like"
+	line "BERRIES, can be"
+	
+	para "eaten by #MON"
+	line "in order to heal"
+	cont "themselves."
+	done
+	
+ElmsLabPokemonPrimer6Text:
+	text "#MON Primer 6:"
+	line "Statuses, Pt.1"
+	
+	para "The most restrict-"
+	line "ive conditions"
+	
+	para "a #MON can have"
+	line "are Sleep and"
+	cont "Freeze."
+	
+	para "A sleeping #MON"
+	line "can't use any"
+	
+	para "moves, but will"
+	line "eventually wake up"
+	
+	para "after some number"
+	line "of turns…"
+	
+	para "Or, you can use an"
+	line "AWAKENING!"
+	
+	para "A frozen #MON"
+	line "also cannot move,"
+	
+	para "but freeze must be"
+	line "healed by ICE HEAL"
+	cont "or the like."
+	done
+	
+ElmsLabPokemonPrimer7Text:
+	text "#MON Primer 7:"
+	line "Statuses, Pt.2"
+	
+	para "Burn and Paralysis"
+	line "both affect a"
+	
+	para "#MON's stats"
+	line "and both persist"
+	cont "after battle."
+	
+	para "A burned #MON"
+	line "takes damage every"
+	
+	para "turn and has its"
+	line "physical damage"
+	cont "halved."
+	
+	para "Paralysis reduces"
+	line "SPEED by 3/4, and"
+	
+	para "the #MON has a"
+	line "1-in-4 chance not"
+	
+	para "to be able to move"
+	line "on each turn."
+	
+	para "Try BURN HEAL and"
+	line "PARLYZ HEAL,"
+	cont "respectively."
+	done
+	
+ElmsLabPokemonPrimer8Text:
+	text "#MON Primer 8:"
+	line "Statuses, Pt.3"
+	
+	para "Poison causes a"
+	line "#MON to take"
+	
+	para "damage at the end"
+	line "of each turn."
+	
+	para "It lasts after"
+	line "battle and will"
+	
+	para "continue to wear"
+	line "upon your #MON"
+	cont "as you walk."
+	
+	para "#MON can even-"
+	line "tually overcome"
+	
+	para "it, or it can be"
+	line "removed with"
+	cont "ANTIDOTE."
+	
+	para "Confusion messes"
+	line "with a #MON's"
+	
+	para "head -- half the"
+	line "time it will move"
+	
+	para "normally, but half"
+	line "the time it'll"
+	cont "hurt itself!"
+	
+	para "Confusion wears"
+	line "off after a few"
+	
+	para "turns, or when"
+	line "the battle ends."
 	done
 
 ElmsLabPCText:
-	text "OBSERVATIONS ON"
-	line "#MON EVOLUTION"
+	text "A Taxonomic An-"
+	line "alysis of #MON"
+	cont "Egg Groups"
 
-	para "…It says on the"
-	line "screen…"
+	para "…Looks like a work"
+	line "in progress of the"
+	
+	para "new book he's"
+	line "writing!"
 	done
 
 ElmsLab_MapEvents:
@@ -1360,18 +1624,18 @@ ElmsLab_MapEvents:
 
 	def_bg_events
 	bg_event  2,  1, BGEVENT_READ, ElmsLabHealingMachine
-	bg_event  6,  1, BGEVENT_READ, ElmsLabBookshelf
-	bg_event  7,  1, BGEVENT_READ, ElmsLabBookshelf
-	bg_event  8,  1, BGEVENT_READ, ElmsLabBookshelf
-	bg_event  9,  1, BGEVENT_READ, ElmsLabBookshelf
-	bg_event  0,  7, BGEVENT_READ, ElmsLabTravelTip1
-	bg_event  1,  7, BGEVENT_READ, ElmsLabTravelTip2
-	bg_event  2,  7, BGEVENT_READ, ElmsLabTravelTip3
-	bg_event  3,  7, BGEVENT_READ, ElmsLabTravelTip4
-	bg_event  6,  7, BGEVENT_READ, ElmsLabBookshelf
-	bg_event  7,  7, BGEVENT_READ, ElmsLabBookshelf
-	bg_event  8,  7, BGEVENT_READ, ElmsLabBookshelf
-	bg_event  9,  7, BGEVENT_READ, ElmsLabBookshelf
+	bg_event  6,  1, BGEVENT_READ, ElmsLabTravelTip1
+	bg_event  7,  1, BGEVENT_READ, ElmsLabTravelTip2
+	bg_event  8,  1, BGEVENT_READ, ElmsLabTravelTip3
+	bg_event  9,  1, BGEVENT_READ, ElmsLabTravelTip4
+	bg_event  0,  7, BGEVENT_READ, ElmsLabPokemonPrimer1
+	bg_event  1,  7, BGEVENT_READ, ElmsLabPokemonPrimer2
+	bg_event  2,  7, BGEVENT_READ, ElmsLabPokemonPrimer3
+	bg_event  3,  7, BGEVENT_READ, ElmsLabPokemonPrimer4
+	bg_event  6,  7, BGEVENT_READ, ElmsLabPokemonPrimer5
+	bg_event  7,  7, BGEVENT_READ, ElmsLabPokemonPrimer6
+	bg_event  8,  7, BGEVENT_READ, ElmsLabPokemonPrimer7
+	bg_event  9,  7, BGEVENT_READ, ElmsLabPokemonPrimer8
 	bg_event  3,  5, BGEVENT_DOWN, ElmsLabPC
 
 	def_object_events
