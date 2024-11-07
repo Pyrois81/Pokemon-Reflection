@@ -595,8 +595,8 @@ _BargainShopComeAgainText::
 	done
 
 _PharmacyIntroText::
-	text "What's up? Need"
-	line "some medicine?"
+	text "What can I help"
+	line "you with?"
 	done
 
 _PharmacyHowManyText::

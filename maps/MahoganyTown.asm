@@ -1,7 +1,6 @@
 	object_const_def
 	const MAHOGANYTOWN_GRAMPS
 	const MAHOGANYTOWN_LASS
-	const MAHOGANYTOWN_POKEBALL
 
 MahoganyTown_MapScripts:
 	def_scene_scripts
@@ -18,6 +17,9 @@ MahoganyTownGrampsScript:
 
 MahoganyTownLassScript:
 	jumptextfaceplayer MahoganyTownLassText
+
+MahoganyTownHiddenEXPCandyM:
+	hiddenitem EXP_CANDY_M, EVENT_MAHOGANY_TOWN_HIDDEN_EXP_CANDY_M
 
 MahoganyTownSign:
 	jumptext MahoganyTownSignText
@@ -70,32 +72,6 @@ MahoganyGymSignText:
 	line "Winter's Harshness"
 	done
 
-MahoganyTownPlaytestMonsBall:
-	opentext
-	readvar VAR_PARTYCOUNT
-	ifgreater 1, .NoRoom
-	givepoke PICHU, 18
-	givepoke RHYHORN, 18
-	givepoke HOUNDOUR, 18
-	givepoke CLEFFA, 18
-	givepoke HOPPIP, 18
-	verbosegiveitem HONEY_DROP, 4
-	closetext
-	disappear MAHOGANYTOWN_POKEBALL
-	end
-	
-.NoRoom:
-	writetext PutUpMonsText
-	waitbutton
-	closetext
-	end
-	
-PutUpMonsText:
-	text "go put up all but"
-	line "1 of ur mons ya"
-	cont "turkey !!!"
-	done
-
 MahoganyTown_MapEvents:
 	db 0, 0 ; filler
 
@@ -112,8 +88,8 @@ MahoganyTown_MapEvents:
 	bg_event 18,  6, BGEVENT_READ, MahoganyGymSign
 	bg_event 16, 13, BGEVENT_READ, MahoganyTownPokecenterSign
 	bg_event 12,  7, BGEVENT_READ, MahoganyTownMartSign
+	bg_event  1, 10, BGEVENT_ITEM, MahoganyTownHiddenEXPCandyM
 
 	def_object_events
 	object_event  7, 10, SPRITE_GRAMPS, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MahoganyTownGrampsScript, -1
 	object_event 11, 14, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MahoganyTownLassScript, -1
-	object_event 13, 13, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MahoganyTownPlaytestMonsBall, EVENT_PLAYTEST_MONS

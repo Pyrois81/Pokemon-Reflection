@@ -130,16 +130,9 @@ CutFunction:
 	dw .FailCut
 
 .CheckAble:
-	ld de, ENGINE_HIVEBADGE
-	call CheckBadge
-	jr c, .nohivebadge
 	call CheckMapForSomethingToCut
 	jr c, .nothingtocut
 	ld a, $1
-	ret
-
-.nohivebadge
-	ld a, $80
 	ret
 
 .nothingtocut
@@ -279,9 +272,6 @@ FlashFunction:
 
 .CheckUseFlash:
 ; Flash
-	ld de, ENGINE_ZEPHYRBADGE
-	farcall CheckBadge
-	jr c, .nozephyrbadge
 	push hl
 	farcall SpecialAerodactylChamber
 	pop hl
@@ -296,10 +286,6 @@ FlashFunction:
 
 .notadarkcave
 	call FieldMoveFailed
-	ld a, $80
-	ret
-
-.nozephyrbadge
 	ld a, $80
 	ret
 
@@ -345,9 +331,6 @@ SurfFunction:
 	dw .AlreadySurfing
 
 .TrySurf:
-	ld de, ENGINE_FOGBADGE
-	call CheckBadge
-	jr c, .nofogbadge
 	ld hl, wBikeFlags
 	bit BIKEFLAGS_ALWAYS_ON_BIKE_F, [hl]
 	jr nz, .cannotsurf
@@ -365,9 +348,6 @@ SurfFunction:
 	farcall CheckFacingObject
 	jr c, .cannotsurf
 	ld a, $1
-	ret
-.nofogbadge
-	ld a, $80
 	ret
 .alreadyfail
 	ld a, $3
@@ -500,10 +480,6 @@ TrySurfOW::
 	call CheckDirection
 	jr c, .quit
 
-	ld de, ENGINE_FOGBADGE
-	call CheckEngineFlag
-	jr c, .quit
-
 	ld d, SURF
 	call CheckPartyMove
 	jr c, .quit
@@ -556,9 +532,6 @@ FlyFunction:
 
 .TryFly:
 ; Fly
-	ld de, ENGINE_STORMBADGE
-	call CheckBadge
-	jr c, .nostormbadge
 	call GetMapEnvironment
 	call CheckOutdoorMap
 	jr z, .outdoors
@@ -579,10 +552,6 @@ FlyFunction:
 	ld [wDefaultSpawnpoint], a
 	call CloseWindow
 	ld a, $1
-	ret
-
-.nostormbadge
-	ld a, $82
 	ret
 
 .indoors
@@ -638,10 +607,6 @@ WaterfallFunction:
 
 .TryWaterfall:
 ; Waterfall
-	ld de, ENGINE_RISINGBADGE
-	farcall CheckBadge
-	ld a, $80
-	ret c
 	call CheckMapCanWaterfall
 	jr c, .failed
 	ld hl, Script_WaterfallFromMenu
@@ -707,9 +672,6 @@ Script_UsedWaterfall:
 TryWaterfallOW::
 	ld d, WATERFALL
 	call CheckPartyMove
-	jr c, .failed
-	ld de, ENGINE_RISINGBADGE
-	call CheckEngineFlag
 	jr c, .failed
 	call CheckMapCanWaterfall
 	jr c, .failed
@@ -962,31 +924,16 @@ StrengthFunction:
 	ld [wFieldMoveSucceeded], a
 	ret
 
-.TryStrength:
 ; Strength
-	ld de, ENGINE_PLAINBADGE
-	call CheckBadge
-	jr c, .Failed
-	jr .UseStrength
-
-.AlreadyUsingStrength: ; unreferenced
-	ld hl, .AlreadyUsingStrengthText
-	call MenuTextboxBackup
-	ld a, $80
-	ret
-
-.AlreadyUsingStrengthText:
-	text_far _AlreadyUsingStrengthText
-	text_end
-
-.Failed:
-	ld a, $80
-	ret
-
+.TryStrength:
 .UseStrength:
 	ld hl, Script_StrengthFromMenu
 	call QueueScript
 	ld a, $81
+	ret
+	
+.Failed:
+	ld a, $80
 	ret
 
 SetStrengthFlag:
@@ -1061,10 +1008,6 @@ TryStrengthOW:
 	call CheckPartyMove
 	jr c, .nope
 
-	ld de, ENGINE_PLAINBADGE
-	call CheckEngineFlag
-	jr c, .nope
-
 	ld hl, wBikeFlags
 	bit BIKEFLAGS_STRENGTH_ACTIVE_F, [hl]
 	jr z, .already_using
@@ -1100,9 +1043,6 @@ WhirlpoolFunction:
 	dw .FailWhirlpool
 
 .TryWhirlpool:
-	ld de, ENGINE_GLACIERBADGE
-	call CheckBadge
-	jr c, .noglacierbadge
 	call TryWhirlpoolMenu
 	jr c, .failed
 	ld a, $1
@@ -1110,10 +1050,6 @@ WhirlpoolFunction:
 
 .failed
 	ld a, $2
-	ret
-
-.noglacierbadge
-	ld a, $80
 	ret
 
 .DoWhirlpool:
@@ -1193,9 +1129,6 @@ DisappearWhirlpool:
 TryWhirlpoolOW::
 	ld d, WHIRLPOOL
 	call CheckPartyMove
-	jr c, .failed
-	ld de, ENGINE_GLACIERBADGE
-	call CheckEngineFlag
 	jr c, .failed
 	call TryWhirlpoolMenu
 	jr c, .failed
@@ -1778,10 +1711,6 @@ GotOffBikeText:
 TryCutOW::
 	ld d, CUT
 	call CheckPartyMove
-	jr c, .cant_cut
-
-	ld de, ENGINE_HIVEBADGE
-	call CheckEngineFlag
 	jr c, .cant_cut
 
 	ld a, BANK(AskCutScript)

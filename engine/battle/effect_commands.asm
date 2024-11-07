@@ -5343,6 +5343,8 @@ BattleCommand_ForceSwitch:
 	call DelayFrames
 	pop af
 
+	farcall LoadBattleScreenTypeIconGFX
+
 	ld hl, FledInFearText
 	cp ROAR
 	jr z, .do_text

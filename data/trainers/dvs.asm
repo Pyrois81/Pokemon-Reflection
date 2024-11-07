@@ -40,7 +40,7 @@ TrainerClassDVs:
 	dn  9,  8,  8,  8 ; BUG_CATCHER
 	dn  9,  8,  8,  8 ; FISHER
 	dn  9,  8,  8,  8 ; SWIMMERM
-	dn  7,  8,  8,  8 ; SWIMMERF
+	dn  8,  8,  8,  9 ; SWIMMERF
 	dn  9,  8,  8,  8 ; SAILOR
 	dn  9,  8,  8,  8 ; SUPER_NERD
 	dn  11, 11, 11, 11 ; RIVAL2
@@ -55,7 +55,7 @@ TrainerClassDVs:
 	dn 13,  8, 10,  8 ; EXECUTIVEM
 	dn  9,  8,  8,  8 ; PSYCHIC_T
 	dn  6, 10, 10,  8 ; PICNICKER
-	dn  9,  8,  8,  8 ; CAMPER
+	dn  9,  8,  8,  7 ; CAMPER
 	dn  7, 14, 10,  8 ; EXECUTIVEF
 	dn  9,  8,  8,  8 ; SAGE
 	dn  7,  8,  8,  8 ; MEDIUM
@@ -68,5 +68,5 @@ TrainerClassDVs:
 	dn 13, 13, 13, 13 ; BLUE
 	dn  9,  8,  8,  8 ; OFFICER
 	dn  7, 14, 10,  8 ; GRUNTF
-	dn  9,  8,  8,  8 ; MYSTICALMAN
+	dn  8, 11, 12, 12 ; MYSTICALMAN
 	assert_table_length NUM_TRAINER_CLASSES

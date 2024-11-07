@@ -14,7 +14,6 @@ StdScripts::
 	add_stdscript TownMapScript
 	add_stdscript WindowScript
 	add_stdscript TVScript
-	add_stdscript HomepageScript ; unused
 	add_stdscript Radio1Script
 	add_stdscript Radio2Script
 	add_stdscript TrashCanScript
@@ -27,6 +26,7 @@ StdScripts::
 	add_stdscript BugContestResultsWarpScript
 	add_stdscript BugContestResultsScript
 	add_stdscript InitializeEventsScript
+	add_stdscript PlaytestInitializeEvents
 	add_stdscript AskNumber1MScript
 	add_stdscript AskNumber2MScript
 	add_stdscript RegisteredNumberMScript
@@ -199,9 +199,6 @@ TVScript:
 	waitbutton
 	closetext
 	end
-
-HomepageScript:
-	farjumptext HomepageText
 
 Radio1Script:
 	opentext
@@ -470,9 +467,6 @@ InitializeEventsScript:
 	setevent EVENT_BLACKTHORN_CITY_SUPER_NERD_BLOCKS_GYM
 	setevent EVENT_LAKE_OF_RAGE_THUNDERSTONE
 	setevent EVENT_DANCE_THEATRE_STONES_TOGGLE
-	setevent EVENT_RIVAL_OLIVINE_CITY_TOGGLE
-	setevent EVENT_ECRUTEAK_CITY_SUDOWOODO1
-	setevent EVENT_ECRUTEAK_CITY_SUDOWOODO2
 	setevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	setevent EVENT_RIVAL_AZALEA_TOWN
@@ -480,7 +474,6 @@ InitializeEventsScript:
 	setevent EVENT_AZALEA_TOWN_SLOWPOKES
 	setevent EVENT_KURTS_HOUSE_SLOWPOKE
 	setevent EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER
-	setevent EVENT_COP_IN_ELMS_LAB
 	setevent EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST
 	setevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
 	setevent EVENT_ROUTE_30_YOUNGSTER_JOEY
@@ -508,7 +501,6 @@ InitializeEventsScript:
 	setevent EVENT_FAST_SHIP_1F_GENTLEMAN
 	setevent EVENT_FAST_SHIP_B1F_SAILOR_RIGHT
 	setevent EVENT_FAST_SHIP_CABINS_NNW_NNE_NE_SAILOR
-	setevent EVENT_MAHOGANY_MART_OWNERS
 	setevent EVENT_TIN_TOWER_ROOF_HO_OH
 	setevent EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
 	setevent EVENT_PLAYERS_HOUSE_2F_CONSOLE
@@ -518,12 +510,10 @@ InitializeEventsScript:
 	setevent EVENT_DECO_BED_1
 	setevent EVENT_DECO_POSTER_1
 	setevent EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
-	setevent EVENT_OLIVINE_GYM_JASMINE
 	setevent EVENT_MET_BILL
 	setevent EVENT_MYSTERY_GIFT_DELIVERY_GUY
 	setevent EVENT_GOLDENROD_DEPT_STORE_B1F_LAYOUT_1
 	setevent EVENT_GOLDENROD_UNDERGROUND_WAREHOUSE_BLOCKED_OFF
-	setevent EVENT_RIVAL_OLIVINE_CITY
 	setevent EVENT_RIVAL_VICTORY_ROAD
 	setevent EVENT_RIVAL_DRAGONS_DEN
 	setevent EVENT_LANCES_ROOM_OAK_AND_MARY
@@ -543,16 +533,12 @@ InitializeEventsScript:
 	setevent EVENT_ROCKET_TOWER_BATTLE_ROOM_YOUNGSTER
 	setevent EVENT_PLAYERS_NEIGHBORS_HOUSE_NEIGHBOR
 	setevent EVENT_AZALEA_TOWN_KURT
-	setevent EVENT_AZALEA_TOWN_KURT
 	setevent EVENT_ILEX_FOREST_KURT
 	setevent EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_IN_WALKWAY
 	setevent EVENT_ILEX_FOREST_LASS
 	setevent EVENT_GOLDENROD_SALE_OFF
 	setevent EVENT_PLAYERS_HOUSE_MOM_2
-	setevent EVENT_CIANWOOD_CITY_EUSINE
 	setevent EVENT_SET_WHEN_FOUGHT_HO_OH
-	setevent EVENT_SAW_SUICUNE_ON_ROUTE_36
-	setevent EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
 	setevent EVENT_ROCKET_TOWER_OUTSIDE_SAILOR
 	variablesprite SPRITE_FUCHSIA_GYM_1, SPRITE_JANINE
 	variablesprite SPRITE_FUCHSIA_GYM_2, SPRITE_JANINE
@@ -573,6 +559,18 @@ InitializeEventsScript:
 	setevent EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
 	setevent EVENT_INITIALIZED_EVENTS
 	endcallback
+
+PlaytestInitializeEvents:
+	setevent EVENT_RIVAL_OLIVINE_CITY_TOGGLE
+	setevent EVENT_ROUTE_40_ROCKET_TOWER_GATE_ROCKER_TOGGLE
+	setevent EVENT_ECRUTEAK_CITY_SUDOWOODO1
+	setevent EVENT_ECRUTEAK_CITY_SUDOWOODO2
+	setevent EVENT_CIANWOOD_CITY_EUSINE_TOGGLE
+	setevent EVENT_CIANWOOD_CITY_SUICUNE_TOGGLE
+	setevent EVENT_CIANWOOD_CITY_CHUCK_TOGGLE
+	setevent EVENT_CIANWOOD_CITY_LAPRAS_TOGGLE
+	clearevent EVENT_SAW_SUICUNE_AT_CIANWOOD
+	end
 
 AskNumber1MScript:
 	special RandomPhoneMon

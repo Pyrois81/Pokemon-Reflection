@@ -6717,13 +6717,10 @@ BadgeStatBoosts:
 ; Raise the stats of the battle mon in wBattleMon
 ; depending on which badges have been obtained.
 
-; Every other badge boosts a stat, starting from the first.
-; GlacierBadge also boosts Special Defense, although the relevant code is buggy (see below).
-
-; 	ZephyrBadge:  Attack
-; 	PlainBadge:   Speed
-; 	MineralBadge: Defense
-; 	GlacierBadge: Special Attack and Special Defense
+; 	ZephyrBadge (8):  Attack
+; 	PlainBadge (6):   Speed
+; 	MineralBadge (3): Defense
+; 	GlacierBadge (2): Special Attack and Special Defense
 
 ; The boosted stats are in order, except PlainBadge and MineralBadge's boosts are swapped.
 

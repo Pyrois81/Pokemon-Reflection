@@ -51,18 +51,23 @@ LakeOfRageGrampsScript:
 LakeOfRageSuperNerdScript:
 	faceplayer
 	opentext
+	checkevent EVENT_LAKE_OF_RAGE_GOT_UPGRADE
+	iftrue .GotUpgrade
 	writetext LakeOfRageSuperNerdText
 	waitbutton
-	checkevent EVENT_LAKE_OF_RAGE_GOT_UPGRADE
-	iffalse .GiveUpgrade
-	jr .End
-	
-.GiveUpgrade:
 	writetext LakeOfRageSuperNerdGiveUpgradeText
 	promptbutton
 	verbosegiveitem UP_GRADE
 	iffalse .End
 	setevent EVENT_LAKE_OF_RAGE_GOT_UPGRADE
+	closetext
+	end
+	
+.GotUpgrade:
+	writetext LakeOfRageSuperNerdGotUpgradeText
+	waitbutton
+	closetext
+	end
 	
 .End:
 	closetext
@@ -323,12 +328,14 @@ LakeOfRageSuperNerdText:
 	done
 	
 LakeOfRageSuperNerdGiveUpgradeText:
-	text "Hey, when I got"
-	line "over here today,"
-	
-	para "I noticed this"
-	line "thing had washed"
-	cont "up on the island."
+	text "Hey, by the way,"
+	line "when I got over"
+
+	para "here today, I no-"
+	line "ticed this thing"
+
+	para "had washed up on"
+	line "the island."
 	
 	para "I have no idea"
 	line "what it is, but it"
@@ -337,6 +344,18 @@ LakeOfRageSuperNerdGiveUpgradeText:
 	line "technological."
 	
 	para "Want it?"
+	done
+
+LakeOfRageSuperNerdGotUpgradeText:
+	text "Didja ever figure"
+	line "out what that doo-"
+	cont "hickey was for?"
+	
+	para "What'd you call it"
+	line "again?"
+	
+	para "U-P-G-R-A-Y-E-D-D"
+	line "or somethin'?"
 	done
 
 LakeOfRageCooltrainerFText:

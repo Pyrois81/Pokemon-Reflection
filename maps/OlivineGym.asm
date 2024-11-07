@@ -139,9 +139,7 @@ OlivineGymJasmineScript:
 	end
 
 OlivineGymRidleyWalksToGateMovement:
-	step RIGHT
-	step RIGHT
-	step RIGHT
+	step DOWN
 	step RIGHT
 	step RIGHT
 	turn_head DOWN
@@ -150,10 +148,8 @@ OlivineGymRidleyWalksToGateMovement:
 OlivineGymRidleyWalksBackMovement:
 	step LEFT
 	step LEFT
-	step LEFT
-	step LEFT
-	step LEFT
-	turn_head RIGHT
+	step UP
+	turn_head LEFT
 	step_end
 	
 OlivineGymStatue:
@@ -310,7 +306,13 @@ OlivineGymReceivedMineralBadgeText:
 OlivineGymJasmineBadgeText:
 	text "MINERALBADGE"
 	line "raises the defense"
-	cont "of your #MON."
+	
+	para "of your #MON,"
+	line "and also makes"
+	
+	para "all #MON up to"
+	line "L50 obey your"
+	cont "commands."
 
 	para "In addition,"
 	line "please take this."
@@ -351,6 +353,16 @@ OlivineGymJasmineSurfText:
 	para "duties after MR."
 	line "QUAYE retired to"
 	cont "FUCHSIA!"
+	
+	para "…Though, to be"
+	line "honest, I haven't"
+	
+	para "been doing a whole"
+	line "lot of caretaking"
+	
+	para "recently, so I'm"
+	line "not sure how it's"
+	cont "looking in there."
 	done
 
 OlivineGymJasmineGateText:
@@ -433,5 +445,5 @@ OlivineGym_MapEvents:
 	object_event  7, 13, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlivineGymGuideScript, -1
 	object_event  1,  1, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, OlivineGymSuperNerdJacobScript, -1
 	object_event  8,  1, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 2, OlivineGymBeautyMelissaScript, -1
-	object_event  3,  9, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_TRAINER, 3, OlivineGymGuitaristRidleyScript, -1
-	object_event  5,  5, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlivineGymJasmineScript, -1
+	object_event  6,  8, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_TRAINER, 1, OlivineGymGuitaristRidleyScript, -1
+	object_event  4,  5, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlivineGymJasmineScript, -1

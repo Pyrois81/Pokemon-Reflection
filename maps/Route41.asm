@@ -1,15 +1,21 @@
 	object_const_def
-	const ROUTE41_OLIVINE_RIVAL1
-	const ROUTE41_OLIVINE_RIVAL2
-	const ROUTE41_OLIVINE_RIVAL3
-	const ROUTE41_OLIVINE_RIVAL4
-	const ROUTE41_OLIVINE_RIVAL5
 	const ROUTE41_SWIMMER_GIRL1
 	const ROUTE41_SWIMMER_GIRL2
 	const ROUTE41_SWIMMER_GIRL3
 	const ROUTE41_SWIMMER_GIRL4
 	const ROUTE41_SWIMMER_GIRL5
-
+	const ROUTE41_SWIMMER_GUY1
+	const ROUTE41_SWIMMER_GUY2
+	const ROUTE41_SWIMMER_GUY3
+	const ROUTE41_SWIMMER_GUY4
+	const ROUTE41_SWIMMER_GUY5
+	const ROUTE41_POKE_BALL1
+	const ROUTE41_POKE_BALL2
+	const ROUTE41_POKE_BALL3
+	const ROUTE41_ROCK1
+	const ROUTE41_ROCK2
+	const ROUTE41_ROCK3
+	
 Route41_MapScripts:
 	def_scene_scripts
 
@@ -114,47 +120,62 @@ TrainerSwimmermKirk:
 	closetext
 	end
 
-TrainerSwimmermMathew:
-	trainer SWIMMERM, MATHEW, EVENT_BEAT_SWIMMERM_MATHEW, SwimmermMathewSeenText, SwimmermMathewBeatenText, 0, .Script
+TrainerSwimmermMatthew:
+	trainer SWIMMERM, MATTHEW, EVENT_BEAT_SWIMMERM_MATTHEW, SwimmermMatthewSeenText, SwimmermMatthewBeatenText, 0, .Script
 
 .Script:
 	endifjustbattled
 	opentext
-	writetext SwimmermMathewAfterBattleText
+	writetext SwimmermMatthewAfterBattleText
 	waitbutton
 	closetext
 	end
 
-Route41Rock: ; unreferenced
+Route41Rock:
 	jumpstd SmashRockScript
 
-Route41HiddenMaxEther:
-	hiddenitem MAX_ETHER, EVENT_ROUTE_41_HIDDEN_MAX_ETHER
+Route41TMRainDance:
+	itemball TM_RAIN_DANCE
+
+Route41BigPearl:
+	itemball BIG_PEARL
+	
+Route41HeavyBall:
+	itemball HEAVY_BALL
+
+Route41HiddenFullRestore:
+	hiddenitem FULL_RESTORE, EVENT_ROUTE_41_HIDDEN_FULL_RESTORE
+	
+Route41HiddenWaterStone:
+	hiddenitem WATER_STONE, EVENT_ROUTE_41_HIDDEN_WATER_STONE
 
 SwimmermCharlieSeenText:
-	text "The water's warm"
-	line "here. I'm loose"
-	cont "and limber."
-
-	para "Sure, I'll take"
-	line "you on!"
+	text "Hey, you!"
+	
+	para "You messed up my"
+	line "zen state!"
 	done
 
 SwimmermCharlieBeatenText:
-	text "Yikes! I've got"
-	line "prune skin!"
+	text "My apologies…"
 	done
 
 SwimmermCharlieAfterBattleText:
-	text "Isn't it relaxing"
-	line "just floating like"
-	cont "this?"
+	text "I'm training"
+	line "treading water for"
+	cont "as long as I can."
+	
+	para "My record is 7"
+	line "hours straight!"
 	done
 
 SwimmermGeorgeSeenText:
-	text "I'm a bit tired."
-	line "If I win, lend me"
-	cont "your #MON."
+	text "I was taking a"
+	line "breather."
+	
+	para "I'm always game"
+	line "for a battle,"
+	cont "though!"
 	done
 
 SwimmermGeorgeBeatenText:
@@ -162,204 +183,228 @@ SwimmermGeorgeBeatenText:
 	done
 
 SwimmermGeorgeAfterBattleText:
-	text "It's so far to"
-	line "CIANWOOD."
-
-	para "But it's no easy"
-	line "return trip to"
-	cont "OLIVINE either."
-
-	para "What should I do?"
+	text "I think I'll just"
+	line "hang out by this"
+	
+	para "rock for a little"
+	line "while."
 	done
 
 SwimmermBerkeSeenText:
-	text "See those islands"
-	line "that are blocked"
-	cont "by whirlpools?"
-
-	para "There just has to"
-	line "be a secret!"
+	text "Splash fight!!"
 	done
 
 SwimmermBerkeBeatenText:
-	text "What's the secret"
-	line "to your strength?"
+	text "I've got salt"
+	line "water in my eyes!"
 	done
 
 SwimmermBerkeAfterBattleText:
-	text "It was a dark and"
-	line "stormy night…"
-
-	para "I saw this giant"
-	line "#MON flying"
-	cont "from the islands."
-
-	para "It was scattering"
-	line "feathers from its"
-	cont "silver wings."
+	text "I can see the"
+	line "CIANWOOD shore"
+	cont "from here!"
 	done
 
 SwimmermKirkSeenText:
-	text "The waves are wild"
-	line "here."
-
-	para "They tire you out"
-	line "while you swim."
+	text "I'm swimming laps."
+	
+	para "Maybe I could"
+	line "count a battle as"
+	cont "a lap!"
 	done
 
 SwimmermKirkBeatenText:
-	text "I'm beat!"
+	text "Outpaced!"
 	done
 
 SwimmermKirkAfterBattleText:
-	text "The currents keep"
-	line "me from reaching"
-	cont "that island."
+	text "The scenery here"
+	line "makes for a great"
+	
+	para "swimming spot, but"
+	line "sometimes I hear"
+	
+	para "some spooky sounds"
+	line "coming from the"
+	cont "caves."
 	done
 
-SwimmermMathewSeenText:
-	text "Are you seeking"
-	line "the secrets of"
-	cont "WHIRL ISLANDS?"
+SwimmermMatthewSeenText:
+	text "Wanna race?"
+	
+	para "First one to"
+	line "CIANWOOD wins!"
 	done
 
-SwimmermMathewBeatenText:
-	text "Ooh, you've got"
-	line "great endurance!"
+SwimmermMatthewBeatenText:
+	text "I got beat before"
+	line "I could even"
+	cont "begin…"
 	done
 
-SwimmermMathewAfterBattleText:
-	text "A secret about"
-	line "WHIRL ISLANDS…"
-
-	para "It's pitch-black"
-	line "inside!"
+SwimmermMatthewAfterBattleText:
+	text "We're pretty far"
+	line "from land, but I"
+	cont "like it that way."
+	
+	para "It's peaceful out"
+	line "here."
 	done
 
 SwimmerfKayleeSeenText:
-	text "I'm on my way to"
-	line "WHIRL ISLANDS."
-
-	para "I'm going explor-"
-	line "ing with friends."
+	text "Don't wanna"
+	line "battle? Too bad!"
+	
+	para "That's the name of"
+	line "the game!"
 	done
 
 SwimmerfKayleeBeatenText:
-	text "Is that how you do"
-	line "it?"
+	text "Too cocky…"
 	done
 
 SwimmerfKayleeAfterBattleText:
-	text "There's supposed"
-	line "to be a big #-"
-	cont "MON deep beneath"
-	cont "WHIRL ISLANDS."
+	text "They say there's a"
+	line "huge #MON deep"
+	
+	para "beneath the"
+	line "WHIRL ISLANDS."
 
 	para "I wonder what it"
 	line "could be?"
 	done
 
 SwimmerfSusieSeenText:
-	text "You look so ele-"
-	line "gant, riding your"
-	cont "#MON."
+	text "Your #MON looks"
+	line "to be struggling"
+	cont "to carry you."
+	
+	para "Maybe you should"
+	line "give it a break."
 	done
 
 SwimmerfSusieBeatenText:
-	text "I'm crushed…"
+	text "I didn't mean it!"
 	done
 
 SwimmerfSusieAfterBattleText:
-	text "Wasn't there a hit"
-	line "song about a boy"
-	cont "riding a LAPRAS?"
+	text "Sorry, I'm just"
+	line "jealous."
+	
+	para "I wish my #MON"
+	line "knew SURF…"
 	done
 
 SwimmerfDeniseSeenText:
-	text "The weather is so"
-	line "beautiful, I'm in"
-	cont "a daze!"
+	text "I can stay out all"
+	line "day and not get a"
+	cont "sunburn!"
 	done
 
 SwimmerfDeniseBeatenText:
-	text "Ohhh!"
+	text "Whoa, I got"
+	line "toasted!"
 	done
 
 SwimmerfDeniseAfterBattleText:
-	text "A sunburn is the"
-	line "worst for skin."
-
-	para "But I don't use a"
-	line "sunblock."
-
-	para "I won't pollute"
-	line "the water."
+	text "What's my secret?"
+	
+	para "Ecruteak Essen-"
+	line "tials makes this"
+	
+	para "eco-friendly sun-"
+	line "block out of"
+	
+	para "APRICORNS that you"
+	line "have just GOT to"
+	cont "try!"
 	done
 
 SwimmerfKaraSeenText:
-	text "If you need to"
-	line "rest, just tread"
-	cont "water."
-
-	para "You'll get your"
-	line "wind back, so you"
-
-	para "can keep on going"
-	line "strong."
+	text "Are you here to"
+	line "explore the caves"
+	cont "too?"
 	done
 
 SwimmerfKaraBeatenText:
-	text "Oh! You have more"
-	line "energy than I do."
+	text "You're not an ord-"
+	line "inary trainer."
 	done
 
 SwimmerfKaraAfterBattleText:
-	text "I heard roars from"
-	line "deep inside the"
-	cont "ISLANDS."
+	text "These islands are"
+	line "no joke."
+	
+	para "You apparently"
+	line "need a TM to get"
+	
+	para "rid of those"
+	line "whirlpools in"
+	
+	para "order to even get"
+	line "close."
 	done
 
 SwimmerfWendySeenText:
-	text "At night, STARYU"
-	line "gather near the"
-	cont "water's surface."
+	text "STARYU and STARMIE"
+	line "float at the"
+	
+	para "water's surface"
+	line "in the twilight"
+	
+	para "and glow with"
+	line "dazzling colors."
 	done
 
 SwimmerfWendyBeatenText:
-	text "Oh, dear…"
+	text "Ah, well…"
 	done
 
 SwimmerfWendyAfterBattleText:
-	text "The clusters of"
-	line "STARYU light up"
-	cont "at the same time."
-
-	para "It's so beautiful,"
-	line "it's scary."
+	text "STARYU shines with"
+	line "yellow light and"
+	cont "STARMIE with pink."
+	
+	para "I bet they could"
+	line "light up the in-"
+	
+	para "sides of the"
+	line "caves…"
+	
+	para "I've heard it's"
+	line "pitch black in"
+	cont "there!"
 	done
 
 Route41_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event 12, 17, WHIRL_ISLAND_NW, 1
-	warp_event 36, 19, WHIRL_ISLAND_NE, 1
-	warp_event 12, 37, WHIRL_ISLAND_SW, 1
-	warp_event 36, 45, WHIRL_ISLAND_SE, 1
+	warp_event 14, 15, WHIRL_ISLAND_NW, 1
+	warp_event 46, 19, WHIRL_ISLAND_NE, 1
+	warp_event 12, 43, WHIRL_ISLAND_SW, 1
+	warp_event 48, 39, WHIRL_ISLAND_SE, 1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  9, 35, BGEVENT_ITEM, Route41HiddenMaxEther
+	bg_event 19,  9, BGEVENT_ITEM, Route41HiddenFullRestore
+	bg_event 38, 25, BGEVENT_ITEM, Route41HiddenWaterStone
 
 	def_object_events
-	object_event 32,  6, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermCharlie, -1
-	object_event 46,  8, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermGeorge, -1
-	object_event 20, 26, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermBerke, -1
-	object_event 32, 30, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermKirk, -1
-	object_event 19, 46, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermMathew, -1
-	object_event 17,  4, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfKaylee, -1
-	object_event 23, 19, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfSusie, -1
-	object_event 27, 34, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfDenise, -1
-	object_event 44, 28, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerSwimmerfKara, -1
-	object_event  9, 50, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerSwimmerfWendy, -1
+	object_event 49,  5, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 4, TrainerSwimmerfKaylee, -1
+	object_event 31, 18, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerSwimmerfSusie, -1
+	object_event 11, 50, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 3, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfDenise, -1
+	object_event 36, 30, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfKara, -1
+	object_event 27, 28, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 3, TrainerSwimmerfWendy, -1
+	object_event 25, 42, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_TRAINER, 3, TrainerSwimmermCharlie, -1
+	object_event 56, 29, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_TRAINER, 2, TrainerSwimmermGeorge, -1
+	object_event  6, 35, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 2, -1, -1, PAL_NPC_PINK, OBJECTTYPE_TRAINER, 2, TrainerSwimmermBerke, -1
+	object_event 22,  2, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 2, TrainerSwimmermKirk, -1
+	object_event 56, 51, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_TRAINER, 4, TrainerSwimmermMatthew, -1
+	object_event 28, 48, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route41TMRainDance, EVENT_ROUTE_41_TM18_RAIN_DANCE
+	object_event  9, 43, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route41BigPearl, EVENT_ROUTE_41_BIG_PEARL
+	object_event 42, 42, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_ITEMBALL, 0, Route41HeavyBall, EVENT_ROUTE_41_HEAVY_BALL
+	object_event 10,  7, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route41Rock, -1
+	object_event 19, 16, SPRITE_ROCK, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route41Rock, -1
+	

@@ -56,15 +56,20 @@ OlivineLighthouseBookshelf2Text:
 	done
 
 OlivineLighthouseJournalText:
-	text "Well, it seems as"
+	text "JOURNAL OF"
+	line "I. QUAYE"
+	
+	para "1st August:"
+	
+	para "'Well, it seems as"
 	line "though my tenure"
 	
 	para "here must come to"
-	line "an end since they-"
+	line "an end since"
 	
-	para "'re dead set on"
-	line "automating every-"
-	cont "thing."
+	para "they're dead set"
+	line "on automating"
+	cont "everything."
 	
 	para "All the same -- I"
 	line "was intending to"
@@ -88,7 +93,7 @@ OlivineLighthouseJournalText:
 	
 	para "I've always wanted"
 	line "to see it ter-"
-	cont "ribly."
+	cont "ribly.'"
 	done
 
 OlivineLighthouse6F_MapEvents:

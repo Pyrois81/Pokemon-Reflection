@@ -104,8 +104,8 @@ OlivineCafeSailor1Text:
 	line "has just the trick"
 	
 	para "fer that, but he's"
-	line "out trainin' at"
-	cont "the CIANWOOD GYM!"
+	line "out sailin' the"
+	cont "seven seas!"
 	done
 
 OlivineCafeSailor2Text:

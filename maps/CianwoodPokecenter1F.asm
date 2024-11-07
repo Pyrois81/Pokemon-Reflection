@@ -36,97 +36,115 @@ CianwoodPokecenter1FSuperNerdScript:
 	jumptextfaceplayer CianwoodPokecenter1FSuperNerdText
 
 CianwoodPokecenter1FLassText:
-	text "Did you meet the"
-	line "#MANIAC?"
-
-	para "He's always brag-"
-	line "ging about his"
-	cont "rare #MON."
+	text "There's a #-"
+	line "MANIAC who lives"
+	cont "in CIANWOOD."
+	
+	para "He used to be a"
+	line "really helpful and"
+	
+	para "friendly guy --"
+	line "kinda odd, of"
+	cont "course --"
+	
+	para "but these days we"
+	line "hardly see him,"
+	
+	para "and when we do,"
+	line "he's jumpy and"
+	cont "anxious."
+	
+	para "Wonder what hap-"
+	line "pened to him…"
 	done
 
 CianwoodGymGuideText:
-	text "The #MON GYM"
-	line "trainers here are"
-	cont "macho bullies."
+	text "Ooh, those muscle-"
+	line "heads in the GYM"
+	cont "make me so mad!"
 
-	para "If I stick around,"
-	line "they might come"
-	cont "after me."
+	para "They laughed me"
+	line "out of the place"
+	
+	para "after I couldn't"
+	line "move one of their"
+	
+	para "stupid boulders"
+	line "with one finger."
+	
+	para "Maybe you could"
+	line "put 'em in their"
+	cont "place!"
+	
+	para "Alright, here's"
+	line "the scoop:"
 
-	para "Here's some ad-"
-	line "vice: the GYM"
-
-	para "LEADER uses the"
+	para "CHUCK uses the"
 	line "fighting-type."
 
-	para "So you should"
-	line "confound him with"
-	cont "psychic #MON."
+	para "You should either"
+	line "bamboozle him with"
+	
+	para "psychic #MON or"
+	line "come at him from"
+	
+	para "above with flying-"
+	line "types."
 
-	para "Wipe out his #-"
-	line "MON before they"
-
-	para "can use their"
-	line "physical strength."
-
-	para "And those boulders"
-	line "in the middle of"
-	cont "the GYM?"
-
-	para "If you don't move"
-	line "them correctly,"
-
-	para "you won't reach"
-	line "the GYM LEADER."
-
-	para "If you get stuck,"
-	line "go outside."
+	para "Fighting #MON"
+	line "can deliver devas-"
+	
+	para "tating blows, but"
+	line "their defenses"
+	
+	para "typically aren't"
+	line "anything special."
+	
+	para "Now go show those"
+	line "bullies who's boss"
+	cont "of that GYM!"
 	done
 
 CianwoodGymGuideWinText:
 	text "<PLAYER>! You won!"
-	line "I could tell by"
-	cont "looking at you!"
-	done
+	line "I can see it on"
+	cont "your face!"
+	
+	para "That'll teach them"
+	line "to mess with the"
+	cont "little guy!"
+	
+	para "…Uh…"
 
-CianwoodPokecenter1FUnusedText1: ; unreferenced
-	text "Don't you get the"
-	line "urge to show off"
-
-	para "your #MON to"
-	line "friends?"
-
-	para "I wish I could"
-	line "show the #MON I"
-
-	para "raised to my pal"
-	line "in VIOLET."
-	done
-
-CianwoodPokecenter1FUnusedText2: ; unreferenced
-	text "I've been battling"
-	line "my pal in VIOLET"
-
-	para "using a MOBILE"
-	line "ADAPTER link."
-
-	para "I'm down 5-7"
-	line "against him. I've"
-	cont "gotta crank it up!"
+	para "Meaning me, not"
+	line "you, even though"
+	cont "you're the kid…"
+	
+	para "Yeah!"
 	done
 
 CianwoodPokecenter1FSuperNerdText:
-	text "I love showing off"
-	line "the #MON that"
-
-	para "I've raised."
-	line "Don't you?"
-
-	para "I'm going to get"
-	line "into a bunch of"
-
-	para "battles, and show"
-	line "off my #MON!"
+	text "The old PHOTO STU-"
+	line "DIO shut down and"
+	
+	para "the owner moved"
+	line "back to the main-"
+	cont "land."
+	
+	para "Psh… I'm not"
+	line "surprised!"
+	
+	para "Everybody's car-"
+	line "rying around digi-"
+	
+	para "tal cameras these"
+	line "days."
+	
+	para "I bet those things"
+	line "will stick around"
+	
+	para "for 100 years or"
+	line "more!"
 	done
 
 CianwoodPokecenter1F_MapEvents:

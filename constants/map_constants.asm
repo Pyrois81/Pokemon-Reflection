@@ -415,13 +415,13 @@ ENDM
 
 	newgroup CIANWOOD                                             ; 22
 	map_const ROUTE_40,                                    10, 18 ;  1
-	map_const ROUTE_41,                                    25, 27 ;  2
-	map_const CIANWOOD_CITY,                               15, 27 ;  3
+	map_const ROUTE_41,                                    30, 27 ;  2
+	map_const CIANWOOD_CITY,                               10, 27 ;  3
 	map_const MANIAS_HOUSE,                                 4,  4 ;  4
-	map_const CIANWOOD_GYM,                                 5,  9 ;  5
+	map_const CIANWOOD_GYM,                                 6, 10 ;  5
 	map_const CIANWOOD_POKECENTER_1F,                       5,  4 ;  6
 	map_const CIANWOOD_PHARMACY,                            4,  4 ;  7
-	map_const CIANWOOD_PHOTO_STUDIO,                        4,  4 ;  8
+	map_const EUSINES_HOUSE,                        		4,  4 ;  8
 	map_const CIANWOOD_LUGIA_SPEECH_HOUSE,                  4,  4 ;  9
 	map_const POKE_SEERS_HOUSE,                             4,  4 ; 10
 	map_const ROCKET_TOWER_1F,                              8,  5 ; 11

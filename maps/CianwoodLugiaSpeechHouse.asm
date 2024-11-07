@@ -21,42 +21,55 @@ CianwoodLugiaSpeechHouseBookshelf:
 	jumpstd PictureBookshelfScript
 
 CianwoodLugiaSpeechHouseTeacherText:
-	text "You came from"
+	text "Oh, you came from"
 	line "OLIVINE?"
 
-	para "Do you remember"
-	line "the four islands"
-	cont "along the way?"
+	para "Those islands"
+	line "along the way"
 
-	para "I heard that a "
-	line "mythical sea crea-"
-	cont "ture is hiding in"
-	cont "them."
+	para "are mentioned in"
+	line "a lot of JOHTO"
+	cont "legends, you know."
+	
+	para "It's said there's"
+	line "a mythical #MON"
+	
+	para "that lives deep"
+	line "within."
 	done
 
 CianwoodLugiaSpeechHouseLassText:
-	text "I heard that you"
-	line "can only see it if"
-
-	para "you have a SILVER"
-	line "WING."
-
-	para "It must have the"
-	line "same scent as the"
-	cont "creature."
+	text "Those caves hav-"
+	line "en't been explored"
+	
+	para "very thoroughly,"
+	line "mostly because"
+	
+	para "it's hard to get"
+	line "to them."
+	
+	para "There's no getting"
+	line "around those"
+	
+	para "whirlpools unless"
+	line "your #MON knows"
+	
+	para "a specialized"
+	line "move."
 	done
 
 CianwoodLugiaSpeechHouseTwinText:
-	text "I've heard that"
-	line "the whirlpools"
-
-	para "around the islands"
-	line "are caused by the"
-	cont "sea creature."
-
-	para "You might need a"
-	line "special move to"
-	cont "get past them."
+	text "Dangerous whirl-"
+	line "pools?"
+	
+	para "Huge, scary"
+	line "#MON?"
+	
+	para "No thanks. I'm"
+	line "perfectly happy"
+	
+	para "just going to the"
+	line "beach."
 	done
 
 CianwoodLugiaSpeechHouse_MapEvents:

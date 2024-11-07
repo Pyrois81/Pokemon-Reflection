@@ -34,7 +34,7 @@ MonMenuIconPals:
 	icon_pals RED, BROWN ; RAICHU
 	icon_pals BROWN, GRAY ; SANDSHREW
 	icon_pals BROWN, RED ; SANDSLASH
-	icon_pals TEAL, PINK ; NIDORAN_F
+	icon_pals BLUE, PINK ; NIDORAN_F
 	icon_pals BLUE, PINK ; NIDORINA
 	icon_pals BLUE, GRAY ; NIDOQUEEN
 	icon_pals PURPLE, BLUE ; NIDORAN_M
@@ -233,8 +233,8 @@ MonMenuIconPals:
 	icon_pals RED, PURPLE ; DELIBIRD
 	icon_pals PURPLE, BLUE ; MANTINE
 	icon_pals GRAY, GREEN ; SKARMORY
-	icon_pals RED, GRAY ; HOUNDOUR
-	icon_pals RED, GRAY ; HOUNDOOM
+	icon_pals GRAY, BLUE ; HOUNDOUR
+	icon_pals GRAY, BLUE ; HOUNDOOM
 	icon_pals BLUE, PURPLE ; KINGDRA
 	icon_pals BLUE, GRAY ; PHANPY
 	icon_pals GRAY, RED ; DONPHAN

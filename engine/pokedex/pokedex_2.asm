@@ -91,7 +91,7 @@ DisplayDexEntry:
 	ld l, c
 	push de
 ; Print dex number
-	hlcoord 2, 8
+	hlcoord 9, 1
 	ld a, $5c ; No
 	ld [hli], a
 	ld a, $5d ; .
@@ -99,6 +99,22 @@ DisplayDexEntry:
 	ld de, wTempSpecies
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
 	call PrintNum
+; Print catch rate
+	hlcoord 1, 8
+	ld a, $BA
+	ld c, 6
+	
+.catch_rate_loop
+	ld [hli], a
+	inc a
+	dec c
+	jr nz, .catch_rate_loop	
+	
+	hlcoord 5, 9
+	ld de, wBaseCatchRate
+	lb bc, 1, 3
+	call PrintNum
+	
 ; Check to see if we caught it.  Get out of here if we haven't.
 	ld a, [wTempSpecies]
 	dec a

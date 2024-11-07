@@ -200,6 +200,12 @@ PryceText_GlacierBadgeSpeech:
 	
 	para "of what you have"
 	line "overcome."
+	
+	para "Owning it will"
+	line "raise the SPECIAL"
+	
+	para "ATK. and DEF. of"
+	line "your #MON."
 
 	para "And this… This is"
 	line "a gift from me!"

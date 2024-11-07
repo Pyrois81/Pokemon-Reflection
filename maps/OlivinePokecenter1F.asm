@@ -21,6 +21,21 @@ OlivinePokecenter1FFisherScript:
 OlivinePokecenter1FTeacherScript:
 	jumptextfaceplayer OlivinePokecenter1FTeacherText
 
+OlivinePlaytestEventInitializer:
+	jumpstd PlaytestInitializeEvents
+	opentext
+	writetext OlivinePlaytestInitializeEventsText
+	promptbutton
+	closetext
+	end
+	
+OlivinePlaytestInitializeEventsText:
+	text "Beep boop…"
+	
+	para "Initialized"
+	line "events!"
+	done
+
 OlivinePokecenter1FFishingGuruText:
 	text "Hey kid, I'll sell"
 	line "ya this MAGIKARP I"
@@ -80,3 +95,4 @@ OlivinePokecenter1F_MapEvents:
 	object_event  8,  4, SPRITE_FISHING_GURU, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePokecenter1FFishingGuruScript, -1
 	object_event  1,  5, SPRITE_FISHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, OlivinePokecenter1FFisherScript, -1
 	object_event  7,  1, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePokecenter1FTeacherScript, -1
+	object_event  9,  7, SPRITE_VIRTUAL_BOY, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivinePlaytestEventInitializer, -1

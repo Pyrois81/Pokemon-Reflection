@@ -6,6 +6,14 @@ OlivineLighthouse5F_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_TILES, .DoubleDoors
+	
+.DoubleDoors:
+	checkevent EVENT_OLIVINE_LIGHTHOUSE_5F_UNLOCKED_DOORS
+	iffalse .End
+	changeblock 6, 4, $27 ; regular floor tile
+.End
+	endcallback
 
 OlivineLighthouse5FEXPCandyM:
 	itemball EXP_CANDY_M
@@ -15,6 +23,48 @@ OlivineLighthouse5FTMDoubleTeam:
 
 OlivineLighthouse5FHiddenHyperPotion:
 	hiddenitem HYPER_POTION, EVENT_OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION
+
+OlivineLighthouse5FLockedDoors:
+	conditional_event EVENT_OLIVINE_LIGHTHOUSE_5F_UNLOCKED_DOORS, .LockedDoorsScript
+	
+.LockedDoorsScript
+	opentext
+	readvar VAR_FACING
+	ifequal UP, .OpenDoors
+	writetext OlivineLighthouse5FLockedDoorsText
+	waitbutton
+	closetext
+	end
+	
+.OpenDoors
+	writetext OlivineLighthouse5FOpenDoorsText
+	promptbutton
+	closetext
+	playsound SFX_ENTER_DOOR
+	changeblock 6, 4, $27 ; regular floor tile
+	setevent EVENT_OLIVINE_LIGHTHOUSE_5F_UNLOCKED_DOORS
+	reloadmappart
+	end	
+
+OlivineLighthouse5FLockedDoorsText:
+	text "These double doors"
+	line "are locked tight."
+	
+	para "Maybe they could"
+	line "be opened from the"
+	cont "other side?"
+	done
+	
+OlivineLighthouse5FOpenDoorsText:
+	text "There was an old"
+	line "broom handle"
+	
+	para "wedging the doors"
+	line "shut."
+	
+	para "Removing it allows"
+	line "them to open!"
+	done
 
 OlivineLighthouse5F_MapEvents:
 	db 0, 0 ; filler
@@ -31,10 +81,11 @@ OlivineLighthouse5F_MapEvents:
 	warp_event  3, 11, OLIVINE_LIGHTHOUSE_4F, 8
 	warp_event  8, 10, OLIVINE_LIGHTHOUSE_4F, 7
 
-
 	def_coord_events
 
 	def_bg_events
+	bg_event  6,  4, BGEVENT_IFNOTSET, OlivineLighthouse5FLockedDoors
+	bg_event  7,  4, BGEVENT_IFNOTSET, OlivineLighthouse5FLockedDoors
 	bg_event 12,  6, BGEVENT_ITEM, OlivineLighthouse5FHiddenHyperPotion
 
 	def_object_events

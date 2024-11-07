@@ -98,6 +98,9 @@ SantosScript:
 	
 BlackthornCityHiddenStardust:
 	hiddenitem STARDUST, EVENT_BLACKTHORN_CITY_HIDDEN_STARDUST
+	
+BlackthornCityHiddenElixir:
+	hiddenitem BIG_PEARL, EVENT_BLACKTHORN_CITY_HIDDEN_ELIXIR
 
 BlackthornCitySign:
 	jumptext BlackthornCitySignText
@@ -347,6 +350,7 @@ BlackthornCity_MapEvents:
 	bg_event 16, 29, BGEVENT_READ, BlackthornCityMartSign
 	bg_event 22, 29, BGEVENT_READ, BlackthornCityPokecenterSign
 	bg_event 10, 17, BGEVENT_ITEM, BlackthornCityHiddenStardust
+	bg_event 21,  8, BGEVENT_ITEM, BlackthornCityHiddenElixir
 
 	def_object_events
 	object_event 18, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, BlackthornSuperNerdScript, EVENT_BLACKTHORN_CITY_SUPER_NERD_DOES_NOT_BLOCK_GYM

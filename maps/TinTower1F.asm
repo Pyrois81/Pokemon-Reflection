@@ -118,10 +118,6 @@ TinTower1F_MapScripts:
 	dontrestartmapmusic
 	disappear TINTOWER1F_SUICUNE
 	setevent EVENT_FOUGHT_SUICUNE
-	setevent EVENT_SAW_SUICUNE_ON_ROUTE_36
-	setmapscene ROUTE_36, SCENE_ROUTE36_NOTHING
-	setevent EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
-	setmapscene CIANWOOD_CITY, SCENE_CIANWOODCITY_NOTHING
 	setscene SCENE_FINISHED
 	clearevent EVENT_SET_WHEN_FOUGHT_HO_OH
 	reloadmapafterbattle

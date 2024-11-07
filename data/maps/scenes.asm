@@ -41,6 +41,7 @@ MapScenes::
 	scene_var GOLDENROD_POKECENTER_1F,                     wGoldenrodPokecenter1FSceneID
 	scene_var ROUTE_39_BARN,							   wRoute39BarnSceneID
 	scene_var OLIVINE_CITY,                                wOlivineCitySceneID
+	scene_var ROUTE_40_ROCKET_TOWER_GATE,				   wRoute40RocketTowerGateSceneID
 	scene_var ROUTE_34,                                    wRoute34SceneID ; unused
 	scene_var ROUTE_34_ILEX_FOREST_GATE,                   wRoute34IlexForestGateSceneID ; unused
 	scene_var ECRUTEAK_TIN_TOWER_ENTRANCE,                 wEcruteakTinTowerEntranceSceneID

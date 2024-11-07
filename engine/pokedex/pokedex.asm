@@ -405,6 +405,8 @@ Pokedex_ReinitDexEntryScreen:
 	call Pokedex_LoadCurrentFootprint
 	call Pokedex_GetSelectedMon
 	ld [wPrevDexEntry], a
+	ld [wCurSpecies], a
+	call GetBaseData
 	farcall DisplayDexEntry
 	call Pokedex_DrawFootprint
 	call Pokedex_LoadSelectedMonTiles
@@ -420,17 +422,15 @@ Pokedex_ReinitDexEntryScreen:
 	ret
 
 DexEntryScreen_ArrowCursorData:
-	db D_RIGHT | D_LEFT, 4
+	db D_RIGHT | D_LEFT, 3
 	dwcoord 1, 17  ; PAGE
-	dwcoord 6, 17  ; AREA
-	dwcoord 11, 17 ; CRY
-	dwcoord 15, 17 ; PRNT
+	dwcoord 8, 17  ; AREA
+	dwcoord 15, 17 ; CRY
 
 DexEntryScreen_MenuActionJumptable:
 	dw Pokedex_Page
 	dw .Area
 	dw .Cry
-	dw .Print
 
 .Area:
 	call Pokedex_BlackOutBG
@@ -466,34 +466,6 @@ DexEntryScreen_MenuActionJumptable:
 .Cry:
 	ld a, [wCurPartySpecies]
 	call PlayMonCry
-	ret
-
-.Print:
-	call Pokedex_ApplyPrintPals
-	xor a
-	ldh [hSCX], a
-	ld a, [wPrevDexEntryBackup]
-	push af
-	ld a, [wPrevDexEntryJumptableIndex]
-	push af
-	ld a, [wJumptableIndex]
-	push af
-	farcall PrintDexEntry
-	pop af
-	ld [wJumptableIndex], a
-	pop af
-	ld [wPrevDexEntryJumptableIndex], a
-	pop af
-	ld [wPrevDexEntryBackup], a
-	call ClearBGPalettes
-	call DisableLCD
-	call Pokedex_LoadInvertedFont
-	call Pokedex_RedisplayDexEntry
-	call EnableLCD
-	call WaitBGMap
-	ld a, POKEDEX_SCX
-	ldh [hSCX], a
-	call Pokedex_ApplyUsualPals
 	ret
 
 Pokedex_RedisplayDexEntry:
@@ -1163,14 +1135,12 @@ Pokedex_DrawDexEntryScreenBG:
 	call Pokedex_PlaceFrontpicTopLeftCorner
 	ret
 
-.Number: ; unreferenced
-	db $5c, $5d, -1 ; No.
 .Height:
 	db "HT  ?", $5e, "??", $5f, -1 ; HT  ?'??"
 .Weight:
 	db "WT   ???lb", -1
 .MenuItems:
-	db $3b, " PAGE AREA CRY PRNT", -1
+	db $3b, " PAGE   AREA   CRY ", -1
 
 Pokedex_DrawOptionScreenBG:
 	call Pokedex_FillBackgroundColor2
@@ -2313,7 +2283,7 @@ Pokedex_BlackOutBG:
 	call ByteFill
 	pop af
 	ldh [rSVBK], a
-
+	
 Pokedex_ApplyPrintPals:
 	ld a, $ff
 	call DmgToCgbBGPals
@@ -2321,7 +2291,7 @@ Pokedex_ApplyPrintPals:
 	call DmgToCgbObjPal0
 	call DelayFrame
 	ret
-
+	
 Pokedex_GetSGBLayout:
 	ld b, a
 	call GetSGBLayout
@@ -2425,6 +2395,7 @@ Pokedex_LoadGFX:
 	ld hl, vTiles2 tile $60
 	ld bc, $20 tiles
 	call Pokedex_InvertTiles
+	call Pokedex_LoadCatchRateGFX
 	call Pokedex_CheckSGB
 	jr nz, .LoadPokedexLZ
 	farcall LoadSGBPokedexGFX
@@ -2460,11 +2431,21 @@ Pokedex_InvertTiles:
 	jr nz, .loop
 	ret
 
+Pokedex_LoadCatchRateGFX:
+	ld de, PokedexCatchRateGFX
+	ld hl, vTiles1 tile $3A
+	lb bc, BANK(PokedexCatchRateGFX), 6
+	call Get1bppViaHDMA
+	ret
+
 PokedexLZ:
 INCBIN "gfx/pokedex/pokedex.2bpp.lz"
 
 PokedexSlowpokeLZ:
 INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
+
+PokedexCatchRateGFX:
+INCBIN "gfx/pokedex/catch_rate.1bpp"
 
 Pokedex_CheckSGB:
 	ldh a, [hCGB]
@@ -2524,6 +2505,8 @@ _NewPokedexEntry:
 	call Pokedex_LoadAnyFootprint
 	ld a, [wTempSpecies]
 	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
+	call GetBaseData
 	call Pokedex_DrawDexEntryScreenBG
 	call Pokedex_DrawFootprint
 	hlcoord 0, 17

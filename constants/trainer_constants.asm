@@ -369,13 +369,13 @@ KRIS EQU __trainer_class__
 
 	trainerclass SWIMMERM ; 26
 	const HAROLD
-	const SIMON
-	const RANDALL
-	const CHARLIE
-	const GEORGE
-	const BERKE
-	const KIRK
-	const MATHEW
+	const SIMON ; Route 40
+	const RANDALL ; Route 40
+	const CHARLIE ; Route 41
+	const GEORGE ; Route 41
+	const BERKE ; Route 41
+	const KIRK ; Route 41
+	const MATTHEW ; Route 41
 	const HAL
 	const PATON
 	const DARYL
@@ -391,13 +391,13 @@ KRIS EQU __trainer_class__
 	const PARKER
 
 	trainerclass SWIMMERF ; 27
-	const ELAINE
-	const PAULA
-	const KAYLEE
-	const SUSIE
-	const DENISE
-	const KARA
-	const WENDY
+	const ELAINE ; Route 40
+	const PAULA ; Route 40
+	const KAYLEE ; Route 41
+	const SUSIE ; Route 41
+	const DENISE ; Route 41
+	const KARA ; Route 41
+	const WENDY ; Route 41
 	const LISA
 	const JILL
 	const MARY
@@ -517,11 +517,11 @@ KRIS EQU __trainer_class__
 
 	trainerclass BLACKBELT_T ; 32
 	const KENJI ; Route 45
-	const YOSHI
-	const LAO
-	const NOB
+	const YOSHI ; Cianwood Gym
+	const LAO ; Cianwood Gym
+	const NOB ; Cianwood Gym
 	const KIYO
-	const LUNG
+	const LUNG ; Cianwood Gym
 	const WAI
 
 	trainerclass EXECUTIVEM ; 33
@@ -689,6 +689,6 @@ KRIS EQU __trainer_class__
 	const GRUNTF_5
 
 	trainerclass MYSTICALMAN ; 43
-	const EUSINE
+	const EUSINE ; Cianwood City
 
 NUM_TRAINER_CLASSES EQU __trainer_class__ - 1

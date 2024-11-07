@@ -102,17 +102,17 @@ RockItemEncounter:
 	ret
 	
 .RockItems:
-	db 1, HARD_STONE ; (1/256)*0.6 = 0.23% chance overall
-	db 1, SOFT_SAND ; 0.23%
-	db 1, KINGS_ROCK ; 0.23%
-	db 2, EVERSTONE ; 0.47%
-	db 2, CALCIUM ; 0.47%
-	db 2, CARBOS ; 0.47%
-	db 2, IRON ; 0.47%
-	db 2, PROTEIN ; 0.47%
-	db 7, NUGGET ; 1.64%
-	db 9, STAR_PIECE ; 2.11%
-	db 14, BIG_PEARL ; 3.28%
-	db 52, STARDUST ; 12.19%
-	db 75, PEARL ; 17.58%
-	db -1 ; NO_ITEM: (86/256)*0.6 = ~20% overall
+	db 1, HARD_STONE ; (1/256)*0.5 (chance you didn't get an encounter) = 1/512 = 0.20% chance overall
+	db 1, SOFT_SAND ; 0.20%
+	db 1, KINGS_ROCK ; 0.20%
+	db 1, EVERSTONE ; 0.20%
+	db 1, CALCIUM ; 0.20%
+	db 1, CARBOS ; 0.20%
+	db 1, IRON ; 0.20%
+	db 1, PROTEIN ; 0.20%
+	db 5, NUGGET ; 0.98%
+	db 6, STAR_PIECE ; 1.17%
+	db 9, BIG_PEARL ; 1.76%
+	db 40, STARDUST ; 7.81%
+	db 60, PEARL ; 11.72%
+	db -1 ; NO_ITEM: (128/256)*0.5 = 25% overall

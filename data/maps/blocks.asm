@@ -144,8 +144,7 @@ Route28SteelWingHouse_Blocks:
 CeladonMansionRoofHouse_Blocks:
 Route16FuchsiaSpeechHouse_Blocks:
 ManiasHouse_Blocks:
-CianwoodPharmacy_Blocks:
-CianwoodPhotoStudio_Blocks:
+EusinesHouse_Blocks:
 CianwoodLugiaSpeechHouse_Blocks:
 PokeSeersHouse_Blocks:
 ViridianNicknameSpeechHouse_Blocks:
@@ -572,6 +571,7 @@ SilverCaveRoom3_Blocks:
 	INCBIN "maps/SilverCaveRoom3.blk"
 
 MahoganyMart1F_Blocks:
+CianwoodPharmacy_Blocks:
 MountMoonGiftShop_Blocks:
 	INCBIN "maps/GiftShop.blk"
 

@@ -3042,6 +3042,7 @@ wGoldenrodMagnetTrainStationSceneID::             db
 wGoldenrodPokecenter1FSceneID::                   db
 wRoute39BarnSceneID::							  db
 wOlivineCitySceneID::                             db
+wRoute40RocketTowerGateSceneID::				  db
 wRoute34SceneID::                                 db
 wRoute34IlexForestGateSceneID::                   db
 wEcruteakTinTowerEntranceSceneID::                db
@@ -3084,7 +3085,7 @@ wMountMoonSquareSceneID::                         db
 wMobileTradeRoomSceneID::                         db
 wMobileBattleRoomSceneID::                        db
 
-	ds 49
+	ds 48
 
 ; fight counts
 wJackFightCount::    db

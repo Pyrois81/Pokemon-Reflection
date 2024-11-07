@@ -200,11 +200,11 @@ ENDM
 	connection east, Route38, ROUTE_38, 0
 
 	map_attributes Route40, ROUTE_40, $35, SOUTH | EAST
-	connection south, Route41, ROUTE_41, -15
+	connection south, Route41, ROUTE_41, -20
 	connection east, OlivineCity, OLIVINE_CITY, -9
 
 	map_attributes Route41, ROUTE_41, $35, NORTH | WEST
-	connection north, Route40, ROUTE_40, 15
+	connection north, Route40, ROUTE_40, 20
 	connection west, CianwoodCity, CIANWOOD_CITY, 0
 
 	map_attributes Route42, ROUTE_42, $71, WEST | EAST
@@ -635,10 +635,10 @@ ENDM
 	map_attributes Route7SaffronGate, ROUTE_7_SAFFRON_GATE, $00, 0
 	map_attributes Route17Route18Gate, ROUTE_17_ROUTE_18_GATE, $00, 0
 	map_attributes ManiasHouse, MANIAS_HOUSE, $00, 0
-	map_attributes CianwoodGym, CIANWOOD_GYM, $00, 0
+	map_attributes CianwoodGym, CIANWOOD_GYM, $1D, 0
 	map_attributes CianwoodPokecenter1F, CIANWOOD_POKECENTER_1F, $00, 0
 	map_attributes CianwoodPharmacy, CIANWOOD_PHARMACY, $00, 0
-	map_attributes CianwoodPhotoStudio, CIANWOOD_PHOTO_STUDIO, $00, 0
+	map_attributes EusinesHouse, EUSINES_HOUSE, $00, 0
 	map_attributes CianwoodLugiaSpeechHouse, CIANWOOD_LUGIA_SPEECH_HOUSE, $00, 0
 	map_attributes PokeSeersHouse, POKE_SEERS_HOUSE, $00, 0
 	map_attributes RocketTower1F, ROCKET_TOWER_1F, $00, 0

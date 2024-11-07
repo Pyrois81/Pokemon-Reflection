@@ -1,67 +1,89 @@
 	object_const_def
-	const ROUTE40ROCKETTOWERGATE_ROCKER
-	const ROUTE40ROCKETTOWERGATE_TWIN
+	const ROUTE_40_ROCKET_TOWER_GATE_ROCKET1
+	const ROUTE_40_ROCKET_TOWER_GATE_ROCKET2
+	const ROUTE_40_ROCKET_TOWER_GATE_ROCKER
 
 Route40RocketTowerGate_MapScripts:
 	def_scene_scripts
+	scene_script .Rockets ; SCENE_DEFAULT
+	scene_script .DummyScene1 ; SCENE_FINISHED
 
 	def_callbacks
 
+.DummyScene1:
+	end
+	
+.Rockets:
+	sdefer .KickOut
+	end
+	
+.KickOut:
+	playmusic MUSIC_ROCKET_HIDEOUT
+	applymovement ROUTE_40_ROCKET_TOWER_GATE_ROCKET1, Route40RocketTowerGateRocketApproachMovement
+	opentext
+	writetext Route40RocketTowerGateRocketGetOutText
+	waitbutton
+	closetext
+	applymovement ROUTE_40_ROCKET_TOWER_GATE_ROCKET1, Route40RocketTowerGateRocketKicksYouOutMovement
+	warp ROUTE_40, 9, 6
+	playsound SFX_ENTER_DOOR
+	end
 
 Route40RocketTowerGateRockerScript:
 	jumptextfaceplayer Route40RocketTowerGateRockerText
 
-Route40RocketTowerGateTwinScript:
-	jumptextfaceplayer Route40RocketTowerGateTwinText
+Route40RocketTowerGateRocketApproachMovement:
+	step LEFT
+	step LEFT
+	step LEFT
+	step DOWN
+	step_end
 
-Route40RocketTowerGateUnusedText1: ; unreferenced
-	text "Did you come to"
-	line "see the BATTLE"
-	cont "TOWER too?"
+Route40RocketTowerGateRocketKicksYouOutMovement:
+	fix_facing
+	big_step DOWN
+	big_step UP
+	remove_fixed_facing
+	step_end
 
-	para "But I guess you"
-	line "can't go in yet."
-	done
-
-Route40RocketTowerGateUnusedText2: ; unreferenced
-	text "BATTLE TOWER has"
-	line "opened."
-
-	para "I want to go, but"
-	line "I haven't thought"
-
-	para "up a cool line for"
-	line "when I win."
+Route40RocketTowerGateRocketGetOutText:
+	text "Whoa-ho-ho, bub!"
+	
+	para "No entry! There's"
+	line "important stuff"
+	
+	para "happenin' past"
+	line "here that's above"
+	
+	para "yer pay grade, if"
+	line "ya catch my drift."
+	
+	para "Come to think of"
+	line "it, it's above my"
+	cont "pay grade, too."
+	
+	para "<……><……>"
+	
+	para "Ah, whatever."
+	line "Kick rocks!!"
 	done
 
 Route40RocketTowerGateRockerText:
-	text "Are you going to"
-	line "the BATTLE TOWER?"
-
-	para "This is a secret,"
-	line "but if you win a"
-
-	para "whole lot, you can"
-	line "win special gifts."
-	done
-
-Route40RocketTowerGateUnusedText3: ; unreferenced
-	text "I'm going to train"
-	line "my #MON so I'll"
-
-	para "be all ready for"
-	line "the BATTLE TOWER."
-	done
-
-Route40RocketTowerGateTwinText:
-	text "The levels of the"
-	line "#MON I want to"
-
-	para "use are all"
-	line "different."
-
-	para "I have to go train"
-	line "them now!"
+	text "Geez, can you be-"
+	line "lieve TEAM ROCKET"
+	
+	para "had taken over the"
+	line "old tower?"
+	
+	para "Whoever took them"
+	line "out must've been"
+	cont "mega strong!"
+	
+	para "I bet they brought"
+	line "in the ELITE FOUR"
+	
+	para "to take care of"
+	line "it."
 	done
 
 Route40RocketTowerGate_MapEvents:
@@ -78,5 +100,6 @@ Route40RocketTowerGate_MapEvents:
 	def_bg_events
 
 	def_object_events
-	object_event  3,  3, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route40RocketTowerGateRockerScript, EVENT_ROCKET_TOWER_OUTSIDE_SAILOR
-	object_event  7,  5, SPRITE_TWIN, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route40RocketTowerGateTwinScript, -1
+	object_event  7,  5, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROCKET_TOWER_ROCKETS_TOGGLE
+	object_event  2,  3, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROCKET_TOWER_ROCKETS_TOGGLE
+	object_event  4,  3, SPRITE_ROCKER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route40RocketTowerGateRockerScript, EVENT_ROUTE_40_ROCKET_TOWER_GATE_ROCKER_TOGGLE

@@ -237,9 +237,8 @@ MysticWaterGuyTextBefore:
 
 MysticWaterGuyTextAfter:
 	text "If ya love doin'"
-	line "somethin',"
-	
-	para "why stop?"
+	line "somethin',"	
+	cont "why stop?"
 	done
 
 CherrygroveCitySignText:

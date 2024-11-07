@@ -375,7 +375,7 @@ EcruteakGymGuideMortyNotInText:
 	line "about visiting"
 	
 	para "OLIVINE and CIAN-"
-	line "WOOD to the east"
+	line "WOOD to the west"
 	cont "first."
 	
 	para "That said, you're"

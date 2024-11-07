@@ -464,7 +464,7 @@ KimonoGirlHonokoPrizeText:
 	para "They have been"
 	line "laid out in the"
 	
-	para "back of the room"
+	para "front of the room"
 	line "for your perusal."
 	done
 

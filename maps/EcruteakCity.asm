@@ -95,8 +95,8 @@ EcruteakCityYoungsterScript:
 
 EcruteakCityMagikarpScript:
 	opentext
-	cry MAGIKARP
 	writetext EcruteakCityMagikarpText
+	cry MAGIKARP
 	waitbutton
 	closetext
 	end

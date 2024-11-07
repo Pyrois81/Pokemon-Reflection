@@ -639,7 +639,7 @@ JohtoGrassWildMons:
 	end_grass_wildmons
 
 	def_grass_wildmons OLIVINE_LIGHTHOUSE_1F
-	db 5 percent ; encounter rate
+	db 4 percent ; encounter rate
 	; In order, 30/30/20/10/5/4/1%:
 	db 15, KRABBY
 	db 15, PSYDUCK

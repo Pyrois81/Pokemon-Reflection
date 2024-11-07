@@ -96,7 +96,7 @@ SCENE_ALWAYS   EQU -1
 	const_def
 	const SCENE_OLIVINECITY_NOTHING ; 0
 	const SCENE_OLIVINECITY_RIVAL_FIGHT ; 1
-
+	
 ; wEcruteakCitySceneID
 	const_def
 	const SCENE_ECRUTEAKCITY_NOTHING 		   ; 0
@@ -104,8 +104,8 @@ SCENE_ALWAYS   EQU -1
 
 ; wCianwoodCitySceneID
 	const_def
-	const SCENE_CIANWOODCITY_NOTHING            ; 0
-	const SCENE_CIANWOODCITY_SUICUNE_AND_EUSINE ; 1
+	const SCENE_CIANWOOD_CITY_NOTHING            ; 0
+	const SCENE_CIANWOOD_CITY_SUICUNE_AND_EUSINE ; 1
 
 ; wRadioTower5FSceneID
 	const_def 1
